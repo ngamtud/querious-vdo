@@ -1,0 +1,9 @@
+# rendered videos stay on your machine only
+renders/
+# models, voice lines, intermediate chunks (rebuilt by setup.sh / build.sh)
+.cache/
+node_modules/
+.venv/
+__pycache__/
+*.tmp.mp4
+.DS_Store

@@ -1,0 +1,16 @@
+{
+  "name": "querious-vdo",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Motion-graphic clips for Querious (querious.studio), rendered from HTML scenes",
+  "scripts": {
+    "build": "./build.sh",
+    "preview": "node engine/render.js"
+  },
+  "dependencies": {
+    "@fontsource/ibm-plex-mono": "5.3.0",
+    "@fontsource/pixelify-sans": "5.3.0",
+    "@fontsource/space-grotesk": "5.3.0",
+    "playwright": "1.63.0"
+  }
+}

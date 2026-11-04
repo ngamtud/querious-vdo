@@ -1,0 +1,116 @@
+{
+  "title": "Gapminder: Wealth and health of nations",
+  "format": {
+    "width": 1080,
+    "height": 1920,
+    "fps": 30
+  },
+  "duration": 54.0,
+  "chunks": [
+    [
+      0,
+      4.9
+    ],
+    [
+      4.9,
+      18.5
+    ],
+    [
+      18.5,
+      32.8
+    ],
+    [
+      32.8,
+      40.8
+    ],
+    [
+      40.8,
+      48.5
+    ],
+    [
+      48.5,
+      54
+    ]
+  ],
+  "scene": "scene.html",
+  "data": "data.json",
+  "voice": {
+    "engine": "kokoro",
+    "speaker": "af_bella",
+    "speed": 1.05
+  },
+  "voiceover": [
+    {
+      "id": "v1",
+      "at": 0.4,
+      "text": "In two thousand six, one chart made a whole room lean in."
+    },
+    {
+      "id": "v2",
+      "at": 5.0,
+      "text": "Every bubble is a country."
+    },
+    {
+      "id": "v3",
+      "at": 6.9,
+      "text": "Bigger means more people. The color tells you the region."
+    },
+    {
+      "id": "v4",
+      "at": 10.4,
+      "text": "Richer this way. Healthier that way."
+    },
+    {
+      "id": "v5",
+      "at": 13.1,
+      "text": "Then Hans Rosling pressed play."
+    },
+    {
+      "id": "v6",
+      "at": 16.0,
+      "text": "Decade after decade, the bubbles climb. Most of the world got healthier, and wealthier."
+    },
+    {
+      "id": "v7",
+      "at": 27.4,
+      "text": "But which regions moved fastest? And who broke away from the pack?"
+    },
+    {
+      "id": "v8",
+      "at": 33.0,
+      "text": "On Querious, you can rebuild the data behind this chart."
+    },
+    {
+      "id": "v9",
+      "at": 36.3,
+      "text": "Join four open tables by country and year. Write one query."
+    },
+    {
+      "id": "v10",
+      "at": 42.0,
+      "text": "Then connect it. One live link, ready for your AI, or your BI dashboard."
+    },
+    {
+      "id": "v11",
+      "at": 49.0,
+      "text": "The data is open. The question is yours."
+    }
+  ],
+  "music": {
+    "generator": "ambient",
+    "volume": 1.25,
+    "duck": {
+      "threshold": 0.03,
+      "ratio": 4,
+      "attack": 60,
+      "release": 600
+    }
+  },
+  "sfx": {
+    "click": [
+      14.6,
+      41.2,
+      42.9
+    ]
+  }
+}
