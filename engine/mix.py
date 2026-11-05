@@ -47,7 +47,8 @@ nv = len(labels)
 m = ep.get('music', {})
 duck = m.get('duck', {})
 inputs += ['-i', music]
-filt.append(f"{''.join(labels)}amix=inputs={nv}:normalize=0,pan=stereo|c0=c0|c1=c0,volume=1.7,asplit=2[vo][vk]")
+# voice is padded to the full clip so the ducking sidechain (and the music) lasts until the end
+filt.append(f"{''.join(labels)}amix=inputs={nv}:normalize=0,pan=stereo|c0=c0|c1=c0,volume=1.7,apad=whole_dur={D},atrim=0:{D},asplit=2[vo][vk]")
 filt.append(f"[{nv}]aresample=48000,pan=stereo|c0=c0|c1=c0,volume={m.get('volume', 1.25)}[mus]")
 filt.append(f"[mus][vk]sidechaincompress=threshold={duck.get('threshold', 0.03)}:ratio={duck.get('ratio', 4)}:"
             f"attack={duck.get('attack', 60)}:release={duck.get('release', 600)}:makeup=1[musd]")

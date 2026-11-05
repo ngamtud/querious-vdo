@@ -1,7 +1,7 @@
 # Querious — Sonic Identity & Background Music
 
 > Add-on to the "Querious — Brand & Motion Style Guide" (section 11). Use for all background music in Querious clips.
-> The generator lives in `engine/music.py` (same algorithm as `generate_music.py` below, with the duration as an argument).
+> The generator lives in `engine/music.py`: `python3 engine/music.py <duration> <out.wav> [--section 13.5]`. It makes a track of any length, so it always matches the clip.
 
 ## 11. Sound & music [motion direction]
 
@@ -10,21 +10,22 @@
 - Genre: **Minimal Electronic Ambient**: warm sine-wave pads holding the chords, plus short soft plucks on a steady pulse
 - Mood: calm, curious, focused, like the "researcher's notebook" personality. Never busy, dramatic or loud
 
-### 11.2 Musical spec (current track: `querious-original-ambient.wav`)
+### 11.2 Musical spec
 | | |
 |---|---|
-| Length | 54 s = 4 sections × 13.5 s |
-| Key / chords | A minor feel: **Am → G → F → Em/G**, one chord per section |
-| Pads | 4 voices per chord, sine + 18% 2nd harmonic, small phase offset per voice, 2.2 s crossfade between sections |
+| Length | Any: matches the clip (`episode.json` → `duration`). Sections stay 13.5 s; a tail under 4 s joins the last section |
+| Key / chords | A minor feel: **Am → G → F → Em/G**, one chord per section, repeating for longer clips (e.g. 58 s = Am G F Em/G Am · 120 s = 9 sections) |
+| Pads | 4 voices per chord, sine + 18% 2nd harmonic, small phase offset per voice, 2.2 s equal-power crossfade centred on each section change (no dip in level); the last chord holds to the final frame |
 | Plucks | Every 1.5 s (≈ 40 BPM pulse), pitch per section A4 → B4 → C5 → G4, exponential decay (`exp(-3.8t)`), 1.4 s long |
-| Fades | Fade-in 2.5 s · fade-out 3 s |
+| Fades | Fade-in 2.5 s · one 3 s fade-out that ends exactly on the last frame (plucks stop 1.5 s before the end) |
 | Level | Normalized, peak 0.23 (≈ −13 dBFS) so it sits under voice-over and UI sounds |
 | File | WAV, mono, 16-bit, 44.1 kHz |
 
 ### 11.3 Syncing music with motion
 - Section changes every 13.5 s line up with the clip template (section 7.6): use chord changes for scene changes / lime block wipes
 - The 1.5 s pluck pulse is the beat grid for hard cuts and UI pops
-- Match the music length to the clip: change `duration` and the section length (`13.5`) together; keep `duration = sections × section_length`
+- Music length follows the clip automatically (`engine/mix.py` passes the episode duration to `engine/music.py`). Change the chord length only with `--section`
+- The voice sidechain is padded to the full clip, so music keeps playing after the last voice-over line
 - If there is voice-over, duck the music a further 6–10 dB under speech
 
 ### 11.4 Rules

@@ -1,0 +1,130 @@
+{
+  "title": "Fertility: Thailand under Japan",
+  "format": {
+    "width": 1080,
+    "height": 1920,
+    "fps": 30
+  },
+  "duration": 58.0,
+  "chunks": [
+    [
+      0,
+      5.4
+    ],
+    [
+      5.4,
+      13.5
+    ],
+    [
+      13.5,
+      21.3
+    ],
+    [
+      21.3,
+      33.1
+    ],
+    [
+      33.1,
+      38.4
+    ],
+    [
+      38.4,
+      48.7
+    ],
+    [
+      48.7,
+      58
+    ]
+  ],
+  "scene": "scene.html",
+  "data": "data.json",
+  "voice": {
+    "engine": "kokoro",
+    "speaker": "af_bella",
+    "speed": 1.05
+  },
+  "voiceover": [
+    {
+      "id": "v1",
+      "at": 0.3,
+      "text": "Japan is the world's symbol of low birth rates."
+    },
+    {
+      "id": "v2",
+      "at": 3.4,
+      "text": "But for seven years, Thailand was lower."
+    },
+    {
+      "id": "v3",
+      "at": 5.9,
+      "text": "In nineteen sixty, a Thai woman had six children on average. A Japanese woman, two."
+    },
+    {
+      "id": "v4",
+      "at": 11.2,
+      "text": "Thailand's line fell fast. Replacement level in just thirty years."
+    },
+    {
+      "id": "v5",
+      "at": 15.6,
+      "text": "Then it kept falling, and slipped under Japan in twenty sixteen."
+    },
+    {
+      "id": "v6",
+      "at": 19.3,
+      "text": "Today, the two are almost tied."
+    },
+    {
+      "id": "v7",
+      "at": 21.4,
+      "text": "And it's not just Thailand."
+    },
+    {
+      "id": "v8",
+      "at": 23.1,
+      "text": "In nineteen ninety, two places had fertility at or below one point three. By twenty twenty-four, twenty-seven."
+    },
+    {
+      "id": "v9",
+      "at": 29.6,
+      "text": "South Korea. China. Spain. Even Chile."
+    },
+    {
+      "id": "v10",
+      "at": 33.4,
+      "text": "So where does your country sit? And how fast is it falling?"
+    },
+    {
+      "id": "v11",
+      "at": 38.6,
+      "text": "Find out on Querious. Open the fertility dataset, and write one query."
+    },
+    {
+      "id": "v12",
+      "at": 43.6,
+      "text": "Then download the result, or connect it to your own tools."
+    },
+    {
+      "id": "v13",
+      "at": 49.2,
+      "text": "The data is open. The question is yours."
+    }
+  ],
+  "music": {
+    "generator": "ambient",
+    "volume": 1.25,
+    "duck": {
+      "threshold": 0.03,
+      "ratio": 4,
+      "attack": 60,
+      "release": 600
+    }
+  },
+  "sfx": {
+    "click": [
+      40.6,
+      42.9,
+      45.6
+    ]
+  }
+}
