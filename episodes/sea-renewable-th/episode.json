@@ -1,0 +1,157 @@
+{
+  "title": "อาเซียน: สัดส่วนพลังงานหมุนเวียนลดลง 10 ใน 11 ประเทศ",
+  "format": {
+    "width": 1080,
+    "height": 1920,
+    "fps": 30
+  },
+  "duration": 65.8,
+  "chunks": [
+    [
+      0,
+      6.6
+    ],
+    [
+      6.6,
+      15.8
+    ],
+    [
+      15.8,
+      20.8
+    ],
+    [
+      20.8,
+      32.5
+    ],
+    [
+      32.5,
+      42.9
+    ],
+    [
+      42.9,
+      47.6
+    ],
+    [
+      47.6,
+      56.6
+    ],
+    [
+      56.6,
+      65.8
+    ]
+  ],
+  "scene": "scene.html",
+  "data": "data.json",
+  "voice": {
+    "engine": "paxa",
+    "model": "paxa-tts-flash-v2",
+    "speaker": "nomyen",
+    "language": "th",
+    "speed": 1.0,
+    "fit": true,
+    "max_speed": 1.3
+  },
+  "voiceover": [
+    {
+      "id": "v1",
+      "at": 0.2,
+      "text": "ปีหนึ่งเก้าเก้าศูนย์ เวียดนามใช้พลังงานหมุนเวียนเจ็ดสิบหกเปอร์เซ็นต์",
+      "text_en": "In nineteen ninety, Vietnam ran on seventy-six percent renewable energy."
+    },
+    {
+      "id": "v2",
+      "at": 4.9,
+      "text": "วันนี้ เหลือยี่สิบสี่",
+      "text_en": "Today? Twenty-four."
+    },
+    {
+      "id": "v3",
+      "at": 6.9,
+      "text": "ไม่ใช่แค่เวียดนาม สิบในสิบเอ็ดประเทศอาเซียนลดลงหมด",
+      "text_en": "And it's not just Vietnam. Ten of eleven Southeast Asian countries fell."
+    },
+    {
+      "id": "v4",
+      "at": 11.4,
+      "text": "อินโดนีเซีย ห้าสิบเก้าเหลือยี่สิบ ลาว แปดสิบแปดเหลือห้าสิบสอง",
+      "text_en": "Indonesia, fifty-nine to twenty. Laos, eighty-eight to fifty-two."
+    },
+    {
+      "id": "v5",
+      "at": 16.1,
+      "text": "ประเทศเดียวที่เพิ่มขึ้นคือสิงคโปร์ จากเกือบศูนย์ เป็นหนึ่งเปอร์เซ็นต์",
+      "text_en": "The only one that rose? Singapore. From almost zero, to one percent."
+    },
+    {
+      "id": "v6",
+      "at": 21.1,
+      "text": "แต่นี่ไม่ใช่ข่าวร้าย",
+      "text_en": "But this isn't a green story gone wrong."
+    },
+    {
+      "id": "v7",
+      "at": 23.5,
+      "text": "ส่วนใหญ่ในตอนนั้น คือฟืนและถ่าน",
+      "text_en": "Much of that renewable energy was firewood and charcoal."
+    },
+    {
+      "id": "v8",
+      "at": 27.1,
+      "text": "พอบ้านมีไฟ สัดส่วนก็ลด แต่การใช้ไฟต่อคนเพิ่มยี่สิบสี่เท่า",
+      "text_en": "As homes got electricity, the share fell. Power use per person grew twenty-four times."
+    },
+    {
+      "id": "v9",
+      "at": 32.8,
+      "text": "แล้วใช้ไฟมากขึ้น พร้อมกับเขียวขึ้น เป็นไปได้ไหม",
+      "text_en": "So can a country use more power, and get greener at the same time?"
+    },
+    {
+      "id": "v10",
+      "at": 36.4,
+      "text": "มาเลเซียลงไปต่ำสุดสองเปอร์เซ็นต์ในปีสองพันสิบ ถึงปีสองพันยี่สิบเอ็ด กลับมาเจ็ดจุดห้า",
+      "text_en": "Malaysia hit two percent in twenty ten. By twenty twenty-one, seven and a half, while power use kept climbing."
+    },
+    {
+      "id": "v11",
+      "at": 43.2,
+      "text": "แล้วไทยล่ะ สิบเก้าเปอร์เซ็นต์ ต่ำสุดตั้งแต่ปีหนึ่งเก้าเก้าศูนย์",
+      "text_en": "And Thailand? Nineteen percent. Its lowest since nineteen ninety."
+    },
+    {
+      "id": "v12",
+      "at": 47.9,
+      "text": "เราหาคำตอบนี้ด้วยการรวมชุดข้อมูลเปิดสามชุดบนคิวเรียส",
+      "text_en": "We found this by joining three open datasets on Querious, right in your browser."
+    },
+    {
+      "id": "v13",
+      "at": 52.4,
+      "text": "เลือกอาเซียน เทียบสองปี แล้วดาวน์โหลดผลลัพธ์",
+      "text_en": "Filter to Southeast Asia, compare two years, then download the result."
+    },
+    {
+      "id": "v14",
+      "at": 56.9,
+      "text": "ข้อมูลพร้อมแล้ว มาหาคำตอบกัน",
+      "text_en": "The data is open. The question is yours."
+    }
+  ],
+  "music": {
+    "generator": "ambient",
+    "volume": 1.25,
+    "duck": {
+      "threshold": 0.03,
+      "ratio": 4,
+      "attack": 60,
+      "release": 600
+    }
+  },
+  "sfx": {
+    "click": [
+      49.8,
+      51.6,
+      55.0
+    ]
+  }
+}
