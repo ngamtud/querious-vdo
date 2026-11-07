@@ -120,7 +120,7 @@ svg.abs{position:absolute;left:0;top:0}
  <svg id="chartD" class="abs" width="1080" height="1920"></svg>
  <div class="note mono L" id="noteD" style="top:1060px">Source / World Bank WDI EG.FEC.RNEW.ZS · EG.USE.ELEC.KH.PC · Viet Nam</div>
  <div class="L R" id="callD"><div class="mono" id="callDk"></div><p id="callDp"></p></div>
- <div class="caption L R" id="capD" style="top:1330px"></div>
+ <div class="caption L R" id="capD" style="top:1330px"></div><div class="caption L R" id="capD2" style="top:1425px"></div>
 </div>
 <!-- E: Malaysia -->
 <div id="E" class="scene light">
@@ -176,11 +176,11 @@ const T={
  labA:['Viet Nam · ',''], headA:'of its energy was<br>renewable', footA:'Renewable share of final energy use',
  metaB:'Southeast Asia / % renewable',legB:['First year on record','2021'],
  noteB:'Source / World Bank WDI EG.FEC.RNEW.ZS · % of final energy · Cambodia from 1995, Timor-Leste from 2002',
- capB:[[6.9,'10 of 11 <span class="hl">fell.</span>'],[11.4,'Indonesia: <span class="hl">59 → 20</span>'],[13.5,'Laos: <span class="hl">88 → 52</span>']],
+ capB:[[6.9,'10 of 11 <span class="hl">fell.</span>'],[11.4,'Indonesia: <span class="hl">59 to 20</span>'],[13.5,'Laos: <span class="hl">88 to 52</span>']],
  ebC:['The only one that rose / ','2021'], nameC:'Singapore',
  metaD:'Viet Nam / 1990–2021', shareLab:'% RENEWABLE', kwhLab:'KWH PER PERSON',
  callK:'Renewable ≠ clean power', callP:'It counts wood and charcoal<br>burned for cooking.',
- capD:[[21.2,'Share <span class="hl">down.</span>'],[27.1,'24% share.<br><span class="hl">24× the power.</span>']],
+ capD:[[21.2,'Share <span class="hl">down.</span>'],[27.1,'24% share.'],[29.4,'<span class="hl">24× the power.</span>']],
  hE:['More power',' and greener?'], mysLab:'MALAYSIA / % RENEWABLE', mysKwh:'KWH PER PERSON',
  lowLab:'2.0% · 2010', capE:[[36.4,'Malaysia: <span class="hl">U-turn.</span>'],[39.6,'Power use <span class="hl">still up.</span>']],
  metaF:'Thailand / % renewable', hF:'And Thailand?', lowF:'LOWEST SINCE 1990',
@@ -237,6 +237,9 @@ const lineD2=el('polyline',{fill:'none',stroke:'#DD6B43','stroke-width':7,'strok
 const dotD1=el('rect',{width:20,height:20,fill:'#424E3D'},svD), dotD2=el('rect',{width:20,height:20,fill:'#DD6B43'},svD);
 const vD1=txt(svD,{'font-size':26,fill:'#283127','text-anchor':'end'},''), vD2=txt(svD,{'font-size':26,fill:'#283127','text-anchor':'end'},'');
 const vD1s=txt(svD,{x:dx(1990)+8,y:s1y(75.9)-18,'font-size':24,fill:'#677166'},'75.9%'), vD2s=txt(svD,{x:dx(1990)+8,y:s2y(98.9)-18,'font-size':24,fill:'#677166'},'99 KWH');
+const gx=el('g',{},svD);const bx0=dx(2021)+0;const bBase=el('line',{x1:dx(1990),x2:dx(2021),y1:s2y(98.9),y2:s2y(98.9),stroke:'#DD6B43','stroke-width':3,'stroke-dasharray':'8 8'},gx);
+const bUp=el('line',{x1:bx0,x2:bx0,y1:s2y(98.9),y2:s2y(98.9),stroke:'#E5764B','stroke-width':5},gx);
+const bLab=el('text',{x:bx0-22,y:(s2y(98.9)+s2y(2402))/2+40,'text-anchor':'end','font-family':'SG, TH','font-weight':700,'font-size':64,'letter-spacing':'-2',fill:'#E5764B'},gx);bLab.textContent='24×';
 function drawLine(series,key,yf,line,dot,yc){const pts=[];series.forEach(d=>{if(d.year<=yc)pts.push(`${dx(d.year)},${yf(d[key])}`)});
  const y0=Math.floor(yc),f=yc-y0,a=series.find(d=>d.year===y0),b=series.find(d=>d.year===Math.min(2021,y0+1));const v=lerp(a[key],b[key],f);pts.push(`${dx(yc)},${yf(v)}`);
  line.setAttribute('points',pts.join(' '));dot.setAttribute('x',dx(yc)-10);dot.setAttribute('y',yf(v)-10);return v}
@@ -305,7 +308,7 @@ window.render=function(t){
    const hi=focus?r.d.iso===focus:false;
    r.g.style.opacity=a*(focus?(hi?1:1-0.7*fk):1);
    const showV=hi||(r.d.iso==='SGP'&&t>9.8);r.val.style.opacity=showV?1:0;
-   if(showV){r.val.textContent=`${Math.round(r.d.p0)} → ${Math.round(r.d.p21)}`;r.val.setAttribute('x',(bx(r.d.p0)+bx(r.d.p21))/2);}
+   if(showV){r.val.textContent=`${Math.round(r.d.p21)} ← ${Math.round(r.d.p0)}`;r.val.setAttribute('x',(bx(r.d.p0)+bx(r.d.p21))/2);}
    if(r.d.iso==='SGP'){r.val.textContent='0.2 → 1.1';r.val.setAttribute('x',bx(14));r.val.setAttribute('text-anchor','start');r.val.setAttribute('y',r.y+8);r.val.setAttribute('fill','#B4502C')}});
   caption($('capB'),T.capB,t,15.6);}
  // ---- C Singapore
@@ -324,9 +327,12 @@ window.render=function(t){
   vD1.setAttribute('x',dx(yc)-16);vD1.setAttribute('y',s1y(v1)-22);vD1.textContent=v1.toFixed(1)+'%';vD1.style.opacity=lo*p(t,22.0,22.3);
   vD2.setAttribute('x',dx(yc)-16);vD2.setAttribute('y',s2y(v2)-22);vD2.textContent=fmt(v2)+' KWH';vD2.style.opacity=lo*p(t,22.0,22.3);
   vD1s.style.opacity=lo*(1-p(t,22.6,23.0));vD2s.style.opacity=lo*(1-p(t,22.6,23.0));
-  const big=eSnap(p(t,27.1,27.5));[vD1,vD2].forEach(e=>{e.setAttribute('font-size',26+12*big);e.setAttribute('fill',big>0.5?'#B4502C':'#283127')});
+  [[vD1,27.1],[vD2,29.4]].forEach(([e,t0])=>{const big=eSnap(p(t,t0,t0+0.35));e.setAttribute('font-size',26+12*big);e.setAttribute('fill',big>0.5?'#B4502C':'#283127')});
+  const bb=eOut(p(t,29.4,29.8));bBase.style.opacity=bb;const bu=eInOut(p(t,29.6,30.4));bUp.setAttribute('y2',lerp(s2y(98.9),s2y(2402),bu));bUp.style.opacity=bb;
+  const bl=eSnap(p(t,30.3,30.65));bLab.style.opacity=bl;bLab.setAttribute('transform',`translate(0,${(1-bl)*20})`);
   const cl=eSnap(p(t,23.5,23.85))*(1-eOut(p(t,26.9,27.2)));$('callD').style.opacity=cl;$('callD').style.transform=`translateY(${(1-cl)*26}px)`;
-  caption($('capD'),T.capD,t,32.3);if(t>23.4&&t<27.05)$('capD').style.opacity=0;}
+  caption($('capD'),T.capD.slice(0,2),t,32.3);if(t>23.4&&t<27.05)$('capD').style.opacity=0;
+  const c2=$('capD2'),k2=eOut(p(t,T.capD[2][0]-0.05,T.capD[2][0]+0.2));c2.innerHTML=T.capD[2][1];c2.style.opacity=t>32.3?0:k2;c2.style.transform=`translateY(${(1-k2)*24}px)`;}
  // ---- E Malaysia
  if(inW('E',t)){const E=$('E');E.style.transform=`scale(${1+0.02*eInOut(p(t,32.5,42.9))})`;
   const HS=T.hE[0]+'<br>'+T.hE[1].trim(),HL=htmlLen(HS),n=Math.round(HL*p(t,32.8,34.4));

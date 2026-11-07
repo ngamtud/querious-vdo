@@ -11,6 +11,8 @@ Things that went wrong or needed a second pass while making episodes, and the ru
 - **Dumbbell instead of slope chart** for "first year → 2021" across 11 countries: slope-chart labels collided at the low end (Malaysia 8.3, Brunei 0.7, Singapore 0.2).
 - **Thai lines still ran long on the first Paxa pass** (v6, v8, v10 over their slots even at 1.3×). Trimmed: v6 → "แต่นี่ไม่ใช่ข่าวร้าย", v7 dropped "พลังงานหมุนเวียน", v8 → "พอบ้านมีไฟ สัดส่วนก็ลด แต่การใช้ไฟต่อคนเพิ่มยี่สิบสี่เท่า", v10 dropped "ทั้งที่ใช้ไฟเพิ่มขึ้นตลอด" (the caption and the kWh line carry it). Second pass: all fit, max stretch 1.27.
 - **Remixing fertility-th** with the new voice hit −1.0 dBFS peak at −2 dB voice; −3 dB gave −18.0 LUFS, peak −1.9.
+- **Change labels must follow the chart's direction.** On the dumbbell the 2021 point sits left of the first-year point, so "59 → 20" read as if left = 59. Chart labels now read `20 ← 59` (Singapore, which rose, stays `0.2 → 1.1`); captions say "59 to 20" / "59 เหลือ 20" with no arrow.
+- **No static holds.** The Viet Nam shot sat still for ~5 s after the two numbers lit up together. Now the beats are staggered with the voice: 24.2% label + "24% share." at 27.1, then the kWh label, a 24× bracket drawing up from the 1990 level, and the "24× the power." line at 29.4–30.6. Rule: when a voice line has two ideas, give each its own visual beat.
 - **Baselines differ by country.** Cambodia's renewable series starts in 1995 and Timor-Leste's in 2002; the source line says so.
 
 ## Episode: fertility-th (2026-11-07)
