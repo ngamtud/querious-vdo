@@ -2,6 +2,24 @@
 
 Things that went wrong or needed a second pass while making episodes, and the rule that came out of each. Newest first. `CLAUDE.md` links here; the short rules are also copied into `CLAUDE.md`.
 
+## Episode: renewable (2026-11-07)
+
+### Visuals
+- **Facebook crops the sides.** On Facebook's full-screen player the fertility clip lost ~85–90 px per side (measured from a phone screenshot: "Querious" lost its "Q", "1960" lost its "1"); its top bar covers ~280 px, the like/comment/share column sits over the right ~230 px from y≈1180–1780, and the caption starts ~1630 px. New 9:16 safe zone: top 300, bottom 380, sides 150, right 230 clear in y 1180–1780. Scenes use `--safe-*` CSS variables; the logo sits inside the top bar row (top 300, right 150). Check previews with the safe box drawn (`#safe` in the URL, or draw it on the preview frames).
+- **Camera pushes move edge text outward.** With 150 px margins, keep scene scale ≤ 1.025 so text at the edges stays inside the safe zone.
+- **Narrower frame (780 px) means shorter lines.** Headlines ~110 px max, captions one line (e.g. "Over 2× Europe." instead of "More than double Europe."), SQL at ~20 px mono with column aliases.
+
+### Thai version (renewable-th)
+- **Same timeline, other language:** copy the episode, keep every voice `id`, `at`, `duration`, `chunks` and `sfx` identical, translate `text` (keep the English in `text_en`). Then the English voice can be laid over the Thai visuals with `engine/mix.py episodes/<ep>-th --voice-dir .cache/<ep>/voice --out ...`.
+- **Thai voice:** Edge/Azure TTS is blocked from both the cloud workspace and the Mac VM. The offline option is Meta MMS-TTS Thai (`voice.engine: "mms-tha"`, `./setup.sh --thai`). It is **CC BY-NC 4.0 (non-commercial)** and sounds flatter than Kokoro. Write numbers as Thai words; the model has no SARA AM (handled in `tts.py`). `voice.fit: true` time-stretches (ffmpeg atempo, pitch kept, max 1.3×) any line that is too long for its slot.
+- **Thai type:** IBM Plex Sans Thai (`TH` font family) as fallback after SG/PM, no negative tracking, line-height ≥ 1.2. A `@font-face` with `font-family:PM,TH` is invalid and silently drops the face (mono labels fell back to a serif); declare one family per `@font-face`. Typewriter and erase effects slice by grapheme (`Intl.Segmenter`) so Thai vowels and tone marks never split from their consonant. Thai captions run longer: check every caption stays on one line.
+
+### Data and story
+- **Renewable share ≠ clean electricity.** WDI EG.FEC.RNEW.ZS is a share of final energy and includes traditional biomass (wood, charcoal). Africa leads on it, DR Congo is 96%, but DR Congo uses ~134 kWh of electricity per person a year vs Finland ~15,600. The clip says so on screen.
+- **2021 is the last complete year** for the renewable package (2022 has 71 of 215 values and no DR Congo).
+- **Check the user's recollection against the data.** "Finland leads on share × use" was close: Iceland is first, Norway second, Finland third.
+- The "share × use" ranking mixes a final-energy share with electricity per person; label it as a rough lens.
+
 ## Episode: fertility (2026-11-05)
 
 ### Audio

@@ -25,4 +25,13 @@ if [ ! -f .cache/kokoro/kokoro-int8-en-v0_19/model.int8.onnx ]; then
   mv package/kokoro-int8-en-v0_19 . && rm -rf package n8n-nodes-ttsbro-0.1.6.tgz
   cd ../..
 fi
+if [ "${1:-}" = "--thai" ] || ls episodes/*/episode.json | xargs grep -l '"mms-tha"' >/dev/null 2>&1; then
+  echo "→ Thai TTS model (Meta MMS-TTS, CC BY-NC 4.0: non-commercial only, ~110 MB, from GitHub)"
+  if [ ! -f .cache/mms-tha/vits-mms-tha/model.onnx ]; then
+    mkdir -p .cache/mms-tha && cd .cache/mms-tha
+    curl -sSL -o m.tar.bz2 https://github.com/k2-fsa/sherpa-onnx/releases/download/tts-models/vits-mms-tha.tar.bz2
+    tar xjf m.tar.bz2 && rm m.tar.bz2
+    cd ../..
+  fi
+fi
 echo "✓ setup done. Next: ./build.sh episodes/gapminder"
