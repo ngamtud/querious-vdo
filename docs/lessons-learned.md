@@ -2,6 +2,15 @@
 
 Things that went wrong or needed a second pass while making episodes, and the rule that came out of each. Newest first. `CLAUDE.md` links here; the short rules are also copied into `CLAUDE.md`.
 
+## Episode: fertility-th (2026-11-07)
+
+- **Re-layout, not just translate.** The English fertility cut predates the Facebook-safe zone (72 px sides). The Thai copy was rebuilt on the `--safe-*` variables: charts span x 215–920 with axes ending above y 1180, and the note, caption, result table and connection panel use `right: 230px` (class `R`) because they sit in the like/comment band (y 1180–1780). The English `fertility` episode still has the old margins.
+- **Draw the safe box on preview frames.** Overlaying the 150/300/380 box plus the right band on the stills caught a wrapped question headline (120 px Thai was too big for 780 px; 100 px fits) and action buttons overlapping the last result row.
+- **Paxa rate limit (429).** The first run stopped after 10 of 13 lines: `tts.py` retried only 3 times at 5–15 s. It now retries 7 times, honouring `Retry-After` (Paxa asked for 60 s) or backing off 15–90 s.
+- **Voice only what changed.** The workflow used to re-voice every Paxa episode on every push (renewable-th too), which burns the rate limit. Now a push voices only episodes whose `episode.json` changed; a change to `engine/tts.py` or the workflow re-voices all. Manual run: `gh workflow run voice-paxa.yml --ref <branch> -f episodes=<ep>`.
+- **Thai lines run long.** Three lines needed trimming to fit slots taken from the English timeline (≤ 1.3× stretch): "วันนี้ สองประเทศแทบเท่ากัน" → "วันนี้แทบเท่ากัน" (2.1 s slot), and the Querious line dropped the dataset name. Count on ~10–15% fewer words than a literal translation.
+- **Loudness:** lowering the Paxa files 2 dB again matched English (−17.3 vs −17.0 LUFS).
+
 ## Episode: renewable (2026-11-07)
 
 ### Visuals

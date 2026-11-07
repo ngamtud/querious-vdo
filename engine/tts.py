@@ -78,7 +78,7 @@ def paxa_engine():
         body = {'model': voice.get('model', 'paxa-tts-flash-v2'), 'text': text,
                 'voice': voice.get('speaker', 'foithong'), 'format': 'wav', 'stream': False,
                 'language': voice.get('language', 'th'), 'speed': voice.get('speed', 1.0)}
-        for attempt in range(4):
+        for attempt in range(8):
             req = urllib.request.Request(base + '/v1/tts', data=json.dumps(body).encode(), method='POST',
                                          headers={'Authorization': f'Bearer {key}', 'Content-Type': 'application/json'})
             try:
@@ -87,8 +87,12 @@ def paxa_engine():
                 break
             except urllib.error.HTTPError as e:
                 msg = e.read().decode(errors='replace')[:300]
-                if e.code in (429, 500, 502, 503) and attempt < 3:
-                    time.sleep(5 * (attempt + 1)); continue
+                if e.code in (429, 500, 502, 503) and attempt < 7:
+                    # rate limit: honour Retry-After, else back off 15, 30, 45 ... s (max 90)
+                    wait = e.headers.get('Retry-After') if e.headers else None
+                    wait = float(wait) if wait and wait.replace('.', '', 1).isdigit() else min(90, 15 * (attempt + 1))
+                    print(f'  Paxa {e.code}, retry in {wait:.0f}s', flush=True)
+                    time.sleep(wait); continue
                 sys.exit(f'Paxa API error {e.code}: {msg}')
         with open(path, 'wb') as f:
             f.write(data)
