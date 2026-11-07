@@ -45,12 +45,7 @@
   "voice": {
     "engine": "paxa",
     "model": "paxa-tts-flash-v2",
-    "speaker": "foithong",
-    "candidates": [
-      "foithong",
-      "sanaechan",
-      "nomyen"
-    ],
+    "speaker": "nomyen",
     "language": "th",
     "speed": 1.0,
     "fit": true,
@@ -138,8 +133,8 @@
     {
       "id": "v14",
       "at": 54.9,
-      "text": "ข้อมูลเปิดแล้ว คำถามเป็นของคุณ",
-      "text_en": "The data is open. The question is yours."
+      "text": "ข้อมูลพร้อมแล้ว มาหาคำตอบกัน",
+      "text_en": "The data is ready. Let's find the answers."
     }
   ],
   "music": {
