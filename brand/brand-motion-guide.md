@@ -152,14 +152,16 @@ FPS: 30 (social) or 60 (smoother cursor and UI movement)
 2. **Problem / Question (3–8s):** a question in large type, cream background
 3. **Walkthrough (8–30s):** 3–4 steps: DISCOVER → QUERY → VISUALIZE
 4. **Insight (30–40s):** the animated chart plus the key number
-5. **End card (last 3–5s):** logo mark + wordmark, `querious.studio ↗`, "NO ACCOUNT NEEDED TO EXPLORE"
+5. **End card (last ~6s):** "Your turn_", `querious.studio ↗`, "NO ACCOUNT NEEDED TO EXPLORE", wordmark. Hold ~3–4 s after the last voice line, then **erase-out**: delete each text block from its first letter (bottom block first, headline last) until only the blinking orange `_` is left, the same cursor the hook opens with. Fade the logo, then the cursor in the last ~0.5 s. Reference: `episodes/fertility/` and `episodes/renewable/`
 
 ### 7.7 Formats
 | Format | Size | Safe zone |
 |---|---|---|
 | 16:9 (YouTube / presentations) | 1920×1080 | 96px on every side |
-| 9:16 (Reels / TikTok / Shorts) | 1080×1920 | top 220px, bottom 340px, sides 72px |
+| 9:16 (Reels / TikTok / Shorts / Facebook) | 1080×1920 | **top 300px, bottom 380px, sides 150px**; also keep the right 230px clear between y 1180–1780 (Facebook like/comment/share buttons) |
 | 1:1 (Feed / LinkedIn) | 1080×1080 | 80px on every side |
+
+**Why the 9:16 safe zone is this wide:** Facebook's full-screen player scales a 9:16 video to fill taller phone screens (e.g. 19.5:9) and crops ~85–90px off each side; its top bar covers ~280px and the caption block starts ~1630px. Measured from a Facebook screenshot of the fertility episode (2026-11-07), where 72px side margins left text touching the screen edge. Everything that must be read (text, labels, axis ticks, logo) goes inside the safe zone; backgrounds and chart gridlines may run to the edge.
 
 Minimum text size: headings 64px+ (9:16: 80px+), mono labels 22px+ so they stay readable on a phone
 

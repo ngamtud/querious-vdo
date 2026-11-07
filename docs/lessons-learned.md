@@ -2,6 +2,19 @@
 
 Things that went wrong or needed a second pass while making episodes, and the rule that came out of each. Newest first. `CLAUDE.md` links here; the short rules are also copied into `CLAUDE.md`.
 
+## Episode: renewable (2026-11-07)
+
+### Visuals
+- **Facebook crops the sides.** On Facebook's full-screen player the fertility clip lost ~85–90 px per side (measured from a phone screenshot: "Querious" lost its "Q", "1960" lost its "1"); its top bar covers ~280 px, the like/comment/share column sits over the right ~230 px from y≈1180–1780, and the caption starts ~1630 px. New 9:16 safe zone: top 300, bottom 380, sides 150, right 230 clear in y 1180–1780. Scenes use `--safe-*` CSS variables; the logo sits inside the top bar row (top 300, right 150). Check previews with the safe box drawn (`#safe` in the URL, or draw it on the preview frames).
+- **Camera pushes move edge text outward.** With 150 px margins, keep scene scale ≤ 1.025 so text at the edges stays inside the safe zone.
+- **Narrower frame (780 px) means shorter lines.** Headlines ~110 px max, captions one line (e.g. "Over 2× Europe." instead of "More than double Europe."), SQL at ~20 px mono with column aliases.
+
+### Data and story
+- **Renewable share ≠ clean electricity.** WDI EG.FEC.RNEW.ZS is a share of final energy and includes traditional biomass (wood, charcoal). Africa leads on it, DR Congo is 96%, but DR Congo uses ~134 kWh of electricity per person a year vs Finland ~15,600. The clip says so on screen.
+- **2021 is the last complete year** for the renewable package (2022 has 71 of 215 values and no DR Congo).
+- **Check the user's recollection against the data.** "Finland leads on share × use" was close: Iceland is first, Norway second, Finland third.
+- The "share × use" ranking mixes a final-energy share with electricity per person; label it as a rough lens.
+
 ## Episode: fertility (2026-11-05)
 
 ### Audio
