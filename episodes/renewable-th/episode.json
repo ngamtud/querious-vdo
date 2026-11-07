@@ -43,7 +43,15 @@
   "scene": "scene.html",
   "data": "data.json",
   "voice": {
-    "engine": "mms-tha",
+    "engine": "paxa",
+    "model": "paxa-tts-flash-v2",
+    "speaker": "foithong",
+    "candidates": [
+      "foithong",
+      "sanaechan",
+      "nomyen"
+    ],
+    "language": "th",
     "speed": 1.0,
     "fit": true,
     "max_speed": 1.3
