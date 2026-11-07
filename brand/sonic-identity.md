@@ -28,6 +28,14 @@
 - The voice sidechain is padded to the full clip, so music keeps playing after the last voice-over line
 - If there is voice-over, duck the music a further 6–10 dB under speech
 
+### 11.3b Voice-over
+| | |
+|---|---|
+| English | Kokoro `af_bella`, speed 1.05 (offline) |
+| Thai | Paxa Labs `nomyen` (via `.github/workflows/voice-paxa.yml`); MMS Thai only as an offline fallback (flat sound, non-commercial licence) |
+| Timing | Each line must end ≥ 0.15 s before the next line starts; a second-language version keeps the same start times (`voice.fit` time-stretches up to 1.3×) |
+| Loudness | Final mix ≈ −17 LUFS integrated, true peak ≤ −1.5 dBFS, the same for every language version. Paxa lines needed −2 dB to match Kokoro |
+
 ### 11.4 Rules
 - Do: soft sine tones, slow envelopes, plenty of space, fade in and out
 - Don't: drums, heavy bass, distortion, risers/whooshes with lots of noise, sudden loud hits, copyrighted music

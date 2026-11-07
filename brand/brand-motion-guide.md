@@ -74,7 +74,7 @@
 | Display / headings | **Space Grotesk** 700 | Very tight tracking (−0.07 to −0.09em), line-height 0.9–1.0, large |
 | Body | Space Grotesk 400–500 | 14–20px, line-height 1.45–1.6 |
 | Labels / UI / data / code | **IBM Plex Mono** 400–600 | 9–13px, uppercase for eyebrows, tracking +0.05–0.09em |
-| Thai | **IBM Plex Sans Thai** 400–700 | No negative tracking, line-height 1.3+ |
+| Thai | **IBM Plex Sans Thai** 400–700 | No negative tracking, line-height 1.3+ (1.15 is fine for one-line display headings); type and erase by grapheme so vowels and tone marks never split |
 | Accent glyphs | **Pixelify Sans** 500–700 | Only for single characters: "Q", ✳, empty-state icons, challenge icon |
 
 All of these are Google Fonts.
@@ -100,7 +100,7 @@ Closest design terms: **flat editorial / soft neo-brutalism** (square shapes, cr
 **Idea:** keep every graphic flat and precise like the website, but handle it like a film: camera moves, depth, pacing and lighting. Think of filming a paper diorama of the website.
 
 ### 7.1 Cinematic layer (camera & mood)
-- **Virtual camera:** slow push-ins (scale 1.00 → 1.06 over 3–5s), gentle pans, a quick *snap-zoom* to the point being clicked
+- **Virtual camera:** slow push-ins (scale 1.00 → 1.025 over 3–5s for 9:16 with the Facebook-safe margins; up to 1.06 for 16:9), gentle pans, a quick *snap-zoom* to the point being clicked
 - **Depth from flat layers:** 2–4 parallax layers (background grid / main panel / labels / cursor), each moving at a different speed
 - **Rack focus:** blur the background 6–10px when the focus moves to a detail, then sharpen again
 - **Light:** soft vignette (5–8%), very fine paper grain (opacity 3–4%), and a slow light sweep across cream surfaces
@@ -152,7 +152,7 @@ FPS: 30 (social) or 60 (smoother cursor and UI movement)
 2. **Problem / Question (3–8s):** a question in large type, cream background
 3. **Walkthrough (8–30s):** 3–4 steps: DISCOVER → QUERY → VISUALIZE
 4. **Insight (30–40s):** the animated chart plus the key number
-5. **End card (last ~6s):** "Your turn_", `querious.studio ↗`, "NO ACCOUNT NEEDED TO EXPLORE", wordmark. Hold ~3–4 s after the last voice line, then **erase-out**: delete each text block from its first letter (bottom block first, headline last) until only the blinking orange `_` is left, the same cursor the hook opens with. Fade the logo, then the cursor in the last ~0.5 s. Reference: `episodes/fertility/` and `episodes/renewable/`
+5. **End card (last ~6s):** "Your turn_" (Thai version: "ข้อมูลพร้อมแล้ว_" / "มาหาคำตอบกัน" / `QUERIOUS.STUDIO ↗` / "สำรวจข้อมูลได้ฟรี ไม่ต้องสมัครสมาชิก"), `querious.studio ↗`, "NO ACCOUNT NEEDED TO EXPLORE", wordmark. Hold ~3–4 s after the last voice line, then **erase-out**: delete each text block from its first letter (bottom block first, headline last) until only the blinking orange `_` is left, the same cursor the hook opens with. Fade the logo, then the cursor in the last ~0.5 s. Reference: `episodes/fertility/` and `episodes/renewable/`
 
 ### 7.7 Formats
 | Format | Size | Safe zone |
