@@ -2,6 +2,15 @@
 
 Things that went wrong or needed a second pass while making episodes, and the rule that came out of each. Newest first. `CLAUDE.md` links here; the short rules are also copied into `CLAUDE.md`.
 
+## Episode: sea-renewable + sea-renewable-th (2026-11-07)
+
+- **Thai voice: spell English words in Thai, or use Thai words.** Paxa read "เควียเรียส" and "คิวรี" wrongly. Thai voice-over text now uses **คิวเรียส** for Querious, **ดึงข้อมูล** for the verb "query", **คำสั่ง** for a query/SQL, **กดรัน** for Run, **ชุดข้อมูล** for dataset. On-screen text keeps the English (SQL, UI labels, dataset names). Fixed in renewable-th and fertility-th too.
+- **The user's framing vs the data.** The brief was "renewable share fell everywhere in Southeast Asia"; the data says 10 of 11 (Singapore rose, 0.2% → 1.1%). The clip says "10 of 11" and uses Singapore as a small turn.
+- **Retime instead of trimming good lines.** Five English lines overran slots copied from the `renewable` timeline. The chunks were moved (clip 62 → 65.8 s) rather than cutting words; the end card still holds ~3 s after the last line (`ES` shift in scene.html).
+- **One copy block per language.** `scene.html` keeps all on-screen text in a `T` object at the top of the script (captions with times, labels, end card, step labels, country names), so the Thai copy only replaces that block plus a small CSS override (no negative tracking, smaller hook/headline sizes).
+- **Dumbbell instead of slope chart** for "first year → 2021" across 11 countries: slope-chart labels collided at the low end (Malaysia 8.3, Brunei 0.7, Singapore 0.2).
+- **Baselines differ by country.** Cambodia's renewable series starts in 1995 and Timor-Leste's in 2002; the source line says so.
+
 ## Episode: fertility-th (2026-11-07)
 
 - **Re-layout, not just translate.** The English fertility cut predates the Facebook-safe zone (72 px sides). The Thai copy was rebuilt on the `--safe-*` variables: charts span x 215–920 with axes ending above y 1180, and the note, caption, result table and connection panel use `right: 230px` (class `R`) because they sit in the like/comment band (y 1180–1780). The English `fertility` episode still has the old margins.
