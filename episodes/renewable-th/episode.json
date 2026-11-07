@@ -43,7 +43,10 @@
   "scene": "scene.html",
   "data": "data.json",
   "voice": {
-    "engine": "mms-tha",
+    "engine": "paxa",
+    "model": "paxa-tts-flash-v2",
+    "speaker": "nomyen",
+    "language": "th",
     "speed": 1.0,
     "fit": true,
     "max_speed": 1.3
@@ -130,8 +133,8 @@
     {
       "id": "v14",
       "at": 54.9,
-      "text": "ข้อมูลเปิดแล้ว คำถามเป็นของคุณ",
-      "text_en": "The data is open. The question is yours."
+      "text": "ข้อมูลพร้อมแล้ว มาหาคำตอบกัน",
+      "text_en": "The data is ready. Let's find the answers."
     }
   ],
   "music": {

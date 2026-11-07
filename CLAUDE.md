@@ -7,7 +7,7 @@ This repo makes short motion-graphic clips for Querious. The brand is fixed; eve
 - `brand/sonic-identity.md`: music rules (ambient only: no drums, risers, whooshes or loud hits)
 - `episodes/gapminder/`: the reference episode. Start new episodes by copying it
 - `episodes/renewable/`: current reference: Facebook-safe margins (`--safe-*` variables), bar chart, scatter (log axis), two-dataset JOIN walkthrough, erase-out end card
-- `episodes/renewable-th/`: Thai version on the same timeline (Thai text + MMS Thai voice, `voice.fit`); see lessons learned for how to make a second-language version
+- `episodes/renewable-th/`: Thai version on the same timeline (Thai text + Paxa voice `nomyen` via GitHub Actions, `voice.fit`); see lessons learned for how to make a second-language version
 - `episodes/fertility/`: reference for line charts, bar charts, the catalog → query → result → connect walkthrough and the standard end card (erase-out)
 - `docs/lessons-learned.md`: mistakes from past episodes and the rules they produced. Read it before starting, and add to it after each episode
 
@@ -28,6 +28,7 @@ This repo makes short motion-graphic clips for Querious. The brand is fixed; eve
 - Logo top right inside the safe zone (top 300, right 150), 76 px: `brand/querious-logo-lime.svg` on dark scenes, `brand/querious-logo-dark.svg` on light scenes
 - Default format 9:16, 1080×1920, 30 fps. Safe zone (Facebook-proof): top 300, bottom 380, sides 150, and the right 230 px clear between y 1180–1780. Facebook crops ~85–90 px off each side. Use the `--safe-*` CSS variables from `episodes/renewable/scene.html` instead of hard-coded 72/96 px
 - Voice: Kokoro `af_bella`, speed 1.05 unless the user asks otherwise (other voices in `engine/tts.py`)
+- Thai voice: Paxa Labs (`voice.engine: "paxa"`, female picks `foithong`, `sanaechan`, `nomyen`). The API is not reachable from the cloud workspace: push the episode and `.github/workflows/voice-paxa.yml` generates the lines with the repo secret `PAXA_API_KEY` and uploads `<ep>-<voice>.zip` to the `voice-cache` pre-release; then `gh release download voice-cache -p '<ep>-<voice>.zip'` and `engine/mix.py episodes/<ep> --voice-dir <folder>`. MMS Thai (`mms-tha`) is only an offline fallback (non-commercial licence, flat sound)
 - Before choosing "latest year", count non-null values per year (some packages list a final year that is all null)
 - Hook: one direct, surprising comparison found in the data (e.g. "Thailand < Japan, 2016–2022"). Avoid stats that need two steps to read (e.g. share of population living in countries below a threshold)
 - UI labels must match the web app (`web/src/Workbench.tsx`): `OPEN IN QUERY ↗`, `RUN QUERY ▶`, `↓ CSV`, `↓ JSON`, `CONNECT`, `COPY CSV URL`; SQL table names are dataset ids (e.g. `worldbank_fertility_rate_total`)
