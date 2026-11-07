@@ -1,0 +1,385 @@
+<!doctype html><html><head><meta charset="utf-8">
+<style>
+@font-face{font-family:SG;src:url(../../node_modules/@fontsource/space-grotesk/files/space-grotesk-latin-400-normal.woff2);font-weight:400}
+@font-face{font-family:SG;src:url(../../node_modules/@fontsource/space-grotesk/files/space-grotesk-latin-700-normal.woff2);font-weight:700}
+@font-face{font-family:PM;src:url(../../node_modules/@fontsource/ibm-plex-mono/files/ibm-plex-mono-latin-500-normal.woff2);font-weight:500}
+@font-face{font-family:PM;src:url(../../node_modules/@fontsource/ibm-plex-mono/files/ibm-plex-mono-latin-600-normal.woff2);font-weight:600}
+@font-face{font-family:TH;src:url(../../node_modules/@fontsource/ibm-plex-sans-thai/files/ibm-plex-sans-thai-thai-400-normal.woff2);font-weight:400}
+@font-face{font-family:TH;src:url(../../node_modules/@fontsource/ibm-plex-sans-thai/files/ibm-plex-sans-thai-thai-600-normal.woff2);font-weight:500 600}
+@font-face{font-family:TH;src:url(../../node_modules/@fontsource/ibm-plex-sans-thai/files/ibm-plex-sans-thai-thai-700-normal.woff2);font-weight:700}
+@font-face{font-family:PX;src:url(../../node_modules/@fontsource/pixelify-sans/files/pixelify-sans-latin-700-normal.woff2);font-weight:700}
+/* Facebook-safe 9:16 safe zone (brand guide 7.7): FB crops ~85-90 px per side, top bar ~280 px, caption from ~1630 px */
+:root{--safe-x:150px;--safe-top:300px;--safe-bottom:380px;
+ --paper:#F4F1E9;--ink:#283127;--deep:#222923;--muted:#677166;--line:#C7CBBF;--lime:#D6ED63;--orange:#E5764B}
+*{box-sizing:border-box;margin:0}
+html,body{width:1080px;height:1920px;overflow:hidden;background:var(--deep)}
+.scene{position:absolute;inset:0;overflow:hidden;transform-origin:50% 45%;display:none}
+.mono{font-family:PM,TH;font-weight:600;letter-spacing:.08em;text-transform:uppercase}
+.cur{color:var(--orange)}
+.dark{background:var(--deep);color:#F4F1E9}.light{background:var(--paper);color:var(--ink)}
+.L{position:absolute;left:var(--safe-x);right:var(--safe-x)}
+.eyebrowD{top:330px;font-size:24px;color:#A9B4A2;right:260px}.eyebrowD b{color:var(--lime);font-weight:600}
+.top{top:var(--safe-top);display:flex;align-items:center;gap:22px;border-bottom:2px solid var(--ink);padding:0 100px 20px 0;height:96px}
+.brand{font:700 44px SG,TH;letter-spacing:-.05em;flex:1}.brand i{font:700 46px PX;font-style:normal}
+.tag{font-size:21px;border:1.5px solid var(--ink);padding:8px 12px;background:var(--lime);transform:rotate(-3deg)}
+.meta{top:430px;font-size:23px;color:var(--muted)}
+.h2{top:470px;font:700 92px/1 SG,TH;letter-spacing:-.07em;white-space:nowrap}
+svg.abs{position:absolute;left:0;top:0}
+.note{font-size:19px;line-height:1.5;color:var(--muted);letter-spacing:.05em}
+.caption{top:1400px;font:700 76px/1.03 SG,TH;letter-spacing:-.06em}
+.caption .hl{background:var(--lime);padding:0 10px;box-decoration-break:clone;-webkit-box-decoration-break:clone}
+/* A hook */
+#A .head{top:560px;font:700 112px/.98 SG,TH;letter-spacing:-.075em}
+#A .head .y{color:var(--lime)}
+#A .sub{top:1010px;font:700 84px/1 SG,TH;letter-spacing:-.06em;color:var(--lime)}
+#A .rule{position:absolute;left:var(--safe-x);top:1440px;height:2px;background:#4a5648}
+#A .foot{top:1470px;font-size:21px;color:#7f8a7c}
+/* C top country */
+#C .big{top:520px;font:700 250px/1 SG,TH;letter-spacing:-.08em;color:var(--lime)}
+#C .big small{font-size:140px}
+#C .name{top:820px;font:700 76px/1 SG,TH;letter-spacing:-.06em}
+#C .rank{top:990px}
+#C .rank div{display:flex;justify-content:space-between;border-top:1px solid #4a5648;padding:18px 0;font:500 30px PM,TH;color:#C9D1C1}
+#C .rank div b{color:#F4F1E9;font-weight:600}
+#C .noteC{top:1210px;color:#8b9685}
+/* D callout */
+#callD{top:1040px;border:2px solid var(--ink);background:#FAF9F3;padding:24px 28px;box-shadow:7px 7px 0 var(--lime)}
+#callD .mono{font-size:21px;color:var(--muted)}
+#callD p{font:700 46px/1.1 SG,TH;letter-spacing:-.05em;margin-top:10px}
+/* F ranking */
+.rk{position:absolute;left:var(--safe-x);right:var(--safe-x);height:104px;border:2px solid var(--ink);background:#FAF9F3;display:flex;align-items:center;padding:0 24px;gap:22px}
+.rk .n{font:600 30px PM,TH;color:var(--muted)}
+.rk h3{font:700 48px SG,TH;letter-spacing:-.05em;flex:1}
+.rk .v{font:600 24px/1.25 PM,TH;text-align:right;color:#455044}
+/* G walkthrough */
+.btn{position:absolute;display:flex;align-items:center;gap:18px;border:2px solid var(--ink);background:var(--ink);color:var(--lime);padding:18px 24px;font-size:25px}
+.obtn{position:absolute;border:2px solid var(--ink);background:#FAF9F3;color:var(--ink);padding:16px 20px;font-size:23px}
+.ripple{position:absolute;border:4px solid var(--orange);pointer-events:none}
+.cursor{position:absolute;width:64px;height:64px;z-index:5}
+#search{top:600px;border:2px solid var(--ink);background:#FAF9F3;padding:20px 22px;font:500 30px PM,TH;display:flex;gap:16px;align-items:center}
+#search .ph{color:#9AA394}
+#dscard{top:740px;border:2px solid var(--ink);background:#FAF9F3;padding:28px 28px 32px}
+#dscard .ey{font-size:20px;color:var(--muted)}
+#dscard h3{font:700 54px/1.02 SG,TH;letter-spacing:-.06em;margin-top:14px}
+#dscard p{font:400 27px/1.4 SG,TH;color:#455044;margin-top:14px}
+#dscard .mt{font-size:20px;color:var(--muted);margin-top:16px}
+#openq{position:static;display:inline-flex;margin-top:24px;font-size:24px;padding:15px 20px}
+#stack{position:absolute;inset:0}
+#sqlhead{top:440px;display:flex;justify-content:space-between;font-size:20px;color:var(--muted)}
+#sql{top:480px;height:330px;background:var(--ink);border-left:8px solid var(--lime);color:#EDF2E5;padding:24px 22px;font:500 20.5px/1.55 PM,TH;white-space:pre;overflow:hidden}
+#sql .k{color:var(--lime)}
+#run{right:var(--safe-x);top:830px}
+#rtable{top:940px;border:2px solid var(--ink);background:#FAF9F3}
+#rtable .rh{display:flex;justify-content:space-between;border-bottom:1px solid var(--ink);padding:12px 16px;font-size:19px}
+#rtable table{width:100%;border-collapse:collapse;font:500 23px PM,TH}
+#rtable th{background:#E8ECE0;text-align:left;padding:11px 14px;font-weight:600;font-size:17px;color:var(--muted)}
+#rtable td{padding:12px 14px;border-top:1px solid #DBE0D5;white-space:nowrap}
+#rtable td.n,#rtable th.n{text-align:right}
+#rtable tr:nth-child(even) td{background:#F4F5EE}
+#csvb{left:150px;top:1380px}#jsonb{left:310px;top:1380px}#connb{left:486px;top:1380px;background:var(--ink);color:var(--lime)}
+#conn{top:1490px;border:2px solid var(--ink);background:#EDF2E4;padding:20px 22px}
+#conn .lbl{font-size:19px;color:var(--muted);margin-bottom:10px}
+#conn .row{display:flex;justify-content:space-between;align-items:center;border:1px solid var(--line);background:#FBFAF5;padding:12px 14px;margin-top:10px;font:500 22px PM,TH}
+#conn .row b{font:600 17px PM,TH;letter-spacing:.06em;border:1px solid var(--ink);padding:6px 10px;background:var(--lime)}
+#conn .row span em{font-style:normal;color:var(--muted)}
+#conn .for{margin-top:14px;font-size:19px;color:var(--ink)}
+/* H end card */
+#H .big{top:620px;font:700 160px/.92 SG,TH;letter-spacing:-.075em;white-space:nowrap}
+#H .sub{top:860px;font:700 62px/1.1 SG,TH;letter-spacing:-.05em;color:#DCE3D3}
+#H .sub b{color:var(--lime)}
+#H .cta{position:absolute;left:var(--safe-x);top:1090px;display:inline-flex;gap:18px;align-items:center;background:var(--lime);color:var(--ink);border:2px solid var(--lime);padding:20px 26px;font-size:29px}
+#H .url{top:1205px;font-size:21px;color:#A9B4A2}
+#H .mark{top:1300px;display:flex;align-items:center;gap:18px;font:700 50px SG,TH;letter-spacing:-.05em}
+#H .mark i{font:700 52px PX;font-style:normal}
+#wipe{position:absolute;left:0;right:0;background:var(--lime);display:none;z-index:8}
+#grain{position:absolute;inset:-40px;pointer-events:none;opacity:.05;mix-blend-mode:multiply;z-index:9}
+.logo{position:absolute;top:var(--safe-top);right:var(--safe-x);width:76px;height:76px;object-fit:contain;z-index:10}
+/* Thai: no negative tracking, line-height >= 1.2 (brand guide 5) */
+.th,#A .head,#A .sub,#A .foot,.caption,#C .name,#callD p,.h2,#H .big,#H .sub,#H .url,.rk h3,#dscard h3,#dscard p,.meta,.note,#catT{letter-spacing:0}
+#A .head{font-size:104px;line-height:1.18}#A .sub{top:1130px;font-size:84px;line-height:1.2}
+.caption{line-height:1.25;font-size:70px}#C .name{line-height:1.2;font-size:70px}#C .rank{top:1040px}#C .noteC{top:1250px}
+.meta{font-size:24px}.h2{line-height:1.2}#callD p{line-height:1.3;font-size:42px}
+#dscard h3{font-size:46px;line-height:1.25}#H .big{font-size:150px;line-height:1.15;top:600px}#H .sub{line-height:1.3}
+#safe{position:absolute;left:150px;right:150px;top:300px;bottom:380px;outline:2px dashed magenta;z-index:20;display:none}
+</style></head><body>
+<!-- A: hook -->
+<div id="A" class="scene dark">
+ <div class="eyebrowD mono L">Querious / Open data / <b>Renewables</b></div>
+ <div class="head L" id="headA"></div>
+ <div class="sub L" id="subA"></div>
+ <div class="rule" id="ruleA"></div><div class="foot mono L" id="footA">สัดส่วนพลังงานหมุนเวียนในการใช้พลังงานขั้นสุดท้าย</div>
+</div>
+<!-- B: regions -->
+<div id="B" class="scene light">
+ <div class="top L"><div class="brand"><i>Q</i>uerious<span class="cur">_</span></div><div class="tag mono">Insight</div></div>
+ <div class="meta mono L" id="metaB">ปี 2021 / ค่าเฉลี่ยของประเทศ / % พลังงานหมุนเวียน</div>
+ <svg id="chartB" class="abs" width="1080" height="1920"></svg>
+ <div class="note mono L" id="noteB" style="top:1250px">Source / World Bank WDI EG.FEC.RNEW.ZS · UN M49 regions · simple average of country values · 2021</div>
+ <div class="caption L" id="capB"></div>
+</div>
+<!-- C: top country -->
+<div id="C" class="scene dark">
+ <div class="eyebrowD mono L">Top country / <b>2021</b></div>
+ <div class="big L" id="bigC"></div>
+ <div class="name L" id="nameC">สาธารณรัฐ<br>ประชาธิปไตยคองโก</div>
+ <div class="rank L" id="rankC"><div><span>02 โซมาเลีย</span><b>95.4%</b></div><div><span>03 ไลบีเรีย</span><b>93.2%</b></div></div>
+ <div class="note mono L noteC" id="noteC">Source / World Bank WDI EG.FEC.RNEW.ZS · % of final energy consumption</div>
+</div>
+<!-- D: electricity per person -->
+<div id="D" class="scene light">
+ <div class="top L"><div class="brand"><i>Q</i>uerious<span class="cur">_</span></div><div class="tag mono">Insight</div></div>
+ <div class="meta mono L" id="metaD">ปี 2021 / kWh (หน่วย) ต่อคนต่อปี</div>
+ <div class="h2 L" id="hD"></div>
+ <svg id="chartD" class="abs" width="1080" height="1920"></svg>
+ <div class="L" id="callD"><div class="mono">พลังงานหมุนเวียน ≠ ไฟฟ้า</div><p>ตัวเลขนี้นับรวมฟืนและถ่าน<br>ที่ใช้หุงหาอาหารด้วย</p></div>
+ <div class="note mono L" id="noteD" style="top:1290px">Source / World Bank WDI EG.USE.ELEC.KH.PC · electric power consumption · 2021</div>
+ <div class="caption L" id="capD"></div>
+</div>
+<!-- E: scatter -->
+<div id="E" class="scene light">
+ <div class="top L"><div class="brand"><i>Q</i>uerious<span class="cur">_</span></div><div class="tag mono">Insight</div></div>
+ <div class="meta mono L" id="metaE">ปี 2021 / 149 ประเทศ / สัดส่วน vs การใช้ไฟฟ้า</div>
+ <svg id="chartE" class="abs" width="1080" height="1920"></svg>
+ <div class="note mono L" id="noteE" style="top:1284px">Rough lens / % of final energy (EG.FEC.RNEW.ZS) vs electricity per person (EG.USE.ELEC.KH.PC) · log scale</div>
+ <div class="caption L" id="capE"></div>
+</div>
+<!-- F: ranking + Finland -->
+<div id="F" class="scene light">
+ <div class="top L"><div class="brand"><i>Q</i>uerious<span class="cur">_</span></div><div class="tag mono">Insight</div></div>
+ <div class="meta mono L" id="metaF">เรียงตาม สัดส่วน × การใช้ / 2021</div>
+ <div id="rks"></div>
+ <svg id="chartF" class="abs" width="1080" height="1920"></svg>
+ <div class="note mono L" id="noteF" style="top:1290px">Source / World Bank WDI · Finland renewable share 1990–2021</div>
+ <div class="caption L" id="capF"></div>
+</div>
+<!-- G: walkthrough -->
+<div id="G" class="scene light">
+ <div class="top L"><div class="brand"><i>Q</i>uerious<span class="cur">_</span></div><div class="tag mono" id="stepG">Step 01 / Discover</div></div>
+ <div class="h2 L" id="catT" style="top:440px;font-size:84px">แคตตาล็อกข้อมูล<span class="cur">_</span></div>
+ <div id="search" class="L"><span style="font:700 32px PX;color:#E5764B">✳</span><span id="stext"></span></div>
+ <div id="dscard" class="L"><div class="ey mono">Dataset / World Bank — WDI</div><h3>การใช้พลังงานหมุนเวียน (% ของการใช้พลังงานขั้นสุดท้าย)</h3>
+  <p>สัดส่วนพลังงานหมุนเวียนในการใช้พลังงานขั้นสุดท้ายรายปี</p><div class="mt mono">215 ประเทศและดินแดน · CC BY 4.0</div>
+  <div class="btn mono" id="openq"><span>Open in Query ↗</span></div></div>
+ <div id="stack">
+  <div id="sqlhead" class="mono L"><span>SQL / DuckDB ในเบราว์เซอร์</span><span id="sqlstate">Editing…</span></div>
+  <div id="sql" class="L"></div>
+  <div class="btn mono" id="run"><span>Run query ▶</span></div>
+  <div id="rtable" class="L"><div class="rh mono"><span>Results</span><span id="rcount"></span></div><table id="rt"></table></div>
+  <div class="obtn mono" id="csvb">↓ CSV</div><div class="obtn mono" id="jsonb">↓ JSON</div><div class="obtn mono" id="connb">Connect</div>
+  <div id="conn" class="L"><div class="lbl mono">Connection URL / CSV หรือ JSON แบบสด</div>
+   <div class="row"><span><em>…/v1/query/</em>7f3a91c0<em>.csv</em></span><b>Copy CSV URL</b></div>
+   <div class="row"><span><em>…/v1/query/</em>7f3a91c0<em>.json</em></span><b>Copy JSON URL</b></div>
+   <div class="for mono">→ AI ของคุณ · แดชบอร์ด BI</div></div>
+ </div>
+ <div class="ripple" id="ripG"></div>
+ <svg class="cursor" id="curG" viewBox="0 0 32 32"><path d="M4 2 L4 26 L10.5 20 L15 30 L19 28 L14.6 18.4 L23 18.4 Z" fill="#283127" stroke="#F4F1E9" stroke-width="1.6" stroke-linejoin="round"/></svg>
+</div>
+<!-- H: end card -->
+<div id="H" class="scene dark">
+ <div class="eyebrowD mono L">Querious / Open data / <b>Renewables</b></div>
+ <div class="big L" id="bigH"></div>
+ <div class="sub L" id="subH"></div>
+ <div class="cta mono" id="ctaH">querious.studio ↗</div>
+ <div class="url mono L" id="urlH">No account needed to explore</div>
+ <div class="mark L" id="markH"></div>
+</div>
+<div id="wipe"></div>
+<svg id="grain" width="1160" height="2000"><filter id="n"><feTurbulence type="fractalNoise" baseFrequency=".85" numOctaves="2" seed="3"/><feColorMatrix type="saturate" values="0"/></filter><rect width="100%" height="100%" filter="url(#n)"/></svg>
+<img id="logoL" class="logo" src="../../brand/querious-logo-lime.svg"><img id="logoD" class="logo" src="../../brand/querious-logo-dark.svg">
+<div id="safe"></div>
+<script>
+const DATA=window.__DATA__, $=id=>document.getElementById(id), NS='http://www.w3.org/2000/svg';
+if(location.hash==='#safe')$('safe').style.display='block';
+const clamp=(v,a=0,b=1)=>Math.min(b,Math.max(a,v)), p=(t,a,b)=>clamp((t-a)/(b-a));
+const eOut=x=>1-Math.pow(1-x,3), eInOut=x=>x<.5?4*x*x*x:1-Math.pow(-2*x+2,3)/2, eSnap=x=>x<.5?16*x**5:1-Math.pow(-2*x+2,5)/2, lerp=(a,b,x)=>a+(b-a)*x;
+const blink=t=>Math.floor(t/0.53)%2===0;
+const el=(n,a,par)=>{const e=document.createElementNS(NS,n);for(const k in a)e.setAttribute(k,a[k]);par.appendChild(e);return e};
+const txt=(par,a,s)=>{const e=el('text',Object.assign({'font-family':'PM,TH','font-weight':600},a),par);e.textContent=s;return e};
+const show=(id,on)=>{$(id).style.display=on?'block':'none'};
+const cursorTag=(t,n)=>`<span class="cur" style="opacity:${(blink(t)||n)?1:0}">_</span>`;
+const SEG=new Intl.Segmenter('th',{granularity:'grapheme'}),gs=str=>[...SEG.segment(str)].map(x=>x.segment),gl=str=>gs(str).length,gsl=(str,a,b)=>gs(str).slice(a,b).join('');
+const fmt=v=>Math.round(v).toLocaleString('en-US');
+const X0=150,X1=930;
+function caption(elc,list,t,tEnd){let ci=-1;list.forEach((c,i)=>{if(t>=c[0]-0.05)ci=i});if(ci<0||t>tEnd){elc.style.opacity=0;return}
+ const k=eOut(p(t,list[ci][0]-0.05,list[ci][0]+0.2));elc.innerHTML=list[ci][1];elc.style.opacity=k;elc.style.transform=`translateY(${(1-k)*24}px)`}
+// type a string with spans: segments [[text,cls]]
+function typeSeg(segs,n){let out='',k=n;for(const [s,c] of segs){const part=gsl(s,0,Math.max(0,k));k-=gl(s);if(!part)break;const h=part.replace(/\n/g,'<br>');out+=c?`<span class="${c}">${h}</span>`:h}return out}
+const segLen=segs=>segs.reduce((a,s)=>a+gl(s[0]),0);
+// ---------- B: region bars ----------
+const REGTH={Africa:'แอฟริกา',Europe:'ยุโรป',Americas:'อเมริกา',Oceania:'โอเชียเนีย',Asia:'เอเชีย'};
+const REG=DATA.regions, svB=$('chartB');
+const BX0=X0, BW=600, BY0=560, BH=128, bvx=v=>BX0+v/60*BW;
+const gridB=el('g',{},svB);[20,40,60].forEach(v=>{el('line',{x1:bvx(v),x2:bvx(v),y1:BY0-10,y2:BY0+5*BH-20,stroke:'#E1E4DA','stroke-width':2},gridB);txt(gridB,{x:bvx(v),y:BY0+5*BH+18,'text-anchor':'middle','font-size':22,fill:'#455044','font-weight':500},v+'%')});
+const regEls=REG.map((r,i)=>{const y=BY0+i*BH;const g=el('g',{},svB);
+ const lab=el('text',{x:BX0,y:y+28,'font-family':'SG,TH','font-weight':700,'font-size':38,fill:'#283127'},g);lab.textContent=REGTH[r.region];
+ const bar=el('rect',{x:BX0,y:y+44,height:44,width:0,fill:r.region==='Africa'?'#DD6B43':'#424E3D'},g);
+ const val=txt(g,{y:y+78,'font-size':30,fill:'#283127'},'');return {g,bar,val,r}});
+const yAxB=el('line',{x1:BX0,x2:BX0,y1:BY0-10,y2:BY0-10,stroke:'#283127','stroke-width':3},svB);
+const CAPB=[[5.6,'แอฟริกา: <span class="hl">55.7%</span>'],[10.3,'มากกว่ายุโรป <span class="hl">2 เท่า</span>']];
+// ---------- D: kWh bars ----------
+const svD=$('chartD'), DMAX=16000, dvx=v=>X0+v/DMAX*(X1-X0);
+const dRows=[{n:'คองโก (DR)',v:133.63,y:680,c:'#DD6B43',t:20.6},{n:'ฟินแลนด์',v:15646.59,y:850,c:'#424E3D',t:25.4}].map(r=>{const g=el('g',{},svD);
+ const lab=el('text',{x:X0,y:r.y,'font-family':'SG,TH','font-weight':700,'font-size':42,fill:'#283127'},g);lab.textContent=r.n;
+ const bar=el('rect',{x:X0,y:r.y+22,height:56,width:0,fill:r.c},g);const val=txt(g,{x:X1,y:r.y,'text-anchor':'end','font-size':34,fill:'#283127'},'');return Object.assign(r,{g,bar,val})});
+const CAPD=[[20.5,'ปีละ <span class="hl">134 หน่วย</span>'],[25.4,'ต่างกันราว <span class="hl">117 เท่า</span>']];
+// ---------- E: scatter ----------
+const svE=$('chartE'), EX0=230, EX1=910, EY0=1120, EY1=580;
+const ex=k=>EX0+(Math.log10(Math.max(k,10))-1)/4*(EX1-EX0), ey=v=>EY0-v/100*(EY0-EY1);
+const RC={Africa:'#DD6B43',Americas:'#637B91',Asia:'#C6A04D',Europe:'#424E3D',Oceania:'#839B45'};
+const gridE=el('g',{},svE);
+[0,25,50,75,100].forEach(v=>{el('line',{x1:EX0,x2:EX1,y1:ey(v),y2:ey(v),stroke:'#E1E4DA','stroke-width':2},gridE);txt(gridE,{x:EX0-14,y:ey(v)+8,'text-anchor':'end','font-size':22,fill:'#455044','font-weight':500},v)});
+[[100,'100'],[1000,'1K'],[10000,'10K'],[100000,'100K']].forEach(([k,s])=>txt(gridE,{x:Math.min(ex(k),EX1-6),y:EY0+40,'text-anchor':k===100000?'end':'middle','font-size':22,fill:'#455044','font-weight':500},s));
+txt(gridE,{x:EX0,y:ey(100)-24,'font-size':20,fill:'#677166'},'% พลังงานหมุนเวียน');
+txt(gridE,{x:EX1,y:EY0+74,'text-anchor':'end','font-size':20,fill:'#677166'},'KWH ต่อคน →');
+const axE=el('line',{x1:EX0,x2:EX0,y1:EY0,y2:EY0,stroke:'#283127','stroke-width':3},svE);
+const PTS=DATA.points.slice().sort((a,b)=>a.kwh-b.kwh);
+const ptEls=PTS.map(d=>{const r=el('rect',{x:ex(d.kwh)-8,y:ey(d.pct)-8,width:16,height:16,fill:RC[d.region],'fill-opacity':.85},svE);return {d,r}});
+const isl=PTS.find(d=>d.iso==='ISL'), cod=PTS.find(d=>d.iso==='COD');
+const mkI=el('rect',{fill:'none',stroke:'#E5764B','stroke-width':5},svE);
+const labI=el('g',{},svE);const lI1=el('text',{x:ex(isl.kwh)-36,y:ey(isl.pct)-6,'text-anchor':'end','font-family':'SG,TH','font-weight':700,'font-size':46,fill:'#283127'},labI);lI1.textContent='ไอซ์แลนด์';
+const lI2=txt(labI,{x:ex(isl.kwh)-36,y:ey(isl.pct)+30,'text-anchor':'end','font-size':24,fill:'#455044'},'82.4% · 51,136 KWH');
+const labC=el('g',{},svE);txt(labC,{x:ex(cod.kwh)+20,y:ey(cod.pct)+40,'font-size':24,fill:'#B4502C'},'คองโก (DR)');
+const legEl=el('g',{},svE);let lx=X0;Object.entries(RC).forEach(([r,c])=>{el('rect',{x:lx,y:1236,width:16,height:16,fill:c},legEl);const tt=txt(legEl,{x:lx+24,y:1252,'font-size':21,fill:'#283127'},REGTH[r]);lx+=24+gl(REGTH[r])*12+40});
+const CAPE=[[31.5,'สัดส่วน <span class="hl">vs</span> การใช้'],[35.6,'ไอซ์แลนด์ <span class="hl">นำทั้งคู่</span>']];
+// ---------- F: ranking + Finland line ----------
+const RK=[['01','ไอซ์แลนด์','82.4%','51,136 kWh'],['02','นอร์เวย์','61.4%','24,650 kWh'],['03','ฟินแลนด์','50.2%','15,647 kWh']];
+const rkEls=RK.map((r,i)=>{const d=document.createElement('div');d.className='rk';d.style.top=(490+i*124)+'px';d.innerHTML=`<span class="n">${r[0]}</span><h3>${r[1]}</h3><span class="v">${r[2]}<br>${r[3]}</span>`;$('rks').appendChild(d);return d});
+const FIN=DATA.finland, svF=$('chartF'), FX0=X0+60, FX1=X1-10, FY0=1210, FY1=920;
+const fx=y=>FX0+(y-1990)/31*(FX1-FX0), fy=v=>FY0-v/60*(FY0-FY1);
+const gridF=el('g',{},svF);[0,30,60].forEach(v=>{el('line',{x1:FX0,x2:FX1,y1:fy(v),y2:fy(v),stroke:'#E1E4DA','stroke-width':2},gridF);txt(gridF,{x:FX0-14,y:fy(v)+8,'text-anchor':'end','font-size':22,fill:'#455044','font-weight':500},v)});
+[1990,2021].forEach(y=>txt(gridF,{x:fx(y),y:FY0+38,'text-anchor':y===1990?'start':'end','font-size':22,fill:'#455044','font-weight':500},y));
+const lineF=el('polyline',{fill:'none',stroke:'#DD6B43','stroke-width':7,'stroke-linejoin':'round'},svF);
+const dotF=el('rect',{width:20,height:20,fill:'#DD6B43',stroke:'#283127','stroke-width':2},svF);
+const l90=txt(svF,{x:fx(1990),y:fy(24.5)-22,'font-size':26,fill:'#283127'},'24.5%'), l21=txt(svF,{x:fx(2021)-6,y:fy(50.2)-26,'text-anchor':'end','font-size':26,fill:'#283127'},'50.2%');
+const CAPF=[[41.0,'ตามด้วยนอร์เวย์ <span class="hl">ฟินแลนด์</span>'],[43.6,'ฟินแลนด์ <span class="hl">×2</span> จาก 1990']];
+// ---------- G: walkthrough ----------
+const SQL=`SELECT r.country_name,
+  r.renewable_energy_consumption_pct AS pct,
+  e.electric_power_consumption_kwh_per_capita AS kwh
+FROM worldbank_renewable_energy_consumption_pct r
+JOIN worldbank_electric_power_consumption_per_capita e
+  USING (country_iso_alpha3, year)
+WHERE year = 2021
+ORDER BY pct * kwh DESC NULLS LAST;`;
+const KW=/\b(SELECT|FROM|JOIN|USING|WHERE|ORDER BY|DESC|NULLS LAST|AS)\b/g;
+const hlSql=s=>s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(KW,'<span class="k">$1</span>');
+$('rt').innerHTML='<tr><th>country_name</th><th class="n">pct</th><th class="n">kwh</th></tr>'+DATA.result.map(r=>`<tr><td>${r.country_name}</td><td class="n">${r.pct.toFixed(1)}</td><td class="n">${r.kwh.toFixed(1)}</td></tr>`).join('');
+$('rcount').textContent=DATA.resultRows+' rows · 3 columns';
+function cursorAt(cu,t,t0,t1,sx,sy,ex_,ey_){const m=eInOut(p(t,t0,t1));cu.style.left=(lerp(sx,ex_,m)-Math.sin(m*Math.PI)*60)+'px';cu.style.top=(lerp(sy,ey_,m)-Math.sin(m*Math.PI)*80)+'px'}
+function ripple(r,t,tc,x,y){const k=p(t,tc,tc+0.45),s=20+150*eOut(k);r.style.width=r.style.height=s+'px';r.style.left=(x+4-s/2)+'px';r.style.top=(y+4-s/2)+'px';r.style.opacity=k>0&&k<1?1-k:0}
+function press(b,t,tc){const pr=t>tc-0.1&&t<tc+0.1;b.style.boxShadow=pr?'none':'6px 6px 0 #D6ED63';return pr}
+// scene windows
+const W={A:[0,5.05],B:[4.95,14.05],C:[13.95,20.05],D:[19.95,31.05],E:[30.95,40.65],F:[40.55,46.25],G:[46.15,54.65],H:[54.55,99]};
+const inW=(k,t)=>t>=W[k][0]&&t<W[k][1];
+window.DUR=62;
+window.render=function(t){
+ for(const k in W)show(k,inW(k,t));
+ // ---- A hook
+ if(inW('A',t)){const A=$('A');A.style.transform=`scale(${1+0.025*eInOut(p(t,0,5))})`;
+  A.querySelector('.eyebrowD').style.opacity=eOut(p(t,0.1,0.6));
+  const H=[['ทวีปไหนใช้\n',''],['พลังงานหมุนเวียน','y'],['\nมากที่สุด?','']];const L=segLen(H),n=Math.round(L*p(t,0.35,2.5));
+  $('headA').innerHTML=typeSeg(H,n)+(t<3.1?cursorTag(t,n<L):'');
+  const S=[['ไม่ใช่ยุโรป','']];const LS=segLen(S),ns=Math.round(LS*p(t,3.2,3.9));
+  $('subA').innerHTML=t>=3.1?typeSeg(S,ns)+cursorTag(t,ns<LS):'';
+  $('ruleA').style.width=780*eOut(p(t,0.2,1.4))+'px';$('footA').style.opacity=eOut(p(t,0.6,1.2));}
+ // ---- B regions
+ if(inW('B',t)){const B=$('B');B.style.transform=`scale(${1+0.025*eInOut(p(t,5,14))})`;
+  $('metaB').style.opacity=eOut(p(t,5.2,5.6));gridB.style.opacity=eOut(p(t,5.4,5.9));$('noteB').style.opacity=eOut(p(t,5.8,6.3));
+  yAxB.setAttribute('y2',BY0-10+(5*BH)*eOut(p(t,5.2,5.7)));
+  regEls.forEach((e,i)=>{const t0=i===0?5.7:10.2+(i-1)*0.18;const k=eOut(p(t,t0,t0+0.7));const v=e.r.avg_pct*k;
+   e.bar.setAttribute('width',bvx(v)-BX0);e.val.setAttribute('x',bvx(v)+14);e.val.textContent=k>0?v.toFixed(1)+'%':'';
+   e.g.style.opacity=i===0?eOut(p(t,5.5,5.8)):eOut(p(t,t0-0.15,t0+0.1));
+   if(i>0&&t>10.3) e.g.style.opacity*=1; });
+  caption($('capB'),CAPB,t,13.8);}
+ // ---- C top country
+ if(inW('C',t)){const C=$('C');C.style.transform=`scale(${1+0.025*eInOut(p(t,14,20))})`;
+  C.querySelector('.eyebrowD').style.opacity=eOut(p(t,14.2,14.6));
+  const k=eOut(p(t,15.6,17.0));$('bigC').innerHTML=k>0?(96.3*k).toFixed(1)+'<small>%</small>':'';
+  const nm=eOut(p(t,15.0,15.5));$('nameC').style.opacity=nm;$('nameC').style.transform=`translateY(${(1-nm)*24}px)`;
+  $('rankC').querySelectorAll('div').forEach((d,i)=>{const r=eOut(p(t,17.6+i*0.2,18.0+i*0.2));d.style.opacity=r;d.style.transform=`translateY(${(1-r)*16}px)`});
+  $('noteC').style.opacity=eOut(p(t,17.2,17.7));}
+ // ---- D electricity
+ if(inW('D',t)){const D=$('D');D.style.transform=`scale(${1+0.025*eInOut(p(t,20,31))})`;
+  $('metaD').style.opacity=eOut(p(t,20.2,20.6));const HD='การใช้ไฟฟ้าต่อคน',nh=Math.round(gl(HD)*p(t,20.2,21.0));
+  $('hD').innerHTML=gsl(HD,0,nh)+cursorTag(t,nh<gl(HD));$('hD').style.fontSize='78px';
+  dRows.forEach(r=>{const a=eOut(p(t,r.t,r.t+0.3)),k=eOut(p(t,r.t+0.2,r.t+1.6));r.g.style.opacity=a;
+   r.bar.setAttribute('width',Math.max(4,dvx(r.v*k)-X0));r.val.textContent=fmt(r.v*k)+' KWH'});
+  const cl=eSnap(p(t,27.9,28.25));$('callD').style.opacity=cl;$('callD').style.transform=`translateY(${(1-cl)*26}px)`;
+  $('noteD').style.opacity=eOut(p(t,21.0,21.5));caption($('capD'),CAPD,t,30.8);}
+ // ---- E scatter
+ if(inW('E',t)){const E=$('E');E.style.transformOrigin='70% 40%';E.style.transform=`scale(${1+0.025*eInOut(p(t,31,40.6))})`;
+  $('metaE').style.opacity=eOut(p(t,31.2,31.6));axE.setAttribute('x2',EX0+(EX1-EX0)*eOut(p(t,31.1,31.6)));
+  gridE.style.opacity=eOut(p(t,31.3,31.8));legEl.style.opacity=eOut(p(t,31.6,32.1));$('noteE').style.opacity=eOut(p(t,31.8,32.3));
+  const dim=1-0.7*eOut(p(t,34.2,34.8));
+  ptEls.forEach(({d,r},i)=>{const t0=31.7+i/PTS.length*1.6;const k=eSnap(p(t,t0,t0+0.25));
+   r.setAttribute('fill-opacity',(d.iso==='ISL'?.95:.85*dim)*k);const s=16*(d.iso==='ISL'?1+0.6*eSnap(p(t,35.5,35.8)):1);
+   r.setAttribute('width',s);r.setAttribute('height',s);r.setAttribute('x',ex(d.kwh)-s/2);r.setAttribute('y',ey(d.pct)-s/2);
+   if(d.iso==='ISL')r.setAttribute('fill',t>35.5?'#E5764B':RC.Europe)});
+  labC.style.opacity=eOut(p(t,33.3,33.7))*(1-0.7*eOut(p(t,34.2,34.8)));
+  const mi=eSnap(p(t,35.5,35.85)),rI=26+14*(1-mi),xI=ex(isl.kwh),yI=ey(isl.pct);
+  mkI.setAttribute('x',xI-rI);mkI.setAttribute('y',yI-rI);mkI.setAttribute('width',2*rI);mkI.setAttribute('height',2*rI);mkI.style.opacity=mi;
+  labI.style.opacity=eOut(p(t,35.8,36.2));caption($('capE'),CAPE,t,40.4);}
+ // ---- F ranking + Finland
+ if(inW('F',t)){const F=$('F');F.style.transform=`scale(${1+0.025*eInOut(p(t,40.6,46.2))})`;
+  $('metaF').style.opacity=eOut(p(t,40.8,41.1));
+  rkEls.forEach((d,i)=>{const t0=[40.8,41.1,41.9][i];const k=eSnap(p(t,t0,t0+0.32));d.style.opacity=k;d.style.transform=`translateY(${(1-k)*30}px)`;
+   d.style.boxShadow=k>0.5?(i===2?'7px 7px 0 #D6ED63':'5px 5px 0 #C7CBBF'):'none';d.style.background=(i===2&&t>43.4)?'#EEF6C8':'#FAF9F3'});
+  gridF.style.opacity=eOut(p(t,43.0,43.4));
+  const yc=lerp(1990,2021,eInOut(p(t,43.4,45.0)));const pts=[];FIN.forEach(d=>{if(d.year<=yc)pts.push(`${fx(d.year)},${fy(d.pct)}`)});
+  const y0=Math.floor(yc),f=yc-y0,a=FIN.find(d=>d.year===y0),b=FIN.find(d=>d.year===Math.min(2021,y0+1));const v=lerp(a.pct,b.pct,f);pts.push(`${fx(yc)},${fy(v)}`);
+  lineF.setAttribute('points',pts.join(' '));const lo=eOut(p(t,43.3,43.6));lineF.style.opacity=lo;dotF.style.opacity=lo;dotF.setAttribute('x',fx(yc)-10);dotF.setAttribute('y',fy(v)-10);
+  l90.style.opacity=eOut(p(t,43.5,43.9));l21.style.opacity=eOut(p(t,44.9,45.2));
+  $('noteF').style.opacity=eOut(p(t,43.2,43.6));caption($('capF'),CAPF,t,46.1);}
+ // ---- G walkthrough
+ if(inW('G',t)){const G=$('G');G.style.transform=`scale(${1+0.02*eInOut(p(t,46.2,54.6))})`;
+  $('stepG').textContent=t<48.85?'ขั้นที่ 01 / ค้นหา':t<50.9?'ขั้นที่ 02 / Query':'ขั้นที่ 03 / ต่อยอด';
+  const catOut=eInOut(p(t,48.75,49.1));
+  $('catT').style.opacity=eOut(p(t,46.4,46.8))*(1-catOut);
+  $('search').style.opacity=eOut(p(t,46.5,46.9))*(1-catOut);
+  const ns=Math.round(9*p(t,46.8,47.4));$('stext').innerHTML=ns?'renewable'.slice(0,ns)+`<span class="cur" style="opacity:${blink(t)||ns<9?1:0}">▌</span>`:'<span class="ph">ค้นหาชุดข้อมูล…</span>';
+  const dc=eSnap(p(t,47.5,47.85));$('dscard').style.opacity=dc*(1-catOut);$('dscard').style.transform=`translateY(${(1-dc)*30-catOut*40}px)`;$('dscard').style.boxShadow=`${6*dc}px ${6*dc}px 0 #D6ED63`;
+  const ob=$('openq'),prO=t>48.5&&t<48.7;ob.style.transform=`translate(${prO?3:0}px,${prO?3:0}px)`;ob.style.background=prO?'#D6ED63':'';ob.style.color=prO?'#283127':'';
+  const up=eInOut(p(t,52.7,53.3));$('stack').style.transform=`translateY(${-470*up}px)`;
+  const sq=eOut(p(t,48.9,49.2))*(1-p(t,52.6,52.85));$('sql').style.opacity=sq;$('sqlhead').style.opacity=sq;
+  const nch=Math.round(SQL.length*p(t,49.1,50.3));$('sql').innerHTML=hlSql(SQL.slice(0,nch))+`<span class="cur" style="opacity:${(blink(t)||nch<SQL.length)?1:0}">▌</span>`;
+  $('sqlstate').textContent=t<50.7?'กำลังแก้ไข…':'✓ รันในเบราว์เซอร์';$('sqlstate').style.color=t<50.7?'#677166':'#245c3b';
+  const rb=$('run'),rk=eOut(p(t,50.1,50.4));rb.style.opacity=rk*(1-p(t,52.6,52.85));const prR=press(rb,t,50.6);rb.style.transform=`translateY(${(1-rk)*20}px) translate(${prR?3:0}px,${prR?3:0}px)`;
+  const rr=eSnap(p(t,50.8,51.2));$('rtable').style.opacity=rr;$('rtable').style.transform=`translateY(${(1-rr)*30}px)`;
+  $('rt').querySelectorAll('tr').forEach((tr,i)=>tr.style.opacity=eOut(p(t,51.0+i*0.07,51.25+i*0.07)));
+  [['csvb',51.5],['jsonb',51.58],['connb',51.66]].forEach(([id,t0])=>{const k=eOut(p(t,t0,t0+0.3));const b=$(id);b.style.opacity=k;b.style.transform=`translateY(${(1-k)*16}px)`});
+  $('csvb').style.background=(t>51.9&&t<52.4)?'#D6ED63':'#FAF9F3';$('jsonb').style.background=(t>52.1&&t<52.6)?'#D6ED63':'#FAF9F3';
+  const cbn=$('connb'),prC=t>52.9&&t<53.1;cbn.style.transform=`translate(${prC?3:0}px,${prC?3:0}px)`;cbn.style.boxShadow=prC?'none':(t>51.7?'6px 6px 0 #D6ED63':'none');
+  const co=eSnap(p(t,53.2,53.55));$('conn').style.opacity=co;$('conn').style.transform=`scale(${0.94+0.06*co})`;
+  $('conn').querySelectorAll('.row').forEach((r,i)=>{r.style.opacity=eOut(p(t,53.4+i*0.15,53.7+i*0.15));r.style.background=(t>53.9+i*0.3&&t<54.2+i*0.3)?'#D6ED63':'#FBFAF5'});
+  $('conn').querySelector('.for').style.opacity=eOut(p(t,53.8,54.1));
+  // cursor: open (48.6) -> run (50.6) -> connect (53.0, button moves up with the stack)
+  const cu=$('curG');let op=1;const yC=1400-470*up;
+  if(t<48.9){cursorAt(cu,t,47.8,48.45,820,1500,200,1186);op=p(t,47.7,47.85);}
+  else if(t<50.8){cursorAt(cu,t,50.0,50.55,200,1186,840,858);}
+  else{cursorAt(cu,t,52.2,52.85,840,858,560,930);op=1-p(t,53.6,53.9);}
+  cu.style.opacity=op;cu.style.transform=`scale(${prO||prR||prC?.88:1})`;
+  if(t<49)ripple($('ripG'),t,48.6,200,1186);else if(t<51.5)ripple($('ripG'),t,50.6,840,858);else ripple($('ripG'),t,53.0,560,930);}
+ // ---- H end card: types in, holds, then erases from the beginning (bottom block first) until only the cursor is left
+ if(inW('H',t)){const H=$('H');H.style.transform=`scale(${1+0.025*eInOut(p(t,54.6,62))})`;
+  const er=(str,a,b)=>Math.round(gl(str)*p(t,a,b));
+  const MK='Querious',em=er(MK+'_',58.9,59.5),mk=MK.slice(Math.min(em,MK.length));
+  $('markH').innerHTML=`<span>${mk.startsWith('Q')?'<i>Q</i>'+mk.slice(1):mk}${em<=MK.length?'<span class="cur">_</span>':''}</span>`;$('markH').style.opacity=eOut(p(t,56.6,57.2));
+  const UR='ไม่ต้องสมัครสมาชิกก็สำรวจได้',eu=er(UR,59.1,59.7);$('urlH').textContent=gsl(UR,eu);$('urlH').style.opacity=eOut(p(t,56.2,56.7));
+  const CT='querious.studio ↗',ec=er(CT,59.2,59.8);$('ctaH').textContent=CT.slice(ec);
+  const c=eSnap(p(t,55.9,56.3))*(ec<CT.length?1:0);$('ctaH').style.opacity=c;$('ctaH').style.boxShadow=`${6*c}px ${6*c}px 0 #F4F1E9`;
+  const S1='ข้อมูลเปิดแล้ว',S2='คำถามเป็นของคุณ',es=er(S1+S2,59.5,60.5);
+  $('subH').innerHTML=gsl(S1,Math.min(es,gl(S1)))+'<br>'+`<b>${gsl(S2,Math.max(0,es-gl(S1)))}</b>`;
+  const s=eOut(p(t,55.2,55.7));$('subH').style.opacity=s;$('subH').style.transform=`translateY(${(1-s)*20}px)`;
+  const EB='Querious / Open data / ',EB2='Renewables',ee=er(EB+EB2,60.0,60.8);
+  const eb=H.querySelector('.eyebrowD');eb.innerHTML=EB.slice(Math.min(ee,EB.length))+`<b>${EB2.slice(Math.max(0,ee-EB.length))}</b>`;eb.style.opacity=eOut(p(t,54.8,55.2));
+  const H2='ตาคุณแล้ว';const n=Math.round(gl(H2)*p(t,55.0,55.6)),eh=er(H2,60.3,61.3);
+  $('bigH').innerHTML=gsl(gsl(H2,0,n),eh)+cursorTag(t,n<gl(H2)||(eh>0&&eh<gl(H2)));
+  H.style.opacity=1-p(t,61.45,61.95);}
+ const dark=inW('A',t)&&t<5||(t>=14&&t<20)||t>=54.6;
+ $('logoL').style.display=dark?'block':'none';$('logoL').style.opacity=1-p(t,60.4,61.2);$('logoD').style.display=dark?'none':'block';
+ const wp=$('wipe');let on=false;
+ for(const m of [5.0,14.0,20.0,31.0,40.6,46.2,54.6]){const a=m-0.35,b=m+0.35;if(t>a&&t<b){on=true;const w1=eSnap(p(t,a,m)),w2=eSnap(p(t,m,b));wp.style.top=(t<m?1920*(1-w1):0)+'px';wp.style.bottom=(1920*w2)+'px';}}
+ wp.style.display=on?'block':'none';
+ $('grain').style.transform=`translate(${(Math.floor(t*12)*13)%40-20}px,${(Math.floor(t*12)*29)%40-20}px)`;
+};
+</script></body></html>

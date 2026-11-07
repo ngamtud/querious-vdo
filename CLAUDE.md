@@ -7,6 +7,7 @@ This repo makes short motion-graphic clips for Querious. The brand is fixed; eve
 - `brand/sonic-identity.md`: music rules (ambient only: no drums, risers, whooshes or loud hits)
 - `episodes/gapminder/`: the reference episode. Start new episodes by copying it
 - `episodes/renewable/`: current reference: Facebook-safe margins (`--safe-*` variables), bar chart, scatter (log axis), two-dataset JOIN walkthrough, erase-out end card
+- `episodes/renewable-th/`: Thai version on the same timeline (Thai text + MMS Thai voice, `voice.fit`); see lessons learned for how to make a second-language version
 - `episodes/fertility/`: reference for line charts, bar charts, the catalog → query → result → connect walkthrough and the standard end card (erase-out)
 - `docs/lessons-learned.md`: mistakes from past episodes and the rules they produced. Read it before starting, and add to it after each episode
 

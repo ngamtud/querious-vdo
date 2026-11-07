@@ -1,0 +1,154 @@
+{
+  "title": "Renewable energy (Thai): Africa leads, Iceland leads both",
+  "format": {
+    "width": 1080,
+    "height": 1920,
+    "fps": 30
+  },
+  "duration": 62.0,
+  "chunks": [
+    [
+      0,
+      5.0
+    ],
+    [
+      5.0,
+      14.0
+    ],
+    [
+      14.0,
+      20.0
+    ],
+    [
+      20.0,
+      31.0
+    ],
+    [
+      31.0,
+      40.6
+    ],
+    [
+      40.6,
+      46.2
+    ],
+    [
+      46.2,
+      54.6
+    ],
+    [
+      54.6,
+      62.0
+    ]
+  ],
+  "scene": "scene.html",
+  "data": "data.json",
+  "voice": {
+    "engine": "mms-tha",
+    "speed": 1.0,
+    "fit": true,
+    "max_speed": 1.3
+  },
+  "voiceover": [
+    {
+      "id": "v1",
+      "at": 0.2,
+      "text": "ทวีปไหนใช้พลังงานหมุนเวียนมากสุด",
+      "text_en": "Which continent runs on the most renewable energy?"
+    },
+    {
+      "id": "v2",
+      "at": 3.25,
+      "text": "ไม่ใช่ยุโรป",
+      "text_en": "It's not Europe."
+    },
+    {
+      "id": "v3",
+      "at": 5.4,
+      "text": "ปีสองพันยี่สิบเอ็ด แอฟริกาเฉลี่ยห้าสิบหกเปอร์เซ็นต์",
+      "text_en": "In twenty twenty-one, African countries averaged fifty-six percent renewable."
+    },
+    {
+      "id": "v4",
+      "at": 10.2,
+      "text": "ยุโรปยี่สิบหก เอเชียสิบเจ็ด",
+      "text_en": "Europe, twenty-six. Asia, seventeen."
+    },
+    {
+      "id": "v5",
+      "at": 14.3,
+      "text": "อันดับหนึ่งคือ สาธารณรัฐประชาธิปไตยคองโก เก้าสิบหกเปอร์เซ็นต์",
+      "text_en": "The top country? The Democratic Republic of the Congo. Ninety-six percent."
+    },
+    {
+      "id": "v6",
+      "at": 20.2,
+      "text": "แต่คนคองโกใช้ไฟฟ้าแค่ราวร้อยสามสิบหน่วยต่อปี",
+      "text_en": "But a person there uses about a hundred and thirty kilowatt-hours of electricity a year."
+    },
+    {
+      "id": "v7",
+      "at": 25.3,
+      "text": "ฟินแลนด์ กว่าหมื่นห้าพันหน่วย",
+      "text_en": "In Finland, over fifteen thousand."
+    },
+    {
+      "id": "v8",
+      "at": 27.75,
+      "text": "พลังงานหมุนเวียนของคองโกส่วนใหญ่คือฟืนและถ่าน",
+      "text_en": "Much of Congo's renewable energy is wood and charcoal."
+    },
+    {
+      "id": "v9",
+      "at": 31.4,
+      "text": "ลองดูสัดส่วนคู่กับการใช้ไฟ ใครนำทั้งสองด้าน",
+      "text_en": "So look at share and use together. One country leads both."
+    },
+    {
+      "id": "v10",
+      "at": 35.6,
+      "text": "ไอซ์แลนด์ หมุนเวียนแปดสิบสองเปอร์เซ็นต์ ใช้ไฟห้าหมื่นหนึ่งพันหน่วยต่อคน",
+      "text_en": "Iceland. Eighty-two percent renewable, and fifty-one thousand kilowatt-hours per person."
+    },
+    {
+      "id": "v11",
+      "at": 41.0,
+      "text": "อันดับสองนอร์เวย์ อันดับสามฟินแลนด์ ที่เพิ่มขึ้นเท่าตัวจากปีหนึ่งเก้าเก้าศูนย์",
+      "text_en": "Norway is second. Finland, third. It doubled its share since nineteen ninety."
+    },
+    {
+      "id": "v12",
+      "at": 46.6,
+      "text": "เราหาคำตอบนี้ด้วยการรวมข้อมูลเปิดสองชุดบนเควียเรียส",
+      "text_en": "We found this by joining two open datasets on Querious, right in your browser."
+    },
+    {
+      "id": "v13",
+      "at": 51.3,
+      "text": "แล้วดาวน์โหลด หรือเชื่อมต่อกับเครื่องมือของคุณ",
+      "text_en": "Then download the result, or connect it to your own tools."
+    },
+    {
+      "id": "v14",
+      "at": 54.9,
+      "text": "ข้อมูลเปิดแล้ว คำถามเป็นของคุณ",
+      "text_en": "The data is open. The question is yours."
+    }
+  ],
+  "music": {
+    "generator": "ambient",
+    "volume": 1.25,
+    "duck": {
+      "threshold": 0.03,
+      "ratio": 4,
+      "attack": 60,
+      "release": 600
+    }
+  },
+  "sfx": {
+    "click": [
+      48.6,
+      50.6,
+      53.0
+    ]
+  }
+}
