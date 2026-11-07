@@ -9,6 +9,8 @@ Things that went wrong or needed a second pass while making episodes, and the ru
 - **Retime instead of trimming good lines.** Five English lines overran slots copied from the `renewable` timeline. The chunks were moved (clip 62 → 65.8 s) rather than cutting words; the end card still holds ~3 s after the last line (`ES` shift in scene.html).
 - **One copy block per language.** `scene.html` keeps all on-screen text in a `T` object at the top of the script (captions with times, labels, end card, step labels, country names), so the Thai copy only replaces that block plus a small CSS override (no negative tracking, smaller hook/headline sizes).
 - **Dumbbell instead of slope chart** for "first year → 2021" across 11 countries: slope-chart labels collided at the low end (Malaysia 8.3, Brunei 0.7, Singapore 0.2).
+- **Thai lines still ran long on the first Paxa pass** (v6, v8, v10 over their slots even at 1.3×). Trimmed: v6 → "แต่นี่ไม่ใช่ข่าวร้าย", v7 dropped "พลังงานหมุนเวียน", v8 → "พอบ้านมีไฟ สัดส่วนก็ลด แต่การใช้ไฟต่อคนเพิ่มยี่สิบสี่เท่า", v10 dropped "ทั้งที่ใช้ไฟเพิ่มขึ้นตลอด" (the caption and the kWh line carry it). Second pass: all fit, max stretch 1.27.
+- **Remixing fertility-th** with the new voice hit −1.0 dBFS peak at −2 dB voice; −3 dB gave −18.0 LUFS, peak −1.9.
 - **Baselines differ by country.** Cambodia's renewable series starts in 1995 and Timor-Leste's in 2002; the source line says so.
 
 ## Episode: fertility-th (2026-11-07)
