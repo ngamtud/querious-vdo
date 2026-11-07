@@ -33,7 +33,7 @@ jobs:
           command -v ffmpeg || (sudo apt-get update -q && sudo apt-get install -y -q ffmpeg)
       - name: Generate voices
         env:
-          PAXA_API_KEY: ${{ secrets.PAXA_API_KEY || vars.PAXA_API_KEY }}
+          PAXA_API_KEY: ${{ secrets.PAXA_API_KEY }}
           GH_TOKEN: ${{ github.token }}
         run: |
           if [ -z "$PAXA_API_KEY" ]; then echo "::error::Repo secret PAXA_API_KEY is missing"; exit 1; fi
