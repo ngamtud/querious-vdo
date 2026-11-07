@@ -85,19 +85,19 @@
     {
       "id": "v6",
       "at": 21.1,
-      "text": "แต่นี่ไม่ใช่เรื่องพลังงานสะอาดที่ล้มเหลว",
+      "text": "แต่นี่ไม่ใช่ข่าวร้าย",
       "text_en": "But this isn't a green story gone wrong."
     },
     {
       "id": "v7",
       "at": 23.5,
-      "text": "พลังงานหมุนเวียนส่วนใหญ่ในตอนนั้น คือฟืนและถ่าน",
+      "text": "ส่วนใหญ่ในตอนนั้น คือฟืนและถ่าน",
       "text_en": "Much of that renewable energy was firewood and charcoal."
     },
     {
       "id": "v8",
       "at": 27.1,
-      "text": "พอบ้านมีไฟฟ้า สัดส่วนก็ลดลง ส่วนการใช้ไฟต่อคนเพิ่มขึ้นยี่สิบสี่เท่า",
+      "text": "พอบ้านมีไฟ สัดส่วนก็ลด แต่การใช้ไฟต่อคนเพิ่มยี่สิบสี่เท่า",
       "text_en": "As homes got electricity, the share fell. Power use per person grew twenty-four times."
     },
     {
@@ -109,7 +109,7 @@
     {
       "id": "v10",
       "at": 36.4,
-      "text": "มาเลเซียลงไปต่ำสุดสองเปอร์เซ็นต์ในปีสองพันสิบ ถึงปีสองพันยี่สิบเอ็ด กลับมาเจ็ดจุดห้า ทั้งที่ใช้ไฟเพิ่มขึ้นตลอด",
+      "text": "มาเลเซียลงไปต่ำสุดสองเปอร์เซ็นต์ในปีสองพันสิบ ถึงปีสองพันยี่สิบเอ็ด กลับมาเจ็ดจุดห้า",
       "text_en": "Malaysia hit two percent in twenty ten. By twenty twenty-one, seven and a half, while power use kept climbing."
     },
     {
