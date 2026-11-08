@@ -1,0 +1,362 @@
+<!doctype html><html><head><meta charset="utf-8">
+<style>
+@font-face{font-family:SG;src:url(../../node_modules/@fontsource/space-grotesk/files/space-grotesk-latin-400-normal.woff2);font-weight:400}
+@font-face{font-family:SG;src:url(../../node_modules/@fontsource/space-grotesk/files/space-grotesk-latin-700-normal.woff2);font-weight:700}
+@font-face{font-family:PM;src:url(../../node_modules/@fontsource/ibm-plex-mono/files/ibm-plex-mono-latin-500-normal.woff2);font-weight:500}
+@font-face{font-family:PM;src:url(../../node_modules/@fontsource/ibm-plex-mono/files/ibm-plex-mono-latin-600-normal.woff2);font-weight:600}
+@font-face{font-family:TH;src:url(../../node_modules/@fontsource/ibm-plex-sans-thai/files/ibm-plex-sans-thai-thai-400-normal.woff2);font-weight:400}
+@font-face{font-family:TH;src:url(../../node_modules/@fontsource/ibm-plex-sans-thai/files/ibm-plex-sans-thai-thai-600-normal.woff2);font-weight:500 600}
+@font-face{font-family:TH;src:url(../../node_modules/@fontsource/ibm-plex-sans-thai/files/ibm-plex-sans-thai-thai-700-normal.woff2);font-weight:700}
+@font-face{font-family:PX;src:url(../../node_modules/@fontsource/pixelify-sans/files/pixelify-sans-latin-700-normal.woff2);font-weight:700}
+/* Facebook-safe 9:16 safe zone (brand guide 7.7): top 300, bottom 380, sides 150, right 230 clear in y 1180-1780 */
+:root{--safe-x:150px;--safe-top:300px;--safe-bottom:380px;--safe-band-right:230px;
+ --paper:#F4F1E9;--ink:#283127;--deep:#222923;--muted:#677166;--line:#C7CBBF;--lime:#D6ED63;--orange:#E5764B}
+*{box-sizing:border-box;margin:0}
+html,body{width:1080px;height:1920px;overflow:hidden;background:var(--deep)}
+.scene{position:absolute;inset:0;overflow:hidden;transform-origin:50% 45%;display:none}
+.mono{font-family:PM,TH;font-weight:600;letter-spacing:.08em;text-transform:uppercase}
+.cur{color:var(--orange)}
+.dark{background:var(--deep);color:#F4F1E9}.light{background:var(--paper);color:var(--ink)}
+.L{position:absolute;left:var(--safe-x);right:var(--safe-x)}
+.R{position:absolute;left:var(--safe-x);right:var(--safe-band-right)}
+.eyebrowD{top:330px;font-size:24px;color:#A9B4A2;right:260px}.eyebrowD b{color:var(--lime);font-weight:600}
+.top{top:var(--safe-top);display:flex;align-items:center;gap:22px;border-bottom:2px solid var(--ink);padding:0 100px 20px 0;height:96px}
+.brand{font:700 44px SG,TH;letter-spacing:-.05em;flex:1}.brand i{font:700 46px PX;font-style:normal}
+.tag{font-size:21px;border:1.5px solid var(--ink);padding:8px 12px;background:var(--lime);transform:rotate(-3deg);white-space:nowrap}
+.meta{top:420px;font-size:23px;color:var(--muted)}
+svg.abs{position:absolute;left:0;top:0}
+.note{font-size:18px;line-height:1.5;color:var(--muted);letter-spacing:.05em}
+.caption{top:1290px;font:700 66px/1.05 SG,TH;letter-spacing:-.05em;white-space:nowrap}
+.caption .hl{background:var(--lime);padding:0 10px;box-decoration-break:clone;-webkit-box-decoration-break:clone}
+/* A hook */
+#A .head{top:560px;font:700 112px/.98 SG,TH;letter-spacing:-.075em}
+#A .head .y{color:var(--lime)}
+#A .rule{position:absolute;left:var(--safe-x);top:1440px;height:2px;background:#4a5648}
+#A .foot{top:1470px;font-size:21px;color:#7f8a7c;right:var(--safe-band-right)}
+/* B chart */
+#legend{top:458px;display:flex;flex-wrap:wrap;gap:10px 26px;font-size:19px}
+#legend div{display:flex;align-items:center;gap:10px}
+#legend i{width:20px;height:20px;border:1.5px solid var(--ink);display:block}
+#bigyear{position:absolute;left:215px;right:160px;top:640px;text-align:center;font:700 300px SG;letter-spacing:-.08em;color:#E3E7DA}
+/* buttons, cursor */
+.btn{position:absolute;display:flex;align-items:center;gap:18px;border:2px solid var(--ink);background:var(--ink);color:var(--lime);padding:18px 24px;font-size:25px}
+.btn .tri{width:0;height:0;border-left:22px solid var(--lime);border-top:14px solid transparent;border-bottom:14px solid transparent}
+.obtn{position:absolute;border:2px solid var(--ink);background:#FAF9F3;color:var(--ink);padding:16px 20px;font-size:23px}
+.ripple{position:absolute;border:4px solid var(--orange);pointer-events:none}
+.cursor{position:absolute;width:64px;height:64px;z-index:5}
+/* C walkthrough */
+.tcard{position:absolute;left:var(--safe-x);right:var(--safe-x);height:92px;border:2px solid var(--ink);background:#FAF9F3}
+.tcard b{display:block;background:var(--ink);color:#FBFAF5;font:600 20px PM;padding:9px 14px;letter-spacing:.02em;white-space:nowrap}
+.tcard div{display:flex;gap:8px;padding:9px 12px;font:500 16px PM;white-space:nowrap}
+.tcard span{border:1px solid var(--line);padding:2px 7px}
+.tcard span.key{background:#E2EDCA;border-color:#B9C98D}
+#joined{top:560px;border:2px solid var(--ink);background:var(--lime);padding:22px 24px;font-size:28px;box-shadow:6px 6px 0 var(--ink)}
+#joined small{display:block;margin-top:10px;font-size:18px;opacity:.75}
+#sqlhead{top:900px;display:flex;justify-content:space-between;font-size:19px;color:var(--muted)}
+#sql{top:938px;height:440px;background:var(--ink);border-left:8px solid var(--lime);color:#EDF2E5;padding:22px 20px;font:500 20px/1.5 PM;white-space:pre;overflow:hidden}
+#sql .k{color:var(--lime)}
+#run{left:var(--safe-x);top:1400px}
+#rtable{top:470px;border:2px solid var(--ink);background:#FAF9F3}
+#rtable .rh{display:flex;justify-content:space-between;border-bottom:1px solid var(--ink);padding:12px 16px;font-size:18px}
+#rtable table{width:100%;border-collapse:collapse;font:500 21px PM,TH}
+#rtable th{background:#E8ECE0;text-align:left;padding:10px 12px;font-weight:600;font-size:16px;color:var(--muted)}
+#rtable td{padding:12px 12px;border-top:1px solid #DBE0D5;white-space:nowrap}
+#rtable td.n,#rtable th.n{text-align:right}
+#rtable tr:nth-child(even) td{background:#F4F5EE}
+#rtable td i{display:inline-block;width:13px;height:13px;border:1px solid var(--ink);margin-right:8px;vertical-align:-1px}
+#csvb{left:150px;top:900px}#jsonb{left:310px;top:900px}#connb{left:486px;top:900px;background:var(--ink);color:var(--lime)}
+#conn{top:1000px;border:2px solid var(--ink);background:#EDF2E4;padding:18px 20px}
+#conn .lbl{font-size:18px;color:var(--muted);margin-bottom:8px}
+#conn .row{display:flex;justify-content:space-between;align-items:center;border:1px solid var(--line);background:#FBFAF5;padding:11px 12px;margin-top:10px;font:500 20px PM}
+#conn .row b{font:600 16px PM;letter-spacing:.06em;border:1px solid var(--ink);padding:6px 9px;background:var(--lime)}
+#conn .row span em{font-style:normal;color:var(--muted)}
+.dest{position:absolute;top:1330px;width:340px;height:200px;border:2px solid var(--ink);background:#FAF9F3;padding:20px}
+.dest .ic{font:700 56px PX;color:var(--orange);line-height:1}
+.dest h3{font:700 34px SG,TH;letter-spacing:-.04em;margin-top:12px;white-space:nowrap}
+.dest p{font-size:16px;color:var(--muted);margin-top:8px}
+/* D end card */
+#D .big{top:620px;font:700 160px/.92 SG,TH;letter-spacing:-.075em;white-space:nowrap}
+#D .sub{top:860px;font:700 62px/1.1 SG,TH;letter-spacing:-.05em;color:#DCE3D3}
+#D .sub b{color:var(--lime)}
+#D .cta{position:absolute;left:var(--safe-x);top:1090px;display:inline-flex;gap:18px;align-items:center;background:var(--lime);color:var(--ink);border:2px solid var(--lime);padding:20px 26px;font-size:29px}
+#D .url{top:1205px;font-size:21px;color:#A9B4A2}
+#D .mark{top:1300px;display:flex;align-items:center;gap:18px;font:700 50px SG,TH;letter-spacing:-.05em}
+#D .mark i{font:700 52px PX;font-style:normal}
+#wipe{position:absolute;left:0;right:0;background:var(--lime);display:none;z-index:8}
+#grain{position:absolute;inset:-40px;pointer-events:none;opacity:.05;mix-blend-mode:multiply;z-index:9}
+.logo{position:absolute;top:var(--safe-top);right:var(--safe-x);width:76px;height:76px;object-fit:contain;z-index:10}
+#safe{position:absolute;left:150px;right:150px;top:300px;bottom:380px;outline:2px dashed magenta;z-index:20;display:none}
+#safeband{position:absolute;right:150px;width:80px;top:1180px;height:600px;background:rgba(255,0,255,.12);z-index:20;display:none}
+/* Thai: no negative tracking, line-height >= 1.2 (brand guide 5) */
+body.th #A .head,body.th .caption,body.th #D .big,body.th #D .sub,body.th #D .url,body.th .meta,body.th .dest h3,body.th #joined,body.th #legend{letter-spacing:0}
+body.th #A .head{font-size:100px;line-height:1.2}
+body.th .caption{line-height:1.25;font-size:62px}
+body.th #D .big{font-size:106px;line-height:1.15}body.th #D .sub{line-height:1.3;top:790px;font-size:76px;color:var(--lime)}
+body.th #D .cta{top:960px}body.th #D .url{top:1075px;font-size:25px}body.th #D .mark{top:1170px}
+body.th #legend{font-size:21px}
+</style></head><body>
+<!-- A: hook -->
+<div id="A" class="scene dark">
+ <div class="eyebrowD mono L">Querious / Challenge / <b>Gapminder</b></div>
+ <div class="head L" id="headA"></div>
+ <div class="rule" id="ruleA"></div><div class="foot mono L" id="footA"></div>
+</div>
+<!-- B: bubble chart -->
+<div id="B" class="scene light">
+ <div class="top L"><div class="brand"><i>Q</i>uerious<span class="cur">_</span></div><div class="tag mono">Challenge</div></div>
+ <div class="meta mono L" id="metaB"></div>
+ <div id="legend" class="mono L"></div>
+ <div id="bigyear">1960</div>
+ <svg id="chart" class="abs" width="1080" height="1920"></svg>
+ <div class="note mono R" id="noteB" style="top:1192px">Source / World Bank WDI · GDP per capita in current US$ (not inflation-adjusted), log scale · UN M49 regions</div>
+ <div class="caption R" id="capB"></div>
+ <div class="btn mono" id="playB" style="left:150px;top:1420px"><div class="tri"></div><span id="playT"></span></div>
+ <div class="ripple" id="ripB"></div>
+ <svg class="cursor" id="curB" viewBox="0 0 32 32"><path d="M4 2 L4 26 L10.5 20 L15 30 L19 28 L14.6 18.4 L23 18.4 Z" fill="#283127" stroke="#F4F1E9" stroke-width="1.6" stroke-linejoin="round"/></svg>
+</div>
+<!-- C: walkthrough -->
+<div id="C" class="scene light">
+ <div class="top L"><div class="brand"><i>Q</i>uerious<span class="cur">_</span></div><div class="tag mono" id="stepC"></div></div>
+ <div class="meta mono L" id="metaC">Challenge / Gapminder / Intermediate</div>
+ <div id="cards"></div>
+ <div id="joined" class="mono L"><span id="joinT"></span><small id="joinS">Joined on country_iso_alpha3 + year</small></div>
+ <div id="rtable" class="L"><div class="rh mono"><span>Results</span><span>13,975 rows · 6 columns</span></div><table id="rt"></table></div>
+ <div id="sqlhead" class="mono R"><span id="sqlT"></span><span id="sqlstate"></span></div>
+ <div id="sql" class="R"></div>
+ <div class="btn mono" id="run"><span>Run query ▶</span></div>
+ <div class="obtn mono" id="csvb">↓ CSV</div><div class="obtn mono" id="jsonb">↓ JSON</div><div class="obtn mono" id="connb">Connect</div>
+ <div id="conn" class="R"><div class="lbl mono" id="connT"></div>
+  <div class="row"><span><em>…/v1/query/</em>7f3a9c21<em>.csv</em></span><b>Copy CSV URL</b></div>
+  <div class="row"><span><em>…/v1/query/</em>7f3a9c21<em>.json</em></span><b>Copy JSON URL</b></div></div>
+ <svg id="flow" class="abs" width="1080" height="1920"></svg>
+ <div class="dest" id="dAI" style="left:150px"><div class="ic">✳</div><h3 id="dAIh"></h3><p class="mono" id="dAIp"></p></div>
+ <div class="dest" id="dBI" style="left:510px"><div class="ic">▮▮▯</div><h3 id="dBIh"></h3><p class="mono" id="dBIp"></p></div>
+ <div class="ripple" id="ripC"></div>
+ <svg class="cursor" id="curC" viewBox="0 0 32 32"><path d="M4 2 L4 26 L10.5 20 L15 30 L19 28 L14.6 18.4 L23 18.4 Z" fill="#283127" stroke="#F4F1E9" stroke-width="1.6" stroke-linejoin="round"/></svg>
+</div>
+<!-- D: end card -->
+<div id="D" class="scene dark">
+ <div class="eyebrowD mono L">Querious / Challenge / <b>Gapminder</b></div>
+ <div class="big L" id="bigD"></div>
+ <div class="sub L" id="subD"></div>
+ <div class="cta mono" id="ctaD">querious.studio ↗</div>
+ <div class="url mono L" id="urlD"></div>
+ <div class="mark L" id="markD"></div>
+</div>
+<div id="wipe"></div>
+<svg id="grain" width="1160" height="2000"><filter id="n"><feTurbulence type="fractalNoise" baseFrequency=".85" numOctaves="2" seed="3"/><feColorMatrix type="saturate" values="0"/></filter><rect width="100%" height="100%" filter="url(#n)"/></svg>
+<img id="logoL" class="logo" src="../../brand/querious-logo-lime.svg"><img id="logoD" class="logo" src="../../brand/querious-logo-dark.svg">
+<div id="safe"></div><div id="safeband"></div>
+<script>
+// ===== language: 'en' or 'th' (the Thai episode copies this file and changes only this line) =====
+const LANG='th';
+// ===== all on-screen copy =====
+const T={
+ en:{
+  hook:[['In ',''],['2006,','y'],['\none chart made\na whole room\nlean in.','']],
+  foot:'Gapminder / wealth & health of nations',
+  meta:(y,n)=>`${y} / ${n} countries / World Bank`,
+  legend:['Africa','Americas','Asia & Oceania','Europe'],
+  richer:'RICHER →', healthier:'↑ HEALTHIER', size:'1B PEOPLE',
+  caps:[[5.0,'Bubble = <span class="hl">country.</span>'],[6.9,'Size = <span class="hl">people.</span>'],[8.55,'Color = <span class="hl">region.</span>'],[10.4,'<span class="hl">Richer</span> this way.'],[11.45,'<span class="hl">Healthier</span> that way.'],[13.1,'He pressed <span class="hl">play.</span>'],[16.0,'The bubbles <span class="hl">climb.</span>'],[18.6,'<span class="hl">Healthier, wealthier.</span>'],[27.4,'Who moved <span class="hl">fastest?</span>'],[29.3,'Who broke <span class="hl">away?</span>']],
+  play:'Press play',
+  steps:['Step 01 / Join','Step 02 / Query','Step 03 / Connect'],
+  join:'1 row = 1 country × 1 year', sqlhead:'SQL / DuckDB in your browser', editing:'Editing…', ran:'✓ Ran in browser',
+  conn:'Connection URL / live CSV or JSON',
+  ai:['Your AI','Reads JSON'], bi:['Your BI tool','Refreshes from CSV'],
+  endBig:'Your turn', endS1:'The data is open.', endS2:'The question is yours.', endUrl:'No account needed to explore'
+ },
+ th:{
+  hook:[['ปี ',''],['2006','y'],['\nกราฟเดียว\nทำให้ทั้งห้อง\nต้องหยุดดู','']],
+  foot:'Gapminder / ความมั่งคั่งและสุขภาพของโลก',
+  meta:(y,n)=>`${y} / ${n} ประเทศ / ธนาคารโลก`,
+  legend:['แอฟริกา','อเมริกา','เอเชียและโอเชียเนีย','ยุโรป'],
+  richer:'รวยขึ้น →', healthier:'↑ สุขภาพดีขึ้น', size:'1 พันล้านคน',
+  caps:[[5.0,'วงกลม = <span class="hl">ประเทศ</span>'],[6.9,'ขนาด = <span class="hl">จำนวนคน</span>'],[8.55,'สี = <span class="hl">ภูมิภาค</span>'],[10.4,'ทางนี้ <span class="hl">รวยขึ้น</span>'],[11.45,'ทางนี้ <span class="hl">สุขภาพดีขึ้น</span>'],[13.1,'แล้วเขาก็กด <span class="hl">เล่น</span>'],[16.0,'วงกลม <span class="hl">ไต่ขึ้น</span>'],[18.6,'<span class="hl">รวยขึ้น สุขภาพดีขึ้น</span>'],[27.4,'ใครไป <span class="hl">เร็วสุด?</span>'],[29.3,'ใคร <span class="hl">แซงออกไป?</span>']],
+  play:'กดเล่น',
+  steps:['ขั้นที่ 01 / Join','ขั้นที่ 02 / Query','ขั้นที่ 03 / Connect'],
+  join:'1 แถว = 1 ประเทศ × 1 ปี', sqlhead:'SQL / DuckDB ในเบราว์เซอร์', editing:'กำลังแก้ไข…', ran:'✓ รันในเบราว์เซอร์',
+  conn:'Connection URL / CSV หรือ JSON แบบสด',
+  ai:['AI ของคุณ','อ่าน JSON'], bi:['แดชบอร์ด BI','อัปเดตจาก CSV'],
+  endBig:'ข้อมูลพร้อมแล้ว', endS1:'', endS2:'มาหาคำตอบกัน', endUrl:'สำรวจข้อมูลได้ฟรี ไม่ต้องสมัครสมาชิก'
+ }
+}[LANG];
+if(LANG==='th')document.body.classList.add('th');
+const DATA=window.__DATA__, $=id=>document.getElementById(id), NS='http://www.w3.org/2000/svg';
+if(location.hash==='#safe'){$('safe').style.display='block';$('safeband').style.display='block'}
+const clamp=(v,a=0,b=1)=>Math.min(b,Math.max(a,v)), p=(t,a,b)=>clamp((t-a)/(b-a));
+const eOut=x=>1-Math.pow(1-x,3), eInOut=x=>x<.5?4*x*x*x:1-Math.pow(-2*x+2,3)/2, eSnap=x=>x<.5?16*x**5:1-Math.pow(-2*x+2,5)/2, lerp=(a,b,x)=>a+(b-a)*x;
+const blink=t=>Math.floor(t/0.53)%2===0;
+const el=(n,a,par)=>{const e=document.createElementNS(NS,n);for(const k in a)e.setAttribute(k,a[k]);par.appendChild(e);return e};
+const txt=(par,a,s)=>{const e=el('text',Object.assign({'font-family':'PM,TH','font-weight':600},a),par);e.textContent=s;return e};
+const show=(id,on)=>{$(id).style.display=on?'block':'none'};
+const cursorTag=(t,n)=>`<span class="cur" style="opacity:${(blink(t)||n)?1:0}">_</span>`;
+const SEG=new Intl.Segmenter(LANG,{granularity:'grapheme'}),gs=str=>[...SEG.segment(str)].map(x=>x.segment),gl=str=>gs(str).length,gsl=(str,a,b)=>gs(str).slice(a,b).join('');
+function typeSeg(segs,n){let out='',k=n;for(const [s,c] of segs){const part=gsl(s,0,Math.max(0,k));k-=gl(s);if(!part)break;const h=part.replace(/\n/g,'<br>');out+=c?`<span class="${c}">${h}</span>`:h}return out}
+const segLen=segs=>segs.reduce((a,s)=>a+gl(s[0]),0);
+function caption(elc,list,t,tEnd){let ci=-1;list.forEach((c,i)=>{if(t>=c[0]-0.05)ci=i});if(ci<0||t>tEnd){elc.style.opacity=0;return}
+ const k=eOut(p(t,list[ci][0]-0.05,list[ci][0]+0.2));elc.innerHTML=list[ci][1];elc.style.opacity=k;elc.style.transform=`translateY(${(1-k)*24}px)`}
+function cursorAt(cu,t,t0,t1,sx,sy,ex,ey){const m=eInOut(p(t,t0,t1));cu.style.left=(lerp(sx,ex,m)-Math.sin(m*Math.PI)*60)+'px';cu.style.top=(lerp(sy,ey,m)-Math.sin(m*Math.PI)*80)+'px'}
+function ripple(r,t,tc,x,y){const k=p(t,tc,tc+0.45),s=20+150*eOut(k);r.style.width=r.style.height=s+'px';r.style.left=(x+4-s/2)+'px';r.style.top=(y+4-s/2)+'px';r.style.opacity=k>0&&k<1?1-k:0}
+function press(b,t,tc){const pr=t>tc-0.1&&t<tc+0.1;b.style.boxShadow=pr?'none':'6px 6px 0 #D6ED63';b.style.transform=`translate(${pr?3:0}px,${pr?3:0}px)`;return pr}
+// static copy
+$('footA').textContent=T.foot;$('playT').textContent=T.play;$('joinT').textContent=T.join;$('sqlT').textContent=T.sqlhead;$('connT').textContent=T.conn;
+$('dAIh').textContent=T.ai[0];$('dAIp').textContent=T.ai[1];$('dBIh').textContent=T.bi[0];$('dBIp').textContent=T.bi[1];
+// ===== Gapminder four-region colours (Oceania grouped with Asia, as Gapminder does) =====
+const COL={Africa:'#00D5E9',Americas:'#7FEB00',Asia:'#FF5872',Oceania:'#FF5872',Europe:'#FFE700'};
+$('legend').innerHTML=['#00D5E9','#7FEB00','#FF5872','#FFE700'].map((c,i)=>`<div><i style="background:${c}"></i>${T.legend[i]}</div>`).join('');
+const Y0=1960,Y1=2023;
+const byIso={};DATA.forEach(d=>{if(d.year<=Y1)(byIso[d.iso]=byIso[d.iso]||{})[d.year]=d});
+const countByYear={};DATA.forEach(d=>{countByYear[d.year]=(countByYear[d.year]||0)+1});
+function valAt(iso,yr){const s=byIso[iso];const y0=Math.floor(yr),y1=Math.min(Y1,y0+1),f=yr-y0;const a=s[y0],b=s[y1]||a;if(!a)return null;
+ return{g:Math.exp(lerp(Math.log(a.gdp),Math.log(b.gdp),f)),l:lerp(a.life,b.life,f),pop:lerp(a.pop,b.pop,f)}}
+const firstYear=iso=>Math.min(...Object.keys(byIso[iso]).map(Number));
+let seed=7;const rnd=()=>(seed=(seed*16807)%2147483647)/2147483647;
+const isos=Object.keys(byIso).sort((a,b)=>{const pa=(byIso[a][Y1]||byIso[a][firstYear(a)]).pop,pb=(byIso[b][Y1]||byIso[b][firstYear(b)]).pop;return pb-pa});
+// ===== chart geometry: inside the safe zone, axes end above y 1180 =====
+const G={x0:215,x1:920,y0:1110,y1:580}, SIZE=360;
+const X=g=>G.x0+(Math.log10(clamp(g,100,150000))-2)/(Math.log10(150000)-2)*(G.x1-G.x0);
+const Y=l=>G.y0-(clamp(l,25,90)-25)/65*(G.y0-G.y1);
+const rad=pop=>Math.max(4,Math.sqrt(pop)/SIZE);
+const sv=$('chart');
+const grid=el('g',{},sv);
+[100,1000,10000,100000].forEach(v=>el('line',{x1:X(v),x2:X(v),y1:G.y1,y2:G.y0,stroke:'#E1E4DA','stroke-width':2},grid));
+[30,40,50,60,70,80,90].forEach(v=>el('line',{x1:G.x0,x2:G.x1,y1:Y(v),y2:Y(v),stroke:'#E1E4DA','stroke-width':2},grid));
+const ticks=el('g',{},sv);
+[[100,'$100','start'],[1000,'$1K','middle'],[10000,'$10K','middle'],[100000,'$100K','middle']].forEach(([v,s,a])=>txt(ticks,{x:X(v)-(a==='start'?8:0),y:G.y0+38,'text-anchor':a,'font-size':22,fill:'#455044','font-weight':500},s));
+[30,50,70,90].forEach(v=>txt(ticks,{x:G.x0-14,y:Y(v)+8,'text-anchor':'end','font-size':22,fill:'#455044','font-weight':500},v));
+const xA=el('line',{x1:G.x0,x2:G.x0,y1:G.y0,y2:G.y0,stroke:'#283127','stroke-width':3},sv);
+const yA=el('line',{x1:G.x0,x2:G.x0,y1:G.y0,y2:G.y0,stroke:'#283127','stroke-width':3},sv);
+const bubG=el('g',{},sv);
+const bubbles=isos.map(iso=>({iso,c:el('circle',{fill:COL[byIso[iso][firstYear(iso)].region],stroke:'#283127','stroke-width':1.5},bubG),delay:rnd(),fy:firstYear(iso)}));
+const xlT=txt(sv,{x:G.x1-12,y:G.y0-40,'text-anchor':'end','font-size':30,'letter-spacing':2,fill:'#283127'},T.richer);
+const xlBg=el('rect',{y:G.y0-78,height:52,width:0,fill:'#D6ED63'},sv);sv.insertBefore(xlBg,xlT);
+const ylT=txt(sv,{x:G.x0+24,y:G.y1+48,'font-size':30,'letter-spacing':2,fill:'#283127'},T.healthier);
+const ylBg=el('rect',{x:G.x0+12,y:G.y1+10,height:52,width:0,fill:'#D6ED63'},sv);sv.insertBefore(ylBg,ylT);
+const xSw=el('rect',{x:G.x0,y:G.y0-5,height:10,width:0,fill:'#D6ED63'},sv);
+const ySw=el('rect',{x:G.x0-5,y:G.y0,width:10,height:0,fill:'#D6ED63'},sv);
+const sizeG=el('g',{},sv);
+el('circle',{cx:G.x1-96,cy:G.y1+104,r:Math.sqrt(1e9)/SIZE,fill:'none',stroke:'#283127','stroke-width':2,'stroke-dasharray':'6 5'},sizeG);
+txt(sizeG,{x:G.x1-96,y:G.y1+112,'text-anchor':'middle','font-size':19,fill:'#283127'},T.size);
+// breakaway markers: per region, the biggest combined gain in log GDP and life expectancy 1960 -> 2023
+const rings=[];
+['Asia','Africa','Americas'].forEach(reg=>{let best=null,bv=-1;Object.keys(byIso).forEach(i=>{const s=byIso[i];if(s[1960]&&s[Y1]&&(s[1960].region===reg||(reg==='Asia'&&s[1960].region==='Oceania'))){const gain=Math.log(s[Y1].gdp/s[1960].gdp)+(s[Y1].life-s[1960].life)/20;if(gain>bv){bv=gain;best=i}}});if(best)rings.push(best)});
+const ringEls=rings.map(()=>el('rect',{fill:'none',stroke:'#E5764B','stroke-width':5},sv));
+const qEls=rings.map(()=>{const t=el('text',{'font-family':'PX','font-weight':700,'font-size':50,fill:'#E5764B'},sv);t.textContent='?';return t});
+function drawBubbles(yr,pinFn,alphaFn){let n=0;bubbles.forEach(b=>{const v=valAt(b.iso,yr);if(!v){b.c.setAttribute('r',0);return}
+ const pin=pinFn(b);const r=rad(v.pop)*(pin<1?pin*(1.12-0.12*pin):1);
+ b.c.setAttribute('cx',X(v.g));b.c.setAttribute('cy',Y(v.l));b.c.setAttribute('r',Math.max(0,r));b.c.setAttribute('fill-opacity',0.88*alphaFn(b));b.c.setAttribute('stroke-opacity',alphaFn(b));if(pin>0)n++;});return n}
+// ===== C: tables, SQL, result =====
+const TABLES=[['worldbank_gdp_per_capita',['country_iso_alpha3','year','gdp_per_capita_current_usd']],['worldbank_life_expectancy_at_birth',['country_iso_alpha3','year','life_expectancy_at_birth_years']],['worldbank_population_total',['country_iso_alpha3','year','population_total']],['country_geography',['country_iso_alpha3','un_m49_region_name']]];
+const cards=TABLES.map(([n,f])=>{const d=document.createElement('div');d.className='tcard';d.innerHTML=`<b>${n}</b><div>`+f.map(x=>`<span class="${x==='country_iso_alpha3'||x==='year'?'key':''}">${x}</span>`).join('')+'</div>';$('cards').appendChild(d);return d});
+const SQL=`SELECT year, g.country_name,
+  un_m49_region_name AS region,
+  gdp_per_capita_current_usd AS gdp,
+  life_expectancy_at_birth_years AS life,
+  population_total AS pop
+FROM worldbank_gdp_per_capita g
+JOIN worldbank_life_expectancy_at_birth
+  USING (country_iso_alpha3, year)
+JOIN worldbank_population_total
+  USING (country_iso_alpha3, year)
+JOIN country_geography
+  USING (country_iso_alpha3);`;
+const KW=/\b(SELECT|FROM|JOIN|USING|AS)\b/g;
+const hlSql=s=>s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(KW,'<span class="k">$1</span>');
+(()=>{const pick=['THA','BRA','JPN','NGA','DEU'];const rows=pick.map(i=>DATA.find(d=>d.year===2023&&d.iso===i)).filter(Boolean);
+ const f=n=>n>=1e9?(n/1e9).toFixed(2)+'B':n>=1e6?(n/1e6).toFixed(1)+'M':Math.round(n).toLocaleString('en-US');
+ $('rt').innerHTML='<tr><th>year</th><th>country_name</th><th class="n">gdp</th><th class="n">life</th><th class="n">pop</th></tr>'+rows.map(r=>`<tr><td>${r.year}</td><td><i style="background:${COL[r.region]}"></i>${r.name}</td><td class="n">${f(r.gdp)}</td><td class="n">${r.life.toFixed(1)}</td><td class="n">${f(r.pop)}</td></tr>`).join('');})();
+const fl=$('flow');const fpaths=[[500,1215,320,1330],[500,1215,680,1330]].map(([x1,y1,x2,y2])=>el('path',{d:`M${x1} ${y1} C ${x1} ${y1+60}, ${x2} ${y2-60}, ${x2} ${y2}`,fill:'none',stroke:'#283127','stroke-width':3},fl));
+const packets=[];for(let i=0;i<6;i++)packets.push(el('rect',{width:16,height:16,fill:'#D6ED63',stroke:'#283127','stroke-width':2},fl));
+// ===== scene windows =====
+const W={A:[0,4.85],B:[4.15,32.8],C:[32.1,48.95],D:[48.25,99]};
+const inW=(k,t)=>t>=W[k][0]&&t<W[k][1];
+window.DUR=58;
+window.render=function(t){
+ for(const k in W)show(k,inW(k,t));
+ // ---- A hook
+ if(inW('A',t)){const A=$('A');A.style.transform=`scale(${1+0.025*eInOut(p(t,0,4.5))})`;
+  A.querySelector('.eyebrowD').style.opacity=eOut(p(t,0.1,0.6));
+  const L=segLen(T.hook),n=Math.round(L*p(t,0.45,3.6));
+  $('headA').innerHTML=typeSeg(T.hook,n)+cursorTag(t,n<L);
+  $('ruleA').style.width=780*eOut(p(t,0.2,1.4))+'px';$('footA').style.opacity=eOut(p(t,0.6,1.2));}
+ // ---- B chart
+ if(inW('B',t)){const B=$('B');
+  B.style.transform=`scale(${1+0.02*eInOut(p(t,4.6,13.5))-0.01*eInOut(p(t,15,27))+0.015*eInOut(p(t,27,31.5))})`;
+  const ax=eOut(p(t,4.9,5.5));xA.setAttribute('x2',G.x0+(G.x1-G.x0)*ax);yA.setAttribute('y2',G.y0-(G.y0-G.y1)*ax);
+  grid.style.opacity=eOut(p(t,5.2,5.7));ticks.style.opacity=eOut(p(t,5.3,5.8));
+  $('metaB').style.opacity=eOut(p(t,5.1,5.6));$('bigyear').style.opacity=eOut(p(t,5.0,5.8));$('noteB').style.opacity=eOut(p(t,5.6,6.2));
+  const lg=eOut(p(t,8.5,8.9));$('legend').style.opacity=lg;$('legend').style.transform=`translateY(${(1-lg)*14}px)`;
+  sizeG.style.opacity=eOut(p(t,6.9,7.3))*(1-p(t,10.2,10.6));
+  const yr=Y0+(Y1-Y0)*eInOut(p(t,15.0,27.0)),yi=Math.floor(yr);
+  $('bigyear').textContent=yi;
+  const qk=p(t,27.2,27.7);
+  const n=drawBubbles(yr,b=>b.fy>1960?(t>15?eOut(p(yr,b.fy,b.fy+1.5)):0):eOut(p(t,5.2+b.delay*1.2,5.5+b.delay*1.2)),b=>rings.includes(b.iso)?1:1-0.72*qk);
+  $('metaB').textContent=T.meta(yi,t<15?Math.min(n,110):Math.min(countByYear[yi],201));
+  xSw.setAttribute('width',(G.x1-G.x0)*eSnap(p(t,10.45,11.0)));xSw.style.opacity=1-p(t,12.6,13.2);
+  const xw=xlT.getComputedTextLength()+24;xlBg.setAttribute('x',G.x1-xw);xlBg.setAttribute('width',xw*eSnap(p(t,10.6,10.95)));xlT.style.opacity=p(t,10.65,10.85);
+  const ys=eSnap(p(t,11.5,12.05));ySw.setAttribute('height',(G.y0-G.y1)*ys);ySw.setAttribute('y',G.y0-(G.y0-G.y1)*ys);ySw.style.opacity=1-p(t,13.2,13.8);
+  ylBg.setAttribute('width',(ylT.getComputedTextLength()+24)*eSnap(p(t,11.65,12.0)));ylT.style.opacity=p(t,11.7,11.9);
+  rings.forEach((iso,i)=>{const v=valAt(iso,yr);const k=eSnap(p(t,29.3+i*0.25,29.7+i*0.25));if(!v||k<=0){ringEls[i].style.opacity=0;qEls[i].style.opacity=0;return}
+   const r=rad(v.pop)+14+8*(1-k),cx=X(v.g),cy=Y(v.l);
+   ringEls[i].setAttribute('x',cx-r);ringEls[i].setAttribute('y',cy-r);ringEls[i].setAttribute('width',2*r);ringEls[i].setAttribute('height',2*r);ringEls[i].style.opacity=k;
+   const qx=cx+r+6>G.x1-30?cx-r-36:cx+r+6;qEls[i].setAttribute('x',qx);qEls[i].setAttribute('y',cy-r+30);qEls[i].style.opacity=k*(blink(t+i*0.2)?1:0.55);});
+  caption($('capB'),T.caps,t,31.8);
+  const pb=$('playB'),pk=eOut(p(t,13.1,13.4));pb.style.opacity=pk*(1-p(t,15.3,15.6));const pr=press(pb,t,14.6);
+  const cu=$('curB');cursorAt(cu,t,13.6,14.5,760,1720,210,1452);cu.style.opacity=p(t,13.5,13.65)*(1-p(t,15.2,15.45));cu.style.transform=`scale(${pr?.88:1})`;ripple($('ripB'),t,14.6,210,1452);
+ }
+ // ---- C walkthrough
+ if(inW('C',t)){const C=$('C');C.style.transform=`scale(${1+0.02*eInOut(p(t,32.6,48.5))})`;
+  $('stepC').textContent=t<38.8?T.steps[0]:t<42.6?T.steps[1]:T.steps[2];
+  $('metaC').style.opacity=eOut(p(t,32.8,33.3))*(1-p(t,41.3,41.6));
+  const jk=eInOut(p(t,37.0,38.4));
+  cards.forEach((c,i)=>{const k=eOut(p(t,33.2+i*0.18,33.6+i*0.18));const y=470+i*104;
+   c.style.top=(lerp(y+40*(1-k),580,jk))+'px';c.style.opacity=k*(1-p(t,38.2,38.6));
+   c.querySelectorAll('.key').forEach(s=>s.style.background=t>36.4?'#D6ED63':'#E2EDCA');});
+  const jo=eSnap(p(t,38.3,38.7));$('joined').style.opacity=jo*(1-p(t,41.3,41.6));$('joined').style.transform=`scale(${0.92+0.08*jo})`;
+  const sqOut=eInOut(p(t,42.0,42.4));
+  const sq=eOut(p(t,33.6,34.1))*(1-sqOut);$('sql').style.opacity=sq;$('sqlhead').style.opacity=sq;$('sql').style.transform=`translateY(${sqOut*50}px)`;
+  const nch=Math.round(SQL.length*p(t,38.7,40.8));$('sql').innerHTML=hlSql(SQL.slice(0,nch))+`<span class="cur" style="opacity:${(blink(t)||nch<SQL.length)?1:0}">▌</span>`;
+  $('sqlstate').textContent=t<41.3?T.editing:T.ran;$('sqlstate').style.color=t<41.3?'#677166':'#245c3b';
+  const rb=$('run'),rk=eOut(p(t,40.6,40.9));rb.style.opacity=rk*(1-p(t,41.9,42.2));const prR=press(rb,t,41.2);
+  const rr=eSnap(p(t,41.4,41.8));$('rtable').style.opacity=rr;$('rtable').style.transform=`translateY(${(1-rr)*30}px)`;
+  $('rt').querySelectorAll('tr').forEach((tr,i)=>tr.style.opacity=eOut(p(t,41.6+i*0.07,41.85+i*0.07)));
+  [['csvb',42.3],['jsonb',42.38],['connb',42.46]].forEach(([id,t0])=>{const k=eOut(p(t,t0,t0+0.3));const b=$(id);b.style.opacity=k;if(id!=='connb')b.style.transform=`translateY(${(1-k)*16}px)`});
+  const cb=$('connb');const prC=press(cb,t,42.9);if(t<42.5)cb.style.boxShadow='none';
+  const cu=$('curC');
+  if(t<42.0){cursorAt(cu,t,40.7,41.1,700,1720,220,1430);cu.style.opacity=p(t,40.6,40.75);}
+  else{cursorAt(cu,t,42.3,42.8,220,1430,560,930);cu.style.opacity=1-p(t,43.5,43.75);}
+  cu.style.transform=`scale(${prR||prC?.88:1})`;
+  if(t<42)ripple($('ripC'),t,41.2,220,1430);else ripple($('ripC'),t,42.9,560,930);
+  const co=eSnap(p(t,43.1,43.5));$('conn').style.opacity=co;$('conn').style.transform=`scale(${0.94+0.06*co})`;
+  $('conn').querySelectorAll('.row').forEach((r,i)=>{r.style.opacity=eOut(p(t,43.4+i*0.15,43.7+i*0.15));r.style.background=(t>45.2+i*0.6&&t<45.6+i*0.6)?'#D6ED63':'#FBFAF5'});
+  fpaths.forEach(pa=>{const L=pa.getTotalLength();pa.style.strokeDasharray=L;pa.style.strokeDashoffset=L*(1-eInOut(p(t,43.8,44.4)))});
+  [['dAI',44.3],['dBI',44.45]].forEach(([id,t0],j)=>{const k=eSnap(p(t,t0,t0+0.35));const d=$(id);d.style.opacity=k;d.style.transform=`translateY(${(1-k)*30}px)`;
+   const hit=packets.some((_,i)=>{const ph=((t-44.6)*0.9+i/3)%1;return t>44.6&&(i%2===j)&&ph>0.9});d.style.boxShadow=hit?'8px 8px 0 #D6ED63':'5px 5px 0 #C7CBBF'});
+  packets.forEach((pk,i)=>{if(t<44.6){pk.style.opacity=0;return}const ph=((t-44.6)*0.9+i/3)%1;const pa=fpaths[i%2];const pt=pa.getPointAtLength(pa.getTotalLength()*ph);
+   pk.setAttribute('x',pt.x-8);pk.setAttribute('y',pt.y-8);pk.style.opacity=Math.min(1,ph*6,(1-ph)*6)*(1-p(t,48.0,48.3));});
+ }
+ // ---- D end card: types in, holds ~3 s after the last line, then erases from the beginning (bottom block first) until only the cursor is left
+ if(inW('D',t)){const D=$('D');D.style.transform=`scale(${1+0.025*eInOut(p(t,48.6,58))})`;
+  const er=(str,a,b)=>Math.round(gl(str)*p(t,a,b));
+  const MK='Querious',em=er(MK+'_',54.8,55.4),mk=MK.slice(Math.min(em,MK.length));
+  $('markD').innerHTML=`<span>${mk.startsWith('Q')?'<i>Q</i>'+mk.slice(1):mk}${em<=MK.length?'<span class="cur">_</span>':''}</span>`;$('markD').style.opacity=eOut(p(t,50.7,51.3));
+  const UR=T.endUrl,eu=er(UR,55.0,55.6);$('urlD').textContent=gsl(UR,eu);$('urlD').style.opacity=eOut(p(t,50.3,50.8));
+  const CT='querious.studio ↗',ec=er(CT,55.1,55.7);$('ctaD').textContent=CT.slice(ec);
+  const c=eSnap(p(t,50.0,50.4))*(ec<CT.length?1:0);$('ctaD').style.opacity=c;$('ctaD').style.boxShadow=`${6*c}px ${6*c}px 0 #F4F1E9`;
+  const S1=T.endS1,S2=T.endS2,es=er(S1+S2,55.4,56.2),n1=gl(S1);
+  $('subD').innerHTML=(n1?gsl(S1,Math.min(es,n1))+'<br>':'')+`<b>${gsl(S2,Math.max(0,es-n1))}</b>`;
+  const s=eOut(p(t,49.3,49.8));$('subD').style.opacity=s;$('subD').style.transform=`translateY(${(1-s)*20}px)`;
+  const EB='Querious / Challenge / ',EB2='Gapminder',ee=er(EB+EB2,55.9,56.7);
+  const eb=D.querySelector('.eyebrowD');eb.innerHTML=EB.slice(Math.min(ee,EB.length))+`<b>${EB2.slice(Math.max(0,ee-EB.length))}</b>`;eb.style.opacity=eOut(p(t,48.8,49.2));
+  const H2=T.endBig;const n=Math.round(gl(H2)*p(t,48.9,49.5)),eh=er(H2,56.2,57.2);
+  $('bigD').innerHTML=gsl(gsl(H2,0,n),eh)+cursorTag(t,n<gl(H2)||(eh>0&&eh<gl(H2)));
+  D.style.opacity=1-p(t,57.45,57.95);}
+ const dark=t<4.5||t>=48.6;
+ $('logoL').style.display=dark?'block':'none';$('logoL').style.opacity=1-p(t,56.3,57.1);$('logoD').style.display=dark?'none':'block';
+ const wp=$('wipe');let on=false;
+ for(const m of [4.5,32.45,48.6]){const a=m-0.35,b=m+0.35;if(t>a&&t<b){on=true;const w1=eSnap(p(t,a,m)),w2=eSnap(p(t,m,b));wp.style.top=(t<m?1920*(1-w1):0)+'px';wp.style.bottom=(1920*w2)+'px';}}
+ wp.style.display=on?'block':'none';
+ $('grain').style.transform=`translate(${(Math.floor(t*12)*13)%40-20}px,${(Math.floor(t*12)*29)%40-20}px)`;
+};
+</script></body></html>

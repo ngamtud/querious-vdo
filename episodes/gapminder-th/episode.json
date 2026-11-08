@@ -1,0 +1,131 @@
+{
+  "title": "Gapminder (Thai): wealth and health of nations",
+  "format": {
+    "width": 1080,
+    "height": 1920,
+    "fps": 30
+  },
+  "duration": 58.0,
+  "chunks": [
+    [
+      0,
+      4.9
+    ],
+    [
+      4.9,
+      18.5
+    ],
+    [
+      18.5,
+      32.8
+    ],
+    [
+      32.8,
+      40.8
+    ],
+    [
+      40.8,
+      48.5
+    ],
+    [
+      48.5,
+      58.0
+    ]
+  ],
+  "scene": "scene.html",
+  "data": "data.json",
+  "voice": {
+    "engine": "paxa",
+    "model": "paxa-tts-flash-v2",
+    "speaker": "nomyen",
+    "language": "th",
+    "speed": 1.0,
+    "fit": true,
+    "max_speed": 1.3
+  },
+  "voiceover": [
+    {
+      "id": "v1",
+      "at": 0.4,
+      "text": "ปีสองพันหก กราฟเดียวทำให้ทั้งห้องต้องหยุดดู",
+      "text_en": "In two thousand six, one chart made a whole room lean in."
+    },
+    {
+      "id": "v2",
+      "at": 5.0,
+      "text": "ทุกวงกลมคือหนึ่งประเทศ",
+      "text_en": "Every bubble is a country."
+    },
+    {
+      "id": "v3",
+      "at": 6.9,
+      "text": "วงใหญ่คือคนเยอะ สีบอกภูมิภาค",
+      "text_en": "Bigger means more people. The color tells you the region."
+    },
+    {
+      "id": "v4",
+      "at": 10.4,
+      "text": "ทางนี้รวยขึ้น ทางนั้นสุขภาพดีขึ้น",
+      "text_en": "Richer this way. Healthier that way."
+    },
+    {
+      "id": "v5",
+      "at": 13.1,
+      "text": "แล้วฮันส์ รอสลิง ก็กดเล่น",
+      "text_en": "Then Hans Rosling pressed play."
+    },
+    {
+      "id": "v6",
+      "at": 16.0,
+      "text": "ผ่านไปทีละสิบปี วงกลมไต่ขึ้นเรื่อยๆ โลกส่วนใหญ่ทั้งรวยขึ้น และสุขภาพดีขึ้น",
+      "text_en": "Decade after decade, the bubbles climb. Most of the world got healthier, and wealthier."
+    },
+    {
+      "id": "v7",
+      "at": 27.4,
+      "text": "แต่ภูมิภาคไหนไปเร็วที่สุด แล้วใครแซงออกไป",
+      "text_en": "But which regions moved fastest? And who broke away from the pack?"
+    },
+    {
+      "id": "v8",
+      "at": 33.0,
+      "text": "บนคิวเรียส คุณสร้างข้อมูลชุดนี้เองได้",
+      "text_en": "On Querious, you can rebuild the data behind this chart."
+    },
+    {
+      "id": "v9",
+      "at": 36.3,
+      "text": "รวมสี่ตารางด้วยประเทศและปี เขียนคำสั่งเดียว",
+      "text_en": "Join four open tables by country and year. Write one query."
+    },
+    {
+      "id": "v10",
+      "at": 42.0,
+      "text": "แล้วกดเชื่อมต่อ ได้ลิงก์สดลิงก์เดียว ส่งให้เอไอหรือแดชบอร์ดของคุณ",
+      "text_en": "Then connect it. One live link, ready for your AI, or your BI dashboard."
+    },
+    {
+      "id": "v11",
+      "at": 49.0,
+      "text": "ข้อมูลพร้อมแล้ว มาหาคำตอบกัน",
+      "text_en": "The data is open. The question is yours."
+    }
+  ],
+  "music": {
+    "generator": "ambient",
+    "volume": 1.25,
+    "duck": {
+      "threshold": 0.03,
+      "ratio": 4,
+      "attack": 60,
+      "release": 600
+    }
+  },
+  "sfx": {
+    "click": [
+      14.6,
+      41.2,
+      42.9
+    ]
+  }
+}
