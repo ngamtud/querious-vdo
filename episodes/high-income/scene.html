@@ -142,8 +142,7 @@ svg.abs{position:absolute;left:0;top:0}
  <div class="top L"><div class="brand"><i>Q</i>uerious<span class="cur">_</span></div><div class="tag mono">Insight</div></div>
  <div class="meta mono L" id="metaD"></div>
  <div class="h2 L" id="hD"></div>
- <div class="strip" id="stripD"></div>
- <div class="sleg mono L" id="legD"></div>
+ <svg id="chartD" class="abs" width="1080" height="1920"></svg>
  <div class="caption L R" id="capD"></div>
  <div class="note mono L R" id="noteD" style="top:1340px"></div>
 </div>
@@ -172,9 +171,7 @@ svg.abs{position:absolute;left:0;top:0}
  <div class="top L"><div class="brand"><i>Q</i>uerious<span class="cur">_</span></div><div class="tag mono">Insight</div></div>
  <div class="meta mono L" id="metaG"></div>
  <div class="h2 L" id="hG"></div>
- <div class="strip" id="stripG"></div>
- <div class="sleg mono L" id="legG"></div>
- <div class="mono L" id="gniG"></div>
+ <svg id="chartG" class="abs" width="1080" height="1920"></svg>
  <div class="caption L R" id="capG"></div>
  <div class="note mono L R" id="noteG" style="top:1340px"></div>
 </div>
@@ -238,8 +235,8 @@ const T={
  noteB:'Source / World Bank income classification history (OGHIST) · GNI per capita, Atlas method · countries only',
  metaD:'Argentina / official income group by year', hD:'Argentina',
  capD:[[32.6,'In: <span class="hl">2014.</span> Out: 2015.'],[35.2,'In: <span class="hl">2017.</span> Out: 2018.'],[37.4,'Now: <span class="hl">upper-middle.</span>']],
- noteD:'Source / World Bank OGHIST · one square per GNI data year, 1987–2025',
- leg:['High','Upper-middle','Lower-middle'],
+ noteD:'Source / World Bank WDI GNI per capita (Atlas, today\'s revised estimates) · bands: official OGHIST group',
+ lineLab:'High-income line', bandLab:'Officially high',
  ebE:['The fastest climb / ','2019 → 2025'], nameE:'Guyana', labE:'GNI per capita · ',
  capE:[[47.4,'<span class="hl">4.5×</span> in six years.']], lineE:'High-income line',
  noteE:'Source / World Bank WDI · GNI per capita, Atlas method, current US$',
@@ -248,8 +245,7 @@ const T={
  noteF:'Official income groups, latest: 2025 data (FY27) · countries only',
  metaG:'South Korea / official income group by year', hG:'South Korea', mk:['1995 in','1998 crisis','2001 back'],
  capG:[[56.4,'In: <span class="hl">1995.</span>'],[58.9,'<span class="hl">1998:</span> Asian crisis.'],[60.4,'Back in 2001.'],[62.3,'<span class="hl">Every year since.</span>']],
- gniG:'GNI per capita 2025: ',
- noteG:'Source / World Bank OGHIST · one square per GNI data year · GNI: WDI, Atlas method',
+ noteG:'Source / World Bank WDI GNI per capita (Atlas, today\'s revised estimates) · bands: official OGHIST group',
  metaH:'Share of the high-income line / %', hH:'Thailand vs China', line100:'High-income line · 100%', nTHA:'Thailand', nCHN:'China', yrs7:'7 years',
  capH:[[62.4,'<span class="hl">2011:</span> neck and neck.'],[67.2,'China: <span class="hl">99%</span>'],[69.8,'Thailand: <span class="hl">52%</span> (2018)'],[73.0,'2025: <span class="hl">53.5%.</span>']],
  noteH:'Source / World Bank WDI · GNI per capita (Atlas) ÷ high-income threshold of the same year',
@@ -307,17 +303,29 @@ const legU=txt(barsG,{x:150,y:735,'font-size':20,fill:'#455044'},T.legUp), legD=
 const brk=el('rect',{y:752,height:BASE-752,fill:'#D6ED63',opacity:0},barsG);
 const upBars=DATA.up.map((n,i)=>({y:1988+i,n,r:el('rect',{x:bxc(1988+i)-6,width:12,y:BASE,height:0,fill:'#839B45'},barsG)}));
 const dnBars=DATA.down.map((n,i)=>({y:1988+i,n,r:el('rect',{x:bxc(1988+i)-6,width:12,y:BASE+2,height:0,fill:'#DD6B43'},barsG)}));
-// ---------- D/G: official income-group strips (one square per data year 1987-2025) ----------
-const SC=59.5, scx=y=>((y-1987)%13)*SC, scy=y=>Math.floor((y-1987)/13)*100;
-function strip(id,codes,marks){const box=$(id);const cells=YRS.map((y,i)=>{const c=document.createElement('div');const k=codes[i]||'na';
-  c.className='c '+(k==='H'||k==='UM'||k==='LM'?k:'na');c.style.left=scx(y)+'px';c.style.top=scy(y)+'px';c.textContent="'"+String(y).slice(2);box.appendChild(c);return {y,c}});
- const mk=marks.map(([y,label,color,below])=>{const r=document.createElement('div');r.className='ring';r.style.left=(scx(y)-6)+'px';r.style.top=(scy(y)-6)+'px';r.style.borderColor=color;box.appendChild(r);
-  const tg=document.createElement('div');tg.className='tg';tg.textContent=label.toUpperCase();tg.style.color=color==='#E5764B'?'#B4502C':'#283127';if((y-1987)%13>=9){tg.style.right=(780-scx(y)-58)+'px';tg.style.textAlign='right'}else tg.style.left=(scx(y)-4)+'px';tg.style.top=(scy(y)+(below?62:-30))+'px';box.appendChild(tg);return {y,r,tg}});
- return {cells,mk}}
-const legHTML=`<i style="background:#D6ED63;border:2px solid #283127"></i>${T.leg[0]} &nbsp; <i style="background:#E9EDE3;border:1.5px solid #C7CBBF"></i>${T.leg[1]} &nbsp; <i style="background:#C7CBBF"></i>${T.leg[2]}`;
-$('legD').innerHTML=legHTML;$('legG').innerHTML=legHTML;
-const SD=strip('stripD',DATA.argCodes,[[2014,'2014','#283127',false],[2017,'2017','#283127',false]]);
-const SG=strip('stripG',DATA.korCodes,[[1995,T.mk[0],'#283127',false],[1998,T.mk[1],'#E5764B',false],[2001,T.mk[2],'#283127',true]]);
+// ---------- D/G: GNI line vs stepped high-income line; lime bands = years officially classified high income ----------
+const CX0=232, CX1=900, cx=y=>CX0+(y-1987)/38*(CX1-CX0), CY0=1100, CY1=650, HALF=(CX1-CX0)/38/2;
+function lineChart(sv,vmax,ticks,series,codes,name,id){const cy=v=>CY0-v/vmax*(CY0-CY1);const g=el('g',{},sv);
+ const bands=YRS.map((y,i)=>codes[i]==='H'?{y,r:el('rect',{x:cx(y)-HALF,width:HALF*2+0.5,y:CY1-10,height:CY0-CY1+10,fill:'#D6ED63',opacity:0},g)}:null).filter(Boolean);
+ ticks.forEach(v=>{el('line',{x1:CX0,x2:CX1,y1:cy(v),y2:cy(v),stroke:'#E1E4DA','stroke-width':2},g);txt(g,{x:CX0-14,y:cy(v)+8,'text-anchor':'end','font-size':21,fill:'#455044','font-weight':500},v===0?'0':'$'+v/1000+'K')});
+ [1987,2025].forEach(y=>txt(g,{x:cx(y),y:CY0+40,'text-anchor':y===1987?'start':'end','font-size':22,fill:'#455044','font-weight':500},y));
+ const lg=el('g',{},g);
+ el('line',{x1:CX0,x2:CX0+32,y1:604,y2:604,stroke:'#283127','stroke-width':3},lg);txt(lg,{x:CX0+42,y:611,'font-size':18,fill:'#283127'},T.lineLab.toUpperCase());
+ el('line',{x1:CX0+236,x2:CX0+268,y1:604,y2:604,stroke:'#708348','stroke-width':6},lg);txt(lg,{x:CX0+278,y:611,'font-size':18,fill:'#283127'},name.toUpperCase());
+ el('rect',{x:CX0+450,y:594,width:22,height:20,fill:'#D6ED63'},lg);txt(lg,{x:CX0+482,y:611,'font-size':18,fill:'#283127'},T.bandLab.toUpperCase());
+ const sp=[];YRS.forEach((y,i)=>{sp.push(`${cx(y)-HALF},${cy(THR[i])}`,`${cx(y)+HALF},${cy(THR[i])}`)});
+ el('polyline',{points:sp.join(' '),fill:'none',stroke:'#283127','stroke-width':3},g);
+ const clip=el('clipPath',{id},sv), cr=el('rect',{x:0,y:0,width:0,height:1920},clip);
+ const ln=el('polyline',{points:series.map((v,i)=>`${cx(1987+i)},${cy(v)}`).join(' '),fill:'none',stroke:'#708348','stroke-width':6,'stroke-linejoin':'round','clip-path':`url(#${id})`},sv);
+ const dot=el('rect',{width:18,height:18,fill:'#708348'},sv);
+ return {g,cy,ln,dot,bands,at(yc){cr.setAttribute('width',cx(yc));const y0=Math.floor(yc),f=yc-y0,a=series[y0-1987],b=series[Math.min(38,y0-1986)];const v=lerp(a,b,f);dot.setAttribute('x',cx(yc)-9);dot.setAttribute('y',cy(v)-9);return v}}}
+function marker(sv,x,y,label,color,anchor,dy){const g=el('g',{opacity:0},sv);el('rect',{x:x-14,y:y-14,width:28,height:28,fill:'none',stroke:color,'stroke-width':5},g);
+ txt(g,{x:anchor==='end'?x-6:anchor==='start'?x+6:x,y:y+dy,'text-anchor':anchor,'font-size':21,fill:color==='#E5764B'?'#B4502C':'#283127'},label);return g}
+const svD=$('chartD'), AR=lineChart(svD,16000,[0,8000,16000],DATA.argGni,DATA.argCodes,T.hD,'clipD');
+const mD=[[2014,'2014','#283127','end',-26],[2017,'2017','#283127','start',-26]].map(([y,l,c,a,dy])=>({y,g:marker(svD,cx(y),AR.cy(DATA.argGni[y-1987]),l,c,a,dy)}));
+const svG=$('chartG'), KR=lineChart(svG,45000,[0,20000,40000],DATA.korGni,DATA.korCodes,T.hG,'clipG');
+const mG=[[1995,T.mk[0],'#283127','end',-24],[1998,T.mk[1],'#E5764B','middle',52],[2001,T.mk[2],'#283127','start',-28]].map(([y,l,c,a,dy])=>({y,g:marker(svG,cx(y),KR.cy(DATA.korGni[y-1987]),l.toUpperCase(),c,a,dy)}));
+const endG=txt(svG,{x:CX1,y:0,'text-anchor':'end','font-size':30,fill:'#283127'},'');
 // ---------- E: Guyana bars ----------
 const svE=$('chartE'), GU=DATA.guy, EB=1130, ey=v=>EB-v/30000*270, EX0=152, EST=71;
 const gE=el('g',{},svE);el('line',{x1:150,x2:930,y1:EB,y2:EB,stroke:'#5a6657','stroke-width':2},gE);
@@ -424,12 +432,13 @@ window.render=function(t0){let t=t0;
   dnBars.forEach((b,i)=>{const k=eOut(p(t,26.0+i*0.03,26.4+i*0.03));b.r.setAttribute('height',b.n*DU*k)});
   caption($('capB'),T.capB,t,32.3);caption($('listB'),T.listB,t,32.3);if(t>=25.9&&t<27.15)$('listB').style.opacity=0;
   $('noteB').style.opacity=eOut(p(t,8.6,9.1));}
- // ---- D Argentina: official strip, 2014 and 2017 high, fell back the next year each time
+ // ---- D Argentina: GNI vs the line; officially high only in 2014 and 2017
  if(inW('D',t0)){const D=$('D');D.style.transform=`scale(${1+0.02*eInOut(p(t,32.3,39.8))})`;
   $('metaD').style.opacity=eOut(p(t,32.4,32.8));typed($('hD'),T.hD,t,32.5,33.1);
-  SD.cells.forEach(c=>{const ta=32.8+(c.y-1987)*0.055;const k=eSnap(p(t,ta,ta+0.25));c.c.style.opacity=k;c.c.style.transform=`scale(${0.7+0.3*k})`});
-  SD.mk.forEach(m=>{const ta=m.y===2014?34.1:35.3;const k=eSnap(p(t,ta,ta+0.3));m.r.style.opacity=k;m.tg.style.opacity=k;m.r.style.transform=`scale(${1.3-0.3*k})`});
-  $('legD').style.opacity=eOut(p(t,33.4,33.8));$('noteD').style.opacity=eOut(p(t,33.0,33.5));
+  const ch=eOut(p(t,32.7,33.1));AR.g.style.opacity=ch;AR.ln.style.opacity=AR.dot.style.opacity=ch;$('noteD').style.opacity=eOut(p(t,33.0,33.5));
+  let yc;if(t<34.5)yc=lerp(1987,2014,eInOut(p(t,32.9,34.5)));else if(t<35.6)yc=lerp(2014,2017,eInOut(p(t,34.5,35.6)));else yc=lerp(2017,2025,eInOut(p(t,35.6,36.9)));
+  AR.at(yc);AR.bands.forEach(b=>b.r.setAttribute('opacity',.55*eSnap(p(yc,b.y-0.4,b.y))));
+  mD.forEach(m=>m.g.setAttribute('opacity',eSnap(p(yc,m.y-0.3,m.y))));
   caption($('capD'),T.capD,t,39.6);}
  // ---- E Guyana
  if(inW('E',t0)){const t=rmE(t0);const E=$('E');E.style.transform=`scale(${1+0.025*eInOut(p(t,39.0,48.9))})`;
@@ -451,12 +460,11 @@ window.render=function(t0){let t=t0;
  // ---- G Korea: in 1995, crisis 1998, back 2001, high every year since
  if(inW('G',t0)){const G=$('G');G.style.transform=`scale(${1+0.02*eInOut(p(t,56.1,64.0))})`;
   $('metaG').style.opacity=eOut(p(t,56.2,56.6));typed($('hG'),T.hG,t,56.3,57.0);
-  const ky=[[1987,56.6],[1995,57.8],[1998,58.9],[2001,60.4],[2025,62.4]];
-  const tOf=y=>{for(let i=1;i<ky.length;i++)if(y<=ky[i][0])return lerp(ky[i-1][1],ky[i][1],(y-ky[i-1][0])/(ky[i][0]-ky[i-1][0]));return 62.4};
-  SG.cells.forEach(c=>{const ta=tOf(c.y);const k=eSnap(p(t,ta,ta+0.22));c.c.style.opacity=k;c.c.style.transform=`scale(${0.7+0.3*k})`});
-  SG.mk.forEach(m=>{const ta=tOf(m.y)+0.05;const k=eSnap(p(t,ta,ta+0.3));m.r.style.opacity=k;m.tg.style.opacity=k;m.r.style.transform=`scale(${1.3-0.3*k})`});
-  $('legG').style.opacity=eOut(p(t,57.0,57.4));$('noteG').style.opacity=eOut(p(t,56.8,57.3));
-  const gv=eInOut(p(t,62.4,63.4));$('gniG').innerHTML=T.gniG.toUpperCase()+'<b>$'+fmt(DATA.kor2025*gv)+'</b>';$('gniG').style.opacity=eOut(p(t,62.3,62.6));
+  const ch=eOut(p(t,56.5,56.9));KR.g.style.opacity=ch;KR.ln.style.opacity=KR.dot.style.opacity=ch;$('noteG').style.opacity=eOut(p(t,56.8,57.3));
+  let yc;if(t<57.8)yc=lerp(1987,1995,eInOut(p(t,56.6,57.8)));else if(t<58.9)yc=lerp(1995,1998,eInOut(p(t,57.8,58.9)));else if(t<60.4)yc=lerp(1998,2001,eInOut(p(t,59.2,60.4)));else yc=lerp(2001,2025,eInOut(p(t,60.4,62.4)));
+  const v=KR.at(yc);KR.bands.forEach(b=>b.r.setAttribute('opacity',.38*eSnap(p(yc,b.y-0.4,b.y))));
+  mG.forEach(m=>m.g.setAttribute('opacity',eSnap(p(yc,m.y-0.25,m.y))));
+  endG.setAttribute('y',KR.cy(v)-30);endG.setAttribute('x',Math.max(cx(yc),560));endG.textContent='$'+fmt(v);endG.style.opacity=p(t,61.2,61.5);
   caption($('capG'),T.capG,t,63.8);}
  // ---- H Thailand vs China
  if(inW('H',t0)){const t=rmH(t0);const H=$('H');H.style.transform=`scale(${1+0.02*eInOut(p(t,62.1,76.4))})`;
