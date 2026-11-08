@@ -46,3 +46,11 @@ FROM worldbank_gni_per_capita_atlas g
 JOIN worldbank_income_classification_thresholds t ON t.year = g.year AND t.income_group_order = 4
 WHERE g.country_iso_alpha3 IN ('GUY','KOR','THA','CHN') AND g.year >= 2011
 ORDER BY 1, 2;
+
+-- 5) How many of the 36 were high income each year (the cumulative column chart; 3 in 1988 → 32 in 2025, falls 2015–16 and 2020)
+SELECT year, COUNT(*) FILTER (WHERE income_group_code = 'H') AS n_high
+FROM worldbank_income_classification_history
+WHERE country_iso_alpha3 IN ('CYP','BRB','MLT','PRT','KOR','GRC','SVN','BHR','ATG','SAU','CZE','EST','TTO','GNQ','HUN','OMN',
+  'SVK','HRV','LVA','POL','KNA','CHL','LTU','RUS','URY','ARG','SYC','VEN','PLW','PAN','MUS','NRU','ROU','GUY','BGR','CRI')
+  AND year >= 1988
+GROUP BY year ORDER BY year;

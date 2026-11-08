@@ -5,39 +5,39 @@
     "height": 1920,
     "fps": 30
   },
-  "duration": 99.6,
+  "duration": 91.0,
   "chunks": [
     [
       0,
-      8.8
+      6.2
     ],
     [
-      8.8,
-      20.9
+      6.2,
+      18
     ],
     [
-      20.9,
-      32.3
+      18,
+      29.8
     ],
     [
-      32.3,
-      49.8
+      29.8,
+      43
     ],
     [
-      49.8,
-      64.0
+      43,
+      55.6
     ],
     [
-      64.0,
-      79.4
+      55.6,
+      70.8
     ],
     [
-      79.4,
-      90.2
+      70.8,
+      81.6
     ],
     [
-      90.2,
-      99.6
+      81.6,
+      91
     ]
   ],
   "scene": "scene.html",
@@ -55,77 +55,82 @@
     },
     {
       "id": "v2",
-      "at": 5.5,
-      "text": "From East and Southeast Asia? Just one."
+      "at": 6.5,
+      "text": "The line today is about fourteen thousand dollars of income per person."
     },
     {
       "id": "v3",
-      "at": 9.1,
-      "text": "The line today is about fourteen thousand dollars of income per person. And countries didn't cross it one by one. They came in waves."
+      "at": 10.9,
+      "text": "And countries didn't cross it one by one. They came in waves."
     },
     {
       "id": "v4",
       "at": 16.7,
-      "text": "First, Central and Eastern Europe. Seven countries in four years."
+      "text": "First, a wave led by Central and Eastern Europe: from nine to nineteen in four years."
     },
     {
       "id": "v5",
-      "at": 20.9,
-      "text": "Then the commodity boom. Chile, Uruguay, Russia, Argentina, Venezuela."
+      "at": 22.1,
+      "text": "Then the commodity boom pushed it to twenty-eight."
     },
     {
       "id": "v6",
-      "at": 25.9,
-      "text": "But not all of them stayed. By twenty fifteen, Russia, Venezuela and Argentina had all fallen back."
+      "at": 24.9,
+      "text": "But the count doesn't only go up."
     },
     {
       "id": "v7",
-      "at": 32.6,
-      "text": "Argentina made it twice, in twenty fourteen and twenty seventeen. Both times, it slipped back the very next year."
+      "at": 27.0,
+      "text": "So, once rich, always rich?"
     },
     {
       "id": "v8",
-      "at": 40.1,
-      "text": "The fastest climb of all? Guyana. Oil started flowing, and income per person jumped from about six thousand dollars to over twenty-eight thousand, in six years."
+      "at": 30.1,
+      "text": "Not quite. Thirty-two of the thirty-six are high income today. Four have fallen back out."
     },
     {
       "id": "v9",
-      "at": 50.1,
-      "text": "Still, thirty-two of the thirty-six are high income today. So what does a climb that sticks look like?"
+      "at": 36.3,
+      "text": "Argentina made it twice, in twenty fourteen and twenty seventeen. Both times, it slipped back the very next year."
     },
     {
       "id": "v10",
-      "at": 56.4,
-      "text": "South Korea made it in ninety-five. The Asian crisis knocked it back. Three years later it returned, and it has stayed ever since."
+      "at": 43.3,
+      "text": "Now compare South Korea. It was in by ninety-five. Then the Asian crisis cut its income by nearly a quarter, and it was moved back down."
     },
     {
       "id": "v11",
-      "at": 64.3,
-      "text": "In twenty eleven, Thailand and China were neck and neck. Both well under half the line."
+      "at": 51.6,
+      "text": "It was back by two thousand one, and then it took off."
     },
     {
       "id": "v12",
-      "at": 69.5,
-      "text": "By twenty twenty-five, China was at ninety-nine percent."
+      "at": 55.9,
+      "text": "In twenty eleven, Thailand and China were neck and neck. Both well under half the line."
     },
     {
       "id": "v13",
-      "at": 72.9,
-      "text": "Thailand passed the halfway mark in twenty eighteen. Seven years later, it's still just over half."
+      "at": 61.1,
+      "text": "By twenty twenty-five, China was at ninety-nine percent."
     },
     {
       "id": "v14",
-      "at": 79.7,
-      "text": "We found this on Querious, using the World Bank's official income history, year by year."
+      "at": 64.5,
+      "text": "Thailand passed the halfway mark in twenty eighteen. Seven years later, it's still just over half."
     },
     {
       "id": "v15",
-      "at": 85.2,
-      "text": "Find every move up, then download the result, or connect it to your own tools."
+      "at": 71.1,
+      "text": "We found this on Querious, using the World Bank's official income history, year by year."
     },
     {
       "id": "v16",
-      "at": 90.5,
+      "at": 76.6,
+      "text": "Find every move up, then download the result, or connect it to your own tools."
+    },
+    {
+      "id": "v17",
+      "at": 81.9,
       "text": "The data is open. The question is yours."
     }
   ],
@@ -141,10 +146,10 @@
   },
   "sfx": {
     "click": [
-      81.47,
-      83.15,
-      86.8,
-      87.8
+      72.87,
+      74.55,
+      78.2,
+      79.2
     ]
   },
   "data_source": "querios: worldbank_income_classification_history, worldbank_income_classification_thresholds, worldbank_gni_per_capita_atlas (20261008)"
