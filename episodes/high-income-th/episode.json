@@ -5,7 +5,7 @@
     "height": 1920,
     "fps": 30
   },
-  "duration": 91.0,
+  "duration": 92.5,
   "chunks": [
     [
       0,
@@ -17,27 +17,27 @@
     ],
     [
       18,
-      29.8
+      31.3
     ],
     [
-      29.8,
-      43
+      31.3,
+      44.5
     ],
     [
-      43,
-      55.6
+      44.5,
+      57.1
     ],
     [
-      55.6,
-      70.8
+      57.1,
+      72.3
     ],
     [
-      70.8,
-      81.6
+      72.3,
+      83.1
     ],
     [
-      81.6,
-      91
+      83.1,
+      92.5
     ]
   ],
   "scene": "scene.html",
@@ -84,73 +84,73 @@
     },
     {
       "id": "v6",
-      "at": 24.9,
+      "at": 26.4,
       "text": "แต่ตัวเลขนี้ ไม่ได้มีแต่ขึ้น",
       "text_en": "But the count doesn't only go up."
     },
     {
       "id": "v7",
-      "at": 27.0,
+      "at": 28.5,
       "text": "รวยแล้ว จะรวยตลอดไปไหม",
       "text_en": "So, once rich, always rich?"
     },
     {
       "id": "v8",
-      "at": 30.1,
+      "at": 31.6,
       "text": "ไม่เสมอไป วันนี้สามสิบสองจากสามสิบหกยังรายได้สูง อีกสี่ประเทศหลุดลงมา",
       "text_en": "Not quite. Thirty-two of the thirty-six are high income today. Four have fallen back out."
     },
     {
       "id": "v9",
-      "at": 36.3,
+      "at": 37.8,
       "text": "อาร์เจนตินาขึ้นไปได้สองครั้ง ปีสองพันสิบสี่กับสองพันสิบเจ็ด แต่หลุดกลับในปีถัดมาทั้งสองครั้ง",
       "text_en": "Argentina made it twice, in twenty fourteen and twenty seventeen. Both times, it slipped back the very next year."
     },
     {
       "id": "v10",
-      "at": 43.3,
+      "at": 44.8,
       "text": "ทีนี้ดูเกาหลีใต้ ขึ้นไปได้ตั้งแต่ปีเก้าห้า แล้ววิกฤตต้มยำกุ้งทำให้รายได้หายไปเกือบหนึ่งในสี่ จนถูกปรับลง",
       "text_en": "Now compare South Korea. It was in by ninety-five. Then the Asian crisis cut its income by nearly a quarter, and it was moved back down."
     },
     {
       "id": "v11",
-      "at": 51.6,
+      "at": 53.1,
       "text": "กลับขึ้นไปได้ในปีสองพันหนึ่ง แล้วก็พุ่งไม่หยุด",
       "text_en": "It was back by two thousand one, and then it took off."
     },
     {
       "id": "v12",
-      "at": 55.9,
+      "at": 57.4,
       "text": "ปีสองพันสิบเอ็ด ไทยกับจีนยังสูสีกัน ไม่ถึงครึ่งเส้นทั้งคู่",
       "text_en": "In twenty eleven, Thailand and China were neck and neck. Both well under half the line."
     },
     {
       "id": "v13",
-      "at": 61.1,
+      "at": 62.6,
       "text": "ปีสองพันยี่สิบห้า จีนไปถึงเก้าสิบเก้าเปอร์เซ็นต์",
       "text_en": "By twenty twenty-five, China was at ninety-nine percent."
     },
     {
       "id": "v14",
-      "at": 64.5,
+      "at": 66.0,
       "text": "ไทยผ่านครึ่งทางในปีสองพันสิบแปด ผ่านไปเจ็ดปี ก็ยังเกินครึ่งมาแค่นิดเดียว",
       "text_en": "Thailand passed the halfway mark in twenty eighteen. Seven years later, it's still just over half."
     },
     {
       "id": "v15",
-      "at": 71.1,
+      "at": 72.6,
       "text": "เราหาคำตอบนี้บนคิวเรียส จากประวัติกลุ่มรายได้ของธนาคารโลก ปีต่อปี",
       "text_en": "We found this on Querious, using the World Bank's official income history, year by year."
     },
     {
       "id": "v16",
-      "at": 76.6,
+      "at": 78.1,
       "text": "หาทุกปีที่ขยับขึ้น แล้วดาวน์โหลด หรือเชื่อมต่อกับเครื่องมือของคุณ",
       "text_en": "Find every move up, then download the result, or connect it to your own tools."
     },
     {
       "id": "v17",
-      "at": 81.9,
+      "at": 83.4,
       "text": "ข้อมูลพร้อมแล้ว มาหาคำตอบกัน",
       "text_en": "The data is open. The question is yours."
     }
@@ -167,10 +167,10 @@
   },
   "sfx": {
     "click": [
-      72.87,
-      74.55,
-      78.2,
-      79.2
+      74.37,
+      76.05,
+      79.7,
+      80.7
     ]
   },
   "data_source": "querios: worldbank_income_classification_history, worldbank_income_classification_thresholds, worldbank_gni_per_capita_atlas (20261008)"
