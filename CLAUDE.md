@@ -5,7 +5,7 @@ This repo makes short motion-graphic clips for Querious. The brand is fixed; eve
 ## Read first
 - `brand/brand-motion-guide.md`: colours, fonts, motion style ("Cinematic × Flat Editorial"), formats and safe zones
 - `brand/sonic-identity.md`: music rules (ambient only: no drums, risers, whooshes or loud hits)
-- `episodes/gapminder/`: the reference episode. Start new episodes by copying it
+- `episodes/gapminder/` + `episodes/gapminder-th/`: bubble chart on the Facebook-safe layout; one scene file for both languages (`T` copy block + `const LANG`)
 - `episodes/renewable/`: current reference: Facebook-safe margins (`--safe-*` variables), bar chart, scatter (log axis), two-dataset JOIN walkthrough, erase-out end card
 - `episodes/renewable-th/`: Thai version on the same timeline (Thai text + Paxa voice `nomyen` via GitHub Actions, `voice.fit`); see lessons learned for how to make a second-language version
 - `episodes/fertility-th/`: Thai fertility on the Facebook-safe layout (line + bar charts, single-dataset walkthrough)
