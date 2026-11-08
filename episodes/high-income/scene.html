@@ -43,17 +43,24 @@ svg.abs{position:absolute;left:0;top:0}
 #korA{position:absolute;font-size:24px;color:#E5764B;background:#222923;padding:4px 8px;border:2px solid #E5764B;white-space:nowrap}
 #A .leg{top:1300px;font-size:21px;color:#A9B4A2;white-space:nowrap}
 #A .leg i{display:inline-block;width:18px;height:18px;vertical-align:-2px;margin-right:10px}
-/* D callout */
-#callD{left:248px;top:660px;width:310px;border:2px solid var(--ink);background:#FAF9F3;padding:16px 22px;box-shadow:7px 7px 0 var(--lime)}
-#callD .k{font-size:19px;color:var(--muted)}
-#callD .r{display:flex;justify-content:space-between;font:600 25px PM;margin-top:6px}
-#callD .big{font:700 74px/1 SG;letter-spacing:-.06em;color:var(--orange);margin-top:8px}
+/* D/G strips: one square per GNI data year, coloured by the official income group */
+.strip{position:absolute;left:153px;top:650px;width:780px;height:300px}
+.strip .c{position:absolute;width:54px;height:54px;display:flex;align-items:center;justify-content:center;font:600 16px PM;letter-spacing:.02em}
+.strip .H{background:#D6ED63;border:2px solid #283127;color:#283127}
+.strip .UM{background:#E9EDE3;border:1.5px solid #C7CBBF;color:#677166}
+.strip .LM{background:#C7CBBF;border:1.5px solid #A9B0A2;color:#455044}
+.strip .na{background:transparent;border:1.5px dashed #C7CBBF;color:#A9B0A2}
+.strip .ring{position:absolute;width:66px;height:66px;border:4px solid #E5764B;pointer-events:none}
+.strip .tg{position:absolute;font:600 18px PM;letter-spacing:.06em;white-space:nowrap;color:#283127}
+.sleg{top:980px;font-size:20px;color:var(--muted);white-space:nowrap}
+.sleg i{display:inline-block;width:18px;height:18px;vertical-align:-2px;margin-right:8px}
+#gniG{top:1040px;font-size:24px;color:var(--ink)}
 /* E guyana */
 #E .name{top:410px;font:700 104px/1 SG,TH;letter-spacing:-.07em}
 #E .lab{top:580px;font-size:27px;color:#A9B4A2}#E .lab b{color:var(--lime);font-weight:600}
 #E .big{top:625px;font:700 200px/1 SG;letter-spacing:-.075em;color:var(--lime)}
 /* F grid */
-#gridF{position:absolute;left:150px;top:620px;width:700px;display:grid;grid-template-columns:repeat(8,76px);gap:12px}
+#gridF{position:absolute;left:150px;top:620px;width:780px;display:grid;grid-template-columns:repeat(9,76px);gap:12px}
 #gridF div{height:76px;display:flex;align-items:center;justify-content:center;font:600 17px PM;letter-spacing:.04em}
 #gridF .s{background:var(--lime);border:2px solid var(--ink);color:var(--ink)}
 #gridF .f{background:#FAF9F3;border:3px solid var(--orange);color:#B4502C}
@@ -130,13 +137,13 @@ svg.abs{position:absolute;left:0;top:0}
  <div class="list mono L R" id="listB"></div>
  <div class="note mono L R" id="noteB" style="top:1400px"></div>
 </div>
-<!-- D: Argentina -->
+<!-- D: Argentina (official group strip) -->
 <div id="D" class="scene light">
  <div class="top L"><div class="brand"><i>Q</i>uerious<span class="cur">_</span></div><div class="tag mono">Insight</div></div>
  <div class="meta mono L" id="metaD"></div>
  <div class="h2 L" id="hD"></div>
- <svg id="chartD" class="abs" width="1080" height="1920"></svg>
- <div id="callD" style="position:absolute"><div class="k mono" id="callDk"></div><div class="r"><span>ARGENTINA</span><span>$13,970</span></div><div class="r" style="color:#677166"><span id="callDl"></span><span>$13,935</span></div><div class="big">+$35</div></div>
+ <div class="strip" id="stripD"></div>
+ <div class="sleg mono L" id="legD"></div>
  <div class="caption L R" id="capD"></div>
  <div class="note mono L R" id="noteD" style="top:1340px"></div>
 </div>
@@ -160,12 +167,14 @@ svg.abs{position:absolute;left:0;top:0}
  <div class="L R" id="qF"></div>
  <div class="note mono L R" id="noteF" style="top:1440px"></div>
 </div>
-<!-- G: South Korea -->
+<!-- G: South Korea (official group strip) -->
 <div id="G" class="scene light">
  <div class="top L"><div class="brand"><i>Q</i>uerious<span class="cur">_</span></div><div class="tag mono">Insight</div></div>
  <div class="meta mono L" id="metaG"></div>
  <div class="h2 L" id="hG"></div>
- <svg id="chartG" class="abs" width="1080" height="1920"></svg>
+ <div class="strip" id="stripG"></div>
+ <div class="sleg mono L" id="legG"></div>
+ <div class="mono L" id="gniG"></div>
  <div class="caption L R" id="capG"></div>
  <div class="note mono L R" id="noteG" style="top:1340px"></div>
 </div>
@@ -183,8 +192,8 @@ svg.abs{position:absolute;left:0;top:0}
  <div class="top L"><div class="brand"><i>Q</i>uerious<span class="cur">_</span></div><div class="tag mono" id="stepI"></div></div>
  <div class="h2 L" id="catT" style="top:440px;font-size:84px"></div>
  <div id="search" class="L"><span style="font:700 32px PX;color:#E5764B">✳</span><span id="stext"></span></div>
- <div id="dscard" class="L"><div class="ey mono">Dataset / World Bank — WDI</div><h3>GDP per capita (current US$)</h3>
-  <p id="dsdesc"></p><div class="mt mono">215 countries & territories · CC BY 4.0</div>
+ <div id="dscard" class="L"><div class="ey mono">Dataset / World Bank — OGHIST</div><h3>Income classification history</h3>
+  <p id="dsdesc"></p><div class="mt mono">215 economies · 1987–2025 · CC BY 4.0</div>
   <div class="btn mono" id="openq"><span>Open in Query ↗</span></div></div>
  <div id="stack">
   <div id="sqlhead" class="mono L"><span>SQL / DuckDB in your browser</span><span id="sqlstate"></span></div>
@@ -219,31 +228,33 @@ svg.abs{position:absolute;left:0;top:0}
 const T={
  eyebrow:['Querious / Open data / ','High income'],
  labA1:'Crossed into <b>high income</b> since 1988', labA2:'From <b>East & Southeast Asia</b>',
- headA2:'Just one.', korA:'South Korea', legA:['Crossed 1988–2024','Already high income'],
- noteA:'GDP per capita, current US$, vs. World Bank high-income line · approximate · dark = below the line or no data',
- metaB1:'World Bank / high-income line', metaB2:'Crossings into high income / per year',
- hB1:'The line:<br>$13,935', hB2:'They came<br>in waves',
- lineLab0:'$6,000 · 1987', lineLab1:'$13,935 · 2024', legUp:'▲ Crossed into high income', legDown:'▼ Fell back below',
- capB:[[8.3,'≈ <span class="hl">$14K</span> a person.'],[16.4,'Wave 1: <span class="hl">E. Europe</span>'],[21.0,'Wave 2: <span class="hl">commodities</span>'],[25.9,'Many <span class="hl">fell back.</span>']],
- listB:[[8.3,'GNI per capita · <b>2024 threshold</b>'],[16.4,'2003–2008 · <b>CZE HUN SVK EST LVA LTU POL HRV</b>'],[21.0,'2010–2014 · <b>CHL URY VEN ARG BRA RUS KAZ PAN</b>'],[27.2,'<b>VEN 2011 · BRA 2012 · KAZ 2014 · RUS 2015</b>']],
- noteB:'Source / World Bank WDI · GDP per capita, current US$, vs. WB high-income line (GNI, Atlas) · approximate · Iraq excluded',
- metaD:'Argentina / GDP per capita vs. the line', hD:'Argentina', lineLab:'High-income line', callK:'2024 / latest data', callL:'LINE',
- capD:[[32.8,'Crossed <span class="hl">3 times.</span>'],[36.1,'Just <span class="hl">$35</span> above.']],
- noteD:'Source / World Bank WDI · GDP per capita, current US$ · line = WB high-income threshold (GNI, Atlas) · approximate',
- ebE:['The fastest climb / ','2019 → 2024'], nameE:'Guyana', labE:'GDP per capita · ',
- capE:[[47.4,'<span class="hl">4.6×</span> in five years.']], lineE:'High-income line',
- noteE:'Source / World Bank WDI · GDP per capita, current US$',
- metaF:'Still above the line / latest data', hF:'33 of 38', legF:['Above (33)','Fell back (5)'],
+ headA2:'Just one.', korA:'South Korea', legA:['Crossed 1988–2025','Already high income'],
+ noteA:'World Bank income groups by GNI data year · countries only (9 territories incl. Macao not counted)',
+ metaB1:'World Bank / high-income line', metaB2:'Countries moving into high income / per year',
+ hB1:'The line:<br>$14,375', hB2:'They came<br>in waves',
+ lineLab0:'$6,000 · 1987', lineLab1:'$14,375 · 2025', legUp:'▲ Moved into high income', legDown:'▼ Fell back',
+ capB:[[8.3,'≈ <span class="hl">$14K</span> a person.'],[16.4,'Wave 1: <span class="hl">E. Europe</span>'],[21.0,'Wave 2: <span class="hl">commodities</span>'],[25.9,'Some <span class="hl">fell back.</span>']],
+ listB:[[8.3,'GNI per capita · <b>2025 threshold</b>'],[16.4,'2006–2009 · <b>CZE EST HUN SVK HRV LVA POL</b>'],[21.0,'2012–2014 · <b>CHL URY RUS ARG VEN</b>'],[27.2,'2015 · <b>RUS VEN ARG GNQ</b>']],
+ noteB:'Source / World Bank income classification history (OGHIST) · GNI per capita, Atlas method · countries only',
+ metaD:'Argentina / official income group by year', hD:'Argentina',
+ capD:[[32.6,'In: <span class="hl">2014.</span> Out: 2015.'],[35.2,'In: <span class="hl">2017.</span> Out: 2018.'],[37.4,'Now: <span class="hl">upper-middle.</span>']],
+ noteD:'Source / World Bank OGHIST · one square per GNI data year, 1987–2025',
+ leg:['High','Upper-middle','Lower-middle'],
+ ebE:['The fastest climb / ','2019 → 2025'], nameE:'Guyana', labE:'GNI per capita · ',
+ capE:[[47.4,'<span class="hl">4.5×</span> in six years.']], lineE:'High-income line',
+ noteE:'Source / World Bank WDI · GNI per capita, Atlas method, current US$',
+ metaF:'Still high income / 2025 data', hF:'32 of 36', legF:['Still high (32)','Fell back (4)'],
  qF:'What does a<br>climb that <em>sticks</em><br>look like?',
- noteF:'Latest year per country: 2024 (Palau 2023, American Samoa 2022) · approximate',
- metaG:'South Korea / GDP per capita vs. the line', hG:'South Korea', mk:['1992 crossed','1998 crisis','1999 back'],
- capG:[[55.1,'Crossed in <span class="hl">1992.</span>'],[57.3,'<span class="hl">1998:</span> Asian crisis.'],[59.0,'Back in 1999.'],[60.7,'<span class="hl">Never left.</span>']],
- noteG:'Source / World Bank WDI · GDP per capita, current US$ · line = WB high-income threshold · approximate',
+ noteF:'Official income groups, latest: 2025 data (FY27) · countries only',
+ metaG:'South Korea / official income group by year', hG:'South Korea', mk:['1995 in','1998 crisis','2001 back'],
+ capG:[[56.4,'In: <span class="hl">1995.</span>'],[58.9,'<span class="hl">1998:</span> Asian crisis.'],[60.4,'Back in 2001.'],[62.3,'<span class="hl">Every year since.</span>']],
+ gniG:'GNI per capita 2025: ',
+ noteG:'Source / World Bank OGHIST · one square per GNI data year · GNI: WDI, Atlas method',
  metaH:'Share of the high-income line / %', hH:'Thailand vs China', line100:'High-income line · 100%', nTHA:'Thailand', nCHN:'China', yrs7:'7 years',
- capH:[[62.4,'<span class="hl">2011:</span> neck and neck.'],[67.2,'China: <span class="hl">95%</span>'],[69.8,'Thailand: <span class="hl">53%</span> (2017)'],[73.0,'2024: <span class="hl">back to 53%.</span>']],
- noteH:'Source / World Bank WDI · GDP per capita, current US$ ÷ WB high-income line · approximate',
+ capH:[[62.4,'<span class="hl">2011:</span> neck and neck.'],[67.2,'China: <span class="hl">99%</span>'],[69.8,'Thailand: <span class="hl">52%</span> (2018)'],[73.0,'2025: <span class="hl">53.5%.</span>']],
+ noteH:'Source / World Bank WDI · GNI per capita (Atlas) ÷ high-income threshold of the same year',
  catT:'Data catalog', steps:['Step 01 / Discover','Step 02 / Query','Step 03 / Take it further'], sqlEdit:'Editing…', sqlRan:'✓ Ran in browser', ph:'Search datasets…',
- search:'gdp per capita', dsdesc:'Annual GDP per person in current US dollars.', toast:'✓ result.csv · 30 rows', connFor:'→ Your AI · Your BI dashboard',
+ search:'income history', dsdesc:'Official World Bank income group of each country, every year since 1987.', toast:'✓ result.csv · 64 rows', connFor:'→ Your AI · Your BI dashboard',
  endH:'Your turn', endS1:'The data is open.', endS2:'The question is yours.', endUrl:'No account needed to explore'
 };
 const DATA=window.__DATA__, $=id=>document.getElementById(id), NS='http://www.w3.org/2000/svg';
@@ -266,7 +277,7 @@ function typed(elx,s,t,a,b,keep){const L=htmlLen(s),n=Math.round(L*p(t,a,b));elx
 // static copy
 $('ebA').innerHTML=T.eyebrow[0]+'<b>'+T.eyebrow[1]+'</b>';$('noteA').textContent=T.noteA;
 $('legA').innerHTML=`<i style="background:#D6ED63"></i>${T.legA[0]} &nbsp;&nbsp; <i style="background:#6B7B5E"></i>${T.legA[1]}`;
-$('noteB').textContent=T.noteB;$('metaD').textContent=T.metaD;$('noteD').textContent=T.noteD;$('callDk').textContent=T.callK;$('callDl').textContent=T.callL;
+$('noteB').textContent=T.noteB;$('metaD').textContent=T.metaD;$('noteD').textContent=T.noteD;
 $('ebE').innerHTML=T.ebE[0]+'<b>'+T.ebE[1]+'</b>';$('nameE').textContent=T.nameE;$('noteE').textContent=T.noteE;
 $('metaF').textContent=T.metaF;$('noteF').textContent=T.noteF;
 $('legF').innerHTML=`<i style="background:#D6ED63;border:2px solid #283127"></i>${T.legF[0]} &nbsp;&nbsp; <i style="border:3px solid #E5764B"></i>${T.legF[1]}`;
@@ -279,9 +290,9 @@ DATA.crossedFirst.forEach(c=>CROSS[c.id]=c);
 const mapEls={};
 for(const id in MAP.paths){mapEls[id]=el('path',{d:MAP.paths[id],fill:'#2E382C',stroke:'#222923','stroke-width':0.8},mapG)}
 for(const id in MAP.dots){if(mapEls[id]&&!(id in CROSS))continue;const [x,y]=MAP.dots[id];const r=el('rect',{x:x-4.5,y:y-4.5,width:9,height:9,fill:'#2E382C'},mapG);mapEls[id+'_dot']=r}
-const tA=y=>0.9+(y-1988)/36*3.3;
+const tA=y=>0.9+(y-1988)/37*3.7;
 // ---------- B: line + bars ----------
-const svB=$('chartB'), BX0=232, BST=670/36, bxc=y=>BX0+(y-1988)*BST, BASE=1010, UU=50, DU=34;
+const svB=$('chartB'), BX0=232, BST=670/37, bxc=y=>BX0+(y-1988)*BST, BASE=1010, UU=42, DU=34;
 const lineG=el('g',{},svB), ty=v=>BASE-v/15000*260;
 const stepPts=[];YRS.forEach((y,i)=>{stepPts.push(`${bxc(y)-BST/2},${ty(THR[i])}`,`${bxc(y)+BST/2},${ty(THR[i])}`)});
 [0,15000].forEach(v=>el('line',{x1:BX0-12,x2:900+10,y1:ty(v),y2:ty(v),stroke:'#E1E4DA','stroke-width':2},lineG));
@@ -296,99 +307,90 @@ const legU=txt(barsG,{x:150,y:735,'font-size':20,fill:'#455044'},T.legUp), legD=
 const brk=el('rect',{y:752,height:BASE-752,fill:'#D6ED63',opacity:0},barsG);
 const upBars=DATA.up.map((n,i)=>({y:1988+i,n,r:el('rect',{x:bxc(1988+i)-6,width:12,y:BASE,height:0,fill:'#839B45'},barsG)}));
 const dnBars=DATA.down.map((n,i)=>({y:1988+i,n,r:el('rect',{x:bxc(1988+i)-6,width:12,y:BASE+2,height:0,fill:'#DD6B43'},barsG)}));
-// ---------- generic GDP-vs-line chart (Argentina, Korea) ----------
-const CX0=232, CX1=900, cx=y=>CX0+(y-1987)/37*(CX1-CX0), CY0=1100, CY1=640;
-function lineChart(sv,vmax,ticks,series,color,id,name){const cy=v=>CY0-v/vmax*(CY0-CY1);const g=el('g',{},sv);
- ticks.forEach(v=>{el('line',{x1:CX0,x2:CX1,y1:cy(v),y2:cy(v),stroke:'#E1E4DA','stroke-width':2},g);txt(g,{x:CX0-14,y:cy(v)+8,'text-anchor':'end','font-size':21,fill:'#455044','font-weight':500},v===0?'0':'$'+v/1000+'K')});
- [1987,2024].forEach(y=>txt(g,{x:cx(y),y:CY0+40,'text-anchor':y===1987?'start':'end','font-size':22,fill:'#455044','font-weight':500},y));
- const sp=[];YRS.forEach((y,i)=>{sp.push(`${cx(y)},${cy(THR[i])}`);if(i<YRS.length-1)sp.push(`${cx(y+1)},${cy(THR[i])}`)});
- const clip=el('clipPath',{id},sv), cr=el('rect',{x:0,y:0,width:0,height:1920},clip);
- const thr=el('polyline',{points:sp.join(' '),fill:'none',stroke:'#283127','stroke-width':3},g);
- const lg=el('g',{},g);el('line',{x1:CX0,x2:CX0+36,y1:592,y2:592,stroke:'#283127','stroke-width':3},lg);txt(lg,{x:CX0+46,y:599,'font-size':19,fill:'#283127'},T.lineLab.toUpperCase());
- el('line',{x1:CX0+300,x2:CX0+336,y1:592,y2:592,stroke:color,'stroke-width':6},lg);txt(lg,{x:CX0+346,y:599,'font-size':19,fill:'#283127'},name.toUpperCase());
- const thrLab=null;
- const ln=el('polyline',{points:series.map((v,i)=>`${cx(1987+i)},${cy(v)}`).join(' '),fill:'none',stroke:color,'stroke-width':6,'stroke-linejoin':'round','clip-path':`url(#${id})`},sv);
- const dot=el('rect',{width:18,height:18,fill:color},sv);
- return {g,cy,cr,ln,dot,thr,thrLab,series,
-  at(yc){cr.setAttribute('width',cx(yc));const y0=Math.floor(yc),f=yc-y0,a=series[y0-1987],b=series[Math.min(37,y0-1986)];const v=lerp(a,b,f);dot.setAttribute('x',cx(yc)-9);dot.setAttribute('y',cy(v)-9);return v}}}
-function marker(sv,x,y,label,color,anchor,dy){const g=el('g',{opacity:0},sv);el('rect',{x:x-14,y:y-14,width:28,height:28,fill:'none',stroke:color,'stroke-width':5},g);
- txt(g,{x:anchor==='end'?x-6:anchor==='start'?x+6:x,y:y+dy,'text-anchor':anchor,'font-size':21,fill:color==='#E5764B'?'#B4502C':'#283127'},label);return g}
-// D Argentina
-const svD=$('chartD'), AR=lineChart(svD,16000,[0,8000,16000],DATA.arg,'#708348','clipD',T.hD);
-const mD=[[2011,'2011'],[2015,'2015'],[2022,'2022']].map(([y,l])=>({y,g:marker(svD,cx(y),AR.cy(DATA.arg[y-1987]),l,'#E5764B','middle',-26)}));
-// G Korea
-const svG=$('chartG'), KR=lineChart(svG,40000,[0,20000,40000],DATA.kor,'#708348','clipG',T.hG);
-const mG=[[1992,T.mk[0],'#283127','end',-24],[1998,T.mk[1],'#E5764B','middle',52],[1999,T.mk[2],'#283127','start',-28]].map(([y,l,c,a,dy])=>({y,g:marker(svG,cx(y),KR.cy(DATA.kor[y-1987]),l.toUpperCase(),c,a,dy)}));
-const endG=txt(svG,{x:CX1,y:0,'text-anchor':'end','font-size':30,fill:'#283127'},'');
+// ---------- D/G: official income-group strips (one square per data year 1987-2025) ----------
+const SC=59.5, scx=y=>((y-1987)%13)*SC, scy=y=>Math.floor((y-1987)/13)*100;
+function strip(id,codes,marks){const box=$(id);const cells=YRS.map((y,i)=>{const c=document.createElement('div');const k=codes[i]||'na';
+  c.className='c '+(k==='H'||k==='UM'||k==='LM'?k:'na');c.style.left=scx(y)+'px';c.style.top=scy(y)+'px';c.textContent="'"+String(y).slice(2);box.appendChild(c);return {y,c}});
+ const mk=marks.map(([y,label,color,below])=>{const r=document.createElement('div');r.className='ring';r.style.left=(scx(y)-6)+'px';r.style.top=(scy(y)-6)+'px';r.style.borderColor=color;box.appendChild(r);
+  const tg=document.createElement('div');tg.className='tg';tg.textContent=label.toUpperCase();tg.style.color=color==='#E5764B'?'#B4502C':'#283127';if((y-1987)%13>=9){tg.style.right=(780-scx(y)-58)+'px';tg.style.textAlign='right'}else tg.style.left=(scx(y)-4)+'px';tg.style.top=(scy(y)+(below?62:-30))+'px';box.appendChild(tg);return {y,r,tg}});
+ return {cells,mk}}
+const legHTML=`<i style="background:#D6ED63;border:2px solid #283127"></i>${T.leg[0]} &nbsp; <i style="background:#E9EDE3;border:1.5px solid #C7CBBF"></i>${T.leg[1]} &nbsp; <i style="background:#C7CBBF"></i>${T.leg[2]}`;
+$('legD').innerHTML=legHTML;$('legG').innerHTML=legHTML;
+const SD=strip('stripD',DATA.argCodes,[[2014,'2014','#283127',false],[2017,'2017','#283127',false]]);
+const SG=strip('stripG',DATA.korCodes,[[1995,T.mk[0],'#283127',false],[1998,T.mk[1],'#E5764B',false],[2001,T.mk[2],'#283127',true]]);
 // ---------- E: Guyana bars ----------
-const svE=$('chartE'), GU=DATA.guy, EB=1130, ey=v=>EB-v/30000*270, EX0=160, EST=77;
+const svE=$('chartE'), GU=DATA.guy, EB=1130, ey=v=>EB-v/30000*270, EX0=152, EST=71;
 const gE=el('g',{},svE);el('line',{x1:150,x2:930,y1:EB,y2:EB,stroke:'#5a6657','stroke-width':2},gE);
-const thrE=el('line',{x1:150,x2:930,y1:ey(13935),y2:ey(13935),stroke:'#F4F1E9','stroke-width':2,'stroke-dasharray':'8 8'},gE);
-const thrEl=txt(gE,{x:150,y:ey(13935)-14,'font-size':19,fill:'#C9D1C1'},T.lineE.toUpperCase()+' ≈ $14K');
-const barsE=GU.map((d,i)=>{const x=EX0+i*EST;const r=el('rect',{x,width:52,y:EB,height:0,fill:d.year>=2022?'#D6ED63':'#6F8658'},gE);
- if(d.year===2015||d.year===2019||d.year===2024)txt(gE,{x:x+26,y:EB+34,'text-anchor':'middle','font-size':20,fill:'#A9B4A2','font-weight':500},d.year);return {d,r}});
+const thrE=el('line',{x1:150,x2:930,y1:ey(14375),y2:ey(14375),stroke:'#F4F1E9','stroke-width':2,'stroke-dasharray':'8 8'},gE);
+const thrEl=txt(gE,{x:150,y:ey(14375)-14,'font-size':19,fill:'#C9D1C1'},T.lineE.toUpperCase()+' $14,375 (2025)');
+const barsE=GU.map((d,i)=>{const x=EX0+i*EST;const r=el('rect',{x,width:48,y:EB,height:0,fill:d.year>=2022?'#D6ED63':'#6F8658'},gE);
+ if(d.year===2015||d.year===2019||d.year===2025)txt(gE,{x:x+24,y:EB+34,'text-anchor':'middle','font-size':20,fill:'#A9B4A2','font-weight':500},d.year);return {d,r}});
 // ---------- F grid ----------
 const cells=[...DATA.stayed.map(c=>['s',c]),...DATA.fell.map(c=>['f',c])];
 $('gridF').innerHTML=cells.map(([k,c])=>`<div class="${k}">${c}</div>`).join('');
 // ---------- H: % of the line ----------
-const svH=$('chartH'), PY=DATA.pct.years, HX0=232, HX1=900, hx=y=>HX0+(y-2011)/13*(HX1-HX0), hy=v=>1100-v*5;
+const svH=$('chartH'), PY=DATA.pct.years, HX0=232, HX1=900, hx=y=>HX0+(y-2011)/14*(HX1-HX0), hy=v=>1100-v*5;
 const gH=el('g',{},svH);
 [0,50].forEach(v=>{el('line',{x1:HX0,x2:HX1,y1:hy(v),y2:hy(v),stroke:'#E1E4DA','stroke-width':2},gH);txt(gH,{x:HX0-14,y:hy(v)+8,'text-anchor':'end','font-size':21,fill:'#455044','font-weight':500},v+'%')});
 el('line',{x1:HX0,x2:HX1,y1:hy(100),y2:hy(100),stroke:'#283127','stroke-width':4},gH);
 txt(gH,{x:HX1,y:hy(100)-16,'font-size':20,fill:'#283127','text-anchor':'end'},T.line100.toUpperCase());
 el('rect',{x:HX0,y:hy(100)-32,width:16,height:16,fill:'#424E3D'},gH);txt(gH,{x:HX0+24,y:hy(100)-17,'font-size':20,fill:'#283127'},T.nCHN.toUpperCase());
 el('rect',{x:HX0+150,y:hy(100)-32,width:16,height:16,fill:'#E5764B'},gH);txt(gH,{x:HX0+174,y:hy(100)-17,'font-size':20,fill:'#B4502C'},T.nTHA.toUpperCase());
-[2011,2017,2024].forEach(y=>txt(gH,{x:hx(y),y:1140,'text-anchor':y===2011?'start':y===2024?'end':'middle','font-size':22,fill:'#455044','font-weight':500},y));
+[2011,2018,2025].forEach(y=>txt(gH,{x:hx(y),y:1140,'text-anchor':y===2011?'start':y===2025?'end':'middle','font-size':22,fill:'#455044','font-weight':500},y));
 function pctLine(key,color,id){const s=DATA.pct[key];const clip=el('clipPath',{id},svH), cr=el('rect',{x:0,y:0,width:0,height:1920},clip);
  const ln=el('polyline',{points:s.map((v,i)=>`${hx(2011+i)},${hy(v)}`).join(' '),fill:'none',stroke:color,'stroke-width':6,'stroke-linejoin':'round','clip-path':`url(#${id})`},svH);
  const dot=el('rect',{width:20,height:20,fill:color},svH);
- return {s,cr,ln,dot,at(yc){cr.setAttribute('width',hx(yc)+1);const y0=Math.floor(yc),f=yc-y0,a=s[y0-2011],b=s[Math.min(13,y0-2010)];const v=lerp(a,b,f);dot.setAttribute('x',hx(yc)-10);dot.setAttribute('y',hy(v)-10);return v}}}
+ return {s,cr,ln,dot,at(yc){cr.setAttribute('width',hx(yc)+1);const y0=Math.floor(yc),f=yc-y0,a=s[y0-2011],b=s[Math.min(14,y0-2010)];const v=lerp(a,b,f);dot.setAttribute('x',hx(yc)-10);dot.setAttribute('y',hy(v)-10);return v}}}
 const CN=pctLine('chn','#424E3D','clipH1'), TL=pctLine('tha','#E5764B','clipH2');
 const labCN=txt(svH,{'font-size':25,fill:'#283127'},''), labTH=txt(svH,{'font-size':25,fill:'#B4502C'},'');
-const m17=el('g',{opacity:0},svH);el('rect',{x:hx(2017)-14,y:hy(53.2)-14,width:28,height:28,fill:'none',stroke:'#E5764B','stroke-width':5},m17);txt(m17,{x:hx(2017),y:hy(53.2)-28,'text-anchor':'middle','font-size':26,fill:'#B4502C'},'53%');
-const m19=txt(svH,{x:hx(2019),y:hy(60.7)-24,'text-anchor':'middle','font-size':20,fill:'#677166',opacity:0},'61% · 2019');
-const m24=el('g',{opacity:0},svH);el('rect',{x:hx(2024)-14,y:hy(52.7)-14,width:28,height:28,fill:'none',stroke:'#E5764B','stroke-width':5},m24);txt(m24,{x:hx(2024)-4,y:hy(52.7)-28,'text-anchor':'end','font-size':26,fill:'#B4502C'},'53%');
-const br7=el('g',{opacity:0},svH);const BY=hy(52.7)+72;
-el('polyline',{points:`${hx(2017)},${BY-14} ${hx(2017)},${BY} ${hx(2024)},${BY} ${hx(2024)},${BY-14}`,fill:'none',stroke:'#283127','stroke-width':3},br7);
-const b7w=150;el('rect',{x:(hx(2017)+hx(2024))/2-b7w/2,y:BY+14,width:b7w,height:40,fill:'#D6ED63'},br7);
-txt(br7,{x:(hx(2017)+hx(2024))/2,y:BY+43,'text-anchor':'middle','font-size':24,fill:'#283127'},T.yrs7.toUpperCase());
+const m17=el('g',{opacity:0},svH);el('rect',{x:hx(2018)-14,y:hy(52.0)-14,width:28,height:28,fill:'none',stroke:'#E5764B','stroke-width':5},m17);txt(m17,{x:hx(2018)-8,y:hy(52.0)+44,'text-anchor':'middle','font-size':26,fill:'#B4502C'},'52%');
+const m19=txt(svH,{x:hx(2019),y:hy(56.4)-24,'text-anchor':'middle','font-size':20,fill:'#677166',opacity:0},'56% · 2019');
+const m24=el('g',{opacity:0},svH);el('rect',{x:hx(2025)-14,y:hy(53.5)-14,width:28,height:28,fill:'none',stroke:'#E5764B','stroke-width':5},m24);txt(m24,{x:hx(2025)-4,y:hy(53.5)-28,'text-anchor':'end','font-size':26,fill:'#B4502C'},'53.5%');
+const br7=el('g',{opacity:0},svH);const BY=hy(53.5)+96;
+el('polyline',{points:`${hx(2018)},${BY-14} ${hx(2018)},${BY} ${hx(2025)},${BY} ${hx(2025)},${BY-14}`,fill:'none',stroke:'#283127','stroke-width':3},br7);
+const b7w=150;el('rect',{x:(hx(2018)+hx(2025))/2-b7w/2,y:BY+14,width:b7w,height:40,fill:'#D6ED63'},br7);
+txt(br7,{x:(hx(2018)+hx(2025))/2,y:BY+43,'text-anchor':'middle','font-size':24,fill:'#283127'},T.yrs7.toUpperCase());
 // ---------- I walkthrough ----------
-const SQL=`WITH line AS (SELECT * FROM (VALUES
-  (1987, 6000), …, (2024, 13935)) AS v(year, usd)),
-s AS (
-  SELECT g.country_name, g.year,
-    g.gdp_per_capita_current_usd >= l.usd AS high
-  FROM worldbank_gdp_per_capita g
-  JOIN line l ON l.year = g.year
-  WHERE g.gdp_per_capita_current_usd IS NOT NULL),
-c AS (SELECT *, LAG(high) OVER (PARTITION BY
-  country_name ORDER BY year) AS was_high FROM s)
-SELECT year, COUNT(*) AS crossed FROM c
-WHERE high AND NOT was_high
-GROUP BY year ORDER BY year;`;
-const KW=/\b(WITH|SELECT|FROM|VALUES|JOIN|ON|WHERE|AND|NOT|IS|NULL|OVER|PARTITION BY|ORDER BY|GROUP BY|COUNT|LAG|AS)\b/g;
+const SQL=`SELECT country_name, year
+FROM (
+  SELECT country_name, year, income_group_code AS grp,
+    LAG(income_group_code) OVER (
+      PARTITION BY country_iso_alpha3 ORDER BY year) AS prev
+  FROM worldbank_income_classification_history
+  WHERE income_group_code IS NOT NULL
+)
+WHERE grp = 'H' AND prev <> 'H'
+ORDER BY year, country_name;`;
+const KW=/\b(SELECT|FROM|WHERE|AND|NOT|IS|NULL|OVER|PARTITION BY|ORDER BY|LAG|AS)\b/g;
 const hlSql=s=>s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>=/g,'&gt;=').replace(KW,'<span class="k">$1</span>');
-$('rt').innerHTML='<tr><th class="n">year</th><th class="n">crossed</th></tr>'+DATA.result.slice(0,6).map(r=>`<tr><td class="n">${r.year}</td><td class="n">${r.crossed}</td></tr>`).join('');
+$('rt').innerHTML='<tr><th>country_name</th><th class="n">year</th></tr>'+DATA.result.slice(0,6).map(r=>`<tr><td>${r.name.replace(' Special Administrative Region',' SAR')}</td><td class="n">${r.year}</td></tr>`).join('');
 $('rcount').textContent=DATA.resultRows+' rows · 2 columns';
 function cursorAt(cu,t,t0,t1,sx,sy,ex_,ey_){const m=eInOut(p(t,t0,t1));cu.style.left=(lerp(sx,ex_,m)-Math.sin(m*Math.PI)*60)+'px';cu.style.top=(lerp(sy,ey_,m)-Math.sin(m*Math.PI)*80)+'px'}
 function ripple(r,t,tc,x,y){const k=p(t,tc,tc+0.45),s=20+150*eOut(k);r.style.width=r.style.height=s+'px';r.style.left=(x+4-s/2)+'px';r.style.top=(y+4-s/2)+'px';r.style.opacity=k>0&&k<1?1-k:0}
 // scene windows
-const CUTS=[7.8,32.5,39.0,48.9,54.8,62.1,76.4,87.6];
-const W={A:[0,7.85],B:[7.75,32.55],D:[32.45,39.05],E:[38.95,48.95],F:[48.85,54.85],G:[54.75,62.15],H:[62.05,76.45],I:[76.35,87.65],J:[87.55,99]};
+const CUTS=[8.8,32.3,39.8,49.8,56.1,64.0,79.4,90.2];
+const W={A:[0,8.85],B:[8.75,32.35],D:[32.25,39.85],E:[39.75,49.85],F:[49.75,56.15],G:[56.05,64.05],H:[63.95,79.45],I:[79.35,90.25],J:[90.15,101]};
+// scenes B, E, F, H, I keep their first-cut timings: new time -> old time (piecewise linear)
+const rm=pts=>t=>{if(t<=pts[0][0])return pts[0][1]+(t-pts[0][0]);for(let i=1;i<pts.length;i++){const [a0,b0]=pts[i-1],[a1,b1]=pts[i];if(t<=a1)return b0+(t-a0)*(b1-b0)/(a1-a0)}const L=pts[pts.length-1];return L[1]+(t-L[0])};
+const rmB=rm([[8.8,7.8],[9.1,8.1],[16.7,16.4],[20.9,21.0],[25.9,25.9],[32.3,32.5]]);
+const rmE=rm([[39.8,39.0],[40.1,39.3],[49.8,48.9]]);
+const rmF=rm([[49.8,48.9],[50.1,49.2],[53.3,52.3],[56.1,54.8]]);
+const rmH=rm([[64.0,62.1],[64.3,62.4],[69.5,67.2],[72.9,69.8],[75.6,73.0],[79.4,76.4]]);
+const rmI=rm([[79.4,76.4],[79.7,76.7],[85.2,82.6],[86.8,84.4],[87.8,85.4],[90.2,87.6]]);
 const inW=(k,t)=>t>=W[k][0]&&t<W[k][1];
-const END=97.0, J0=87.6;
+const END=99.6, J0=90.2;
 window.DUR=END;
-window.render=function(t){
+window.render=function(t0){let t=t0;
  for(const k in W)show(k,inW(k,t));
  // ---- A hook: world map lights up country by country (0.9-4.2), then zoom to East & SE Asia: just one
- if(inW('A',t)){const A=$('A');A.style.transform=`scale(${1+0.02*eInOut(p(t,0,7.8))})`;
+ if(inW('A',t)){const A=$('A');A.style.transform=`scale(${1+0.02*eInOut(p(t,0,8.8))})`;
   $('ebA').style.opacity=eOut(p(t,0.1,0.6));
-  const two=t>=4.6, flip=eSnap(p(t,4.6,5.0)), z=eInOut(p(t,4.6,5.4));
+  const two=t>=5.6, flip=eSnap(p(t,5.6,6.0)), z=eInOut(p(t,5.6,6.4));
   $('labA').innerHTML=two?T.labA2:T.labA1;$('labA').style.opacity=two?flip:eOut(p(t,0.3,0.7));
   let lit=0;DATA.crossedFirst.forEach(c=>{if(t>=tA(c.year))lit++});
   $('bigA').textContent=two?'1':(t>=0.9?lit:'');$('bigA').style.color=two?'#E5764B':'#D6ED63';$('bigA').style.transform=two?`scale(${0.9+0.1*flip})`:'none';
-  const yr=Math.round(1988+36*p(t,0.9,4.2));$('yrA').textContent=t>=0.9?yr:'';$('yrA').style.opacity=(1-p(t,4.5,4.7))*eOut(p(t,0.9,1.1));
-  if(t>=5.5)typed($('headA'),T.headA2,t,5.5,6.1);else $('headA').innerHTML='';
+  const yr=Math.round(1988+37*p(t,0.9,4.6));$('yrA').textContent=t>=0.9?yr:'';$('yrA').style.opacity=(1-p(t,5.5,5.7))*eOut(p(t,0.9,1.1));
+  if(t>=6.5)typed($('headA'),T.headA2,t,6.5,7.1);else $('headA').innerHTML='';
   $('mapBox').style.opacity=eOut(p(t,0.0,0.5));
   for(const key in mapEls){const id=key.replace('_dot',''),e=mapEls[key];let f='#2E382C',o=1;
    if(ALREADY.has(id)&&t>0.55)f='#6B7B5E';
@@ -399,11 +401,11 @@ window.render=function(t){
   const s_=1+1.4*z, fx=MAP.focus[0], fy=MAP.focus[1];
   mapG.setAttribute('transform',`translate(${(500-fx*s_)*z} ${(260-fy*s_)*z}) scale(${s_})`);
   if(!window.__kb){const b=mapEls['410'].getBBox();window.__kb=[b.x+b.width/2,b.y+b.height/2]}
-  const kx=60+((500-fx*s_)*z+__kb[0]*s_)*0.96, ky=770+((260-fy*s_)*z+__kb[1]*s_)*0.96, ko=eSnap(p(t,5.5,5.8));
+  const kx=60+((500-fx*s_)*z+__kb[0]*s_)*0.96, ky=770+((260-fy*s_)*z+__kb[1]*s_)*0.96, ko=eSnap(p(t,6.5,6.8));
   $('korA').textContent=T.korA.toUpperCase();$('korA').style.left=(kx+28)+'px';$('korA').style.top=(ky+26)+'px';$('korA').style.opacity=ko;
-  $('legA').style.opacity=eOut(p(t,1.0,1.4))*(1-p(t,4.6,4.9));$('noteA').style.opacity=eOut(p(t,1.2,1.6));}
+  $('legA').style.opacity=eOut(p(t,1.0,1.4))*(1-p(t,5.6,5.9));$('noteA').style.opacity=eOut(p(t,1.2,1.6));}
  // ---- B the line -> waves -> falls
- if(inW('B',t)){const B=$('B');B.style.transform=`scale(${1+0.02*eInOut(p(t,7.8,32.5))})`;
+ if(inW('B',t0)){const t=rmB(t0);const B=$('B');B.style.transform=`scale(${1+0.02*eInOut(p(t,7.8,32.5))})`;
   const waves=t>=14.9;
   $('metaB').textContent=waves?T.metaB2:T.metaB1;$('metaB').style.opacity=waves?eOut(p(t,14.9,15.2)):eOut(p(t,8.0,8.4));
   if(!waves)typed($('hB'),T.hB1,t,8.2,9.2);else typed($('hB'),T.hB2,t,14.9,15.7);
@@ -412,66 +414,66 @@ window.render=function(t){
   lineG.style.display=t<14.95?'block':'none';barsG.style.display=t>=14.5?'block':'none';
   barsG.style.opacity=eOut(p(t,14.5,14.9));legD.style.opacity=eOut(p(t,26.0,26.4));
   const w1=p(t,16.4,16.7)*(1-p(t,20.9,21.1)), w2=p(t,21.0,21.3)*(1-p(t,25.8,26.0)), fall=p(t,25.9,26.3);
-  const lo1=2003,hi1=2008,lo2=2010,hi2=2014;
+  const lo1=2006,hi1=2009,lo2=2012,hi2=2014;
   if(w2>0){brk.setAttribute('x',bxc(lo2)-12);brk.setAttribute('width',bxc(hi2)-bxc(lo2)+24);brk.setAttribute('opacity',.55*eOut(w2))}
   else{brk.setAttribute('x',bxc(lo1)-12);brk.setAttribute('width',bxc(hi1)-bxc(lo1)+24);brk.setAttribute('opacity',.55*eOut(w1))}
   upBars.forEach((b,i)=>{const k=eOut(p(t,15.0+i*0.035,15.4+i*0.035));b.r.setAttribute('y',BASE-b.n*UU*k);b.r.setAttribute('height',b.n*UU*k);
    const inw1=b.y>=lo1&&b.y<=hi1, inw2=b.y>=lo2&&b.y<=hi2;
    let o=1;if(w1>0)o=inw1?1:1-0.7*w1;if(w2>0)o=inw2?1:1-0.7*w2;if(fall>0)o=1-0.7*fall;b.r.setAttribute('opacity',o);
-   b.r.setAttribute('fill',(b.y===2011&&w2>0.5)?'#E5764B':'#839B45')});
+   b.r.setAttribute('fill',(b.y===2012&&w2>0.5)?'#E5764B':'#839B45')});
   dnBars.forEach((b,i)=>{const k=eOut(p(t,26.0+i*0.03,26.4+i*0.03));b.r.setAttribute('height',b.n*DU*k)});
   caption($('capB'),T.capB,t,32.3);caption($('listB'),T.listB,t,32.3);if(t>=25.9&&t<27.15)$('listB').style.opacity=0;
   $('noteB').style.opacity=eOut(p(t,8.6,9.1));}
- // ---- D Argentina
- if(inW('D',t)){const D=$('D');D.style.transform=`scale(${1+0.02*eInOut(p(t,32.5,39.0))})`;
-  $('metaD').style.opacity=eOut(p(t,32.6,33.0));typed($('hD'),T.hD,t,32.7,33.3);
-  const ch=eOut(p(t,32.8,33.2));AR.g.style.opacity=ch;$('noteD').style.opacity=eOut(p(t,33.0,33.5));
-  const yc=lerp(1987,2024,eInOut(p(t,33.0,35.9)));AR.at(yc);AR.ln.style.opacity=AR.dot.style.opacity=ch;
-  mD.forEach(m=>{m.g.setAttribute('opacity',eSnap(p(yc,m.y-0.3,m.y)))});
-  const cl=eSnap(p(t,36.0,36.35));$('callD').style.opacity=cl;$('callD').style.transform=`translateY(${(1-cl)*24}px)`;
-  caption($('capD'),T.capD,t,38.8);}
+ // ---- D Argentina: official strip, 2014 and 2017 high, fell back the next year each time
+ if(inW('D',t0)){const D=$('D');D.style.transform=`scale(${1+0.02*eInOut(p(t,32.3,39.8))})`;
+  $('metaD').style.opacity=eOut(p(t,32.4,32.8));typed($('hD'),T.hD,t,32.5,33.1);
+  SD.cells.forEach(c=>{const ta=32.8+(c.y-1987)*0.055;const k=eSnap(p(t,ta,ta+0.25));c.c.style.opacity=k;c.c.style.transform=`scale(${0.7+0.3*k})`});
+  SD.mk.forEach(m=>{const ta=m.y===2014?34.1:35.3;const k=eSnap(p(t,ta,ta+0.3));m.r.style.opacity=k;m.tg.style.opacity=k;m.r.style.transform=`scale(${1.3-0.3*k})`});
+  $('legD').style.opacity=eOut(p(t,33.4,33.8));$('noteD').style.opacity=eOut(p(t,33.0,33.5));
+  caption($('capD'),T.capD,t,39.6);}
  // ---- E Guyana
- if(inW('E',t)){const E=$('E');E.style.transform=`scale(${1+0.025*eInOut(p(t,39.0,48.9))})`;
+ if(inW('E',t0)){const t=rmE(t0);const E=$('E');E.style.transform=`scale(${1+0.025*eInOut(p(t,39.0,48.9))})`;
   $('ebE').style.opacity=eOut(p(t,39.2,39.6));const nm=eOut(p(t,40.6,41.0));$('nameE').style.opacity=nm;$('nameE').style.transform=`translateY(${(1-nm)*24}px)`;
-  const cnt=eInOut(p(t,44.3,46.4)), v=lerp(6406,29675,cnt);
-  $('labE').innerHTML=T.labE+'<b>'+(cnt>=1?'2024':t>=44.3&&cnt>0?'2019 → 2024':'2019')+'</b>';$('labE').style.opacity=eOut(p(t,43.6,44.0));
+  const cnt=eInOut(p(t,44.3,46.4)), v=lerp(6380,28470,cnt);
+  $('labE').innerHTML=T.labE+'<b>'+(cnt>=1?'2025':t>=44.3&&cnt>0?'2019 → 2025':'2019')+'</b>';$('labE').style.opacity=eOut(p(t,43.6,44.0));
   $('bigE').textContent=t>=43.8?'$'+fmt(v):'';$('bigE').style.opacity=eOut(p(t,43.8,44.1));
   gE.style.opacity=eOut(p(t,41.2,41.6));
-  barsE.forEach(b=>{const yr=b.d.year;let k;if(yr<=2019)k=eOut(p(t,41.4+(yr-2015)*0.08,41.8+(yr-2015)*0.08));else k=eOut(p(t,44.3+(yr-2020)*0.42,44.75+(yr-2020)*0.42));
+  barsE.forEach(b=>{const yr=b.d.year;let k;if(yr<=2019)k=eOut(p(t,41.4+(yr-2015)*0.08,41.8+(yr-2015)*0.08));else k=eOut(p(t,44.3+(yr-2020)*0.35,44.7+(yr-2020)*0.35));
    b.r.setAttribute('y',EB-(EB-ey(b.d.v))*k);b.r.setAttribute('height',(EB-ey(b.d.v))*k)});
   caption($('capE'),T.capE,t,48.7);$('noteE').style.opacity=eOut(p(t,41.6,42.0));}
  // ---- F 33 of 38 + question
- if(inW('F',t)){const F=$('F');F.style.transform=`scale(${1+0.02*eInOut(p(t,48.9,54.8))})`;
+ if(inW('F',t0)){const t=rmF(t0);const F=$('F');F.style.transform=`scale(${1+0.02*eInOut(p(t,48.9,54.8))})`;
   $('metaF').style.opacity=eOut(p(t,49.0,49.4));typed($('hF'),T.hF,t,49.3,49.9);
   const dim=eOut(p(t,52.2,52.6));
   $('gridF').querySelectorAll('div').forEach((c,i)=>{const k=eSnap(p(t,49.5+i*0.035,49.8+i*0.035));c.style.opacity=k*(1-0.75*dim);c.style.transform=`translateY(${(1-k)*14}px)`});
   $('legF').style.opacity=eOut(p(t,50.9,51.3))*(1-dim);$('noteF').style.opacity=eOut(p(t,50.0,50.4));
   if(t>=52.3)typed($('qF'),T.qF,t,52.3,53.6);else $('qF').innerHTML='';}
- // ---- G Korea
- if(inW('G',t)){const G=$('G');G.style.transform=`scale(${1+0.02*eInOut(p(t,54.8,62.1))})`;
-  $('metaG').style.opacity=eOut(p(t,54.9,55.3));typed($('hG'),T.hG,t,55.0,55.7);
-  const ch=eOut(p(t,55.1,55.5));KR.g.style.opacity=ch;KR.ln.style.opacity=KR.dot.style.opacity=ch;$('noteG').style.opacity=eOut(p(t,55.4,55.9));
-  let yc;if(t<56.4)yc=lerp(1987,1992,eInOut(p(t,55.3,56.4)));else if(t<57.4)yc=lerp(1992,1998,eInOut(p(t,56.4,57.4)));else if(t<59.0)yc=lerp(1998,1999,eInOut(p(t,58.4,59.0)));else yc=lerp(1999,2024,eInOut(p(t,59.0,60.9)));
-  const v=KR.at(yc);
-  mG.forEach(m=>{m.g.setAttribute('opacity',eSnap(p(yc,m.y-0.25,m.y)))});
-  endG.setAttribute('y',KR.cy(v)-30);endG.setAttribute('x',Math.max(cx(yc),560));endG.textContent='$'+fmt(v);endG.style.opacity=p(t,59.4,59.7);
-  caption($('capG'),T.capG,t,61.9);}
+ // ---- G Korea: in 1995, crisis 1998, back 2001, high every year since
+ if(inW('G',t0)){const G=$('G');G.style.transform=`scale(${1+0.02*eInOut(p(t,56.1,64.0))})`;
+  $('metaG').style.opacity=eOut(p(t,56.2,56.6));typed($('hG'),T.hG,t,56.3,57.0);
+  const ky=[[1987,56.6],[1995,57.8],[1998,58.9],[2001,60.4],[2025,62.4]];
+  const tOf=y=>{for(let i=1;i<ky.length;i++)if(y<=ky[i][0])return lerp(ky[i-1][1],ky[i][1],(y-ky[i-1][0])/(ky[i][0]-ky[i-1][0]));return 62.4};
+  SG.cells.forEach(c=>{const ta=tOf(c.y);const k=eSnap(p(t,ta,ta+0.22));c.c.style.opacity=k;c.c.style.transform=`scale(${0.7+0.3*k})`});
+  SG.mk.forEach(m=>{const ta=tOf(m.y)+0.05;const k=eSnap(p(t,ta,ta+0.3));m.r.style.opacity=k;m.tg.style.opacity=k;m.r.style.transform=`scale(${1.3-0.3*k})`});
+  $('legG').style.opacity=eOut(p(t,57.0,57.4));$('noteG').style.opacity=eOut(p(t,56.8,57.3));
+  const gv=eInOut(p(t,62.4,63.4));$('gniG').innerHTML=T.gniG.toUpperCase()+'<b>$'+fmt(DATA.kor2025*gv)+'</b>';$('gniG').style.opacity=eOut(p(t,62.3,62.6));
+  caption($('capG'),T.capG,t,63.8);}
  // ---- H Thailand vs China
- if(inW('H',t)){const H=$('H');H.style.transform=`scale(${1+0.02*eInOut(p(t,62.1,76.4))})`;
+ if(inW('H',t0)){const t=rmH(t0);const H=$('H');H.style.transform=`scale(${1+0.02*eInOut(p(t,62.1,76.4))})`;
   $('metaH').style.opacity=eOut(p(t,62.2,62.6));typed($('hH'),T.hH,t,62.3,63.2);
   const ch=eOut(p(t,62.5,62.9));gH.style.opacity=ch;$('noteH').style.opacity=eOut(p(t,62.8,63.3));
-  const ycC=lerp(2011,2024,eInOut(p(t,67.3,68.9))), ycT=lerp(2011,2024,eInOut(p(t,69.9,72.6)));
+  const ycC=lerp(2011,2025,eInOut(p(t,67.3,68.9))), ycT=lerp(2011,2025,eInOut(p(t,69.9,72.6)));
   const vC=CN.at(ycC), vT=TL.at(ycT);[CN.ln,CN.dot,TL.ln,TL.dot].forEach(e=>e.style.opacity=eOut(p(t,63.0,63.4)));
   labCN.style.opacity=labTH.style.opacity=eOut(p(t,63.4,63.8));
   if(ycC<2011.05){labCN.setAttribute('x',hx(2011)+22);labCN.setAttribute('y',hy(vC)-20);labCN.setAttribute('text-anchor','start');labCN.textContent=vC.toFixed(1)+'%'}
-  else{labCN.setAttribute('x',hx(ycC)-18);labCN.setAttribute('y',hy(vC)+44);labCN.setAttribute('text-anchor','end');labCN.textContent=vC.toFixed(1)+'%';labCN.setAttribute('font-size',ycC>2023.9?32:25)}
+  else{labCN.setAttribute('x',hx(ycC)-18);labCN.setAttribute('y',hy(vC)+44);labCN.setAttribute('text-anchor','end');labCN.textContent=vC.toFixed(1)+'%';labCN.setAttribute('font-size',ycC>2024.9?32:25)}
   if(ycT<2011.05){labTH.setAttribute('x',hx(2011)+22);labTH.setAttribute('y',hy(vT)+40);labTH.textContent=vT.toFixed(1)+'%';labTH.style.opacity=eOut(p(t,63.4,63.8))}
   else{labTH.style.opacity=1-p(t,69.9,70.2)}
-  m17.setAttribute('opacity',eSnap(p(ycT,2016.8,2017)));m19.setAttribute('opacity',eOut(p(ycT,2018.8,2019.1))*0.95);m24.setAttribute('opacity',eSnap(p(ycT,2023.8,2024)));
+  m17.setAttribute('opacity',eSnap(p(ycT,2017.8,2018)));m19.setAttribute('opacity',eOut(p(ycT,2018.8,2019.1))*0.95);m24.setAttribute('opacity',eSnap(p(ycT,2024.8,2025)));
   br7.setAttribute('opacity',eSnap(p(t,73.0,73.35)));
   caption($('capH'),T.capH,t,76.2);}
  // ---- I walkthrough: catalog -> open in query (78.6) -> run (80.4) -> CSV (84.4) -> connect (85.4)
- if(inW('I',t)){const I=$('I');I.style.transform=`scale(${1+0.015*eInOut(p(t,76.4,87.6))})`;
+ if(inW('I',t0)){const t=rmI(t0);const I=$('I');I.style.transform=`scale(${1+0.015*eInOut(p(t,76.4,87.6))})`;
   $('stepI').textContent=t<78.8?T.steps[0]:t<82.6?T.steps[1]:T.steps[2];
   const catOut=eInOut(p(t,78.75,79.1));
   $('catT').innerHTML=T.catT+'<span class="cur">_</span>';$('catT').style.opacity=eOut(p(t,76.6,77.0))*(1-catOut);
@@ -516,7 +518,7 @@ window.render=function(t){
   const H2=T.endH,LH=glen(H2),n=Math.round(LH*p(r,0.4,1.0)),eh=er(H2,7.7,8.7);
   $('bigJ').innerHTML=gslice(gslice(H2,0,n),eh)+cursorTag(t,n<LH||(eh>0&&eh<LH));
   J.style.opacity=1-p(t,END-0.5,END-0.02);}
- const dark=t<7.8||(t>=39.0&&t<48.9)||t>=87.6;
+ const dark=t<8.8||(t>=39.8&&t<49.8)||t>=90.2;
  $('logoL').style.display=dark?'block':'none';$('logoL').style.opacity=1-p(t,J0+7.8,J0+8.6);$('logoD').style.display=dark?'none':'block';
  const wp=$('wipe');let on=false;
  for(const m of CUTS){const a=m-0.35,b=m+0.35;if(t>a&&t<b){on=true;const w1=eSnap(p(t,a,m)),w2=eSnap(p(t,m,b));wp.style.top=(t<m?1920*(1-w1):0)+'px';wp.style.bottom=(1920*w2)+'px';}}

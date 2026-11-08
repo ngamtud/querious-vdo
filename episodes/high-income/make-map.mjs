@@ -9,7 +9,7 @@ const f110=load('110m'), f50=load('50m');
 const W=1000,H=520, proj=geoEqualEarth().fitSize([W,H],f50), path=geoPath(proj).digits(0);
 const out={w:W,h:H,paths:{},dots:{}};
 for(const f of f110.features){out.paths[f.id]=(out.paths[f.id]||'')+path(f)}
-const tiny={ATG:'028',MLT:'470',BRB:'052',KNA:'659',SYC:'690',TTO:'780',PLW:'585',ASM:'016',NRU:'520',LCA:'662',SGP:'702',HKG:'344',MAC:'446',BHR:'048'};
+const tiny={ATG:'028',MLT:'470',BRB:'052',KNA:'659',SYC:'690',TTO:'780',PLW:'585',ASM:'016',NRU:'520',LCA:'662',SGP:'702',HKG:'344',MAC:'446',BHR:'048',MUS:'480'};
 for(const [iso,id] of Object.entries(tiny)){const f=f50.features.find(x=>x.id===id);if(f)out.dots[id]=path.centroid(f).map(v=>+v.toFixed(0));else console.log('no50',iso)}
 console.log(Object.keys(out.paths).length,'paths',JSON.stringify(out).length,'bytes');
 fs.writeFileSync('map.json',JSON.stringify(out));

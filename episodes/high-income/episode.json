@@ -1,43 +1,43 @@
 {
-  "title": "38 countries climbed into high income. Only one from East & Southeast Asia",
+  "title": "36 countries climbed into high income. Only one from East & Southeast Asia",
   "format": {
     "width": 1080,
     "height": 1920,
     "fps": 30
   },
-  "duration": 97.0,
+  "duration": 99.6,
   "chunks": [
     [
       0,
-      7.8
+      8.8
     ],
     [
-      7.8,
-      20
+      8.8,
+      20.9
     ],
     [
-      20,
-      32.5
+      20.9,
+      32.3
     ],
     [
-      32.5,
-      48.9
+      32.3,
+      49.8
     ],
     [
-      48.9,
-      62.1
+      49.8,
+      64.0
     ],
     [
-      62.1,
-      76.4
+      64.0,
+      79.4
     ],
     [
-      76.4,
-      87.6
+      79.4,
+      90.2
     ],
     [
-      87.6,
-      97
+      90.2,
+      99.6
     ]
   ],
   "scene": "scene.html",
@@ -51,81 +51,81 @@
     {
       "id": "v1",
       "at": 0.2,
-      "text": "Since nineteen eighty-eight, thirty-eight countries have climbed into high income."
+      "text": "Since nineteen eighty-eight, thirty-six countries have climbed into the World Bank's high-income group."
     },
     {
       "id": "v2",
-      "at": 4.5,
+      "at": 5.5,
       "text": "From East and Southeast Asia? Just one."
     },
     {
       "id": "v3",
-      "at": 8.1,
-      "text": "The World Bank draws the high-income line at about fourteen thousand dollars a person. And countries didn't cross it one by one. They came in waves."
+      "at": 9.1,
+      "text": "The line today is about fourteen thousand dollars of income per person. And countries didn't cross it one by one. They came in waves."
     },
     {
       "id": "v4",
-      "at": 16.4,
-      "text": "First, Central and Eastern Europe. Eight countries, as the EU grew east."
+      "at": 16.7,
+      "text": "First, Central and Eastern Europe. Seven countries in four years."
     },
     {
       "id": "v5",
-      "at": 21.0,
-      "text": "Then the commodity boom. Chile, Brazil, Argentina, Russia, Venezuela."
+      "at": 20.9,
+      "text": "Then the commodity boom. Chile, Uruguay, Russia, Argentina, Venezuela."
     },
     {
       "id": "v6",
       "at": 25.9,
-      "text": "But many didn't stay. Within five years, Brazil, Venezuela, Russia and Kazakhstan had all fallen back."
+      "text": "But not all of them stayed. By twenty fifteen, Russia, Venezuela and Argentina had all fallen back."
     },
     {
       "id": "v7",
-      "at": 32.8,
-      "text": "Argentina has crossed the line three times. Today, it's just thirty-five dollars above it."
+      "at": 32.6,
+      "text": "Argentina made it twice, in twenty fourteen and twenty seventeen. Both times, it slipped back the very next year."
     },
     {
       "id": "v8",
-      "at": 39.3,
-      "text": "The fastest climb of all? Guyana. Oil started flowing, and income per person went from six thousand four hundred dollars to almost thirty thousand, in five years."
+      "at": 40.1,
+      "text": "The fastest climb of all? Guyana. Oil started flowing, and income per person jumped from about six thousand dollars to over twenty-eight thousand, in six years."
     },
     {
       "id": "v9",
-      "at": 49.2,
-      "text": "Still, thirty-three of the thirty-eight are above the line today. So what does a climb that sticks look like?"
+      "at": 50.1,
+      "text": "Still, thirty-two of the thirty-six are high income today. So what does a climb that sticks look like?"
     },
     {
       "id": "v10",
-      "at": 55.1,
-      "text": "South Korea crossed in ninety-two. The Asian crisis knocked it back. A year later it returned, and never left."
+      "at": 56.4,
+      "text": "South Korea made it in ninety-five. The Asian crisis knocked it back. Three years later it returned, and it has stayed ever since."
     },
     {
       "id": "v11",
-      "at": 62.4,
-      "text": "In twenty eleven, Thailand and China were neck and neck. Both under half the line."
+      "at": 64.3,
+      "text": "In twenty eleven, Thailand and China were neck and neck. Both well under half the line."
     },
     {
       "id": "v12",
-      "at": 67.2,
-      "text": "Today, China is at ninety-five percent."
+      "at": 69.5,
+      "text": "By twenty twenty-five, China was at ninety-nine percent."
     },
     {
       "id": "v13",
-      "at": 69.8,
-      "text": "Thailand reached fifty-three percent in twenty seventeen. Seven years later, it's right back there."
+      "at": 72.9,
+      "text": "Thailand passed the halfway mark in twenty eighteen. Seven years later, it's still just over half."
     },
     {
       "id": "v14",
-      "at": 76.7,
-      "text": "We found this on Querious, by comparing open World Bank data with each year's income line."
+      "at": 79.7,
+      "text": "We found this on Querious, using the World Bank's official income history, year by year."
     },
     {
       "id": "v15",
-      "at": 82.6,
-      "text": "Find every crossing, then download the result, or connect it to your own tools."
+      "at": 85.2,
+      "text": "Find every move up, then download the result, or connect it to your own tools."
     },
     {
       "id": "v16",
-      "at": 87.9,
+      "at": 90.5,
       "text": "The data is open. The question is yours."
     }
   ],
@@ -141,10 +141,11 @@
   },
   "sfx": {
     "click": [
-      78.6,
-      80.4,
-      84.4,
-      85.4
+      81.47,
+      83.15,
+      86.8,
+      87.8
     ]
-  }
+  },
+  "data_source": "querios: worldbank_income_classification_history, worldbank_income_classification_thresholds, worldbank_gni_per_capita_atlas (20261008)"
 }
