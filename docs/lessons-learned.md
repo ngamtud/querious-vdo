@@ -2,6 +2,16 @@
 
 Things that went wrong or needed a second pass while making episodes, and the rule that came out of each. Newest first. `CLAUDE.md` links here; the short rules are also copied into `CLAUDE.md`.
 
+## Episode: gapminder + gapminder-th (2026-11-08)
+
+- **Old episodes need a re-layout, not a nudge.** Gapminder was built on 72 px margins. Rebuilt on the `--safe-*` variables: chart x 215–920 with axes ending at y 1110, note/caption/SQL/connection panel/destination cards use class `R` (right 230) because they sit in the like/comment band, play and Run buttons on the left. Captions shortened to one line ("Bubble = country.", "He pressed play.").
+- **One scene file for both languages.** All copy lives in `T={en:{…},th:{…}}` and `const LANG='en'`; `gapminder-th/scene.html` is the same file with `LANG='th'`, so layout fixes apply to both by copying one file.
+- **Result-row counts must match the SQL shown.** The query on screen has no `WHERE … IS NOT NULL`, so the result is 13,975 rows (the 11,523 in the old cut came from the filtered data query). Count the exact query you display.
+- **The first push of a new branch voices every Paxa episode.** The workflow diff starts from `0000…` on a new branch, so all Paxa episodes were re-voiced (rate limit). Next time push the branch before changing any `episode.json`, or run the workflow manually with `-f episodes=<ep>`.
+- **Thai lines over the slot:** v4 "ทางนี้รวยขึ้น ทางนั้นสุขภาพดีขึ้น" overran even at 1.3× (2.91 s in a 2.7 s slot) → "ทางนี้รวย ทางนั้นสุขภาพดี"; v2 hit the 1.3× cap → "วงกลมคือประเทศ". Second pass max stretch 1.28.
+- **Loudness:** EN −17.6 LUFS / −1.7 dBFS; TH with Paxa −2 dB −17.4 LUFS / −3.3 dBFS; music audible in the last 3 s of both.
+- **End card:** the clip was extended 54 → 58 s so "Your turn_" holds ~3 s after the last line before the erase-out.
+
 ## Episode: sea-renewable + sea-renewable-th (2026-11-07)
 
 - **Thai voice: spell English words in Thai, or use Thai words.** Paxa read "เควียเรียส" and "คิวรี" wrongly. Thai voice-over text now uses **คิวเรียส** for Querious, **ดึงข้อมูล** for the verb "query", **คำสั่ง** for a query/SQL, **กดรัน** for Run, **ชุดข้อมูล** for dataset. On-screen text keeps the English (SQL, UI labels, dataset names). Fixed in renewable-th and fertility-th too.
