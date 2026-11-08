@@ -2,6 +2,17 @@
 
 Things that went wrong or needed a second pass while making episodes, and the rule that came out of each. Newest first. `CLAUDE.md` links here; the short rules are also copied into `CLAUDE.md`.
 
+## Episode: high-income (EN, 2026-11-08)
+
+- **Approximate measures say so on every chart.** The World Bank classifies by GNI per capita (Atlas); the catalog has GDP per capita, so every chart note says "vs. WB high-income line (GNI, Atlas) · approximate", and the thresholds by year live in `data.sql`. A PPP dataset was considered and rejected: the thresholds are nominal US$, so PPP values would make Thailand, Indonesia and Viet Nam "high income".
+- **Drop data artifacts openly.** Iraq's 1990 → 1991 values ($10,261 → $23) are a Gulf War artifact; it is excluded from the bar chart and the note says "Iraq excluded". The on-screen SQL result still shows 1990 = 1 because it is the exact query displayed.
+- **Wording follows the line, not the story.** Thailand was 53% of the line in 2017 and 53% in 2024, but 61% in 2019 in between, so the VO says "right back there", not "stuck", and the peak is on screen.
+- **Longer is fine when the content earns it.** The user prefers complete content at 1–1.5 min over cutting beats; this cut is 97 s with 16 lines (Guyana, "33 of 38 stayed", Korea question all kept).
+- **Legends beat in-chart line labels** on step lines: the "HIGH-INCOME LINE" label collided with the steps on both the Argentina and Korea charts; a legend row above the plot fixed it. Value labels near a line's end: keep them short ("95.5%") so they clear the last segments.
+- **Labels over 1180 px sit in the like/comment band.** Year ticks at y 1190 put "2020" into the band; moved to y 1176.
+- **Loudness:** the first mix hit −16.9 LUFS / 0.0 dBFS true peak. Voice −2 dB → −18.3 LUFS / −1.7 dBFS (−1 dB gave −0.7 dBFS peak).
+- **Push the new branch before adding files** so the Paxa workflow doesn't re-voice every Thai episode (rule from gapminder, followed here).
+
 ## Episode: gapminder + gapminder-th (2026-11-08)
 
 - **Old episodes need a re-layout, not a nudge.** Gapminder was built on 72 px margins. Rebuilt on the `--safe-*` variables: chart x 215–920 with axes ending at y 1110, note/caption/SQL/connection panel/destination cards use class `R` (right 230) because they sit in the like/comment band, play and Run buttons on the left. Captions shortened to one line ("Bubble = country.", "He pressed play.").

@@ -1,0 +1,495 @@
+<!doctype html><html><head><meta charset="utf-8">
+<style>
+@font-face{font-family:SG;src:url(../../node_modules/@fontsource/space-grotesk/files/space-grotesk-latin-400-normal.woff2);font-weight:400}
+@font-face{font-family:SG;src:url(../../node_modules/@fontsource/space-grotesk/files/space-grotesk-latin-700-normal.woff2);font-weight:700}
+@font-face{font-family:PM;src:url(../../node_modules/@fontsource/ibm-plex-mono/files/ibm-plex-mono-latin-500-normal.woff2);font-weight:500}
+@font-face{font-family:PM;src:url(../../node_modules/@fontsource/ibm-plex-mono/files/ibm-plex-mono-latin-600-normal.woff2);font-weight:600}
+@font-face{font-family:TH;src:url(../../node_modules/@fontsource/ibm-plex-sans-thai/files/ibm-plex-sans-thai-thai-500-normal.woff2);font-weight:400 500}
+@font-face{font-family:TH;src:url(../../node_modules/@fontsource/ibm-plex-sans-thai/files/ibm-plex-sans-thai-thai-600-normal.woff2);font-weight:600}
+@font-face{font-family:TH;src:url(../../node_modules/@fontsource/ibm-plex-sans-thai/files/ibm-plex-sans-thai-thai-700-normal.woff2);font-weight:700}
+@font-face{font-family:PX;src:url(../../node_modules/@fontsource/pixelify-sans/files/pixelify-sans-latin-700-normal.woff2);font-weight:700}
+/* Facebook-safe 9:16 safe zone: sides 150, top 300, bottom 380, right 230 clear in y 1180-1780 */
+:root{--safe-x:150px;--safe-top:300px;--safe-bottom:380px;--safe-band:230px;
+ --paper:#F4F1E9;--ink:#283127;--deep:#222923;--muted:#677166;--line:#C7CBBF;--lime:#D6ED63;--orange:#E5764B}
+*{box-sizing:border-box;margin:0}
+html,body{width:1080px;height:1920px;overflow:hidden;background:var(--deep)}
+.scene{position:absolute;inset:0;overflow:hidden;transform-origin:50% 45%;display:none}
+.mono{font-family:PM,TH;font-weight:600;letter-spacing:.08em;text-transform:uppercase}
+.cur{color:var(--orange)}
+.dark{background:var(--deep);color:#F4F1E9}.light{background:var(--paper);color:var(--ink)}
+.L{position:absolute;left:var(--safe-x);right:var(--safe-x)}
+.R{right:var(--safe-band)!important}
+.eyebrowD{top:330px;font-size:24px;color:#A9B4A2;right:260px}.eyebrowD b{color:var(--lime);font-weight:600}
+.top{top:var(--safe-top);display:flex;align-items:center;gap:22px;border-bottom:2px solid var(--ink);padding:0 100px 20px 0;height:96px}
+.brand{font:700 44px SG;letter-spacing:-.05em;flex:1}.brand i{font:700 46px PX;font-style:normal}
+.tag{font-size:21px;border:1.5px solid var(--ink);padding:8px 12px;background:var(--lime);transform:rotate(-3deg)}
+.meta{top:430px;font-size:23px;color:var(--muted)}
+.h2{top:470px;font:700 88px/1 SG,TH;letter-spacing:-.07em;white-space:nowrap}
+svg.abs{position:absolute;left:0;top:0}
+.note{font-size:19px;line-height:1.5;color:var(--muted);letter-spacing:.05em}
+.dark .note{color:#8b9685}
+.caption{top:1250px;font:700 62px/1.05 SG,TH;letter-spacing:-.055em;white-space:nowrap}
+.caption .hl{background:var(--lime);color:var(--ink);padding:0 10px;box-decoration-break:clone;-webkit-box-decoration-break:clone}
+.list{top:1336px;font-size:23px;color:var(--muted);white-space:nowrap}
+.list b{color:var(--ink);font-weight:600}
+/* A hook */
+#A .lab{top:520px;font-size:30px;color:#A9B4A2;white-space:nowrap}#A .lab b{color:var(--lime);font-weight:600}
+#A .big{top:570px;font:700 330px/1 SG;letter-spacing:-.08em;color:var(--lime)}
+#A .head{top:930px;font:700 92px/1.03 SG,TH;letter-spacing:-.06em}
+#A .rule{position:absolute;left:var(--safe-x);top:1440px;height:2px;background:#4a5648}
+#A .foot{top:1470px;font-size:21px;color:#7f8a7c}
+/* D callout */
+#callD{left:248px;top:660px;width:310px;border:2px solid var(--ink);background:#FAF9F3;padding:16px 22px;box-shadow:7px 7px 0 var(--lime)}
+#callD .k{font-size:19px;color:var(--muted)}
+#callD .r{display:flex;justify-content:space-between;font:600 25px PM;margin-top:6px}
+#callD .big{font:700 74px/1 SG;letter-spacing:-.06em;color:var(--orange);margin-top:8px}
+/* E guyana */
+#E .name{top:410px;font:700 104px/1 SG,TH;letter-spacing:-.07em}
+#E .lab{top:580px;font-size:27px;color:#A9B4A2}#E .lab b{color:var(--lime);font-weight:600}
+#E .big{top:625px;font:700 200px/1 SG;letter-spacing:-.075em;color:var(--lime)}
+/* F grid */
+#gridF{position:absolute;left:150px;top:620px;width:700px;display:grid;grid-template-columns:repeat(8,76px);gap:12px}
+#gridF div{height:76px;display:flex;align-items:center;justify-content:center;font:600 17px PM;letter-spacing:.04em}
+#gridF .s{background:var(--lime);border:2px solid var(--ink);color:var(--ink)}
+#gridF .f{background:#FAF9F3;border:3px solid var(--orange);color:#B4502C}
+#legF{top:1090px;font-size:21px;color:var(--muted);white-space:nowrap}
+#legF i{display:inline-block;width:18px;height:18px;vertical-align:-2px;margin-right:8px;font-style:normal}
+#qF{top:1140px;font:700 74px/1.04 SG,TH;letter-spacing:-.06em}
+#qF em{color:#708348}
+/* I walkthrough */
+.btn{position:absolute;display:flex;align-items:center;gap:18px;border:2px solid var(--ink);background:var(--ink);color:var(--lime);padding:18px 24px;font-size:25px}
+.obtn{position:absolute;border:2px solid var(--ink);background:#FAF9F3;color:var(--ink);padding:16px 20px;font-size:23px}
+.ripple{position:absolute;border:4px solid var(--orange);pointer-events:none}
+.cursor{position:absolute;width:64px;height:64px;z-index:5}
+#search{top:600px;border:2px solid var(--ink);background:#FAF9F3;padding:20px 22px;font:500 30px PM;display:flex;gap:16px;align-items:center}
+#search .ph{color:#9AA394}
+#dscard{top:740px;border:2px solid var(--ink);background:#FAF9F3;padding:28px 28px 32px}
+#dscard .ey{font-size:20px;color:var(--muted)}
+#dscard h3{font:700 54px/1.02 SG;letter-spacing:-.06em;margin-top:14px}
+#dscard p{font:400 27px/1.4 SG,TH;color:#455044;margin-top:14px}
+#dscard .mt{font-size:20px;color:var(--muted);margin-top:16px}
+#openq{position:static;display:inline-flex;margin-top:24px;font-size:24px;padding:15px 20px}
+#stack{position:absolute;inset:0}
+#sqlhead{top:440px;display:flex;justify-content:space-between;font-size:20px;color:var(--muted)}
+#sql{top:476px;height:410px;background:var(--ink);border-left:8px solid var(--lime);color:#EDF2E5;padding:20px 18px;font:500 18.5px/1.52 PM;white-space:pre;overflow:hidden}
+#sql .k{color:var(--lime)}
+#run{right:var(--safe-x);top:904px}
+#rtable{top:996px;border:2px solid var(--ink);background:#FAF9F3}
+#rtable .rh{display:flex;justify-content:space-between;border-bottom:1px solid var(--ink);padding:12px 16px;font-size:19px}
+#rtable table{width:100%;border-collapse:collapse;font:500 22px PM}
+#rtable th{background:#E8ECE0;text-align:left;padding:9px 12px;font-weight:600;font-size:17px;color:var(--muted)}
+#rtable td{padding:8px 12px;border-top:1px solid #DBE0D5;white-space:nowrap}
+#rtable td.n,#rtable th.n{text-align:right}
+#rtable tr:nth-child(even) td{background:#F4F5EE}
+#csvb{left:150px;top:1400px}#jsonb{left:310px;top:1400px}#connb{left:486px;top:1400px;background:var(--ink);color:var(--lime)}
+#toast{top:1490px;font-size:20px;color:#245C3B}
+#conn{top:1490px;border:2px solid var(--ink);background:#EDF2E4;padding:20px 22px}
+#conn .lbl{font-size:19px;color:var(--muted);margin-bottom:10px}
+#conn .row{display:flex;justify-content:space-between;align-items:center;border:1px solid var(--line);background:#FBFAF5;padding:12px 14px;margin-top:10px;font:500 22px PM}
+#conn .row b{font:600 17px PM;letter-spacing:.06em;border:1px solid var(--ink);padding:6px 10px;background:var(--lime)}
+#conn .row span em{font-style:normal;color:var(--muted)}
+#conn .for{margin-top:14px;font-size:19px;color:var(--ink)}
+/* J end card */
+#J .big{top:620px;font:700 160px/.92 SG,TH;letter-spacing:-.075em;white-space:nowrap}
+#J .sub{top:860px;font:700 62px/1.1 SG,TH;letter-spacing:-.05em;color:#DCE3D3}
+#J .sub b{color:var(--lime)}
+#J .cta{position:absolute;left:var(--safe-x);top:1090px;display:inline-flex;gap:18px;align-items:center;background:var(--lime);color:var(--ink);border:2px solid var(--lime);padding:20px 26px;font-size:29px}
+#J .url{top:1205px;font-size:21px;color:#A9B4A2}
+#J .mark{top:1300px;display:flex;align-items:center;gap:18px;font:700 50px SG;letter-spacing:-.05em}
+#J .mark i{font:700 52px PX;font-style:normal}
+#wipe{position:absolute;left:0;right:0;background:var(--lime);display:none;z-index:8}
+#grain{position:absolute;inset:-40px;pointer-events:none;opacity:.05;mix-blend-mode:multiply;z-index:9}
+.logo{position:absolute;top:var(--safe-top);right:var(--safe-x);width:76px;height:76px;object-fit:contain;z-index:10}
+#safe{position:absolute;left:150px;right:150px;top:300px;bottom:380px;outline:2px dashed magenta;z-index:20;display:none}
+#safe:after{content:'';position:absolute;right:-150px;width:230px;top:880px;height:600px;background:rgba(255,0,255,.12)}
+</style></head><body>
+<!-- A: hook -->
+<div id="A" class="scene dark">
+ <div class="eyebrowD mono L" id="ebA"></div>
+ <div class="lab mono L" id="labA"></div>
+ <div class="big L" id="bigA"></div>
+ <div class="head L" id="headA"></div>
+ <div class="rule" id="ruleA"></div><div class="foot mono L" id="footA"></div>
+</div>
+<!-- B: the line, then crossings per year (waves), then falls -->
+<div id="B" class="scene light">
+ <div class="top L"><div class="brand"><i>Q</i>uerious<span class="cur">_</span></div><div class="tag mono">Insight</div></div>
+ <div class="meta mono L" id="metaB"></div>
+ <div class="h2 L" id="hB"></div>
+ <svg id="chartB" class="abs" width="1080" height="1920"></svg>
+ <div class="caption L R" id="capB"></div>
+ <div class="list mono L R" id="listB"></div>
+ <div class="note mono L R" id="noteB" style="top:1400px"></div>
+</div>
+<!-- D: Argentina -->
+<div id="D" class="scene light">
+ <div class="top L"><div class="brand"><i>Q</i>uerious<span class="cur">_</span></div><div class="tag mono">Insight</div></div>
+ <div class="meta mono L" id="metaD"></div>
+ <div class="h2 L" id="hD"></div>
+ <svg id="chartD" class="abs" width="1080" height="1920"></svg>
+ <div id="callD" style="position:absolute"><div class="k mono" id="callDk"></div><div class="r"><span>ARGENTINA</span><span>$13,970</span></div><div class="r" style="color:#677166"><span id="callDl"></span><span>$13,935</span></div><div class="big">+$35</div></div>
+ <div class="caption L R" id="capD"></div>
+ <div class="note mono L R" id="noteD" style="top:1340px"></div>
+</div>
+<!-- E: Guyana -->
+<div id="E" class="scene dark">
+ <div class="eyebrowD mono L" id="ebE"></div>
+ <div class="name L" id="nameE"></div>
+ <div class="lab mono L" id="labE"></div>
+ <div class="big L" id="bigE"></div>
+ <svg id="chartE" class="abs" width="1080" height="1920"></svg>
+ <div class="caption L R" id="capE"></div>
+ <div class="note mono L R" id="noteE" style="top:1340px"></div>
+</div>
+<!-- F: 33 of 38 stayed + the question -->
+<div id="F" class="scene light">
+ <div class="top L"><div class="brand"><i>Q</i>uerious<span class="cur">_</span></div><div class="tag mono">Insight</div></div>
+ <div class="meta mono L" id="metaF"></div>
+ <div class="h2 L" id="hF"></div>
+ <div id="gridF"></div>
+ <div class="mono L" id="legF"></div>
+ <div class="L R" id="qF"></div>
+ <div class="note mono L R" id="noteF" style="top:1440px"></div>
+</div>
+<!-- G: South Korea -->
+<div id="G" class="scene light">
+ <div class="top L"><div class="brand"><i>Q</i>uerious<span class="cur">_</span></div><div class="tag mono">Insight</div></div>
+ <div class="meta mono L" id="metaG"></div>
+ <div class="h2 L" id="hG"></div>
+ <svg id="chartG" class="abs" width="1080" height="1920"></svg>
+ <div class="caption L R" id="capG"></div>
+ <div class="note mono L R" id="noteG" style="top:1340px"></div>
+</div>
+<!-- H: Thailand vs China, % of the line -->
+<div id="H" class="scene light">
+ <div class="top L"><div class="brand"><i>Q</i>uerious<span class="cur">_</span></div><div class="tag mono">Insight</div></div>
+ <div class="meta mono L" id="metaH"></div>
+ <div class="h2 L" id="hH" style="font-size:80px"></div>
+ <svg id="chartH" class="abs" width="1080" height="1920"></svg>
+ <div class="caption L R" id="capH"></div>
+ <div class="note mono L R" id="noteH" style="top:1340px"></div>
+</div>
+<!-- I: walkthrough -->
+<div id="I" class="scene light">
+ <div class="top L"><div class="brand"><i>Q</i>uerious<span class="cur">_</span></div><div class="tag mono" id="stepI"></div></div>
+ <div class="h2 L" id="catT" style="top:440px;font-size:84px"></div>
+ <div id="search" class="L"><span style="font:700 32px PX;color:#E5764B">✳</span><span id="stext"></span></div>
+ <div id="dscard" class="L"><div class="ey mono">Dataset / World Bank — WDI</div><h3>GDP per capita (current US$)</h3>
+  <p id="dsdesc"></p><div class="mt mono">215 countries & territories · CC BY 4.0</div>
+  <div class="btn mono" id="openq"><span>Open in Query ↗</span></div></div>
+ <div id="stack">
+  <div id="sqlhead" class="mono L"><span>SQL / DuckDB in your browser</span><span id="sqlstate"></span></div>
+  <div id="sql" class="L"></div>
+  <div class="btn mono" id="run"><span>Run query ▶</span></div>
+  <div id="rtable" class="L R"><div class="rh mono"><span>Results</span><span id="rcount"></span></div><table id="rt"></table></div>
+  <div class="obtn mono" id="csvb">↓ CSV</div><div class="obtn mono" id="jsonb">↓ JSON</div><div class="obtn mono" id="connb">Connect</div>
+  <div class="mono L R" id="toast"></div>
+  <div id="conn" class="L R"><div class="lbl mono">Connection URL / live CSV or JSON</div>
+   <div class="row"><span><em>…/v1/query/</em>7f3a91c0<em>.csv</em></span><b>Copy CSV URL</b></div>
+   <div class="row"><span><em>…/v1/query/</em>7f3a91c0<em>.json</em></span><b>Copy JSON URL</b></div>
+   <div class="for mono" id="connFor"></div></div>
+ </div>
+ <div class="ripple" id="ripI"></div>
+ <svg class="cursor" id="curI" viewBox="0 0 32 32"><path d="M4 2 L4 26 L10.5 20 L15 30 L19 28 L14.6 18.4 L23 18.4 Z" fill="#283127" stroke="#F4F1E9" stroke-width="1.6" stroke-linejoin="round"/></svg>
+</div>
+<!-- J: end card -->
+<div id="J" class="scene dark">
+ <div class="eyebrowD mono L"></div>
+ <div class="big L" id="bigJ"></div>
+ <div class="sub L" id="subJ"></div>
+ <div class="cta mono" id="ctaJ">querious.studio ↗</div>
+ <div class="url mono L" id="urlJ"></div>
+ <div class="mark L" id="markJ"></div>
+</div>
+<div id="wipe"></div>
+<svg id="grain" width="1160" height="2000"><filter id="n"><feTurbulence type="fractalNoise" baseFrequency=".85" numOctaves="2" seed="3"/><feColorMatrix type="saturate" values="0"/></filter><rect width="100%" height="100%" filter="url(#n)"/></svg>
+<img id="logoL" class="logo" src="../../brand/querious-logo-lime.svg"><img id="logoD" class="logo" src="../../brand/querious-logo-dark.svg">
+<div id="safe"></div>
+<script>
+// ---------- on-screen copy (the Thai episode replaces this block only) ----------
+const T={
+ eyebrow:['Querious / Open data / ','High income'],
+ labA1:'Crossed into <b>high income</b>', labA2:'From <b>East & Southeast Asia</b>',
+ headA1:'since 1988.', headA2:'Just one.', footA:'GDP per capita vs. the World Bank high-income line',
+ metaB1:'World Bank / high-income line', metaB2:'Crossings into high income / per year',
+ hB1:'The line:<br>$13,935', hB2:'They came<br>in waves',
+ lineLab0:'$6,000 · 1987', lineLab1:'$13,935 · 2024', legUp:'▲ Crossed into high income', legDown:'▼ Fell back below',
+ capB:[[8.3,'≈ <span class="hl">$14K</span> a person.'],[16.4,'Wave 1: <span class="hl">E. Europe</span>'],[21.0,'Wave 2: <span class="hl">commodities</span>'],[25.9,'Many <span class="hl">fell back.</span>']],
+ listB:[[8.3,'GNI per capita · <b>2024 threshold</b>'],[16.4,'2003–2008 · <b>CZE HUN SVK EST LVA LTU POL HRV</b>'],[21.0,'2010–2014 · <b>CHL URY VEN ARG BRA RUS KAZ PAN</b>'],[27.2,'<b>VEN 2011 · BRA 2012 · KAZ 2014 · RUS 2015</b>']],
+ noteB:'Source / World Bank WDI · GDP per capita, current US$, vs. WB high-income line (GNI, Atlas) · approximate · Iraq excluded',
+ metaD:'Argentina / GDP per capita vs. the line', hD:'Argentina', lineLab:'High-income line', callK:'2024 / latest data', callL:'LINE',
+ capD:[[32.8,'Crossed <span class="hl">3 times.</span>'],[36.1,'Just <span class="hl">$35</span> above.']],
+ noteD:'Source / World Bank WDI · GDP per capita, current US$ · line = WB high-income threshold (GNI, Atlas) · approximate',
+ ebE:['The fastest climb / ','2019 → 2024'], nameE:'Guyana', labE:'GDP per capita · ',
+ capE:[[47.4,'<span class="hl">4.6×</span> in five years.']], lineE:'High-income line',
+ noteE:'Source / World Bank WDI · GDP per capita, current US$',
+ metaF:'Still above the line / latest data', hF:'33 of 38', legF:['Above (33)','Fell back (5)'],
+ qF:'What does a<br>climb that <em>sticks</em><br>look like?',
+ noteF:'Latest year per country: 2024 (Palau 2023, American Samoa 2022) · approximate',
+ metaG:'South Korea / GDP per capita vs. the line', hG:'South Korea', mk:['1992 crossed','1998 crisis','1999 back'],
+ capG:[[55.1,'Crossed in <span class="hl">1992.</span>'],[57.3,'<span class="hl">1998:</span> Asian crisis.'],[59.0,'Back in 1999.'],[60.7,'<span class="hl">Never left.</span>']],
+ noteG:'Source / World Bank WDI · GDP per capita, current US$ · line = WB high-income threshold · approximate',
+ metaH:'Share of the high-income line / %', hH:'Thailand vs China', line100:'High-income line · 100%', nTHA:'Thailand', nCHN:'China', yrs7:'7 years',
+ capH:[[62.4,'<span class="hl">2011:</span> neck and neck.'],[67.2,'China: <span class="hl">95%</span>'],[69.8,'Thailand: <span class="hl">53%</span> (2017)'],[73.0,'2024: <span class="hl">back to 53%.</span>']],
+ noteH:'Source / World Bank WDI · GDP per capita, current US$ ÷ WB high-income line · approximate',
+ catT:'Data catalog', steps:['Step 01 / Discover','Step 02 / Query','Step 03 / Take it further'], sqlEdit:'Editing…', sqlRan:'✓ Ran in browser', ph:'Search datasets…',
+ search:'gdp per capita', dsdesc:'Annual GDP per person in current US dollars.', toast:'✓ result.csv · 30 rows', connFor:'→ Your AI · Your BI dashboard',
+ endH:'Your turn', endS1:'The data is open.', endS2:'The question is yours.', endUrl:'No account needed to explore'
+};
+const DATA=window.__DATA__, $=id=>document.getElementById(id), NS='http://www.w3.org/2000/svg';
+if(location.hash==='#safe')$('safe').style.display='block';
+const clamp=(v,a=0,b=1)=>Math.min(b,Math.max(a,v)), p=(t,a,b)=>clamp((t-a)/(b-a));
+const eOut=x=>1-Math.pow(1-x,3), eInOut=x=>x<.5?4*x*x*x:1-Math.pow(-2*x+2,3)/2, eSnap=x=>x<.5?16*x**5:1-Math.pow(-2*x+2,5)/2, lerp=(a,b,x)=>a+(b-a)*x;
+const blink=t=>Math.floor(t/0.53)%2===0;
+const SEG=new Intl.Segmenter('th',{granularity:'grapheme'}), G_=s=>[...SEG.segment(s)].map(x=>x.segment);
+const gslice=(s,a,b)=>G_(s).slice(a,b).join(''), glen=s=>G_(s).length;
+const el=(n,a,par)=>{const e=document.createElementNS(NS,n);for(const k in a)e.setAttribute(k,a[k]);par.appendChild(e);return e};
+const txt=(par,a,s)=>{const e=el('text',Object.assign({'font-family':'PM, TH','font-weight':600},a),par);e.textContent=s;return e};
+const show=(id,on)=>{$(id).style.display=on?'block':'none'};
+const cursorTag=(t,n)=>`<span class="cur" style="opacity:${(blink(t)||n)?1:0}">_</span>`;
+const fmt=v=>Math.round(v).toLocaleString('en-US');
+function caption(elc,list,t,tEnd,html=true){let ci=-1;list.forEach((c,i)=>{if(t>=c[0]-0.05)ci=i});if(ci<0||t>tEnd){elc.style.opacity=0;return}
+ const k=eOut(p(t,list[ci][0]-0.05,list[ci][0]+0.2));elc.innerHTML=list[ci][1];elc.style.opacity=k;elc.style.transform=`translateY(${(1-k)*24}px)`}
+function typeHTML(s,n){const parts=s.split('<br>');let out=[],k=n;for(const q of parts){const g=G_(q);out.push(g.slice(0,Math.max(0,k)).join(''));k-=g.length;if(k<=0)break}return out.join('<br>')}
+const htmlLen=s=>s.split('<br>').reduce((a,q)=>a+glen(q),0);
+function typed(elx,s,t,a,b,keep){const L=htmlLen(s),n=Math.round(L*p(t,a,b));elx.innerHTML=typeHTML(s,n)+cursorTag(t,n<L)}
+// static copy
+$('ebA').innerHTML=T.eyebrow[0]+'<b>'+T.eyebrow[1]+'</b>';$('footA').textContent=T.footA;
+$('noteB').textContent=T.noteB;$('metaD').textContent=T.metaD;$('noteD').textContent=T.noteD;$('callDk').textContent=T.callK;$('callDl').textContent=T.callL;
+$('ebE').innerHTML=T.ebE[0]+'<b>'+T.ebE[1]+'</b>';$('nameE').textContent=T.nameE;$('noteE').textContent=T.noteE;
+$('metaF').textContent=T.metaF;$('noteF').textContent=T.noteF;
+$('legF').innerHTML=`<i style="background:#D6ED63;border:2px solid #283127"></i>${T.legF[0]} &nbsp;&nbsp; <i style="border:3px solid #E5764B"></i>${T.legF[1]}`;
+$('metaG').textContent=T.metaG;$('noteG').textContent=T.noteG;$('metaH').textContent=T.metaH;$('noteH').textContent=T.noteH;
+$('dsdesc').textContent=T.dsdesc;$('toast').textContent=T.toast;$('connFor').textContent=T.connFor;
+const YRS=DATA.years, THR=DATA.threshold, thrOf=y=>THR[y-1987];
+// ---------- B: line + bars ----------
+const svB=$('chartB'), BX0=232, BST=670/36, bxc=y=>BX0+(y-1988)*BST, BASE=1010, UU=50, DU=34;
+const lineG=el('g',{},svB), ty=v=>BASE-v/15000*260;
+const stepPts=[];YRS.forEach((y,i)=>{stepPts.push(`${bxc(y)-BST/2},${ty(THR[i])}`,`${bxc(y)+BST/2},${ty(THR[i])}`)});
+[0,15000].forEach(v=>el('line',{x1:BX0-12,x2:900+10,y1:ty(v),y2:ty(v),stroke:'#E1E4DA','stroke-width':2},lineG));
+const clipB=el('clipPath',{id:'clipB'},svB), clipBr=el('rect',{x:0,y:0,width:0,height:1920},clipB);
+el('polyline',{points:stepPts.join(' '),fill:'none',stroke:'#283127','stroke-width':4,'clip-path':'url(#clipB)'},lineG);
+const lab0=txt(lineG,{x:bxc(1987)-BST/2,y:ty(6000)+40,'font-size':24,fill:'#283127'},T.lineLab0);
+const lab1=txt(lineG,{x:bxc(2024)+BST/2,y:ty(13935)-22,'font-size':24,fill:'#283127','text-anchor':'end'},T.lineLab1);
+const barsG=el('g',{},svB);
+el('line',{x1:BX0-14,x2:910,y1:BASE,y2:BASE,stroke:'#8B9485','stroke-width':2},barsG);
+[1990,2000,2010,2020].forEach(y=>txt(barsG,{x:bxc(y),y:1176,'text-anchor':'middle','font-size':21,fill:'#455044','font-weight':500},y));
+const legU=txt(barsG,{x:150,y:735,'font-size':20,fill:'#455044'},T.legUp), legD=txt(barsG,{x:520,y:735,'font-size':20,fill:'#B4502C'},T.legDown);
+const brk=el('rect',{y:752,height:BASE-752,fill:'#D6ED63',opacity:0},barsG);
+const upBars=DATA.up.map((n,i)=>({y:1988+i,n,r:el('rect',{x:bxc(1988+i)-6,width:12,y:BASE,height:0,fill:'#839B45'},barsG)}));
+const dnBars=DATA.down.map((n,i)=>({y:1988+i,n,r:el('rect',{x:bxc(1988+i)-6,width:12,y:BASE+2,height:0,fill:'#DD6B43'},barsG)}));
+// ---------- generic GDP-vs-line chart (Argentina, Korea) ----------
+const CX0=232, CX1=900, cx=y=>CX0+(y-1987)/37*(CX1-CX0), CY0=1100, CY1=640;
+function lineChart(sv,vmax,ticks,series,color,id,name){const cy=v=>CY0-v/vmax*(CY0-CY1);const g=el('g',{},sv);
+ ticks.forEach(v=>{el('line',{x1:CX0,x2:CX1,y1:cy(v),y2:cy(v),stroke:'#E1E4DA','stroke-width':2},g);txt(g,{x:CX0-14,y:cy(v)+8,'text-anchor':'end','font-size':21,fill:'#455044','font-weight':500},v===0?'0':'$'+v/1000+'K')});
+ [1987,2024].forEach(y=>txt(g,{x:cx(y),y:CY0+40,'text-anchor':y===1987?'start':'end','font-size':22,fill:'#455044','font-weight':500},y));
+ const sp=[];YRS.forEach((y,i)=>{sp.push(`${cx(y)},${cy(THR[i])}`);if(i<YRS.length-1)sp.push(`${cx(y+1)},${cy(THR[i])}`)});
+ const clip=el('clipPath',{id},sv), cr=el('rect',{x:0,y:0,width:0,height:1920},clip);
+ const thr=el('polyline',{points:sp.join(' '),fill:'none',stroke:'#283127','stroke-width':3},g);
+ const lg=el('g',{},g);el('line',{x1:CX0,x2:CX0+36,y1:592,y2:592,stroke:'#283127','stroke-width':3},lg);txt(lg,{x:CX0+46,y:599,'font-size':19,fill:'#283127'},T.lineLab.toUpperCase());
+ el('line',{x1:CX0+300,x2:CX0+336,y1:592,y2:592,stroke:color,'stroke-width':6},lg);txt(lg,{x:CX0+346,y:599,'font-size':19,fill:'#283127'},name.toUpperCase());
+ const thrLab=null;
+ const ln=el('polyline',{points:series.map((v,i)=>`${cx(1987+i)},${cy(v)}`).join(' '),fill:'none',stroke:color,'stroke-width':6,'stroke-linejoin':'round','clip-path':`url(#${id})`},sv);
+ const dot=el('rect',{width:18,height:18,fill:color},sv);
+ return {g,cy,cr,ln,dot,thr,thrLab,series,
+  at(yc){cr.setAttribute('width',cx(yc));const y0=Math.floor(yc),f=yc-y0,a=series[y0-1987],b=series[Math.min(37,y0-1986)];const v=lerp(a,b,f);dot.setAttribute('x',cx(yc)-9);dot.setAttribute('y',cy(v)-9);return v}}}
+function marker(sv,x,y,label,color,anchor,dy){const g=el('g',{opacity:0},sv);el('rect',{x:x-14,y:y-14,width:28,height:28,fill:'none',stroke:color,'stroke-width':5},g);
+ txt(g,{x:anchor==='end'?x-6:anchor==='start'?x+6:x,y:y+dy,'text-anchor':anchor,'font-size':21,fill:color==='#E5764B'?'#B4502C':'#283127'},label);return g}
+// D Argentina
+const svD=$('chartD'), AR=lineChart(svD,16000,[0,8000,16000],DATA.arg,'#708348','clipD',T.hD);
+const mD=[[2011,'2011'],[2015,'2015'],[2022,'2022']].map(([y,l])=>({y,g:marker(svD,cx(y),AR.cy(DATA.arg[y-1987]),l,'#E5764B','middle',-26)}));
+// G Korea
+const svG=$('chartG'), KR=lineChart(svG,40000,[0,20000,40000],DATA.kor,'#708348','clipG',T.hG);
+const mG=[[1992,T.mk[0],'#283127','end',-24],[1998,T.mk[1],'#E5764B','middle',52],[1999,T.mk[2],'#283127','start',-28]].map(([y,l,c,a,dy])=>({y,g:marker(svG,cx(y),KR.cy(DATA.kor[y-1987]),l.toUpperCase(),c,a,dy)}));
+const endG=txt(svG,{x:CX1,y:0,'text-anchor':'end','font-size':30,fill:'#283127'},'');
+// ---------- E: Guyana bars ----------
+const svE=$('chartE'), GU=DATA.guy, EB=1130, ey=v=>EB-v/30000*270, EX0=160, EST=77;
+const gE=el('g',{},svE);el('line',{x1:150,x2:930,y1:EB,y2:EB,stroke:'#5a6657','stroke-width':2},gE);
+const thrE=el('line',{x1:150,x2:930,y1:ey(13935),y2:ey(13935),stroke:'#F4F1E9','stroke-width':2,'stroke-dasharray':'8 8'},gE);
+const thrEl=txt(gE,{x:150,y:ey(13935)-14,'font-size':19,fill:'#C9D1C1'},T.lineE.toUpperCase()+' ≈ $14K');
+const barsE=GU.map((d,i)=>{const x=EX0+i*EST;const r=el('rect',{x,width:52,y:EB,height:0,fill:d.year>=2022?'#D6ED63':'#6F8658'},gE);
+ if(d.year===2015||d.year===2019||d.year===2024)txt(gE,{x:x+26,y:EB+34,'text-anchor':'middle','font-size':20,fill:'#A9B4A2','font-weight':500},d.year);return {d,r}});
+// ---------- F grid ----------
+const cells=[...DATA.stayed.map(c=>['s',c]),...DATA.fell.map(c=>['f',c])];
+$('gridF').innerHTML=cells.map(([k,c])=>`<div class="${k}">${c}</div>`).join('');
+// ---------- H: % of the line ----------
+const svH=$('chartH'), PY=DATA.pct.years, HX0=232, HX1=900, hx=y=>HX0+(y-2011)/13*(HX1-HX0), hy=v=>1100-v*5;
+const gH=el('g',{},svH);
+[0,50].forEach(v=>{el('line',{x1:HX0,x2:HX1,y1:hy(v),y2:hy(v),stroke:'#E1E4DA','stroke-width':2},gH);txt(gH,{x:HX0-14,y:hy(v)+8,'text-anchor':'end','font-size':21,fill:'#455044','font-weight':500},v+'%')});
+el('line',{x1:HX0,x2:HX1,y1:hy(100),y2:hy(100),stroke:'#283127','stroke-width':4},gH);
+txt(gH,{x:HX1,y:hy(100)-16,'font-size':20,fill:'#283127','text-anchor':'end'},T.line100.toUpperCase());
+el('rect',{x:HX0,y:hy(100)-32,width:16,height:16,fill:'#424E3D'},gH);txt(gH,{x:HX0+24,y:hy(100)-17,'font-size':20,fill:'#283127'},T.nCHN.toUpperCase());
+el('rect',{x:HX0+150,y:hy(100)-32,width:16,height:16,fill:'#E5764B'},gH);txt(gH,{x:HX0+174,y:hy(100)-17,'font-size':20,fill:'#B4502C'},T.nTHA.toUpperCase());
+[2011,2017,2024].forEach(y=>txt(gH,{x:hx(y),y:1140,'text-anchor':y===2011?'start':y===2024?'end':'middle','font-size':22,fill:'#455044','font-weight':500},y));
+function pctLine(key,color,id){const s=DATA.pct[key];const clip=el('clipPath',{id},svH), cr=el('rect',{x:0,y:0,width:0,height:1920},clip);
+ const ln=el('polyline',{points:s.map((v,i)=>`${hx(2011+i)},${hy(v)}`).join(' '),fill:'none',stroke:color,'stroke-width':6,'stroke-linejoin':'round','clip-path':`url(#${id})`},svH);
+ const dot=el('rect',{width:20,height:20,fill:color},svH);
+ return {s,cr,ln,dot,at(yc){cr.setAttribute('width',hx(yc)+1);const y0=Math.floor(yc),f=yc-y0,a=s[y0-2011],b=s[Math.min(13,y0-2010)];const v=lerp(a,b,f);dot.setAttribute('x',hx(yc)-10);dot.setAttribute('y',hy(v)-10);return v}}}
+const CN=pctLine('chn','#424E3D','clipH1'), TL=pctLine('tha','#E5764B','clipH2');
+const labCN=txt(svH,{'font-size':25,fill:'#283127'},''), labTH=txt(svH,{'font-size':25,fill:'#B4502C'},'');
+const m17=el('g',{opacity:0},svH);el('rect',{x:hx(2017)-14,y:hy(53.2)-14,width:28,height:28,fill:'none',stroke:'#E5764B','stroke-width':5},m17);txt(m17,{x:hx(2017),y:hy(53.2)-28,'text-anchor':'middle','font-size':26,fill:'#B4502C'},'53%');
+const m19=txt(svH,{x:hx(2019),y:hy(60.7)-24,'text-anchor':'middle','font-size':20,fill:'#677166',opacity:0},'61% · 2019');
+const m24=el('g',{opacity:0},svH);el('rect',{x:hx(2024)-14,y:hy(52.7)-14,width:28,height:28,fill:'none',stroke:'#E5764B','stroke-width':5},m24);txt(m24,{x:hx(2024)-4,y:hy(52.7)-28,'text-anchor':'end','font-size':26,fill:'#B4502C'},'53%');
+const br7=el('g',{opacity:0},svH);const BY=hy(52.7)+72;
+el('polyline',{points:`${hx(2017)},${BY-14} ${hx(2017)},${BY} ${hx(2024)},${BY} ${hx(2024)},${BY-14}`,fill:'none',stroke:'#283127','stroke-width':3},br7);
+const b7w=150;el('rect',{x:(hx(2017)+hx(2024))/2-b7w/2,y:BY+14,width:b7w,height:40,fill:'#D6ED63'},br7);
+txt(br7,{x:(hx(2017)+hx(2024))/2,y:BY+43,'text-anchor':'middle','font-size':24,fill:'#283127'},T.yrs7.toUpperCase());
+// ---------- I walkthrough ----------
+const SQL=`WITH line AS (SELECT * FROM (VALUES
+  (1987, 6000), …, (2024, 13935)) AS v(year, usd)),
+s AS (
+  SELECT g.country_name, g.year,
+    g.gdp_per_capita_current_usd >= l.usd AS high
+  FROM worldbank_gdp_per_capita g
+  JOIN line l ON l.year = g.year
+  WHERE g.gdp_per_capita_current_usd IS NOT NULL),
+c AS (SELECT *, LAG(high) OVER (PARTITION BY
+  country_name ORDER BY year) AS was_high FROM s)
+SELECT year, COUNT(*) AS crossed FROM c
+WHERE high AND NOT was_high
+GROUP BY year ORDER BY year;`;
+const KW=/\b(WITH|SELECT|FROM|VALUES|JOIN|ON|WHERE|AND|NOT|IS|NULL|OVER|PARTITION BY|ORDER BY|GROUP BY|COUNT|LAG|AS)\b/g;
+const hlSql=s=>s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>=/g,'&gt;=').replace(KW,'<span class="k">$1</span>');
+$('rt').innerHTML='<tr><th class="n">year</th><th class="n">crossed</th></tr>'+DATA.result.slice(0,6).map(r=>`<tr><td class="n">${r.year}</td><td class="n">${r.crossed}</td></tr>`).join('');
+$('rcount').textContent=DATA.resultRows+' rows · 2 columns';
+function cursorAt(cu,t,t0,t1,sx,sy,ex_,ey_){const m=eInOut(p(t,t0,t1));cu.style.left=(lerp(sx,ex_,m)-Math.sin(m*Math.PI)*60)+'px';cu.style.top=(lerp(sy,ey_,m)-Math.sin(m*Math.PI)*80)+'px'}
+function ripple(r,t,tc,x,y){const k=p(t,tc,tc+0.45),s=20+150*eOut(k);r.style.width=r.style.height=s+'px';r.style.left=(x+4-s/2)+'px';r.style.top=(y+4-s/2)+'px';r.style.opacity=k>0&&k<1?1-k:0}
+// scene windows
+const CUTS=[7.8,32.5,39.0,48.9,54.8,62.1,76.4,87.6];
+const W={A:[0,7.85],B:[7.75,32.55],D:[32.45,39.05],E:[38.95,48.95],F:[48.85,54.85],G:[54.75,62.15],H:[62.05,76.45],I:[76.35,87.65],J:[87.55,99]};
+const inW=(k,t)=>t>=W[k][0]&&t<W[k][1];
+const END=97.0, J0=87.6;
+window.DUR=END;
+window.render=function(t){
+ for(const k in W)show(k,inW(k,t));
+ // ---- A hook: 0 -> 38, then 1
+ if(inW('A',t)){const A=$('A');A.style.transform=`scale(${1+0.025*eInOut(p(t,0,7.8))})`;
+  $('ebA').style.opacity=eOut(p(t,0.1,0.6));
+  const two=t>=4.6, flip=eSnap(p(t,4.6,5.0));
+  $('labA').innerHTML=two?T.labA2:T.labA1;$('labA').style.opacity=two?flip:eOut(p(t,0.3,0.7));
+  const v=two?1:38*eOut(p(t,0.6,2.8));
+  $('bigA').innerHTML=t>0.6?Math.round(v):'';$('bigA').style.color=two?'#E5764B':'#D6ED63';$('bigA').style.transform=two?`scale(${0.9+0.1*flip})`:'none';$('bigA').style.transformOrigin='0 50%';
+  if(!two)typed($('headA'),T.headA1,t,1.4,2.4);else typed($('headA'),T.headA2,t,5.6,6.2);
+  $('ruleA').style.width=780*eOut(p(t,0.2,1.4))+'px';$('footA').style.opacity=eOut(p(t,0.6,1.2));}
+ // ---- B the line -> waves -> falls
+ if(inW('B',t)){const B=$('B');B.style.transform=`scale(${1+0.02*eInOut(p(t,7.8,32.5))})`;
+  const waves=t>=14.9;
+  $('metaB').textContent=waves?T.metaB2:T.metaB1;$('metaB').style.opacity=waves?eOut(p(t,14.9,15.2)):eOut(p(t,8.0,8.4));
+  if(!waves)typed($('hB'),T.hB1,t,8.2,9.2);else typed($('hB'),T.hB2,t,14.9,15.7);
+  clipBr.setAttribute('width',lerp(0,1080,eInOut(p(t,8.6,11.8))));
+  const lo=1-eOut(p(t,14.4,14.9));lineG.style.opacity=lo*eOut(p(t,8.4,8.8));lab0.style.opacity=eOut(p(t,9.0,9.3));lab1.style.opacity=eOut(p(t,11.6,11.9));
+  lineG.style.display=t<14.95?'block':'none';barsG.style.display=t>=14.5?'block':'none';
+  barsG.style.opacity=eOut(p(t,14.5,14.9));legD.style.opacity=eOut(p(t,26.0,26.4));
+  const w1=p(t,16.4,16.7)*(1-p(t,20.9,21.1)), w2=p(t,21.0,21.3)*(1-p(t,25.8,26.0)), fall=p(t,25.9,26.3);
+  const lo1=2003,hi1=2008,lo2=2010,hi2=2014;
+  if(w2>0){brk.setAttribute('x',bxc(lo2)-12);brk.setAttribute('width',bxc(hi2)-bxc(lo2)+24);brk.setAttribute('opacity',.55*eOut(w2))}
+  else{brk.setAttribute('x',bxc(lo1)-12);brk.setAttribute('width',bxc(hi1)-bxc(lo1)+24);brk.setAttribute('opacity',.55*eOut(w1))}
+  upBars.forEach((b,i)=>{const k=eOut(p(t,15.0+i*0.035,15.4+i*0.035));b.r.setAttribute('y',BASE-b.n*UU*k);b.r.setAttribute('height',b.n*UU*k);
+   const inw1=b.y>=lo1&&b.y<=hi1, inw2=b.y>=lo2&&b.y<=hi2;
+   let o=1;if(w1>0)o=inw1?1:1-0.7*w1;if(w2>0)o=inw2?1:1-0.7*w2;if(fall>0)o=1-0.7*fall;b.r.setAttribute('opacity',o);
+   b.r.setAttribute('fill',(b.y===2011&&w2>0.5)?'#E5764B':'#839B45')});
+  dnBars.forEach((b,i)=>{const k=eOut(p(t,26.0+i*0.03,26.4+i*0.03));b.r.setAttribute('height',b.n*DU*k)});
+  caption($('capB'),T.capB,t,32.3);caption($('listB'),T.listB,t,32.3);if(t>=25.9&&t<27.15)$('listB').style.opacity=0;
+  $('noteB').style.opacity=eOut(p(t,8.6,9.1));}
+ // ---- D Argentina
+ if(inW('D',t)){const D=$('D');D.style.transform=`scale(${1+0.02*eInOut(p(t,32.5,39.0))})`;
+  $('metaD').style.opacity=eOut(p(t,32.6,33.0));typed($('hD'),T.hD,t,32.7,33.3);
+  const ch=eOut(p(t,32.8,33.2));AR.g.style.opacity=ch;$('noteD').style.opacity=eOut(p(t,33.0,33.5));
+  const yc=lerp(1987,2024,eInOut(p(t,33.0,35.9)));AR.at(yc);AR.ln.style.opacity=AR.dot.style.opacity=ch;
+  mD.forEach(m=>{m.g.setAttribute('opacity',eSnap(p(yc,m.y-0.3,m.y)))});
+  const cl=eSnap(p(t,36.0,36.35));$('callD').style.opacity=cl;$('callD').style.transform=`translateY(${(1-cl)*24}px)`;
+  caption($('capD'),T.capD,t,38.8);}
+ // ---- E Guyana
+ if(inW('E',t)){const E=$('E');E.style.transform=`scale(${1+0.025*eInOut(p(t,39.0,48.9))})`;
+  $('ebE').style.opacity=eOut(p(t,39.2,39.6));const nm=eOut(p(t,40.6,41.0));$('nameE').style.opacity=nm;$('nameE').style.transform=`translateY(${(1-nm)*24}px)`;
+  const cnt=eInOut(p(t,44.3,46.4)), v=lerp(6406,29675,cnt);
+  $('labE').innerHTML=T.labE+'<b>'+(cnt>=1?'2024':t>=44.3&&cnt>0?'2019 → 2024':'2019')+'</b>';$('labE').style.opacity=eOut(p(t,43.6,44.0));
+  $('bigE').textContent=t>=43.8?'$'+fmt(v):'';$('bigE').style.opacity=eOut(p(t,43.8,44.1));
+  gE.style.opacity=eOut(p(t,41.2,41.6));
+  barsE.forEach(b=>{const yr=b.d.year;let k;if(yr<=2019)k=eOut(p(t,41.4+(yr-2015)*0.08,41.8+(yr-2015)*0.08));else k=eOut(p(t,44.3+(yr-2020)*0.42,44.75+(yr-2020)*0.42));
+   b.r.setAttribute('y',EB-(EB-ey(b.d.v))*k);b.r.setAttribute('height',(EB-ey(b.d.v))*k)});
+  caption($('capE'),T.capE,t,48.7);$('noteE').style.opacity=eOut(p(t,41.6,42.0));}
+ // ---- F 33 of 38 + question
+ if(inW('F',t)){const F=$('F');F.style.transform=`scale(${1+0.02*eInOut(p(t,48.9,54.8))})`;
+  $('metaF').style.opacity=eOut(p(t,49.0,49.4));typed($('hF'),T.hF,t,49.3,49.9);
+  const dim=eOut(p(t,52.2,52.6));
+  $('gridF').querySelectorAll('div').forEach((c,i)=>{const k=eSnap(p(t,49.5+i*0.035,49.8+i*0.035));c.style.opacity=k*(1-0.75*dim);c.style.transform=`translateY(${(1-k)*14}px)`});
+  $('legF').style.opacity=eOut(p(t,50.9,51.3))*(1-dim);$('noteF').style.opacity=eOut(p(t,50.0,50.4));
+  if(t>=52.3)typed($('qF'),T.qF,t,52.3,53.6);else $('qF').innerHTML='';}
+ // ---- G Korea
+ if(inW('G',t)){const G=$('G');G.style.transform=`scale(${1+0.02*eInOut(p(t,54.8,62.1))})`;
+  $('metaG').style.opacity=eOut(p(t,54.9,55.3));typed($('hG'),T.hG,t,55.0,55.7);
+  const ch=eOut(p(t,55.1,55.5));KR.g.style.opacity=ch;KR.ln.style.opacity=KR.dot.style.opacity=ch;$('noteG').style.opacity=eOut(p(t,55.4,55.9));
+  let yc;if(t<56.4)yc=lerp(1987,1992,eInOut(p(t,55.3,56.4)));else if(t<57.4)yc=lerp(1992,1998,eInOut(p(t,56.4,57.4)));else if(t<59.0)yc=lerp(1998,1999,eInOut(p(t,58.4,59.0)));else yc=lerp(1999,2024,eInOut(p(t,59.0,60.9)));
+  const v=KR.at(yc);
+  mG.forEach(m=>{m.g.setAttribute('opacity',eSnap(p(yc,m.y-0.25,m.y)))});
+  endG.setAttribute('y',KR.cy(v)-30);endG.setAttribute('x',Math.max(cx(yc),560));endG.textContent='$'+fmt(v);endG.style.opacity=p(t,59.4,59.7);
+  caption($('capG'),T.capG,t,61.9);}
+ // ---- H Thailand vs China
+ if(inW('H',t)){const H=$('H');H.style.transform=`scale(${1+0.02*eInOut(p(t,62.1,76.4))})`;
+  $('metaH').style.opacity=eOut(p(t,62.2,62.6));typed($('hH'),T.hH,t,62.3,63.2);
+  const ch=eOut(p(t,62.5,62.9));gH.style.opacity=ch;$('noteH').style.opacity=eOut(p(t,62.8,63.3));
+  const ycC=lerp(2011,2024,eInOut(p(t,67.3,68.9))), ycT=lerp(2011,2024,eInOut(p(t,69.9,72.6)));
+  const vC=CN.at(ycC), vT=TL.at(ycT);[CN.ln,CN.dot,TL.ln,TL.dot].forEach(e=>e.style.opacity=eOut(p(t,63.0,63.4)));
+  labCN.style.opacity=labTH.style.opacity=eOut(p(t,63.4,63.8));
+  if(ycC<2011.05){labCN.setAttribute('x',hx(2011)+22);labCN.setAttribute('y',hy(vC)-20);labCN.setAttribute('text-anchor','start');labCN.textContent=vC.toFixed(1)+'%'}
+  else{labCN.setAttribute('x',hx(ycC)-18);labCN.setAttribute('y',hy(vC)+44);labCN.setAttribute('text-anchor','end');labCN.textContent=vC.toFixed(1)+'%';labCN.setAttribute('font-size',ycC>2023.9?32:25)}
+  if(ycT<2011.05){labTH.setAttribute('x',hx(2011)+22);labTH.setAttribute('y',hy(vT)+40);labTH.textContent=vT.toFixed(1)+'%';labTH.style.opacity=eOut(p(t,63.4,63.8))}
+  else{labTH.style.opacity=1-p(t,69.9,70.2)}
+  m17.setAttribute('opacity',eSnap(p(ycT,2016.8,2017)));m19.setAttribute('opacity',eOut(p(ycT,2018.8,2019.1))*0.95);m24.setAttribute('opacity',eSnap(p(ycT,2023.8,2024)));
+  br7.setAttribute('opacity',eSnap(p(t,73.0,73.35)));
+  caption($('capH'),T.capH,t,76.2);}
+ // ---- I walkthrough: catalog -> open in query (78.6) -> run (80.4) -> CSV (84.4) -> connect (85.4)
+ if(inW('I',t)){const I=$('I');I.style.transform=`scale(${1+0.015*eInOut(p(t,76.4,87.6))})`;
+  $('stepI').textContent=t<78.8?T.steps[0]:t<82.6?T.steps[1]:T.steps[2];
+  const catOut=eInOut(p(t,78.75,79.1));
+  $('catT').innerHTML=T.catT+'<span class="cur">_</span>';$('catT').style.opacity=eOut(p(t,76.6,77.0))*(1-catOut);
+  $('search').style.opacity=eOut(p(t,76.7,77.1))*(1-catOut);
+  const S=T.search,ns=Math.round(S.length*p(t,77.0,77.6));$('stext').innerHTML=ns?S.slice(0,ns)+`<span class="cur" style="opacity:${blink(t)||ns<S.length?1:0}">▌</span>`:`<span class="ph">${T.ph}</span>`;
+  const dc=eSnap(p(t,77.7,78.05));$('dscard').style.opacity=dc*(1-catOut);$('dscard').style.transform=`translateY(${(1-dc)*30-catOut*40}px)`;$('dscard').style.boxShadow=`${6*dc}px ${6*dc}px 0 #D6ED63`;
+  const ob=$('openq'),prO=t>78.5&&t<78.7;ob.style.transform=`translate(${prO?3:0}px,${prO?3:0}px)`;ob.style.background=prO?'#D6ED63':'';ob.style.color=prO?'#283127':'';
+  const up=eInOut(p(t,84.9,85.25))*380;$('stack').style.transform=`translateY(${-up}px)`;
+  const sq=eOut(p(t,78.85,79.15))*(1-p(t,84.85,85.05));$('sql').style.opacity=sq;$('sqlhead').style.opacity=sq;
+  const nch=Math.round(SQL.length*p(t,79.0,80.1));$('sql').innerHTML=hlSql(SQL.slice(0,nch))+`<span class="cur" style="opacity:${(blink(t)||nch<SQL.length)?1:0}">▌</span>`;
+  $('sqlstate').textContent=t<80.5?T.sqlEdit:T.sqlRan;$('sqlstate').style.color=t<80.5?'#677166':'#245c3b';
+  const rb=$('run'),rk=eOut(p(t,79.8,80.1))*(1-p(t,84.85,85.05));rb.style.opacity=rk;const prR=t>80.3&&t<80.5;rb.style.boxShadow=prR?'none':'6px 6px 0 #D6ED63';rb.style.transform=`translateY(${(1-rk)*20}px) translate(${prR?3:0}px,${prR?3:0}px)`;
+  const rr=eSnap(p(t,80.6,81.0));$('rtable').style.opacity=rr;$('rtable').style.transform=`translateY(${(1-rr)*30}px)`;
+  $('rt').querySelectorAll('tr').forEach((tr,i)=>tr.style.opacity=eOut(p(t,80.8+i*0.07,81.05+i*0.07)));
+  [['csvb',81.4],['jsonb',81.48],['connb',81.56]].forEach(([id,t0])=>{const k=eOut(p(t,t0,t0+0.3));const b=$(id);b.style.opacity=k;b.style.transform=`translateY(${(1-k)*16}px)`});
+  const cb=$('csvb'),prC=t>84.3&&t<84.5;cb.style.background=t>84.3?'#D6ED63':'#FAF9F3';cb.style.transform=`translate(${prC?3:0}px,${prC?3:0}px)`;cb.style.boxShadow=prC?'none':(t>81.7?'6px 6px 0 #D6ED63':'none');
+  const cn=$('connb'),prN=t>85.3&&t<85.5;cn.style.transform=`translate(${prN?3:0}px,${prN?3:0}px)`;cn.style.boxShadow=prN?'none':(t>81.8?'6px 6px 0 #D6ED63':'none');
+  const to=eSnap(p(t,84.55,84.85))*(1-p(t,85.4,85.6));$('toast').style.opacity=to;$('toast').style.transform=`translateY(${(1-to)*14}px)`;
+  const co=eSnap(p(t,85.55,85.9));$('conn').style.opacity=co;$('conn').style.transform=`scale(${0.94+0.06*co})`;
+  $('conn').querySelectorAll('.row').forEach((r,i)=>{r.style.opacity=eOut(p(t,85.75+i*0.15,86.05+i*0.15));r.style.background=(t>86.3+i*0.3&&t<86.6+i*0.3)?'#D6ED63':'#FBFAF5'});
+  $('connFor').style.opacity=eOut(p(t,86.1,86.4));
+  const cu=$('curI');let op=1;
+  if(t<78.8){cursorAt(cu,t,77.8,78.45,820,1500,200,1186);op=p(t,77.7,77.85);}
+  else if(t<80.6){cursorAt(cu,t,79.7,80.25,200,1186,840,929);}
+  else if(t<84.6){cursorAt(cu,t,83.6,84.25,840,929,205,1424);}
+  else{cursorAt(cu,t,84.9,85.25,205,1424,560,1044);op=1-p(t,86.6,87.0);}
+  cu.style.opacity=op;cu.style.transform=`scale(${prO||prR||prC||prN?.88:1})`;
+  if(t<79.0)ripple($('ripI'),t,78.6,200,1186);else if(t<81.0)ripple($('ripI'),t,80.4,840,929);else if(t<84.9)ripple($('ripI'),t,84.4,205,1424);else ripple($('ripI'),t,85.4,560,1044);}
+ // ---- J end card: types in, holds ~3.5 s after the last line, then erases from the beginning (bottom first) to the cursor
+ if(inW('J',t)){const J=$('J');J.style.transform=`scale(${1+0.025*eInOut(p(t,J0,END))})`;const r=t-J0;
+  const er=(str,a,b)=>Math.round(glen(str)*p(r,a,b));
+  const MK='Querious',em=er(MK+'_',6.3,6.9),mk=MK.slice(Math.min(em,MK.length));
+  $('markJ').innerHTML=`<span>${mk.startsWith('Q')?'<i>Q</i>'+mk.slice(1):mk}${em<=MK.length?'<span class="cur">_</span>':''}</span>`;$('markJ').style.opacity=eOut(p(r,2.0,2.6));
+  const UR=T.endUrl,eu=er(UR,6.5,7.1);$('urlJ').textContent=gslice(UR,eu);$('urlJ').style.opacity=eOut(p(r,1.6,2.1));
+  const CT='querious.studio ↗',ec=er(CT,6.6,7.2);$('ctaJ').textContent=gslice(CT,ec);
+  const c=eSnap(p(r,1.3,1.7))*(ec<glen(CT)?1:0);$('ctaJ').style.opacity=c;$('ctaJ').style.boxShadow=`${6*c}px ${6*c}px 0 #F4F1E9`;
+  const S1=T.endS1,S2=T.endS2,L1=glen(S1),es=Math.round((L1+glen(S2))*p(r,6.9,7.9));
+  $('subJ').innerHTML=gslice(S1,Math.min(es,L1))+'<br>'+`<b>${gslice(S2,Math.max(0,es-L1))}</b>`;
+  const s=eOut(p(r,0.6,1.1));$('subJ').style.opacity=s;$('subJ').style.transform=`translateY(${(1-s)*20}px)`;
+  const EB=T.eyebrow[0],EB2=T.eyebrow[1],LE=glen(EB),ee=Math.round((LE+glen(EB2))*p(r,7.4,8.2));
+  const eb=J.querySelector('.eyebrowD');eb.innerHTML=gslice(EB,Math.min(ee,LE))+`<b>${gslice(EB2,Math.max(0,ee-LE))}</b>`;eb.style.opacity=eOut(p(r,0.2,0.6));
+  const H2=T.endH,LH=glen(H2),n=Math.round(LH*p(r,0.4,1.0)),eh=er(H2,7.7,8.7);
+  $('bigJ').innerHTML=gslice(gslice(H2,0,n),eh)+cursorTag(t,n<LH||(eh>0&&eh<LH));
+  J.style.opacity=1-p(t,END-0.5,END-0.02);}
+ const dark=t<7.8||(t>=39.0&&t<48.9)||t>=87.6;
+ $('logoL').style.display=dark?'block':'none';$('logoL').style.opacity=1-p(t,J0+7.8,J0+8.6);$('logoD').style.display=dark?'none':'block';
+ const wp=$('wipe');let on=false;
+ for(const m of CUTS){const a=m-0.35,b=m+0.35;if(t>a&&t<b){on=true;const w1=eSnap(p(t,a,m)),w2=eSnap(p(t,m,b));wp.style.top=(t<m?1920*(1-w1):0)+'px';wp.style.bottom=(1920*w2)+'px';}}
+ wp.style.display=on?'block':'none';
+ $('grain').style.transform=`translate(${(Math.floor(t*12)*13)%40-20}px,${(Math.floor(t*12)*29)%40-20}px)`;
+};
+</script></body></html>
