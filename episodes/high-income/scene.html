@@ -33,11 +33,16 @@ svg.abs{position:absolute;left:0;top:0}
 .list{top:1336px;font-size:23px;color:var(--muted);white-space:nowrap}
 .list b{color:var(--ink);font-weight:600}
 /* A hook */
-#A .lab{top:520px;font-size:30px;color:#A9B4A2;white-space:nowrap}#A .lab b{color:var(--lime);font-weight:600}
-#A .big{top:570px;font:700 330px/1 SG;letter-spacing:-.08em;color:var(--lime)}
-#A .head{top:930px;font:700 92px/1.03 SG,TH;letter-spacing:-.06em}
-#A .rule{position:absolute;left:var(--safe-x);top:1440px;height:2px;background:#4a5648}
-#A .foot{top:1470px;font-size:21px;color:#7f8a7c}
+#A .lab{top:380px;font-size:28px;color:#A9B4A2;white-space:nowrap}#A .lab b{color:var(--lime);font-weight:600}
+#A .big{top:415px;font:700 250px/1 SG;letter-spacing:-.08em;color:var(--lime);transform-origin:0 50%}
+#A .yr{position:absolute;right:var(--safe-x);top:560px;font-size:56px;color:#C9D1C1;letter-spacing:.02em}
+#A .head{top:640px;font:700 84px/1 SG,TH;letter-spacing:-.06em;left:470px}
+#mapBox{position:absolute;left:60px;top:770px;width:960px;height:499px;overflow:hidden}
+#mapA{display:block;width:960px;height:499px}
+#mapA path{vector-effect:non-scaling-stroke}
+#korA{position:absolute;font-size:24px;color:#E5764B;background:#222923;padding:4px 8px;border:2px solid #E5764B;white-space:nowrap}
+#A .leg{top:1300px;font-size:21px;color:#A9B4A2;white-space:nowrap}
+#A .leg i{display:inline-block;width:18px;height:18px;vertical-align:-2px;margin-right:10px}
 /* D callout */
 #callD{left:248px;top:660px;width:310px;border:2px solid var(--ink);background:#FAF9F3;padding:16px 22px;box-shadow:7px 7px 0 var(--lime)}
 #callD .k{font-size:19px;color:var(--muted)}
@@ -103,13 +108,17 @@ svg.abs{position:absolute;left:0;top:0}
 #safe{position:absolute;left:150px;right:150px;top:300px;bottom:380px;outline:2px dashed magenta;z-index:20;display:none}
 #safe:after{content:'';position:absolute;right:-150px;width:230px;top:880px;height:600px;background:rgba(255,0,255,.12)}
 </style></head><body>
-<!-- A: hook -->
+<!-- A: hook (world map) -->
 <div id="A" class="scene dark">
  <div class="eyebrowD mono L" id="ebA"></div>
  <div class="lab mono L" id="labA"></div>
  <div class="big L" id="bigA"></div>
+ <div class="yr mono" id="yrA"></div>
  <div class="head L" id="headA"></div>
- <div class="rule" id="ruleA"></div><div class="foot mono L" id="footA"></div>
+ <div id="mapBox"><svg id="mapA" viewBox="0 0 1000 520"><g id="mapG"></g></svg></div>
+ <div class="mono" id="korA"></div>
+ <div class="leg mono L R" id="legA"></div>
+ <div class="note mono L R" id="noteA" style="top:1360px"></div>
 </div>
 <!-- B: the line, then crossings per year (waves), then falls -->
 <div id="B" class="scene light">
@@ -209,8 +218,9 @@ svg.abs{position:absolute;left:0;top:0}
 // ---------- on-screen copy (the Thai episode replaces this block only) ----------
 const T={
  eyebrow:['Querious / Open data / ','High income'],
- labA1:'Crossed into <b>high income</b>', labA2:'From <b>East & Southeast Asia</b>',
- headA1:'since 1988.', headA2:'Just one.', footA:'GDP per capita vs. the World Bank high-income line',
+ labA1:'Crossed into <b>high income</b> since 1988', labA2:'From <b>East & Southeast Asia</b>',
+ headA2:'Just one.', korA:'South Korea', legA:['Crossed 1988–2024','Already high income'],
+ noteA:'GDP per capita, current US$, vs. World Bank high-income line · approximate · dark = below the line or no data',
  metaB1:'World Bank / high-income line', metaB2:'Crossings into high income / per year',
  hB1:'The line:<br>$13,935', hB2:'They came<br>in waves',
  lineLab0:'$6,000 · 1987', lineLab1:'$13,935 · 2024', legUp:'▲ Crossed into high income', legDown:'▼ Fell back below',
@@ -254,7 +264,8 @@ function typeHTML(s,n){const parts=s.split('<br>');let out=[],k=n;for(const q of
 const htmlLen=s=>s.split('<br>').reduce((a,q)=>a+glen(q),0);
 function typed(elx,s,t,a,b,keep){const L=htmlLen(s),n=Math.round(L*p(t,a,b));elx.innerHTML=typeHTML(s,n)+cursorTag(t,n<L)}
 // static copy
-$('ebA').innerHTML=T.eyebrow[0]+'<b>'+T.eyebrow[1]+'</b>';$('footA').textContent=T.footA;
+$('ebA').innerHTML=T.eyebrow[0]+'<b>'+T.eyebrow[1]+'</b>';$('noteA').textContent=T.noteA;
+$('legA').innerHTML=`<i style="background:#D6ED63"></i>${T.legA[0]} &nbsp;&nbsp; <i style="background:#6B7B5E"></i>${T.legA[1]}`;
 $('noteB').textContent=T.noteB;$('metaD').textContent=T.metaD;$('noteD').textContent=T.noteD;$('callDk').textContent=T.callK;$('callDl').textContent=T.callL;
 $('ebE').innerHTML=T.ebE[0]+'<b>'+T.ebE[1]+'</b>';$('nameE').textContent=T.nameE;$('noteE').textContent=T.noteE;
 $('metaF').textContent=T.metaF;$('noteF').textContent=T.noteF;
@@ -262,6 +273,13 @@ $('legF').innerHTML=`<i style="background:#D6ED63;border:2px solid #283127"></i>
 $('metaG').textContent=T.metaG;$('noteG').textContent=T.noteG;$('metaH').textContent=T.metaH;$('noteH').textContent=T.noteH;
 $('dsdesc').textContent=T.dsdesc;$('toast').textContent=T.toast;$('connFor').textContent=T.connFor;
 const YRS=DATA.years, THR=DATA.threshold, thrOf=y=>THR[y-1987];
+// ---------- A: world map ----------
+const MAP=DATA.map, mapG=$('mapG'), CROSS={}, ALREADY=new Set(DATA.alreadyHigh), ASIA=new Set(DATA.eastAsia);
+DATA.crossedFirst.forEach(c=>CROSS[c.id]=c);
+const mapEls={};
+for(const id in MAP.paths){mapEls[id]=el('path',{d:MAP.paths[id],fill:'#2E382C',stroke:'#222923','stroke-width':0.8},mapG)}
+for(const id in MAP.dots){if(mapEls[id]&&!(id in CROSS))continue;const [x,y]=MAP.dots[id];const r=el('rect',{x:x-4.5,y:y-4.5,width:9,height:9,fill:'#2E382C'},mapG);mapEls[id+'_dot']=r}
+const tA=y=>0.9+(y-1988)/36*3.3;
 // ---------- B: line + bars ----------
 const svB=$('chartB'), BX0=232, BST=670/36, bxc=y=>BX0+(y-1988)*BST, BASE=1010, UU=50, DU=34;
 const lineG=el('g',{},svB), ty=v=>BASE-v/15000*260;
@@ -362,15 +380,28 @@ const END=97.0, J0=87.6;
 window.DUR=END;
 window.render=function(t){
  for(const k in W)show(k,inW(k,t));
- // ---- A hook: 0 -> 38, then 1
- if(inW('A',t)){const A=$('A');A.style.transform=`scale(${1+0.025*eInOut(p(t,0,7.8))})`;
+ // ---- A hook: world map lights up country by country (0.9-4.2), then zoom to East & SE Asia: just one
+ if(inW('A',t)){const A=$('A');A.style.transform=`scale(${1+0.02*eInOut(p(t,0,7.8))})`;
   $('ebA').style.opacity=eOut(p(t,0.1,0.6));
-  const two=t>=4.6, flip=eSnap(p(t,4.6,5.0));
+  const two=t>=4.6, flip=eSnap(p(t,4.6,5.0)), z=eInOut(p(t,4.6,5.4));
   $('labA').innerHTML=two?T.labA2:T.labA1;$('labA').style.opacity=two?flip:eOut(p(t,0.3,0.7));
-  const v=two?1:38*eOut(p(t,0.6,2.8));
-  $('bigA').innerHTML=t>0.6?Math.round(v):'';$('bigA').style.color=two?'#E5764B':'#D6ED63';$('bigA').style.transform=two?`scale(${0.9+0.1*flip})`:'none';$('bigA').style.transformOrigin='0 50%';
-  if(!two)typed($('headA'),T.headA1,t,1.4,2.4);else typed($('headA'),T.headA2,t,5.6,6.2);
-  $('ruleA').style.width=780*eOut(p(t,0.2,1.4))+'px';$('footA').style.opacity=eOut(p(t,0.6,1.2));}
+  let lit=0;DATA.crossedFirst.forEach(c=>{if(t>=tA(c.year))lit++});
+  $('bigA').textContent=two?'1':(t>=0.9?lit:'');$('bigA').style.color=two?'#E5764B':'#D6ED63';$('bigA').style.transform=two?`scale(${0.9+0.1*flip})`:'none';
+  const yr=Math.round(1988+36*p(t,0.9,4.2));$('yrA').textContent=t>=0.9?yr:'';$('yrA').style.opacity=(1-p(t,4.5,4.7))*eOut(p(t,0.9,1.1));
+  if(t>=5.5)typed($('headA'),T.headA2,t,5.5,6.1);else $('headA').innerHTML='';
+  $('mapBox').style.opacity=eOut(p(t,0.0,0.5));
+  for(const key in mapEls){const id=key.replace('_dot',''),e=mapEls[key];let f='#2E382C',o=1;
+   if(ALREADY.has(id)&&t>0.55)f='#6B7B5E';
+   const c=CROSS[id];if(c&&t>=tA(c.year)){const k=p(t,tA(c.year),tA(c.year)+0.3);f=k<1?'#E5764B':'#D6ED63'}
+   if(z>0){const asia=ASIA.has(id);if(id==='410')f='#E5764B';else if(!asia)o=1-0.65*z;
+    e.setAttribute('stroke',asia?'#C9D1C1':'#222923')}else e.setAttribute('stroke','#222923');
+   e.setAttribute('fill',f);e.setAttribute('opacity',o)}
+  const s_=1+1.4*z, fx=MAP.focus[0], fy=MAP.focus[1];
+  mapG.setAttribute('transform',`translate(${(500-fx*s_)*z} ${(260-fy*s_)*z}) scale(${s_})`);
+  if(!window.__kb){const b=mapEls['410'].getBBox();window.__kb=[b.x+b.width/2,b.y+b.height/2]}
+  const kx=60+((500-fx*s_)*z+__kb[0]*s_)*0.96, ky=770+((260-fy*s_)*z+__kb[1]*s_)*0.96, ko=eSnap(p(t,5.5,5.8));
+  $('korA').textContent=T.korA.toUpperCase();$('korA').style.left=(kx+28)+'px';$('korA').style.top=(ky+26)+'px';$('korA').style.opacity=ko;
+  $('legA').style.opacity=eOut(p(t,1.0,1.4))*(1-p(t,4.6,4.9));$('noteA').style.opacity=eOut(p(t,1.2,1.6));}
  // ---- B the line -> waves -> falls
  if(inW('B',t)){const B=$('B');B.style.transform=`scale(${1+0.02*eInOut(p(t,7.8,32.5))})`;
   const waves=t>=14.9;

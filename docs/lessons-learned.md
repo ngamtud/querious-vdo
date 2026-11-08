@@ -11,6 +11,7 @@ Things that went wrong or needed a second pass while making episodes, and the ru
 - **Legends beat in-chart line labels** on step lines: the "HIGH-INCOME LINE" label collided with the steps on both the Argentina and Korea charts; a legend row above the plot fixed it. Value labels near a line's end: keep them short ("95.5%") so they clear the last segments.
 - **Labels over 1180 px sit in the like/comment band.** Year ticks at y 1190 put "2020" into the band; moved to y 1176.
 - **Loudness:** the first mix hit −16.9 LUFS / 0.0 dBFS true peak. Voice −2 dB → −18.3 LUFS / −1.7 dBFS (−1 dB gave −0.7 dBFS peak).
+- **Map hooks beat number hooks (user review).** The first cut opened on a big number; the user asked for a world map lighting up country by country with the counter. Countries light in order of their first crossing year with a year ticker, so the waves show before the bar chart explains them. Map: `make-map.mjs` (world-atlas 110m, Equal Earth, ids = M49 codes, squares for tiny islands). Clip the map with a wrapping `div` (`overflow:hidden` on the root `svg` did not clip the zoomed group), use `vector-effect:non-scaling-stroke` for the zoom, and keep "below the line" fill dark (#2E382C) so "already high" (#6B7B5E) reads as a separate class.
 - **Push the new branch before adding files** so the Paxa workflow doesn't re-voice every Thai episode (rule from gapminder, followed here).
 
 ## Episode: gapminder + gapminder-th (2026-11-08)
