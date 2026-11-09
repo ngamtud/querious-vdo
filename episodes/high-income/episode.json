@@ -1,0 +1,156 @@
+{
+  "title": "36 countries climbed into high income. Only one from East & Southeast Asia",
+  "format": {
+    "width": 1080,
+    "height": 1920,
+    "fps": 30
+  },
+  "duration": 92.5,
+  "chunks": [
+    [
+      0,
+      6.2
+    ],
+    [
+      6.2,
+      18
+    ],
+    [
+      18,
+      31.3
+    ],
+    [
+      31.3,
+      44.5
+    ],
+    [
+      44.5,
+      57.1
+    ],
+    [
+      57.1,
+      72.3
+    ],
+    [
+      72.3,
+      83.1
+    ],
+    [
+      83.1,
+      92.5
+    ]
+  ],
+  "scene": "scene.html",
+  "data": "data.json",
+  "voice": {
+    "engine": "kokoro",
+    "speaker": "af_bella",
+    "speed": 1.05
+  },
+  "voiceover": [
+    {
+      "id": "v1",
+      "at": 0.2,
+      "text": "Since nineteen eighty-eight, thirty-six countries have climbed into the World Bank's high-income group."
+    },
+    {
+      "id": "v2",
+      "at": 6.5,
+      "text": "The line today is about fourteen thousand dollars of income per person."
+    },
+    {
+      "id": "v3",
+      "at": 10.9,
+      "text": "And countries didn't cross it one by one. They came in waves."
+    },
+    {
+      "id": "v4",
+      "at": 16.7,
+      "text": "First, a wave led by Central and Eastern Europe: from nine to nineteen in four years."
+    },
+    {
+      "id": "v5",
+      "at": 22.1,
+      "text": "Then the commodity boom pushed it to twenty-eight."
+    },
+    {
+      "id": "v6",
+      "at": 26.4,
+      "text": "But the count doesn't only go up."
+    },
+    {
+      "id": "v7",
+      "at": 28.5,
+      "text": "So, once rich, always rich?"
+    },
+    {
+      "id": "v8",
+      "at": 31.6,
+      "text": "Not quite. Thirty-two of the thirty-six are high income today. Four have fallen back out."
+    },
+    {
+      "id": "v9",
+      "at": 37.8,
+      "text": "Argentina made it twice, in twenty fourteen and twenty seventeen. Both times, it slipped back the very next year."
+    },
+    {
+      "id": "v10",
+      "at": 44.8,
+      "text": "Now compare South Korea. It was in by ninety-five. Then the Asian crisis cut its income by nearly a quarter, and it was moved back down."
+    },
+    {
+      "id": "v11",
+      "at": 53.1,
+      "text": "It was back by two thousand one, and then it took off."
+    },
+    {
+      "id": "v12",
+      "at": 57.4,
+      "text": "In twenty eleven, Thailand and China were neck and neck. Both well under half the line."
+    },
+    {
+      "id": "v13",
+      "at": 62.6,
+      "text": "By twenty twenty-five, China was at ninety-nine percent."
+    },
+    {
+      "id": "v14",
+      "at": 66.0,
+      "text": "Thailand passed the halfway mark in twenty eighteen. Seven years later, it's still just over half."
+    },
+    {
+      "id": "v15",
+      "at": 72.6,
+      "text": "We found this on Querious, using the World Bank's official income history, year by year."
+    },
+    {
+      "id": "v16",
+      "at": 78.1,
+      "text": "Find every move up, then download the result, or connect it to your own tools."
+    },
+    {
+      "id": "v17",
+      "at": 83.4,
+      "text": "The data is open. The question is yours."
+    }
+  ],
+  "music": {
+    "generator": "ambient",
+    "volume": 1.25,
+    "duck": {
+      "threshold": 0.03,
+      "ratio": 4,
+      "attack": 60,
+      "release": 600
+    }
+  },
+  "sfx": {
+    "click": [
+      74.37,
+      76.05,
+      79.7,
+      80.7
+    ]
+  },
+  "data_source": "querios: worldbank_income_classification_history, worldbank_income_classification_thresholds, worldbank_gni_per_capita_atlas (20261008)"
+}
