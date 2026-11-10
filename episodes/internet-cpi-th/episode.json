@@ -78,19 +78,19 @@
     {
       "id": "v2",
       "at": 5.9,
-      "text": "ปีสองพันสิบสอง ข้อมูลเห็นด้วย | ยิ่งใช้เน็ตเยอะ ยิ่งโปร่งใส",
+      "text": "ปีสองพันสิบสอง ข้อมูลเห็นด้วย | ยิ่งคนออนไลน์เยอะ ยิ่งโปร่งใส",
       "text_en": "And in twenty twelve, the data agreed. The more people online, the cleaner the country looked."
     },
     {
       "id": "v3",
       "at": 11.2,
-      "text": "ตอนนั้นแค่หกประเทศ ที่ใช้เน็ตเกินเก้าสิบ | ทั้งหมดอยู่กลุ่มโปร่งใสที่สุด",
+      "text": "ตอนนั้นแค่หกประเทศ ที่คนออนไลน์เกินเก้าสิบ | ทั้งหมดอยู่กลุ่มโปร่งใสที่สุด",
       "text_en": "Only six countries had more than ninety percent of people online. All six were among the cleanest in the world."
     },
     {
       "id": "v4",
       "at": 17.5,
-      "text": "สิบสองปีต่อมา | คนใช้เน็ตเฉลี่ยเพิ่มเกือบเท่าตัว",
+      "text": "สิบสองปีต่อมา | คนใช้อินเทอร์เน็ตเพิ่มเกือบเท่าตัว",
       "text_en": "Twelve years later, the world got online. Average internet use nearly doubled."
     },
     {
@@ -102,19 +102,19 @@
     {
       "id": "v6",
       "at": 27.4,
-      "text": "ตกลงแล้ว | เน็ตทำให้โปร่งใสขึ้นจริงไหม",
+      "text": "ตกลงแล้ว | อินเทอร์เน็ตทำให้โปร่งใสขึ้นจริงไหม",
       "text_en": "So, does the internet make a country cleaner?"
     },
     {
       "id": "v7",
       "at": 31.4,
-      "text": "ไม่เสมอไป | วันนี้ห้าสิบประเทศ ใช้เน็ตเกินเก้าสิบ | แต่คะแนนมีตั้งแต่เก้าสิบ ถึงยี่สิบสอง",
+      "text": "ไม่เสมอไป | วันนี้ห้าสิบประเทศ ออนไลน์เกินเก้าสิบ | แต่คะแนนมีตั้งแต่เก้าสิบ ถึงยี่สิบสอง",
       "text_en": "Not always. Today, fifty countries are past ninety percent online. Their scores run from ninety, all the way down to twenty-two."
     },
     {
       "id": "v8",
       "at": 39.4,
-      "text": "รัสเซียใช้เน็ตพอๆ กับสหรัฐฯ | สหรัฐฯ ได้หกสิบห้า รัสเซียได้ยี่สิบสอง",
+      "text": "รัสเซียออนไลน์พอๆ กับสหรัฐฯ | สหรัฐฯ ได้หกสิบห้า รัสเซียได้ยี่สิบสอง",
       "text_en": "Russia is about as online as the U.S. The U.S. scores sixty-five. Russia scores twenty-two."
     },
     {
@@ -126,31 +126,31 @@
     {
       "id": "v10",
       "at": 50.6,
-      "text": "ไทยใช้เน็ตจากหนึ่งในสี่ เป็นกว่าเก้าสิบ | แต่คะแนนลด จากสามสิบเจ็ดเหลือสามสิบสี่",
+      "text": "คนไทยออนไลน์จากหนึ่งในสี่ เป็นกว่าเก้าสิบ | แต่คะแนนลด จากสามสิบเจ็ดเหลือสามสิบสี่",
       "text_en": "Thailand went from a quarter of people online to over ninety percent. Its score went down, from thirty-seven to thirty-four."
     },
     {
       "id": "v11",
       "at": 57.5,
-      "text": "ส่วนญี่ปุ่นใช้เน็ตน้อยกว่า | แต่ได้เจ็ดสิบเอ็ด",
+      "text": "ส่วนญี่ปุ่นออนไลน์น้อยกว่า | แต่ได้เจ็ดสิบเอ็ด",
       "text_en": "Japan has fewer people online, and scores seventy-one."
     },
     {
       "id": "v12",
       "at": 61.8,
-      "text": "กลับกันก็มี | รวันดาใช้เน็ตแค่หนึ่งในสาม | แต่คะแนนสูงกว่าไทยและจีน",
+      "text": "กลับกันก็มี | รวันดาออนไลน์แค่หนึ่งในสาม | แต่คะแนนสูงกว่าไทยและจีน",
       "text_en": "And it works the other way too. Rwanda has a third of people online, and still outscores Thailand and China."
     },
     {
       "id": "v13",
       "at": 68.8,
-      "text": "เน็ตเปิดประตูให้ | แต่ไม่ได้ตัดสินว่าใครจะเดินเข้าไป",
+      "text": "อินเทอร์เน็ตเปิดประตูให้ | แต่ไม่ได้ตัดสินว่าใครจะเดินเข้าไป",
       "text_en": "Getting online opens the door. It doesn't decide who walks through it."
     },
     {
       "id": "v14",
       "at": 73.4,
-      "text": "เราเชื่อมข้อมูลสองชุดบนคิวเรียส | เน็ตจากธนาคารโลก กับดัชนีการรับรู้การทุจริต",
+      "text": "เราเชื่อมข้อมูลสองชุดบนคิวเรียส | อินเทอร์เน็ตจากธนาคารโลก กับดัชนีการรับรู้การทุจริต",
       "text_en": "We joined two open datasets on Querious: the World Bank's internet data, and Transparency International's index."
     },
     {
