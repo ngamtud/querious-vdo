@@ -10,7 +10,8 @@ voice.engine in episode.json:
 
 usage: python3 engine/tts.py episodes/<name> [--speaker ID] [--out-dir DIR]
 Writes <out-dir>/<id>.wav (default .cache/<name>/voice) and prints each line's duration next to the
-time slot it has. voice.fit: true time-stretches a line that is too long for its slot (ffmpeg atempo,
+time slot it has. A ' | ' in a line's text is a phrase break (voiced separately, joined with voice.gap s of
+silence). voice.fit: true time-stretches a line that is too long for its slot (ffmpeg atempo,
 pitch kept, at most voice.max_speed, default 1.3), so a second-language version keeps the timeline.
 """
 import argparse, json, os, subprocess, sys, time, urllib.request, urllib.error
@@ -104,7 +105,26 @@ lines = ep['voiceover']
 print(f"engine {engine}  speaker {voice.get('speaker', '-')}")
 for i, line in enumerate(lines):
     path = os.path.join(out_dir, f"{line['id']}.wav")
-    synth(line['text'], path)
+    parts = [x.strip() for x in line['text'].split('|') if x.strip()]
+    if len(parts) == 1:
+        synth(parts[0], path)
+    else:
+        # ' | ' in the text = a phrase break: each phrase is voiced on its own and joined with voice.gap s of
+        # silence (default 0.28), so engines that run Thai phrases together still pause where the script says
+        import numpy as np
+        chunks, sr = [], None
+        for k, part in enumerate(parts):
+            tmp = f'{path}.part{k}.wav'
+            synth(part, tmp)
+            d, r = sf.read(tmp, dtype='float32', always_2d=True)
+            os.remove(tmp)
+            sr = sr or r
+            if r != sr:
+                sys.exit(f"{line['id']}: phrase sample rates differ ({r} vs {sr})")
+            if chunks:
+                chunks.append(np.zeros((int(sr * voice.get('gap', 0.28)), d.shape[1]), dtype='float32'))
+            chunks.append(d)
+        sf.write(path, np.concatenate(chunks), sr, subtype='PCM_16')
     dur = sf.info(path).duration
     nxt = lines[i + 1]['at'] if i + 1 < len(lines) else ep['duration']
     slot = nxt - line['at']

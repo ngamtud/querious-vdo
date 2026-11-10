@@ -1,0 +1,186 @@
+{
+  "title": "เน็ตมากขึ้น คอร์รัปชันน้อยลง? ไม่เสมอไป",
+  "format": {
+    "width": 1080,
+    "height": 1920,
+    "fps": 30
+  },
+  "duration": 95.0,
+  "chunks": [
+    [
+      0,
+      5.6
+    ],
+    [
+      5.6,
+      22.6
+    ],
+    [
+      22.6,
+      27.0
+    ],
+    [
+      27.0,
+      31.0
+    ],
+    [
+      31.0,
+      39.0
+    ],
+    [
+      39.0,
+      45.8
+    ],
+    [
+      45.8,
+      50.2
+    ],
+    [
+      50.2,
+      61.4
+    ],
+    [
+      61.4,
+      68.4
+    ],
+    [
+      68.4,
+      73.0
+    ],
+    [
+      73.0,
+      85.8
+    ],
+    [
+      85.8,
+      95.0
+    ]
+  ],
+  "scene": "scene.html",
+  "data": "data.json",
+  "voice": {
+    "engine": "paxa",
+    "model": "paxa-tts-flash-v2",
+    "speaker": "nomyen",
+    "language": "th",
+    "speed": 1.0,
+    "fit": true,
+    "max_speed": 1.3,
+    "gap": 0.28
+  },
+  "voiceover": [
+    {
+      "id": "v1",
+      "at": 0.3,
+      "text": "ให้ทั้งประเทศออนไลน์ | คอร์รัปชันก็จะไม่มีที่ซ่อน | อย่างน้อยก็เชื่อกันแบบนั้น",
+      "text_en": "Put a country online, and corruption has nowhere to hide. That's the idea, anyway."
+    },
+    {
+      "id": "v2",
+      "at": 5.9,
+      "text": "ปีสองพันสิบสอง ข้อมูลก็เห็นด้วย | ยิ่งคนใช้เน็ตเยอะ ประเทศยิ่งดูโปร่งใส",
+      "text_en": "And in twenty twelve, the data agreed. The more people online, the cleaner the country looked."
+    },
+    {
+      "id": "v3",
+      "at": 11.2,
+      "text": "ตอนนั้นมีแค่หกประเทศ ที่คนใช้เน็ตเกินเก้าสิบเปอร์เซ็นต์ | และทั้งหกประเทศ ติดกลุ่มโปร่งใสที่สุดในโลก",
+      "text_en": "Only six countries had more than ninety percent of people online. All six were among the cleanest in the world."
+    },
+    {
+      "id": "v4",
+      "at": 17.5,
+      "text": "สิบสองปีต่อมา ทั้งโลกออนไลน์ | คนใช้เน็ตเฉลี่ยเพิ่มขึ้นเกือบเท่าตัว",
+      "text_en": "Twelve years later, the world got online. Average internet use nearly doubled."
+    },
+    {
+      "id": "v5",
+      "at": 23.0,
+      "text": "คะแนนคอร์รัปชันก็น่าจะดีขึ้นตาม | แต่แทบไม่ขยับเลย",
+      "text_en": "So corruption scores should have improved too. They barely moved."
+    },
+    {
+      "id": "v6",
+      "at": 27.4,
+      "text": "ตกลงแล้ว | อินเทอร์เน็ตทำให้ประเทศโปร่งใสขึ้นจริงไหม",
+      "text_en": "So, does the internet make a country cleaner?"
+    },
+    {
+      "id": "v7",
+      "at": 31.4,
+      "text": "ไม่เสมอไป | วันนี้มีห้าสิบประเทศ ที่ใช้เน็ตเกินเก้าสิบเปอร์เซ็นต์ | แต่คะแนนมีตั้งแต่เก้าสิบ ลงไปถึงยี่สิบสอง",
+      "text_en": "Not always. Today, fifty countries are past ninety percent online. Their scores run from ninety, all the way down to twenty-two."
+    },
+    {
+      "id": "v8",
+      "at": 39.4,
+      "text": "รัสเซียใช้เน็ตพอๆ กับสหรัฐฯ | สหรัฐฯ ได้หกสิบห้า | แต่รัสเซียได้แค่ยี่สิบสอง",
+      "text_en": "Russia is about as online as the U.S. The U.S. scores sixty-five. Russia scores twenty-two."
+    },
+    {
+      "id": "v9",
+      "at": 46.2,
+      "text": "และปีแล้วปีเล่า | สองอย่างนี้ก็สัมพันธ์กันน้อยลงเรื่อยๆ",
+      "text_en": "Year after year, the link between the two has been getting weaker."
+    },
+    {
+      "id": "v10",
+      "at": 50.6,
+      "text": "ไทยใช้เน็ตจากหนึ่งในสี่ เป็นกว่าเก้าสิบเปอร์เซ็นต์ | แต่คะแนนกลับลด จากสามสิบเจ็ด เหลือสามสิบสี่",
+      "text_en": "Thailand went from a quarter of people online to over ninety percent. Its score went down, from thirty-seven to thirty-four."
+    },
+    {
+      "id": "v11",
+      "at": 57.5,
+      "text": "ส่วนญี่ปุ่นใช้เน็ตน้อยกว่า | แต่ได้เจ็ดสิบเอ็ด",
+      "text_en": "Japan has fewer people online, and scores seventy-one."
+    },
+    {
+      "id": "v12",
+      "at": 61.8,
+      "text": "กลับกันก็มี | รวันดามีคนใช้เน็ตแค่หนึ่งในสาม | แต่คะแนนสูงกว่าทั้งไทยและจีน",
+      "text_en": "And it works the other way too. Rwanda has a third of people online, and still outscores Thailand and China."
+    },
+    {
+      "id": "v13",
+      "at": 68.8,
+      "text": "อินเทอร์เน็ตเปิดประตูให้ | แต่ไม่ได้ตัดสินว่าใครจะเดินเข้าไป",
+      "text_en": "Getting online opens the door. It doesn't decide who walks through it."
+    },
+    {
+      "id": "v14",
+      "at": 73.4,
+      "text": "เราเชื่อมข้อมูลเปิดสองชุดบนคิวเรียส | การใช้อินเทอร์เน็ตจากธนาคารโลก | กับดัชนีการรับรู้การทุจริต",
+      "text_en": "We joined two open datasets on Querious: the World Bank's internet data, and Transparency International's index."
+    },
+    {
+      "id": "v15",
+      "at": 80.3,
+      "text": "ลองค้นหาข้อมูลที่คุณอยากรู้ | แล้วดาวน์โหลดผลลัพธ์ | หรือเชื่อมต่อกับเอไอ และเครื่องมือของคุณ",
+      "text_en": "Find your own country, then download the result, or connect it to your own AI and tools."
+    },
+    {
+      "id": "v16",
+      "at": 86.2,
+      "text": "ข้อมูลพร้อมแล้ว | มาหาคำตอบกัน",
+      "text_en": "The data is open. The question is yours."
+    }
+  ],
+  "music": {
+    "generator": "ambient",
+    "volume": 1.25,
+    "duck": {
+      "threshold": 0.03,
+      "ratio": 4,
+      "attack": 60,
+      "release": 600
+    }
+  },
+  "sfx": {
+    "click": [
+      76.0,
+      78.8,
+      82.9
+    ]
+  }
+}
