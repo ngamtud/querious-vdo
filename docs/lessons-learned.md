@@ -12,6 +12,7 @@ Things that went wrong or needed a second pass while making episodes, and the ru
 - **Loudness:** first mix −16.9 LUFS, true peak −1.5 dBFS with the default voice level.
 - **internet-cpi-th: Thai phrases ran together.** Paxa reads a whole Thai line as one breath (spaces aren't pauses). `tts.py` now treats ` | ` in a line as a phrase break: each phrase is voiced separately and joined with `voice.gap` s of silence (0.25 here). The tts.py change was pushed with `[skip ci]` and voiced with a manual run for this episode only, so the other Paxa episodes weren't re-voiced.
 - **Gaps cost time.** The first Thai pass (3 phrases per line + 0.28 s gaps) hit the 1.3× cap on v1, v2, v3, v15. Second pass: lines cut to 2–3 short phrases, numbers shortened ("เกินเก้าสิบ" with 90%+ on screen), max stretch 1.13.
+- **Paxa reads "เน็ต" with an English accent ("net"), user review.** Thai voice text now says ออนไลน์ ("คนออนไลน์", "ออนไลน์เกินเก้าสิบ") or the full word อินเทอร์เน็ต; on-screen text can keep เน็ต. Rule: never put the short form เน็ต in Thai voice lines.
 - **Don't translate "your own country" for a Thai audience.** Thailand is already in the clip, so the Thai CTA says "ค้นหาข้อมูลที่คุณอยากรู้" (user review).
 - **Loudness:** Paxa −2 dB gave −17.2 LUFS / −3.2 dBFS next to EN −16.9 (−3 dB gave −17.9).
 
