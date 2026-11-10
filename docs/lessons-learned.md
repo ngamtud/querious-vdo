@@ -2,6 +2,15 @@
 
 Things that went wrong or needed a second pass while making episodes, and the rule that came out of each. Newest first. `CLAUDE.md` links here; the short rules are also copied into `CLAUDE.md`.
 
+## Episode: internet-cpi (EN, 2026-11-10)
+
+- **Two-year scatter morph ≠ yearly data.** Dots slide from their 2012 to their 2024 position in one move; the meta line reads "2012 → 2024" during the move (not a year ticker), and the running "Online: 38% → 72%" counter uses the real yearly averages, not a linear interpolation.
+- **Querious does not ship an AI.** The first script had a chat scene implying it; the user cut it. "Connect" is shown as the live CSV/JSON URL plus chips `Your AI` (with a `Beta` tag) and `Your tools`; the VO says "connect it to your own AI and tools".
+- **Check "more than" claims to the decimal.** The draft said Russia has more people online than the U.S.; the data says 94.4% vs 94.7%, so the line became "about as online as the U.S.".
+- **Semicolons in `data.sql` comments break a naive `split(';')`.** `make-data.py` runs `data.sql` statement by statement, so keep `;` out of comments.
+- **Right-band layout:** notes, captions, the result table and the connection panel use class `R` (right 230) because they sit in y 1180–1780. Scatter labels over dots use a paper-coloured text halo (`paint-order:stroke`).
+- **Loudness:** first mix −16.9 LUFS, true peak −1.5 dBFS with the default voice level.
+
 ## Episode: high-income (EN, 2026-11-08)
 
 - **Use the official series when the story is about an official status (user review).** The first two cuts used GDP per capita as a stand-in for the World Bank's GNI-based groups; the user then added `worldbank_income_classification_history` (OGHIST), `..._thresholds` and `worldbank_gni_per_capita_atlas` to querios and the episode was redone. The story changed a lot: 38 → 36 countries, Brazil/Mexico/Turkey/Kazakhstan were never officially high income, Korea 1995 (not 1992) and back in 2001 (not a year later), Argentina in twice not three times, China 99% not 95%. "Income per person" is only right for GNI, not GDP (Guyana's GDP far exceeds its residents' income).
