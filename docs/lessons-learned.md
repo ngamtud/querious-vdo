@@ -2,6 +2,15 @@
 
 Things that went wrong or needed a second pass while making episodes, and the rule that came out of each. Newest first. `CLAUDE.md` links here; the short rules are also copied into `CLAUDE.md`.
 
+## Episode: ai-revenue-compute (EN, 2026-11-11)
+
+- **First episode on company data (Epoch AI).** Six `epoch_ai_*` datasets; most figures are media reports with a `confidence` rating, so every chart says "mostly media reports · not audited", and the walkthrough points at the `confidence` / `source_url_1` columns.
+- **Two revenue measures, never on one chart.** The line chart is annualized revenue (run rate / ARR); the 2025 bars use revenue for the year (`period_revenue_usd`). The VO says "yearly pace" for the first and "brought in" for the second.
+- **Overlapping compute rows.** Anthropic 2024 has a combined total (2.5B) plus a training row (1.5B) that is part of it; summing both double counts. The 2025 rows (training 4.1 + inference 2.7) don't overlap. Check `category` before `SUM`.
+- **The user's framing vs the data.** The brief was "AI costs will rise for users". The data has company costs, not user prices, and compute per $1 of revenue fell (OpenAI 1.57 → 1.25). The clip ends on an open question ("When that money slows, who pays?") with a note "The data shows company costs, not what users will pay".
+- **Crossing point on reported points.** The lines are straight segments between reported dates (square markers), and the crossing marker is computed on those segments (late March 2026), voiced as "spring".
+- **Loudness:** default voice gave −16.9 LUFS but true peak −1.1 dBFS; voice −1 dB → −17.7 LUFS, peak −2.1.
+
 ## Episode: internet-cpi (EN, 2026-11-10)
 
 - **Two-year scatter morph ≠ yearly data.** Dots slide from their 2012 to their 2024 position in one move; the meta line reads "2012 → 2024" during the move (not a year ticker), and the running "Online: 38% → 72%" counter uses the real yearly averages, not a linear interpolation.
