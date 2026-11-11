@@ -1,0 +1,521 @@
+<!doctype html><html><head><meta charset="utf-8">
+<style>
+@font-face{font-family:SG;src:url(../../node_modules/@fontsource/space-grotesk/files/space-grotesk-latin-400-normal.woff2);font-weight:400}
+@font-face{font-family:SG;src:url(../../node_modules/@fontsource/space-grotesk/files/space-grotesk-latin-700-normal.woff2);font-weight:700}
+@font-face{font-family:PM;src:url(../../node_modules/@fontsource/ibm-plex-mono/files/ibm-plex-mono-latin-500-normal.woff2);font-weight:500}
+@font-face{font-family:PM;src:url(../../node_modules/@fontsource/ibm-plex-mono/files/ibm-plex-mono-latin-600-normal.woff2);font-weight:600}
+@font-face{font-family:TH;src:url(../../node_modules/@fontsource/ibm-plex-sans-thai/files/ibm-plex-sans-thai-thai-500-normal.woff2);font-weight:400 500}
+@font-face{font-family:TH;src:url(../../node_modules/@fontsource/ibm-plex-sans-thai/files/ibm-plex-sans-thai-thai-600-normal.woff2);font-weight:600}
+@font-face{font-family:TH;src:url(../../node_modules/@fontsource/ibm-plex-sans-thai/files/ibm-plex-sans-thai-thai-700-normal.woff2);font-weight:700}
+@font-face{font-family:PX;src:url(../../node_modules/@fontsource/pixelify-sans/files/pixelify-sans-latin-700-normal.woff2);font-weight:700}
+/* Facebook-safe 9:16: top 300, bottom 380, sides 150, right 230 clear in y 1180-1780 */
+:root{--safe-x:150px;--safe-top:300px;--safe-bottom:380px;--safe-band:230px;
+ --paper:#F4F1E9;--ink:#283127;--deep:#222923;--muted:#677166;--line:#C7CBBF;--lime:#D6ED63;--orange:#E5764B}
+*{box-sizing:border-box;margin:0}
+html,body{width:1080px;height:1920px;overflow:hidden;background:var(--deep)}
+.scene{position:absolute;inset:0;overflow:hidden;transform-origin:50% 45%;display:none}
+.mono{font-family:PM,TH;font-weight:600;letter-spacing:.08em;text-transform:uppercase}
+.cur{color:var(--orange)}
+.dark{background:var(--deep);color:#F4F1E9}.light{background:var(--paper);color:var(--ink)}
+.L{position:absolute;left:var(--safe-x);right:var(--safe-x)}
+.R{right:var(--safe-band)}
+.eyebrowD{top:330px;font-size:24px;color:#A9B4A2;right:260px}.eyebrowD b{color:var(--lime);font-weight:600}
+.top{top:var(--safe-top);display:flex;align-items:center;gap:22px;border-bottom:2px solid var(--ink);padding:0 100px 20px 0;height:96px}
+.brand{font:700 44px SG,TH;letter-spacing:-.05em;flex:1}.brand i{font:700 46px PX;font-style:normal}
+.tag{font-size:21px;border:1.5px solid var(--ink);padding:8px 12px;background:var(--lime);transform:rotate(-3deg)}
+.meta{top:430px;font-size:23px;color:var(--muted)}
+.h2{top:470px;font:700 84px/1 SG,TH;letter-spacing:-.07em;white-space:nowrap}
+svg.abs{position:absolute;left:0;top:0}
+svg text.halo{paint-order:stroke;stroke:#F4F1E9;stroke-width:8px;stroke-linejoin:round}
+.note{font-size:19px;line-height:1.5;color:var(--muted);letter-spacing:.05em}
+.caption{top:1400px;font:700 76px/1.03 SG,TH;letter-spacing:-.06em;white-space:nowrap}
+.caption .hl{background:var(--lime);padding:0 10px;box-decoration-break:clone;-webkit-box-decoration-break:clone}
+.dark .caption .hl{color:var(--ink)}
+/* A hook */
+#A .head{top:560px;font:700 120px/.98 SG,TH;letter-spacing:-.075em}
+#A .head .y{color:var(--lime)}
+#A .sub{top:1010px;font:700 64px/1.05 SG,TH;letter-spacing:-.05em;color:#DCE3D3}
+#A .rule{position:absolute;left:var(--safe-x);top:1440px;height:2px;background:#4a5648}
+#A .foot{top:1470px;font-size:21px;color:#7f8a7c}
+/* scatter callout */
+.call{position:absolute;border:2px solid var(--ink);background:#FAF9F3;padding:20px 24px;box-shadow:7px 7px 0 var(--lime)}
+.call .mono{font-size:20px;color:var(--muted)}
+.call p{font:700 44px/1.05 SG,TH;letter-spacing:-.05em;margin-top:8px}
+.call .iso{font:600 20px/1.5 PM,TH;letter-spacing:.08em;color:#455044;margin-top:10px}
+.call .big{font:700 92px/1 SG,TH;letter-spacing:-.06em;margin-top:6px}
+.call .big b{color:var(--orange)}
+/* Q question */
+#Q .head{top:640px;font:700 112px/1 SG,TH;letter-spacing:-.075em}
+#Q .head .y{color:var(--lime)}
+/* E versus */
+.vs .name{font:700 52px SG,TH;letter-spacing:-.05em}
+.vs .row{display:flex;align-items:center;gap:18px;margin-top:16px}
+.vs .row .k{width:118px;font:600 20px PM,TH;letter-spacing:.08em;color:var(--muted);text-transform:uppercase}
+.vs .row .bar{height:44px;width:0}
+.vs .row .v{font:600 30px PM,TH;color:var(--ink);white-space:nowrap}
+#also{top:1060px;font-size:20px;color:#455044;line-height:1.6}
+/* G Thailand / Japan */
+.card{position:absolute;left:var(--safe-x);right:var(--safe-x);border:2px solid var(--ink);background:#FAF9F3;padding:24px 28px}
+.card .ey{font-size:20px;color:var(--muted)}
+.card h3{font:700 62px/1 SG,TH;letter-spacing:-.06em;margin-top:8px}
+.card .st{display:flex;gap:40px;margin-top:18px}
+.card .st div{flex:1}
+.card .st .k{font:600 20px PM,TH;letter-spacing:.08em;color:var(--muted);text-transform:uppercase}
+.card .st .n{font:700 64px/1.05 SG,TH;letter-spacing:-.05em;margin-top:6px;white-space:nowrap}
+.card .st .n s{text-decoration:none;color:#9AA394}
+/* H Rwanda (dark) */
+#H .big{top:500px;font:700 250px/1 SG,TH;letter-spacing:-.08em;color:var(--lime)}
+#H .big small{font:600 40px PM,TH;letter-spacing:.08em;color:#A9B4A2;margin-left:18px}
+#H .name{top:780px;font:700 92px/1 SG,TH;letter-spacing:-.06em}
+#H .sub{top:890px;font:700 52px/1.1 SG,TH;letter-spacing:-.05em;color:#DCE3D3}
+#H .rank{top:1010px}
+#H .rank div{display:flex;justify-content:space-between;border-top:1px solid #4a5648;padding:18px 0;font:500 30px PM,TH;color:#C9D1C1}
+#H .rank div b{color:#F4F1E9;font-weight:600}
+#H .rank div b.lo{color:#E5764B;font-size:34px}
+/* I statement */
+#I .head{top:620px;font:700 124px/.98 SG,TH;letter-spacing:-.075em}
+#I .head .y{color:var(--lime)}
+#I .foot{top:1110px;font-size:21px;color:#7f8a7c;line-height:1.6}
+/* W walkthrough */
+.btn{position:absolute;display:flex;align-items:center;gap:18px;border:2px solid var(--ink);background:var(--ink);color:var(--lime);padding:18px 24px;font-size:25px}
+.obtn{position:absolute;border:2px solid var(--ink);background:#FAF9F3;color:var(--ink);padding:16px 20px;font-size:23px}
+.ripple{position:absolute;border:4px solid var(--orange);pointer-events:none}
+.cursor{position:absolute;width:64px;height:64px;z-index:5}
+.ds{position:absolute;left:var(--safe-x);right:var(--safe-x);border:2px solid var(--ink);background:#FAF9F3;padding:24px 26px 26px}
+.ds .ey{font-size:19px;color:var(--muted)}
+.ds h3{font:700 46px/1.04 SG,TH;letter-spacing:-.05em;margin-top:10px}
+.ds .mt{font-size:19px;color:var(--muted);margin-top:12px}
+#ds1{top:600px}#ds2{top:870px}
+#join{top:560px;font-size:21px;color:var(--muted)}
+#openq{position:static;display:inline-flex;margin-top:20px;font-size:24px;padding:15px 20px}
+#stack{position:absolute;inset:0}
+#sqlhead{top:440px;display:flex;justify-content:space-between;font-size:20px;color:var(--muted)}
+#sql{top:480px;height:330px;background:var(--ink);border-left:8px solid var(--lime);color:#EDF2E5;padding:22px 20px;font:500 20px/1.55 PM,TH;white-space:pre;overflow:hidden}
+#sql .k{color:var(--lime)}
+#run{right:var(--safe-x);top:830px}
+#rtable{top:940px;border:2px solid var(--ink);background:#FAF9F3}
+#rtable .rh{display:flex;justify-content:space-between;border-bottom:1px solid var(--ink);padding:12px 16px;font-size:19px}
+#rtable table{width:100%;border-collapse:collapse;font:500 24px PM,TH}
+#rtable th{background:#E8ECE0;text-align:left;padding:10px 16px;font-weight:600;font-size:17px;color:var(--muted)}
+#rtable td{padding:10px 16px;border-top:1px solid #DBE0D5;white-space:nowrap}
+#rtable td.n,#rtable th.n{text-align:right}
+#rtable tr:nth-child(even) td{background:#F4F5EE}
+#csvb{left:150px;top:1380px}#jsonb{left:310px;top:1380px}#connb{left:486px;top:1380px;background:var(--ink);color:var(--lime)}
+#conn{top:1490px;border:2px solid var(--ink);background:#EDF2E4;padding:20px 22px}
+#conn .lbl{font-size:19px;color:var(--muted);margin-bottom:10px}
+#conn .row{display:flex;justify-content:space-between;align-items:center;border:1px solid var(--line);background:#FBFAF5;padding:12px 14px;margin-top:10px;font:500 21px PM,TH}
+#conn .row b{font:600 16px PM,TH;letter-spacing:.06em;border:1px solid var(--ink);padding:6px 10px;background:var(--lime)}
+#conn .row span em{font-style:normal;color:var(--muted)}
+#conn .for{margin-top:18px;display:flex;align-items:center;gap:14px;font-size:21px}
+#conn .chip{border:2px solid var(--ink);background:var(--ink);color:var(--lime);padding:10px 16px}
+#conn .beta{font-size:15px;border:1.5px solid var(--ink);background:var(--lime);color:var(--ink);padding:4px 8px;transform:rotate(-4deg);margin-left:-6px}
+/* X end card */
+#X .big{top:620px;font:700 160px/.92 SG,TH;letter-spacing:-.075em;white-space:nowrap}
+#X .sub{top:860px;font:700 62px/1.1 SG,TH;letter-spacing:-.05em;color:#DCE3D3}
+#X .sub b{color:var(--lime)}
+#X .cta{position:absolute;left:var(--safe-x);top:1090px;display:inline-flex;gap:18px;align-items:center;background:var(--lime);color:var(--ink);border:2px solid var(--lime);padding:20px 26px;font-size:29px}
+#X .url{top:1205px;font-size:21px;color:#A9B4A2}
+#X .mark{top:1300px;display:flex;align-items:center;gap:18px;font:700 50px SG,TH;letter-spacing:-.05em}
+#X .mark i{font:700 52px PX;font-style:normal}
+#wipe{position:absolute;left:0;right:0;background:var(--lime);display:none;z-index:8}
+#grain{position:absolute;inset:-40px;pointer-events:none;opacity:.05;mix-blend-mode:multiply;z-index:9}
+.logo{position:absolute;top:var(--safe-top);right:var(--safe-x);width:76px;height:76px;object-fit:contain;z-index:10}
+#safe{position:absolute;left:150px;right:150px;top:300px;bottom:380px;outline:2px dashed magenta;z-index:20;display:none}
+#safe:after{content:'';position:absolute;left:700px;width:230px;top:880px;height:600px;outline:2px dashed magenta}
+/* Thai: no negative tracking, line-height >= 1.2 */
+.caption,.h2,.meta,.note,#A .head,#A .sub,#Q .head,#I .head,#H .name,#H .sub,.vs .name,.card h3,.card .st .n,.call p,#X .big,#X .sub{letter-spacing:0}
+.caption{line-height:1.25;font-size:64px}.h2{line-height:1.2;font-size:78px}
+#A .head{font-size:108px;line-height:1.2;top:540px}#A .sub{top:1060px;font-size:56px;line-height:1.3}
+#Q .head{font-size:100px;line-height:1.2;top:600px}#I .head{font-size:104px;line-height:1.2;top:600px}
+#I .foot{top:1160px}#H .name{line-height:1.2}#H .sub{top:900px;line-height:1.3}
+.call p{line-height:1.25;font-size:42px}.card h3{line-height:1.2}
+#X .big{font-size:110px;line-height:1.15}#X .sub{line-height:1.3;color:var(--lime);font-size:66px}
+#conn .chip{letter-spacing:0}
+</style></head><body>
+<!-- A: hook -->
+<div id="A" class="scene dark">
+ <div class="eyebrowD mono L">Querious / Open data / <b>Internet × CPI</b></div>
+ <div class="head L" id="headA"></div>
+ <div class="sub L" id="subA"></div>
+ <div class="rule" id="ruleA"></div><div class="foot mono L" id="footA">ผู้ใช้อินเทอร์เน็ต · ดัชนีการรับรู้การทุจริต (CPI)</div>
+</div>
+<!-- B: scatter 2012 → 2024 -->
+<div id="B" class="scene light">
+ <div class="top L"><div class="brand"><i>Q</i>uerious<span class="cur">_</span></div><div class="tag mono">Insight</div></div>
+ <div class="meta mono L" id="metaB"></div>
+ <svg id="chartB" class="abs" width="1080" height="1920"></svg>
+ <div class="call" id="callB" style="left:250px;top:560px;width:430px"><div class="mono">2012 / ใช้เน็ต 90%+</div><p>6 ประเทศ<br>CPI 80–90</p><div class="iso">DNK · SWE · NOR<br>NLD · ISL · LUX</div></div>
+ <div class="note mono L R" id="noteB" style="top:1236px">Source / World Bank WDI (ITU) · Transparency International CPI 2025 · 0 = highly corrupt, 100 = very clean</div>
+ <div class="caption L R" id="capB"></div>
+</div>
+<!-- C: averages -->
+<div id="C" class="scene light">
+ <div class="top L"><div class="brand"><i>Q</i>uerious<span class="cur">_</span></div><div class="tag mono">Insight</div></div>
+ <div class="meta mono L">2012–2024 / ค่าเฉลี่ยของประเทศ</div>
+ <svg id="chartC" class="abs" width="1080" height="1920"></svg>
+ <div class="note mono L R" id="noteC" style="top:1236px">Simple average of countries with both values · internet % of population · CPI 0–100</div>
+ <div class="caption L R" id="capC"></div>
+</div>
+<!-- Q: question -->
+<div id="Q" class="scene dark">
+ <div class="eyebrowD mono L">คำถาม / <b>Internet × CPI</b></div>
+ <div class="head L" id="headQ"></div>
+</div>
+<!-- D: scatter 2024, 90%+ club -->
+<div id="D" class="scene light">
+ <div class="top L"><div class="brand"><i>Q</i>uerious<span class="cur">_</span></div><div class="tag mono">Insight</div></div>
+ <div class="meta mono L">2024 / 167 ประเทศ / เน็ต vs CPI</div>
+ <svg id="chartD" class="abs" width="1080" height="1920"></svg>
+ <div class="call" id="callD" style="left:250px;top:560px;width:430px"><div class="mono">ใช้เน็ต 90%+ / จำนวนประเทศ</div><div class="big" id="cntD">6</div><div class="iso" id="rngD">2012 → 2024</div></div>
+ <div class="note mono L R" id="noteD" style="top:1236px">Source / World Bank WDI (ITU) · Transparency International CPI 2025 · 2024</div>
+ <div class="caption L R" id="capD"></div>
+</div>
+<!-- E: USA vs Russia -->
+<div id="E" class="scene light">
+ <div class="top L"><div class="brand"><i>Q</i>uerious<span class="cur">_</span></div><div class="tag mono">Insight</div></div>
+ <div class="meta mono L">2024 / ผู้ใช้เน็ต % · คะแนน CPI</div>
+ <div class="h2 L" id="hE"></div>
+ <div class="vs L" id="vs1" style="top:620px"><div class="name">สหรัฐฯ</div>
+  <div class="row"><span class="k">ใช้เน็ต</span><span class="bar" style="background:#839B45"></span><span class="v"></span></div>
+  <div class="row"><span class="k">CPI</span><span class="bar" style="background:#424E3D"></span><span class="v"></span></div></div>
+ <div class="vs L" id="vs2" style="top:840px"><div class="name">รัสเซีย</div>
+  <div class="row"><span class="k">ใช้เน็ต</span><span class="bar" style="background:#839B45"></span><span class="v"></span></div>
+  <div class="row"><span class="k">CPI</span><span class="bar" style="background:#DD6B43"></span><span class="v"></span></div></div>
+ <div class="mono L" id="also">ใช้เน็ต 90%+ เหมือนกัน: เบลารุส · CPI 33 / จีน · CPI 43</div>
+ <div class="note mono L R" id="noteE" style="top:1236px">Source / World Bank WDI (ITU) · TI CPI 2025 · US 94.7% · Russia 94.4% · 2024</div>
+ <div class="caption L R" id="capE"></div>
+</div>
+<!-- F: correlation over time -->
+<div id="F" class="scene light">
+ <div class="top L"><div class="brand"><i>Q</i>uerious<span class="cur">_</span></div><div class="tag mono">Insight</div></div>
+ <div class="meta mono L">ความสัมพันธ์ / เน็ต % vs CPI / 2012–2024</div>
+ <div class="h2 L" id="hF"></div>
+ <svg id="chartF" class="abs" width="1080" height="1920"></svg>
+ <div class="note mono L R" id="noteF" style="top:1236px">Pearson r across countries with both values each year · 1 = perfect link · correlation, not cause</div>
+ <div class="caption L R" id="capF"></div>
+</div>
+<!-- G: Thailand vs Japan -->
+<div id="G" class="scene light">
+ <div class="top L"><div class="brand"><i>Q</i>uerious<span class="cur">_</span></div><div class="tag mono">Insight</div></div>
+ <div class="meta mono L">ผู้ใช้เน็ต % · คะแนน CPI</div>
+ <div class="card" id="cTH" style="top:500px"><div class="ey mono">2012 → 2024</div><h3>ไทย</h3>
+  <div class="st"><div><div class="k">ใช้เน็ต</div><div class="n" id="thN"></div></div><div><div class="k">CPI</div><div class="n" id="thC"></div></div></div></div>
+ <div class="card" id="cJP" style="top:850px"><div class="ey mono">2024</div><h3>ญี่ปุ่น</h3>
+  <div class="st"><div><div class="k">ใช้เน็ต</div><div class="n">86%</div></div><div><div class="k">CPI</div><div class="n" id="jpC">71</div></div></div></div>
+ <div class="note mono L R" id="noteG" style="top:1236px">Source / World Bank WDI (ITU) · TI CPI 2025 · Thailand 26.5% → 90.9% · Japan 85.5%</div>
+ <div class="caption L R" id="capG"></div>
+</div>
+<!-- H: Rwanda -->
+<div id="H" class="scene dark">
+ <div class="eyebrowD mono L">กลับกัน / <b>2024</b></div>
+ <div class="big L" id="bigH"></div>
+ <div class="name L" id="nameH">รวันดา</div>
+ <div class="sub L" id="subH">ใช้เน็ตแค่ 32%</div>
+ <div class="rank L" id="rankH"><div><span>ไทย · ใช้เน็ต 91%</span><b class="lo">CPI 34</b></div><div><span>จีน · ใช้เน็ต 92%</span><b class="lo">CPI 43</b></div></div>
+ <div class="note mono L R" id="noteH" style="top:1236px;color:#8b9685">Source / World Bank WDI (ITU) · TI CPI 2025 · Rwanda 31.7% online · 2024</div>
+</div>
+<!-- I: statement -->
+<div id="I" class="scene dark">
+ <div class="eyebrowD mono L">สรุป / <b>ไม่เสมอไป</b></div>
+ <div class="head L" id="headI"></div>
+ <div class="foot mono L" id="footI">สัมพันธ์กัน ไม่ได้แปลว่าเป็นสาเหตุ<br>CPI = การรับรู้การทุจริตในภาครัฐ</div>
+</div>
+<!-- W: walkthrough -->
+<div id="W" class="scene light">
+ <div class="top L"><div class="brand"><i>Q</i>uerious<span class="cur">_</span></div><div class="tag mono" id="stepW">Step 01 / Discover</div></div>
+ <div class="h2 L" id="catT" style="top:440px">Data catalog<span class="cur">_</span></div>
+ <div class="mono L" id="join">2 datasets · SQL · JOIN</div>
+ <div class="ds" id="ds1"><div class="ey mono">Dataset / World Bank — WDI</div><h3>Internet users (% of population)</h3><div class="mt mono">215 countries · 1990–2025 · CC BY 4.0</div></div>
+ <div class="ds" id="ds2"><div class="ey mono">Dataset / Transparency International</div><h3>Corruption Perceptions Index score</h3><div class="mt mono">182 countries · 2012–2025 · CC BY 4.0</div>
+  <div class="btn mono" id="openq"><span>Open in Query ↗</span></div></div>
+ <div id="stack">
+  <div id="sqlhead" class="mono L"><span>SQL / DuckDB in your browser</span><span id="sqlstate">Editing…</span></div>
+  <div id="sql" class="L"></div>
+  <div class="btn mono" id="run"><span>Run query ▶</span></div>
+  <div id="rtable" class="L R"><div class="rh mono"><span>Results</span><span id="rcount"></span></div><table id="rt"></table></div>
+  <div class="obtn mono" id="csvb">↓ CSV</div><div class="obtn mono" id="jsonb">↓ JSON</div><div class="obtn mono" id="connb">Connect</div>
+  <div id="conn" class="L R"><div class="lbl mono">Connection URL / live CSV or JSON</div>
+   <div class="row"><span><em>…/v1/query/</em>c41e09a7<em>.csv</em></span><b>Copy CSV URL</b></div>
+   <div class="row"><span><em>…/v1/query/</em>c41e09a7<em>.json</em></span><b>Copy JSON URL</b></div>
+   <div class="for mono"><span>→</span><span class="chip" id="chipAI">AI ของคุณ</span><span class="beta" id="betaAI">Beta</span><span class="chip" id="chipT">เครื่องมือของคุณ</span></div></div>
+ </div>
+ <div class="ripple" id="ripW"></div>
+ <svg class="cursor" id="curW" viewBox="0 0 32 32"><path d="M4 2 L4 26 L10.5 20 L15 30 L19 28 L14.6 18.4 L23 18.4 Z" fill="#283127" stroke="#F4F1E9" stroke-width="1.6" stroke-linejoin="round"/></svg>
+</div>
+<!-- X: end card -->
+<div id="X" class="scene dark">
+ <div class="eyebrowD mono L">Querious / Open data / <b>Internet × CPI</b></div>
+ <div class="big L" id="bigX"></div>
+ <div class="sub L" id="subX"></div>
+ <div class="cta mono" id="ctaX">querious.studio ↗</div>
+ <div class="url mono L" id="urlX">No account needed to explore</div>
+ <div class="mark L" id="markX"></div>
+</div>
+<div id="wipe"></div>
+<svg id="grain" width="1160" height="2000"><filter id="n"><feTurbulence type="fractalNoise" baseFrequency=".85" numOctaves="2" seed="3"/><feColorMatrix type="saturate" values="0"/></filter><rect width="100%" height="100%" filter="url(#n)"/></svg>
+<img id="logoL" class="logo" src="../../brand/querious-logo-lime.svg"><img id="logoD" class="logo" src="../../brand/querious-logo-dark.svg">
+<div id="safe"></div>
+<script>
+const DATA=window.__DATA__, $=id=>document.getElementById(id), NS='http://www.w3.org/2000/svg';
+if(location.hash==='#safe'||window.__SAFE__)$('safe').style.display='block';
+const clamp=(v,a=0,b=1)=>Math.min(b,Math.max(a,v)), p=(t,a,b)=>clamp((t-a)/(b-a));
+const eOut=x=>1-Math.pow(1-x,3), eInOut=x=>x<.5?4*x*x*x:1-Math.pow(-2*x+2,3)/2, eSnap=x=>x<.5?16*x**5:1-Math.pow(-2*x+2,5)/2, lerp=(a,b,x)=>a+(b-a)*x;
+const blink=t=>Math.floor(t/0.53)%2===0;
+const el=(n,a,par)=>{const e=document.createElementNS(NS,n);for(const k in a)e.setAttribute(k,a[k]);par.appendChild(e);return e};
+const txt=(par,a,s)=>{const e=el('text',Object.assign({'font-family':'PM, TH','font-weight':600},a),par);e.textContent=s;return e};
+const show=(id,on)=>{$(id).style.display=on?'block':'none'};
+const cursorTag=(t,n)=>`<span class="cur" style="opacity:${(blink(t)||n)?1:0}">_</span>`;
+const X0=150,X1=930;
+function caption(elc,list,t,tEnd){let ci=-1;list.forEach((c,i)=>{if(t>=c[0]-0.05)ci=i});if(ci<0||t>tEnd){elc.style.opacity=0;return}
+ const k=eOut(p(t,list[ci][0]-0.05,list[ci][0]+0.2));elc.innerHTML=list[ci][1];elc.style.opacity=k;elc.style.transform=`translateY(${(1-k)*24}px)`}
+const SEG=new Intl.Segmenter('th',{granularity:'grapheme'}), G_=s=>[...SEG.segment(s)].map(x=>x.segment), gslice=(s,a,b)=>G_(s).slice(a,b).join(''), glen=s=>G_(s).length;
+function typeSeg(segs,n){let out='',k=n;for(const [s,c] of segs){const part=gslice(s,0,Math.max(0,k));k-=glen(s);if(!part)break;out+=c?`<span class="${c}">${part}</span>`:part}return out}
+const segLen=segs=>segs.reduce((a,s)=>a+G_(s[0]).length,0);
+// typewriter headline with <br> markers: segs [[text,cls]], '|' in text = line break
+function typeHead(segs,t,a,b){const L=segLen(segs),n=Math.round(L*p(t,a,b));return [typeSeg(segs,n).replace(/\|/g,'<br>'),n<L]}
+
+// ---------- scatter helpers ----------
+const SX0=230,SX1=910,SY0=1120,SY1=580;
+const sx=v=>SX0+v/100*(SX1-SX0), sy=v=>SY0-v/100*(SY0-SY1);
+function axes(svg){const g=el('g',{},svg);
+ [0,25,50,75,100].forEach(v=>{el('line',{x1:SX0,x2:SX1,y1:sy(v),y2:sy(v),stroke:'#E1E4DA','stroke-width':2},g);txt(g,{x:SX0-14,y:sy(v)+8,'text-anchor':'end','font-size':22,fill:'#455044','font-weight':500},v)});
+ [0,25,50,75,100].forEach(v=>txt(g,{x:sx(v),y:SY0+40,'text-anchor':v===0?'start':v===100?'end':'middle','font-size':22,fill:'#455044','font-weight':500},v+'%'));
+ const hlY=el('rect',{x:SX0-10,y:sy(100)-50,width:290,height:38,fill:'#D6ED63',opacity:0},svg);
+ const hlX=el('rect',{x:SX1-262,y:SY0+50,width:272,height:38,fill:'#D6ED63',opacity:0},svg);
+ const lY=txt(svg,{x:SX0,y:sy(100)-24,'font-size':20,fill:'#677166'},'คะแนน CPI ↑ โปร่งใสกว่า');
+ const lX=txt(svg,{x:SX1,y:SY0+76,'text-anchor':'end','font-size':20,fill:'#677166'},'ผู้ใช้อินเทอร์เน็ต % →');
+ const yAx=el('line',{x1:SX0,x2:SX0,y1:SY0,y2:SY0,stroke:'#283127','stroke-width':3},svg);
+ const ax=el('line',{x1:SX0,x2:SX0,y1:SY0,y2:SY0,stroke:'#283127','stroke-width':3},svg);
+ return [g,ax,{yAx,hlY,hlX,lY,lX}]}
+function fit(pts){const n=pts.length,mx=pts.reduce((a,d)=>a+d.net,0)/n,my=pts.reduce((a,d)=>a+d.cpi,0)/n;
+ let sxy=0,sxx=0;pts.forEach(d=>{sxy+=(d.net-mx)*(d.cpi-my);sxx+=(d.net-mx)**2});const b=sxy/sxx;return [my-b*mx,b]}
+const BY=Object.fromEntries(DATA.yearly.map(d=>[d.year,d]));
+
+// ---------- B: scatter 2012 -> 2024 ----------
+const svB=$('chartB');
+const zoneB=el('rect',{x:sx(90),y:SY1,width:sx(100)-sx(90),height:SY0-SY1,fill:'#D6ED63','fill-opacity':.55},svB);
+const [gridB,axB,HB]=axes(svB);
+const m12=Object.fromEntries(DATA.p12.map(d=>[d.iso,d])), m24=Object.fromEntries(DATA.p24.map(d=>[d.iso,d]));
+const isos=[...new Set([...DATA.p12.map(d=>d.iso),...DATA.p24.map(d=>d.iso)])];
+const ptB=isos.map((iso,i)=>{const a=m12[iso],b=m24[iso];return {iso,a,b,club:a&&a.net>=90,r:el('rect',{width:14,height:14,fill:'#424E3D'},svB),o:(i*37%isos.length)/isos.length}});
+const [a12,b12]=fit(DATA.p12);
+const trendB=el('line',{x1:sx(0),y1:sy(a12),x2:sx(0),y2:sy(a12),stroke:'#DD6B43','stroke-width':5},svB);
+const rB=txt(svB,{x:sx(2),y:sy(90),'font-size':30,fill:'#B4502C',class:'halo'},'ความสัมพันธ์ r = 0.79');
+const CAPB=[[8.4,'ยิ่งออนไลน์ <span class="hl">ยิ่งโปร่งใส</span>'],[11.3,'6 ประเทศ <span class="hl">โปร่งใสหมด</span>'],[17.6,''],[18.4,'ใช้เน็ต 38% → <span class="hl">__</span>']];
+// ---------- C: averages ----------
+const svC=$('chartC'), CX0=230,CX1=850,CY0=1120,CY1=600;
+const cx=y=>CX0+(y-2012)/12*(CX1-CX0), cy=v=>CY0-v/100*(CY0-CY1);
+const gridC=el('g',{},svC);[0,25,50,75,100].forEach(v=>{el('line',{x1:CX0,x2:CX1,y1:cy(v),y2:cy(v),stroke:'#E1E4DA','stroke-width':2},gridC);txt(gridC,{x:CX0-14,y:cy(v)+8,'text-anchor':'end','font-size':22,fill:'#455044','font-weight':500},v)});
+[2012,2018,2024].forEach(y=>txt(gridC,{x:cx(y),y:CY0+40,'text-anchor':y===2012?'start':y===2024?'end':'middle','font-size':22,fill:'#455044','font-weight':500},y));
+const axC=el('line',{x1:CX0,x2:CX0,y1:CY0,y2:CY0,stroke:'#283127','stroke-width':3},svC);
+const lnN=el('polyline',{fill:'none',stroke:'#839B45','stroke-width':7,'stroke-linejoin':'round'},svC);
+const lnC=el('polyline',{fill:'none',stroke:'#DD6B43','stroke-width':7,'stroke-linejoin':'round'},svC);
+const dN=el('rect',{width:20,height:20,fill:'#839B45',stroke:'#283127','stroke-width':2},svC), dC=el('rect',{width:20,height:20,fill:'#DD6B43',stroke:'#283127','stroke-width':2},svC);
+const lN0=txt(svC,{x:cx(2012),y:cy(38.3)+44,'font-size':26,fill:'#283127'},'38%'), lC0=txt(svC,{x:cx(2012),y:cy(43.6)-22,'font-size':26,fill:'#283127'},'43.6');
+const lN1=txt(svC,{x:cx(2024),y:cy(71.7)-30,'text-anchor':'end','font-size':26,fill:'#283127'},'ใช้เน็ต 72%'), lC1=txt(svC,{x:cx(2024),y:cy(43.9)-26,'text-anchor':'end','font-size':26,fill:'#B4502C'},'CPI 43.9');
+const CAPC=[[23.0,'ใช้เน็ต <span class="hl">เกือบ 2 เท่า</span>'],[24.9,'CPI <span class="hl">แทบไม่ขยับ</span>']];
+// ---------- D: scatter 2024 ----------
+const svD=$('chartD');
+const zoneD=el('rect',{x:sx(90),y:SY1,width:sx(100)-sx(90),height:SY0-SY1,fill:'#D6ED63','fill-opacity':.55},svD);
+const [gridD,axD,HD]=axes(svD);HD.yAx.setAttribute('y2',SY1);
+const ptD=DATA.p24.map((d,i)=>({d,club:d.net>=90,r:el('rect',{x:sx(d.net)-7,y:sy(d.cpi)-7,width:14,height:14,fill:'#424E3D'},svD),o:(i*37%DATA.p24.length)/DATA.p24.length}));
+const brD=el('g',{},svD);
+el('line',{x1:sx(88),x2:sx(88),y1:sy(90),y2:sy(22),stroke:'#E5764B','stroke-width':4},brD);
+el('line',{x1:sx(88)-12,x2:sx(88),y1:sy(90),y2:sy(90),stroke:'#E5764B','stroke-width':4},brD);el('line',{x1:sx(88)-12,x2:sx(88),y1:sy(22),y2:sy(22),stroke:'#E5764B','stroke-width':4},brD);
+txt(brD,{x:sx(88)-22,y:sy(90)+9,'text-anchor':'end','font-size':26,fill:'#B4502C',class:'halo'},'90 เดนมาร์ก');
+txt(brD,{x:sx(88)-22,y:sy(22)+9,'text-anchor':'end','font-size':26,fill:'#B4502C',class:'halo'},'22 รัสเซีย');
+const CAPD=[[31.4,'<span class="hl">ไม่เสมอไป</span>'],[33.0,'6 → <span class="hl">50</span> ประเทศ'],[35.7,'CPI <span class="hl">22 ถึง 90</span>']];
+// ---------- E: versus ----------
+const VS=[{id:'vs1',net:94.7,cpi:65,t:39.6},{id:'vs2',net:94.4,cpi:22,t:40.5}];const BARW=560;
+const CAPE=[[39.4,'ใช้เน็ต <span class="hl">เท่ากัน</span>'],[42.5,'65 vs <span class="hl">22</span>']];
+// ---------- F: correlation ----------
+const svF=$('chartF'),FX0=230,FX1=850,FY0=1120,FY1=640;
+const fx=y=>FX0+(y-2012)/12*(FX1-FX0), fy=v=>FY0-v*(FY0-FY1);
+const gridF=el('g',{},svF);[0,0.25,0.5,0.75,1].forEach(v=>{el('line',{x1:FX0,x2:FX1,y1:fy(v),y2:fy(v),stroke:'#E1E4DA','stroke-width':2},gridF);txt(gridF,{x:FX0-14,y:fy(v)+8,'text-anchor':'end','font-size':22,fill:'#455044','font-weight':500},v===0||v===1?v:v.toFixed(2))});
+[2012,2018,2024].forEach(y=>txt(gridF,{x:fx(y),y:FY0+40,'text-anchor':y===2012?'start':y===2024?'end':'middle','font-size':22,fill:'#455044','font-weight':500},y));
+txt(gridF,{x:FX0,y:fy(1)-24,'font-size':20,fill:'#677166'},'ความสัมพันธ์ (R)');
+const axF=el('line',{x1:FX0,x2:FX0,y1:FY0,y2:FY0,stroke:'#283127','stroke-width':3},svF);
+const lnF=el('polyline',{fill:'none',stroke:'#DD6B43','stroke-width':7,'stroke-linejoin':'round'},svF);
+const dF=el('rect',{width:20,height:20,fill:'#DD6B43',stroke:'#283127','stroke-width':2},svF);
+const lF0=txt(svF,{x:fx(2012),y:fy(0.788)-24,'font-size':28,fill:'#283127'},'0.79'), lF1=txt(svF,{x:fx(2024),y:fy(0.571)-28,'text-anchor':'end','font-size':28,fill:'#B4502C'},'0.57');
+const CAPF=[[46.3,'0.79 → <span class="hl">0.57</span>']];
+// ---------- G ----------
+const CAPG=[[51.0,'ใช้เน็ต <span class="hl">×3.4</span>'],[54.4,'CPI <span class="hl">ลดลง</span>'],[57.6,'ญี่ปุ่น <span class="hl">71</span>']];
+// ---------- W: walkthrough ----------
+const SQL=`SELECT c.year,
+  round(corr(i.internet_users_pct_population,
+             c.cpi_score), 2) AS r
+FROM transparency_corruption_perceptions_index c
+JOIN worldbank_internet_users_pct_population i
+  ON c.country_iso_alpha3 = i.country_iso_alpha3
+ AND c.year = i.year
+WHERE c.year <= 2024
+GROUP BY c.year ORDER BY c.year;`;
+const KW=/\b(SELECT|FROM|JOIN|ON|AND|WHERE|GROUP BY|ORDER BY|AS)\b/g;
+const hlSql=s=>s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(KW,'<span class="k">$1</span>');
+const RES=DATA.result, rr=r=>`<tr><td>${r.year}</td><td class="n">${r.r.toFixed(2)}</td></tr>`;
+$('rt').innerHTML='<tr><th>year</th><th class="n">r</th></tr>'+RES.slice(0,4).map(rr).join('')+'<tr><td>…</td><td class="n">…</td></tr>'+rr(RES[RES.length-1]);
+$('rcount').textContent=DATA.resultRows+' rows · 2 columns';
+function cursorAt(cu,t,t0,t1,sx_,sy_,ex_,ey_){const m=eInOut(p(t,t0,t1));cu.style.left=(lerp(sx_,ex_,m)-Math.sin(m*Math.PI)*60)+'px';cu.style.top=(lerp(sy_,ey_,m)-Math.sin(m*Math.PI)*80)+'px'}
+function ripple(r,t,tc,x,y){const k=p(t,tc,tc+0.45),s=20+150*eOut(k);r.style.width=r.style.height=s+'px';r.style.left=(x+4-s/2)+'px';r.style.top=(y+4-s/2)+'px';r.style.opacity=k>0&&k<1?1-k:0}
+function press(b,t,tc){const pr=t>tc-0.1&&t<tc+0.1;b.style.boxShadow=pr?'none':'6px 6px 0 #D6ED63';return pr}
+
+const W={A:[0,5.65],B:[5.55,22.65],C:[22.55,27.05],Q:[26.95,31.05],D:[30.95,39.05],E:[38.95,45.85],F:[45.75,50.25],G:[50.15,61.45],H:[61.35,68.45],I:[68.35,73.05],W:[72.95,85.85],X:[85.75,99]};
+const inW=(k,t)=>t>=W[k][0]&&t<W[k][1];
+const CUTS=[5.6,22.6,27.0,31.0,39.0,45.8,50.2,61.4,68.4,73.0,85.8];
+window.DUR=95;
+window.render=function(t){
+ for(const k in W)show(k,inW(k,t));
+ // ---- A hook
+ if(inW('A',t)){const A=$('A');A.style.transform=`scale(${1+0.025*eInOut(p(t,0,5.6))})`;
+  A.querySelector('.eyebrowD').style.opacity=eOut(p(t,0.1,0.6));
+  const [h,typing]=typeHead([['เน็ตมากขึ้น|',''],['คอร์รัปชัน|น้อยลง?','y']],t,0.35,2.4);
+  $('headA').innerHTML=h+(t<3.0?cursorTag(t,typing):'');
+  const S='อย่างน้อยก็เชื่อกันแบบนั้น',ns=Math.round(glen(S)*p(t,3.4,4.4));
+  $('subA').innerHTML=t>=3.0?gslice(S,0,ns)+cursorTag(t,ns<glen(S)):'';
+  $('ruleA').style.width=780*eOut(p(t,0.2,1.4))+'px';$('footA').style.opacity=eOut(p(t,0.6,1.2));}
+ // ---- B scatter 2012 -> 2024
+ if(inW('B',t)){const B=$('B');B.style.transformOrigin='70% 45%';B.style.transform=`scale(${1+0.02*eInOut(p(t,5.6,22.6))})`;
+  const mv=eInOut(p(t,18.2,21.2)), yr=Math.round(lerp(2012,2024,mv));
+  $('metaB').textContent=mv<=0?'2012 / 172 ประเทศ / เน็ต vs CPI':mv<1?'2012 → 2024 / เน็ต vs CPI':'2024 / 167 ประเทศ / เน็ต vs CPI';$('metaB').style.opacity=eOut(p(t,5.8,6.2));
+  // axes first: Y axis draws up and is highlighted, then X axis draws right and is highlighted, then the data
+  const ky=eOut(p(t,5.8,6.5)),kx=eOut(p(t,6.7,7.4)),hy=eSnap(p(t,6.2,6.45))*(1-eOut(p(t,7.7,8.1))),hx=eSnap(p(t,7.1,7.35))*(1-eOut(p(t,7.9,8.3)));
+  HB.yAx.setAttribute('y2',SY0-(SY0-SY1)*ky);HB.yAx.setAttribute('stroke',hy>0.05?'#E5764B':'#283127');HB.yAx.setAttribute('stroke-width',3+4*hy);
+  axB.setAttribute('x2',SX0+(SX1-SX0)*kx);axB.setAttribute('stroke',hx>0.05?'#E5764B':'#283127');axB.setAttribute('stroke-width',3+4*hx);
+  {const wy=HB.lY.getComputedTextLength()+20,wx=HB.lX.getComputedTextLength()+20;HB.hlY.setAttribute('width',wy);HB.hlX.setAttribute('width',wx);HB.hlX.setAttribute('x',SX1+10-wx);}
+  HB.hlY.setAttribute('opacity',hy);HB.hlX.setAttribute('opacity',hx);
+  HB.lY.setAttribute('fill',hy>0.3?'#283127':'#677166');HB.lX.setAttribute('fill',hx>0.3?'#283127':'#677166');
+  HB.lY.style.opacity=eOut(p(t,6.0,6.3));HB.lX.style.opacity=eOut(p(t,6.9,7.2));
+  gridB.style.opacity=eOut(p(t,5.9,6.4));$('noteB').style.opacity=eOut(p(t,6.3,6.8));
+  const club=eSnap(p(t,11.3,11.7))*(1-eOut(p(t,17.4,17.9)));zoneB.setAttribute('fill-opacity',.55*club);
+  ptB.forEach(q=>{const t0=8.0+q.o*1.2,k=eSnap(p(t,t0,t0+0.25));let x,y,op;
+   if(q.a&&q.b){x=lerp(q.a.net,q.b.net,mv);y=lerp(q.a.cpi,q.b.cpi,mv);op=1}
+   else if(q.a){x=q.a.net;y=q.a.cpi;op=1-p(t,18.2,18.8)}else{x=q.b.net;y=q.b.cpi;op=p(t,20.4,21.0)}
+   const isC=q.club&&club>0.01, s=isC?14+8*club:14;
+   q.r.setAttribute('width',s);q.r.setAttribute('height',s);q.r.setAttribute('x',sx(x)-s/2);q.r.setAttribute('y',sy(y)-s/2);
+   q.r.setAttribute('fill',isC?'#E5764B':'#424E3D');q.r.setAttribute('fill-opacity',k*op*(q.a?1:1)*(isC?1:.8*(1-0.65*club)))});
+  const kt=eOut(p(t,9.3,10.3)),tr=kt*(1-eOut(p(t,17.6,18.1)));trendB.setAttribute('x2',sx(100*kt));trendB.setAttribute('y2',sy(a12+b12*100*kt));trendB.style.opacity=tr*(1-0.6*club);
+  rB.style.opacity=eOut(p(t,10.2,10.6))*(1-eOut(p(t,17.6,18.1)))*(1-0.8*club);
+  const cl=eSnap(p(t,12.0,12.35))*(1-eOut(p(t,17.2,17.6)));$('callB').style.opacity=cl;$('callB').style.transform=`translateY(${(1-cl)*26}px)`;
+  const avg=BY[yr].avg_net;CAPB[3][1]=`ใช้เน็ต 38% → <span class="hl">${Math.round(avg)}%</span>`;
+  caption($('capB'),CAPB,t,22.4);}
+ // ---- C averages
+ if(inW('C',t)){const C=$('C');C.style.transform=`scale(${1+0.025*eInOut(p(t,22.6,27))})`;
+  axC.setAttribute('x2',CX0+(CX1-CX0)*eOut(p(t,22.7,23.1)));gridC.style.opacity=eOut(p(t,22.8,23.2));$('noteC').style.opacity=eOut(p(t,23.0,23.4));
+  const yc=lerp(2012,2024,eInOut(p(t,23.1,24.8)));const pn=[],pc=[];
+  DATA.yearly.forEach(d=>{if(d.year<=yc){pn.push(`${cx(d.year)},${cy(d.avg_net)}`);pc.push(`${cx(d.year)},${cy(d.avg_cpi)}`)}});
+  const y0=Math.floor(yc),f=yc-y0,a=BY[y0],b=BY[Math.min(2024,y0+1)];const vn=lerp(a.avg_net,b.avg_net,f),vc=lerp(a.avg_cpi,b.avg_cpi,f);
+  pn.push(`${cx(yc)},${cy(vn)}`);pc.push(`${cx(yc)},${cy(vc)}`);lnN.setAttribute('points',pn.join(' '));lnC.setAttribute('points',pc.join(' '));
+  const lo=eOut(p(t,23.0,23.3));[lnN,lnC,dN,dC].forEach(e=>e.style.opacity=lo);
+  dN.setAttribute('x',cx(yc)-10);dN.setAttribute('y',cy(vn)-10);dC.setAttribute('x',cx(yc)-10);dC.setAttribute('y',cy(vc)-10);
+  lN0.style.opacity=lC0.style.opacity=eOut(p(t,23.2,23.6));lN1.style.opacity=eOut(p(t,24.6,24.9));lC1.style.opacity=eOut(p(t,24.8,25.1));
+  caption($('capC'),CAPC,t,26.8);}
+ // ---- Q question
+ if(inW('Q',t)){const Q=$('Q');Q.style.transform=`scale(${1+0.025*eInOut(p(t,27,31))})`;
+  Q.querySelector('.eyebrowD').style.opacity=eOut(p(t,27.1,27.5));
+  const [h,typing]=typeHead([['อินเทอร์เน็ต|ทำให้ประเทศ|',''],['โปร่งใสขึ้น|จริงไหม?','y']],t,27.3,29.4);
+  $('headQ').innerHTML=h+cursorTag(t,typing);}
+ // ---- D scatter 2024
+ if(inW('D',t)){const D=$('D');D.style.transformOrigin='70% 45%';D.style.transform=`scale(${1+0.02*eInOut(p(t,31,39))})`;
+  axD.setAttribute('x2',SX0+(SX1-SX0)*eOut(p(t,31.1,31.5)));gridD.style.opacity=eOut(p(t,31.2,31.6));$('noteD').style.opacity=eOut(p(t,31.6,32.0));
+  const club=eSnap(p(t,33.0,33.4));zoneD.setAttribute('fill-opacity',.55*club);
+  ptD.forEach(q=>{const t0=31.2+q.o*1.0,k=eSnap(p(t,t0,t0+0.25));const isC=q.club&&club>0.01,s=isC?14+6*club:14;
+   q.r.setAttribute('width',s);q.r.setAttribute('height',s);q.r.setAttribute('x',sx(q.d.net)-s/2);q.r.setAttribute('y',sy(q.d.cpi)-s/2);
+   q.r.setAttribute('fill',isC?'#E5764B':'#424E3D');q.r.setAttribute('fill-opacity',k*(isC?1:.8*(1-0.65*club)))});
+  const cl=eSnap(p(t,33.2,33.55));$('callD').style.opacity=cl;$('callD').style.transform=`translateY(${(1-cl)*26}px)`;
+  const n=Math.round(lerp(6,50,eOut(p(t,33.6,35.0))));$('cntD').innerHTML=`6 → <b>${n}</b>`;
+  $('rngD').textContent=t<35.7?'2012 → 2024':'CPI 22–90';
+  brD.style.opacity=eOut(p(t,35.8,36.3));
+  caption($('capD'),CAPD,t,38.8);}
+ // ---- E versus
+ if(inW('E',t)){const E=$('E');E.style.transform=`scale(${1+0.025*eInOut(p(t,39,45.8))})`;
+  const HE='ใช้เน็ตพอๆ กัน',nh=Math.round(glen(HE)*p(t,39.2,40.0));$('hE').innerHTML=gslice(HE,0,nh)+cursorTag(t,nh<glen(HE));
+  VS.forEach((v,i)=>{const b=$(v.id),a=eOut(p(t,v.t,v.t+0.3));b.style.opacity=a;b.style.transform=`translateY(${(1-a)*20}px)`;
+   const rows=b.querySelectorAll('.row');const kn=eOut(p(t,v.t+0.2,v.t+1.2)),kc=eOut(p(t,42.0+i*0.5,43.0+i*0.5));
+   rows[0].querySelector('.bar').style.width=BARW*v.net/100*kn+'px';rows[0].querySelector('.v').textContent=kn>0?Math.round(v.net*kn)+'%':'';
+   rows[1].querySelector('.bar').style.width=BARW*v.cpi/100*kc+'px';rows[1].querySelector('.v').textContent=kc>0?Math.round(v.cpi*kc):'';
+   rows[1].style.opacity=eOut(p(t,41.8+i*0.5,42.1+i*0.5))});
+  $('also').style.opacity=eOut(p(t,44.0,44.4));$('noteE').style.opacity=eOut(p(t,40.0,40.4));
+  caption($('capE'),CAPE,t,45.6);}
+ // ---- F correlation
+ if(inW('F',t)){const F=$('F');F.style.transform=`scale(${1+0.025*eInOut(p(t,45.8,50.2))})`;
+  const HF='ความสัมพันธ์อ่อนลง',nh=Math.round(glen(HF)*p(t,46.0,46.8));$('hF').innerHTML=gslice(HF,0,nh)+cursorTag(t,nh<glen(HF));
+  axF.setAttribute('x2',FX0+(FX1-FX0)*eOut(p(t,45.9,46.3)));gridF.style.opacity=eOut(p(t,46.0,46.4));$('noteF').style.opacity=eOut(p(t,46.3,46.7));
+  const yc=lerp(2012,2024,eInOut(p(t,46.5,48.8)));const pts=[];DATA.yearly.forEach(d=>{if(d.year<=yc)pts.push(`${fx(d.year)},${fy(d.r)}`)});
+  const y0=Math.floor(yc),f=yc-y0,v=lerp(BY[y0].r,BY[Math.min(2024,y0+1)].r,f);pts.push(`${fx(yc)},${fy(v)}`);
+  lnF.setAttribute('points',pts.join(' '));const lo=eOut(p(t,46.4,46.7));lnF.style.opacity=dF.style.opacity=lo;dF.setAttribute('x',fx(yc)-10);dF.setAttribute('y',fy(v)-10);
+  lF0.style.opacity=eOut(p(t,46.6,47.0));lF1.style.opacity=eOut(p(t,48.6,48.9));
+  caption($('capF'),CAPF,t,50.0);}
+ // ---- G Thailand / Japan
+ if(inW('G',t)){const G=$('G');G.style.transform=`scale(${1+0.025*eInOut(p(t,50.2,61.4))})`;
+  const a=eSnap(p(t,50.5,50.85));$('cTH').style.opacity=a;$('cTH').style.transform=`translateY(${(1-a)*30}px)`;$('cTH').style.boxShadow=`${6*a}px ${6*a}px 0 #D6ED63`;
+  const kn=eOut(p(t,51.2,53.0)),kc=eOut(p(t,54.4,55.6));
+  $('thN').innerHTML=`<s>26% →</s> ${Math.round(lerp(26,91,kn))}%`;
+  $('thC').innerHTML=t<54.3?`37`:`<s>37 →</s> <span style="color:#B4502C">${Math.round(lerp(37,34,kc))}</span>`;
+  const j=eSnap(p(t,57.5,57.85));$('cJP').style.opacity=j;$('cJP').style.transform=`translateY(${(1-j)*30}px)`;$('cJP').style.boxShadow=`${7*j}px ${7*j}px 0 #D6ED63`;
+  $('jpC').style.background=t>58.6?'#D6ED63':'transparent';
+  $('noteG').style.opacity=eOut(p(t,51.0,51.4));caption($('capG'),CAPG,t,61.2);}
+ // ---- H Rwanda
+ if(inW('H',t)){const H=$('H');H.style.transform=`scale(${1+0.025*eInOut(p(t,61.4,68.4))})`;
+  H.querySelector('.eyebrowD').style.opacity=eOut(p(t,61.6,62.0));
+  const nm=eOut(p(t,63.0,63.4));$('nameH').style.opacity=nm;$('nameH').style.transform=`translateY(${(1-nm)*24}px)`;
+  const sb=eOut(p(t,63.6,64.0));$('subH').style.opacity=sb;
+  const k=eOut(p(t,64.4,65.6));$('bigH').innerHTML=k>0?Math.round(57*k)+'<small>CPI</small>':'';
+  $('rankH').querySelectorAll('div').forEach((d,i)=>{const r=eOut(p(t,65.8+i*0.25,66.2+i*0.25));d.style.opacity=r;d.style.transform=`translateY(${(1-r)*16}px)`});
+  $('noteH').style.opacity=eOut(p(t,64.0,64.4));}
+ // ---- I statement
+ if(inW('I',t)){const I=$('I');I.style.transform=`scale(${1+0.025*eInOut(p(t,68.4,73))})`;
+  I.querySelector('.eyebrowD').style.opacity=eOut(p(t,68.5,68.9));
+  const [h,typing]=typeHead([['ออนไลน์ได้|ไม่ได้แปลว่า|',''],['โปร่งใส','y']],t,68.8,70.6);
+  $('headI').innerHTML=h+cursorTag(t,typing);$('footI').style.opacity=eOut(p(t,70.8,71.3));}
+ // ---- W walkthrough
+ if(inW('W',t)){const G=$('W');G.style.transform=`scale(${1+0.02*eInOut(p(t,73,85.8))})`;
+  $('stepW').textContent=t<76.25?'Step 01 / Discover':t<79.0?'Step 02 / Query':'Step 03 / Take it further';
+  const catOut=eInOut(p(t,76.15,76.5));
+  $('catT').style.opacity=eOut(p(t,73.2,73.6))*(1-catOut);$('join').style.opacity=eOut(p(t,73.4,73.8))*(1-catOut);
+  [['ds1',73.6],['ds2',74.2]].forEach(([id,t0])=>{const dc=eSnap(p(t,t0,t0+0.35));$(id).style.opacity=dc*(1-catOut);$(id).style.transform=`translateY(${(1-dc)*30-catOut*40}px)`;$(id).style.boxShadow=`${6*dc}px ${6*dc}px 0 #D6ED63`});
+  const ob=$('openq'),prO=t>75.9&&t<76.1;ob.style.transform=`translate(${prO?3:0}px,${prO?3:0}px)`;ob.style.background=prO?'#D6ED63':'';ob.style.color=prO?'#283127':'';
+  const up=eInOut(p(t,82.3,82.8));$('stack').style.transform=`translateY(${-470*up}px)`;
+  const sq=eOut(p(t,76.3,76.6))*(1-p(t,82.2,82.45));$('sql').style.opacity=sq;$('sqlhead').style.opacity=sq;
+  const nch=Math.round(SQL.length*p(t,76.5,78.2));$('sql').innerHTML=hlSql(SQL.slice(0,nch))+`<span class="cur" style="opacity:${(blink(t)||nch<SQL.length)?1:0}">▌</span>`;
+  $('sqlstate').textContent=t<78.9?'Editing…':'✓ Ran in browser';$('sqlstate').style.color=t<78.9?'#677166':'#245c3b';
+  const rb=$('run'),rk=eOut(p(t,78.0,78.3));rb.style.opacity=rk*(1-p(t,82.2,82.45));const prR=press(rb,t,78.8);rb.style.transform=`translateY(${(1-rk)*20}px) translate(${prR?3:0}px,${prR?3:0}px)`;
+  const rr_=eSnap(p(t,79.0,79.4));$('rtable').style.opacity=rr_;$('rtable').style.transform=`translateY(${(1-rr_)*30}px)`;
+  $('rt').querySelectorAll('tr').forEach((tr,i)=>tr.style.opacity=eOut(p(t,79.2+i*0.07,79.45+i*0.07)));
+  [['csvb',79.8],['jsonb',79.88],['connb',79.96]].forEach(([id,t0])=>{const k=eOut(p(t,t0,t0+0.3));const b=$(id);b.style.opacity=k;b.style.transform=`translateY(${(1-k)*16}px)`});
+  $('csvb').style.background=(t>81.6&&t<82.1)?'#D6ED63':'#FAF9F3';$('jsonb').style.background=(t>81.8&&t<82.3)?'#D6ED63':'#FAF9F3';
+  const cbn=$('connb'),prC=t>82.8&&t<83.0;cbn.style.transform=`translate(${prC?3:0}px,${prC?3:0}px)`;cbn.style.boxShadow=prC?'none':(t>80.0?'6px 6px 0 #D6ED63':'none');
+  const co=eSnap(p(t,83.1,83.45));$('conn').style.opacity=co;$('conn').style.transform=`scale(${0.94+0.06*co})`;
+  $('conn').querySelectorAll('.row').forEach((r,i)=>{r.style.opacity=eOut(p(t,83.3+i*0.15,83.6+i*0.15))});
+  $('conn').querySelector('.for').style.opacity=eOut(p(t,83.7,84.0));
+  [['chipAI',83.9],['betaAI',84.15],['chipT',84.3]].forEach(([id,t0])=>{const k=eSnap(p(t,t0,t0+0.3));$(id).style.opacity=k;$(id).style.boxShadow=id==='betaAI'?'none':`${4*k}px ${4*k}px 0 #D6ED63`});
+  const cu=$('curW');let op=1;const yC=1400-470*up;
+  if(t<76.3){cursorAt(cu,t,75.0,75.85,820,1500,300,1062);op=p(t,74.9,75.05);}
+  else if(t<79.0){cursorAt(cu,t,78.2,78.75,300,1062,840,858);}
+  else{cursorAt(cu,t,82.0,82.75,840,858,560,930);op=1-p(t,83.5,83.8);}
+  cu.style.opacity=op;cu.style.transform=`scale(${prO||prR||prC?.88:1})`;
+  if(t<77)ripple($('ripW'),t,76.0,300,1062);else if(t<80)ripple($('ripW'),t,78.8,840,858);else ripple($('ripW'),t,82.9,560,930);}
+ // ---- X end card
+ if(inW('X',t)){const H=$('X');H.style.transform=`scale(${1+0.025*eInOut(p(t,85.8,95))})`;
+  const er=(str,a,b)=>Math.round(glen(str)*p(t,a,b));
+  const MK='Querious',em=er(MK+'_',91.8,92.4),mk=MK.slice(Math.min(em,MK.length));
+  $('markX').innerHTML=`<span>${mk.startsWith('Q')?'<i>Q</i>'+mk.slice(1):mk}${em<=MK.length?'<span class="cur">_</span>':''}</span>`;$('markX').style.opacity=eOut(p(t,87.8,88.4));
+  const UR='สำรวจข้อมูลได้ฟรี ไม่ต้องสมัครสมาชิก',eu=er(UR,92.0,92.6);$('urlX').textContent=gslice(UR,eu);$('urlX').style.opacity=eOut(p(t,87.4,87.9));
+  const CT='querious.studio ↗',ec=er(CT,92.1,92.7);$('ctaX').textContent=gslice(CT,ec);
+  const c=eSnap(p(t,87.1,87.5))*(ec<glen(CT)?1:0);$('ctaX').style.opacity=c;$('ctaX').style.boxShadow=`${6*c}px ${6*c}px 0 #F4F1E9`;
+  const S1='มาหาคำตอบกัน',es=er(S1,92.4,93.4);
+  $('subX').innerHTML=gslice(S1,es);
+  const s=eOut(p(t,86.3,86.8));$('subX').style.opacity=s;$('subX').style.transform=`translateY(${(1-s)*20}px)`;
+  const EB='Querious / Open data / ',EB2='Internet × CPI',ee=er(EB+EB2,92.9,93.7);
+  const eb=H.querySelector('.eyebrowD');eb.innerHTML=EB.slice(Math.min(ee,EB.length))+`<b>${EB2.slice(Math.max(0,ee-EB.length))}</b>`;eb.style.opacity=eOut(p(t,86.0,86.4));
+  const H2='ข้อมูลพร้อมแล้ว',LH=glen(H2);const n=Math.round(LH*p(t,86.0,86.7)),eh=er(H2,93.2,94.2);
+  $('bigX').innerHTML=gslice(gslice(H2,0,n),eh)+cursorTag(t,n<LH||(eh>0&&eh<LH));
+  H.style.opacity=1-p(t,94.4,94.9);}
+ const dark=inW('A',t)&&t<5.6||(t>=27&&t<31)||(t>=61.4&&t<73)||t>=85.8;
+ $('logoL').style.display=dark?'block':'none';$('logoL').style.opacity=1-p(t,93.3,94.1);$('logoD').style.display=dark?'none':'block';
+ const wp=$('wipe');let on=false;
+ for(const m of CUTS){const a=m-0.35,b=m+0.35;if(t>a&&t<b){on=true;const w1=eSnap(p(t,a,m)),w2=eSnap(p(t,m,b));wp.style.top=(t<m?1920*(1-w1):0)+'px';wp.style.bottom=(1920*w2)+'px';}}
+ wp.style.display=on?'block':'none';
+ $('grain').style.transform=`translate(${(Math.floor(t*12)*13)%40-20}px,${(Math.floor(t*12)*29)%40-20}px)`;
+};
+</script></body></html>

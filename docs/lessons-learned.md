@@ -2,6 +2,20 @@
 
 Things that went wrong or needed a second pass while making episodes, and the rule that came out of each. Newest first. `CLAUDE.md` links here; the short rules are also copied into `CLAUDE.md`.
 
+## Episode: internet-cpi (EN, 2026-11-10)
+
+- **Two-year scatter morph ≠ yearly data.** Dots slide from their 2012 to their 2024 position in one move; the meta line reads "2012 → 2024" during the move (not a year ticker), and the running "Online: 38% → 72%" counter uses the real yearly averages, not a linear interpolation.
+- **Querious does not ship an AI.** The first script had a chat scene implying it; the user cut it. "Connect" is shown as the live CSV/JSON URL plus chips `Your AI` (with a `Beta` tag) and `Your tools`; the VO says "connect it to your own AI and tools".
+- **Check "more than" claims to the decimal.** The draft said Russia has more people online than the U.S.; the data says 94.4% vs 94.7%, so the line became "about as online as the U.S.".
+- **Semicolons in `data.sql` comments break a naive `split(';')`.** `make-data.py` runs `data.sql` statement by statement, so keep `;` out of comments.
+- **Right-band layout:** notes, captions, the result table and the connection panel use class `R` (right 230) because they sit in y 1180–1780. Scatter labels over dots use a paper-coloured text halo (`paint-order:stroke`).
+- **Loudness:** first mix −16.9 LUFS, true peak −1.5 dBFS with the default voice level.
+- **internet-cpi-th: Thai phrases ran together.** Paxa reads a whole Thai line as one breath (spaces aren't pauses). `tts.py` now treats ` | ` in a line as a phrase break: each phrase is voiced separately and joined with `voice.gap` s of silence (0.25 here). The tts.py change was pushed with `[skip ci]` and voiced with a manual run for this episode only, so the other Paxa episodes weren't re-voiced.
+- **Gaps cost time.** The first Thai pass (3 phrases per line + 0.28 s gaps) hit the 1.3× cap on v1, v2, v3, v15. Second pass: lines cut to 2–3 short phrases, numbers shortened ("เกินเก้าสิบ" with 90%+ on screen), max stretch 1.13.
+- **Paxa reads "เน็ต" with an English accent ("net"), user review.** Thai voice text now says ออนไลน์ ("คนออนไลน์", "ออนไลน์เกินเก้าสิบ") or the full word อินเทอร์เน็ต; on-screen text can keep เน็ต. Rule: never put the short form เน็ต in Thai voice lines.
+- **Don't translate "your own country" for a Thai audience.** Thailand is already in the clip, so the Thai CTA says "ค้นหาข้อมูลที่คุณอยากรู้" (user review).
+- **Loudness:** Paxa −2 dB gave −17.2 LUFS / −3.2 dBFS next to EN −16.9 (−3 dB gave −17.9).
+
 ## Episode: high-income (EN, 2026-11-08)
 
 - **Use the official series when the story is about an official status (user review).** The first two cuts used GDP per capita as a stand-in for the World Bank's GNI-based groups; the user then added `worldbank_income_classification_history` (OGHIST), `..._thresholds` and `worldbank_gni_per_capita_atlas` to querios and the episode was redone. The story changed a lot: 38 → 36 countries, Brazil/Mexico/Turkey/Kazakhstan were never officially high income, Korea 1995 (not 1992) and back in 2001 (not a year later), Argentina in twice not three times, China 99% not 95%. "Income per person" is only right for GNI, not GDP (Guyana's GDP far exceeds its residents' income).
