@@ -72,13 +72,13 @@
     {
       "id": "v1",
       "at": 0.3,
-      "text": "สิ้นปีสองพันยี่สิบสี่ | โอเพ่นเอไอ ทำรายได้มากกว่าแอนโทรปิก เกินห้าเท่า",
+      "text": "สิ้นปีสองพันยี่สิบสี่ | โอเพ่นเอไอ รายได้นำแอนโทรปิกกว่าห้าเท่า",
       "text_en": "At the end of twenty twenty-four, Open A.I. was earning over five times what Anthropic did."
     },
     {
       "id": "v2",
       "at": 5.9,
-      "text": "ไม่ถึงสองปี | กลับเป็นฝ่ายตามหลัง",
+      "text": "ไม่ถึงสองปี | กลับตามหลัง",
       "text_en": "Less than two years later, it's behind."
     },
     {
@@ -90,13 +90,13 @@
     {
       "id": "v4",
       "at": 17.2,
-      "text": "โอเพ่นเอไอก็โต | จากห้าพันห้าร้อยล้าน เป็นห้าหมื่นล้าน | แต่เส้นตัดกันราวมีนาคม ปีสองพันยี่สิบหก",
+      "text": "โอเพ่นเอไอก็โต เป็นห้าหมื่นล้าน | แต่เส้นตัดกันตั้งแต่มีนาคม",
       "text_en": "Open A.I. grew too, from five and a half billion to fifty. But the lines crossed in spring twenty twenty-six."
     },
     {
       "id": "v5",
       "at": 23.9,
-      "text": "ถึงเดือนตุลาคม | แอนโทรปิกแตะแปดหมื่นหนึ่งพันล้าน",
+      "text": "ถึงตุลาคม แตะแปดหมื่นหนึ่งพันล้าน",
       "text_en": "By October, Anthropic reached eighty-one billion."
     },
     {
@@ -108,13 +108,13 @@
     {
       "id": "v7",
       "at": 31.2,
-      "text": "ปีสองพันยี่สิบห้า | โอเพ่นเอไอมีรายได้ หมื่นสามพันล้านดอลลาร์ | แต่ค่าประมวลผลบนคลาวด์ ราวหมื่นหกพันล้าน",
+      "text": "ปีสองพันยี่สิบห้า โอเพ่นเอไอรายได้หมื่นสามพันล้าน | แต่ค่าประมวลผลราวหมื่นหกพันล้าน",
       "text_en": "In twenty twenty-five, Open A.I. brought in thirteen billion dollars. Its cloud compute bill? About sixteen billion."
     },
     {
       "id": "v8",
       "at": 38.8,
-      "text": "แอนโทรปิก รายได้สี่พันห้าร้อยล้าน | ค่าประมวลผลเกือบเจ็ดพันล้าน",
+      "text": "แอนโทรปิก เข้าสี่พันห้าร้อยล้าน | ออกเกือบเจ็ดพันล้าน",
       "text_en": "Anthropic: four and a half billion in, nearly seven billion out on compute."
     },
     {
@@ -132,7 +132,7 @@
     {
       "id": "v11",
       "at": 50.2,
-      "text": "สิบเดือนแรกของปีสองพันยี่สิบหก | บริษัทเหล่านี้ระดมทุนได้ สองแสนแปดหมื่นล้านดอลลาร์ | มากกว่าทุกปีก่อนหน้ารวมกัน เกินสองเท่า",
+      "text": "แค่สิบเดือนแรกของปีสองพันยี่สิบหก | ระดมทุนได้สองแสนแปดหมื่นล้าน | มากกว่าทุกปีก่อนรวมกัน",
       "text_en": "In the first ten months of twenty twenty-six, these companies raised two hundred eighty billion dollars. More than double all earlier years combined."
     },
     {
@@ -144,13 +144,13 @@
     {
       "id": "v13",
       "at": 63.6,
-      "text": "เราหาคำตอบนี้บนคิวเรียส | จากชุดข้อมูลเปิดหกชุด ของเอพ็อกเอไอ",
+      "text": "เราใช้คิวเรียส | กับชุดข้อมูลเปิดหกชุดของเอพ็อกเอไอ",
       "text_en": "We found this on Querious, with six open datasets from Epoch A.I."
     },
     {
       "id": "v14",
       "at": 68.0,
-      "text": "รวมรายได้กับค่าประมวลผล แล้วกดรัน | ตรวจแหล่งที่มาได้ทุกแถว",
+      "text": "รวมรายได้กับค่าประมวลผล กดรัน | ตรวจที่มาได้ทุกแถว",
       "text_en": "Join revenue with compute spend, press Run, and check every source yourself."
     },
     {
