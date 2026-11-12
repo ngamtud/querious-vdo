@@ -1,0 +1,186 @@
+{
+  "title": "รายได้ AI พุ่ง แต่ค่าประมวลผลก็พุ่ง",
+  "format": {
+    "width": 1080,
+    "height": 1920,
+    "fps": 30
+  },
+  "duration": 86.4,
+  "chunks": [
+    [
+      0,
+      8.6
+    ],
+    [
+      8.6,
+      18.0
+    ],
+    [
+      18.0,
+      27.4
+    ],
+    [
+      27.4,
+      30.8
+    ],
+    [
+      30.8,
+      38.6
+    ],
+    [
+      38.6,
+      46.4
+    ],
+    [
+      46.4,
+      49.8
+    ],
+    [
+      49.8,
+      59.0
+    ],
+    [
+      59.0,
+      63.2
+    ],
+    [
+      63.2,
+      70.0
+    ],
+    [
+      70.0,
+      77.2
+    ],
+    [
+      77.2,
+      86.4
+    ]
+  ],
+  "scene": "scene.html",
+  "data": "data.json",
+  "voice": {
+    "engine": "paxa",
+    "model": "paxa-tts-flash-v2",
+    "speaker": "nomyen",
+    "language": "th",
+    "speed": 1.0,
+    "fit": true,
+    "max_speed": 1.3,
+    "gap": 0.25
+  },
+  "voiceover": [
+    {
+      "id": "v1",
+      "at": 0.3,
+      "text": "สิ้นปีสองพันยี่สิบสี่ | โอเพ่นเอไอ รายได้นำแอนโทรปิกกว่าห้าเท่า",
+      "text_en": "At the end of twenty twenty-four, Open A.I. was earning over five times what Anthropic did."
+    },
+    {
+      "id": "v2",
+      "at": 5.9,
+      "text": "ไม่ถึงสองปี | กลับตามหลัง",
+      "text_en": "Less than two years later, it's behind."
+    },
+    {
+      "id": "v3",
+      "at": 9.0,
+      "text": "นี่คือรายได้ต่อปี ตามอัตราปัจจุบัน | แอนโทรปิกโตจากหนึ่งพันล้านดอลลาร์ | เป็นเจ็ดหมื่นหนึ่งพันล้าน",
+      "text_en": "This is annualized revenue: the yearly pace each company is earning at. Anthropic went from one billion dollars, to seventy-one billion."
+    },
+    {
+      "id": "v4",
+      "at": 17.2,
+      "text": "โอเพ่นเอไอก็โต เป็นห้าหมื่นล้าน | แต่เส้นตัดกันตั้งแต่มีนาคม",
+      "text_en": "Open A.I. grew too, from five and a half billion to fifty. But the lines crossed in spring twenty twenty-six."
+    },
+    {
+      "id": "v5",
+      "at": 23.9,
+      "text": "ถึงตุลาคม แตะแปดหมื่นหนึ่งพันล้าน",
+      "text_en": "By October, Anthropic reached eighty-one billion."
+    },
+    {
+      "id": "v6",
+      "at": 27.8,
+      "text": "แต่รายได้มาก | ไม่ได้แปลว่ามีกำไร",
+      "text_en": "But earning more isn't the same as making money."
+    },
+    {
+      "id": "v7",
+      "at": 31.2,
+      "text": "ปีสองพันยี่สิบห้า โอเพ่นเอไอรายได้หมื่นสามพันล้าน | แต่ค่าประมวลผลราวหมื่นหกพันล้าน",
+      "text_en": "In twenty twenty-five, Open A.I. brought in thirteen billion dollars. Its cloud compute bill? About sixteen billion."
+    },
+    {
+      "id": "v8",
+      "at": 38.8,
+      "text": "แอนโทรปิก เข้าสี่พันห้าร้อยล้าน | ออกเกือบเจ็ดพันล้าน",
+      "text_en": "Anthropic: four and a half billion in, nearly seven billion out on compute."
+    },
+    {
+      "id": "v9",
+      "at": 43.5,
+      "text": "ช่องว่างแคบลง | แต่ยังไม่ปิด",
+      "text_en": "The gap is narrowing. But it's still a gap."
+    },
+    {
+      "id": "v10",
+      "at": 46.8,
+      "text": "แล้วใครจ่ายส่วนต่าง | นักลงทุน",
+      "text_en": "So who covers the difference? Investors."
+    },
+    {
+      "id": "v11",
+      "at": 50.2,
+      "text": "แค่สิบเดือนแรกของปีสองพันยี่สิบหก | ระดมทุนได้สองแสนแปดหมื่นล้าน | มากกว่าทุกปีก่อนรวมกัน",
+      "text_en": "In the first ten months of twenty twenty-six, these companies raised two hundred eighty billion dollars. More than double all earlier years combined."
+    },
+    {
+      "id": "v12",
+      "at": 59.4,
+      "text": "ถ้าเงินนักลงทุนชะลอลง | ใครจะเป็นคนจ่าย",
+      "text_en": "So when the investor money slows down, who pays?"
+    },
+    {
+      "id": "v13",
+      "at": 63.6,
+      "text": "เราใช้คิวเรียส | กับชุดข้อมูลเปิดหกชุดของเอพ็อกเอไอ",
+      "text_en": "We found this on Querious, with six open datasets from Epoch A.I."
+    },
+    {
+      "id": "v14",
+      "at": 68.0,
+      "text": "รวมรายได้กับค่าประมวลผล กดรัน | ตรวจที่มาได้ทุกแถว",
+      "text_en": "Join revenue with compute spend, press Run, and check every source yourself."
+    },
+    {
+      "id": "v15",
+      "at": 72.8,
+      "text": "หรือเชื่อมคิวเรียสกับเอไอ และเครื่องมือของคุณ | แล้วถามได้เลย",
+      "text_en": "Or connect Querious to your own A.I. and tools, and just ask."
+    },
+    {
+      "id": "v16",
+      "at": 77.6,
+      "text": "ข้อมูลพร้อมแล้ว | มาหาคำตอบกัน",
+      "text_en": "The data is open. The question is yours."
+    }
+  ],
+  "music": {
+    "generator": "ambient",
+    "volume": 1.25,
+    "duck": {
+      "threshold": 0.03,
+      "ratio": 4,
+      "attack": 60,
+      "release": 600
+    }
+  },
+  "sfx": {
+    "click": [
+      67.5,
+      70.4,
+      73.2
+    ]
+  }
+}
