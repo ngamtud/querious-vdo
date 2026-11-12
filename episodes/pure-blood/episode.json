@@ -1,0 +1,158 @@
+{
+  "title": "Which Hogwarts house is the most pure-blood?",
+  "format": {
+    "width": 1080,
+    "height": 1920,
+    "fps": 30
+  },
+  "duration": 74.3,
+  "chunks": [
+    [
+      0,
+      4.0
+    ],
+    [
+      4.0,
+      15.6
+    ],
+    [
+      15.6,
+      22.0
+    ],
+    [
+      22.0,
+      33.9
+    ],
+    [
+      33.9,
+      42.2
+    ],
+    [
+      42.2,
+      46.7
+    ],
+    [
+      46.7,
+      59.1
+    ],
+    [
+      59.1,
+      64.9
+    ],
+    [
+      64.9,
+      74.3
+    ]
+  ],
+  "scene": "scene.html",
+  "data": "data.json",
+  "voice": {
+    "engine": "kokoro",
+    "speaker": "af_bella",
+    "speed": 1.05
+  },
+  "voiceover": [
+    {
+      "id": "v1",
+      "at": 0.3,
+      "text": "Which Hogwarts house is the most pure-blood?"
+    },
+    {
+      "id": "v2",
+      "at": 4.3,
+      "text": "We took a hundred and forty main characters from the Harry Potter Wiki."
+    },
+    {
+      "id": "v3",
+      "at": 8.6,
+      "text": "Only sixty-five have a clear blood status."
+    },
+    {
+      "id": "v4",
+      "at": 11.9,
+      "text": "Drop those without a house, and fifty-six are left."
+    },
+    {
+      "id": "v4a",
+      "at": 15.5,
+      "text": "Squares are pure-bloods."
+    },
+    {
+      "id": "v4b",
+      "at": 17.2,
+      "text": "Circles, half-bloods."
+    },
+    {
+      "id": "v4c",
+      "at": 18.9,
+      "text": "Triangles, Muggle-borns."
+    },
+    {
+      "id": "v5",
+      "at": 21.2,
+      "text": "Count the pure-bloods, and Gryffindor wins, with fourteen."
+    },
+    {
+      "id": "v6",
+      "at": 25.2,
+      "text": "But look at the share. Slytherin leads, sixty-nine percent to fifty-four."
+    },
+    {
+      "id": "v7",
+      "at": 30.3,
+      "text": "And nine of Gryffindor's fourteen are Weasleys."
+    },
+    {
+      "id": "v8",
+      "at": 34.2,
+      "text": "Ravenclaw doesn't have a single confirmed pure-blood."
+    },
+    {
+      "id": "v9",
+      "at": 37.7,
+      "text": "Slytherin has no Muggle-borns at all. But it does have five half-bloods."
+    },
+    {
+      "id": "v10",
+      "at": 42.5,
+      "text": "One of them is Tom Riddle. You-Know-Who."
+    },
+    {
+      "id": "v11",
+      "at": 47.0,
+      "text": "We counted this on Querious, with one short SQL query."
+    },
+    {
+      "id": "v12",
+      "at": 52.7,
+      "text": "Group it your way, then download the result, or connect it to your own AI and tools."
+    },
+    {
+      "id": "v13",
+      "at": 59.4,
+      "text": "Just remember: that's fifty-six characters out of a hundred and forty, from a fan wiki."
+    },
+    {
+      "id": "v14",
+      "at": 65.3,
+      "text": "The data is open. The question is yours."
+    }
+  ],
+  "music": {
+    "generator": "ambient",
+    "volume": 1.25,
+    "duck": {
+      "threshold": 0.03,
+      "ratio": 4,
+      "attack": 60,
+      "release": 600
+    }
+  },
+  "sfx": {
+    "click": [
+      49.3,
+      52.3,
+      56.7
+    ]
+  }
+}

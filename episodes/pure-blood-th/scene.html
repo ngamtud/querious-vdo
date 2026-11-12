@@ -1,0 +1,417 @@
+<!doctype html><html><head><meta charset="utf-8">
+<style>
+@font-face{font-family:SG;src:url(../../node_modules/@fontsource/space-grotesk/files/space-grotesk-latin-400-normal.woff2);font-weight:400}
+@font-face{font-family:SG;src:url(../../node_modules/@fontsource/space-grotesk/files/space-grotesk-latin-700-normal.woff2);font-weight:700}
+@font-face{font-family:PM;src:url(../../node_modules/@fontsource/ibm-plex-mono/files/ibm-plex-mono-latin-500-normal.woff2);font-weight:500}
+@font-face{font-family:PM;src:url(../../node_modules/@fontsource/ibm-plex-mono/files/ibm-plex-mono-latin-600-normal.woff2);font-weight:600}
+@font-face{font-family:TH;src:url(../../node_modules/@fontsource/ibm-plex-sans-thai/files/ibm-plex-sans-thai-thai-500-normal.woff2);font-weight:400 500}
+@font-face{font-family:TH;src:url(../../node_modules/@fontsource/ibm-plex-sans-thai/files/ibm-plex-sans-thai-thai-600-normal.woff2);font-weight:600}
+@font-face{font-family:TH;src:url(../../node_modules/@fontsource/ibm-plex-sans-thai/files/ibm-plex-sans-thai-thai-700-normal.woff2);font-weight:700}
+@font-face{font-family:PX;src:url(../../node_modules/@fontsource/pixelify-sans/files/pixelify-sans-latin-700-normal.woff2);font-weight:700}
+/* Facebook-safe 9:16: top 300, bottom 380, sides 150, right 230 clear in y 1180-1780 */
+:root{--safe-x:150px;--safe-top:300px;--safe-bottom:380px;--safe-band:230px;
+ --paper:#F4F1E9;--ink:#283127;--deep:#222923;--muted:#677166;--line:#C7CBBF;--lime:#D6ED63;--orange:#E5764B}
+*{box-sizing:border-box;margin:0}
+html,body{width:1080px;height:1920px;overflow:hidden;background:var(--deep)}
+.scene{position:absolute;inset:0;overflow:hidden;transform-origin:50% 45%;display:none}
+.mono{font-family:PM,TH;font-weight:600;letter-spacing:.08em;text-transform:uppercase}
+.cur{color:var(--orange)}
+.dark{background:var(--deep);color:#F4F1E9}.light{background:var(--paper);color:var(--ink)}
+.L{position:absolute;left:var(--safe-x);right:var(--safe-x)}
+.R{right:var(--safe-band)}
+.eyebrowD{top:330px;font-size:24px;color:#A9B4A2;right:260px}.eyebrowD b{color:var(--lime);font-weight:600}
+.top{top:var(--safe-top);display:flex;align-items:center;gap:22px;border-bottom:2px solid var(--ink);padding:0 100px 20px 0;height:96px}
+.brand{font:700 44px SG,TH;letter-spacing:-.05em;flex:1}.brand i{font:700 46px PX;font-style:normal}
+.tag{font-size:21px;border:1.5px solid var(--ink);padding:8px 12px;background:var(--lime);transform:rotate(-3deg)}
+.meta{top:430px;font-size:23px;color:var(--muted)}
+.h2{top:470px;font:700 84px/1 SG,TH;letter-spacing:-.07em;white-space:nowrap}
+svg.abs{position:absolute;left:0;top:0}
+.note{font-size:19px;line-height:1.5;color:var(--muted);letter-spacing:.05em}
+.caption{top:1400px;font:700 70px/1.03 SG,TH;letter-spacing:-.06em;white-space:nowrap}
+.caption .hl{background:var(--lime);padding:0 10px;box-decoration-break:clone;-webkit-box-decoration-break:clone}
+/* A hook */
+#A .head{top:600px;font:700 128px/.98 SG,TH;letter-spacing:-.075em}
+#A .head .y{color:var(--lime)}
+#A .rule{position:absolute;left:var(--safe-x);top:1440px;height:2px;background:#4a5648}
+#A .foot{top:1470px;font-size:21px;color:#7f8a7c}
+/* B callout */
+.call{position:absolute;border:2px solid var(--ink);background:#FAF9F3;padding:20px 24px 14px;box-shadow:7px 7px 0 var(--lime);opacity:0}
+.call .mono{font-size:19px;color:var(--muted)}
+.call .row{display:flex;justify-content:space-between;align-items:baseline;border-top:1px solid #DBE0D5;padding:12px 0 8px;margin-top:10px}
+.call .row:first-of-type{border-top:none}
+.call .row span{font:700 36px SG,TH;letter-spacing:-.04em}
+.call .row b{font:600 40px PM,TH;letter-spacing:0}
+.call .row b.o{color:#B4502C}
+.call .row i{font-style:normal;display:inline-block;width:18px;height:18px;margin-right:12px;vertical-align:1px}
+/* E Voldemort (dark) */
+#E .list{top:440px}
+#E .list div{display:flex;justify-content:space-between;border-top:1px solid #4a5648;padding:18px 0;font:500 32px PM,TH;color:#C9D1C1}
+#E .list div b{font:600 20px PM,TH;letter-spacing:.08em;color:#8b9685;align-self:center}
+#E .list div.hi{color:var(--ink);background:var(--lime);padding-left:14px;padding-right:14px;border-top-color:var(--lime)}
+#E .list div.hi b{color:var(--ink)}
+#E .big{top:950px;font:700 140px/.92 SG,TH;letter-spacing:-.075em}
+#E .big .y{color:var(--lime)}
+/* N caveats (dark) */
+#N .head{top:470px;white-space:nowrap;font:700 160px/.9 SG,TH;letter-spacing:-.08em}
+#N .head .y{color:var(--lime)}
+#N .sub{top:640px;font:700 56px/1.1 SG,TH;letter-spacing:-.05em;color:#DCE3D3}
+#N .rank{top:820px}
+#N .rank div{display:flex;gap:18px;border-top:1px solid #4a5648;padding:20px 0;font:500 28px/1.3 PM,TH;color:#C9D1C1}
+#N .rank div span:first-child{color:var(--orange);font-weight:600}
+/* W walkthrough */
+.btn{position:absolute;display:flex;align-items:center;gap:18px;border:2px solid var(--ink);background:var(--ink);color:var(--lime);padding:18px 24px;font-size:25px}
+.obtn{position:absolute;border:2px solid var(--ink);background:#FAF9F3;color:var(--ink);padding:16px 20px;font-size:23px}
+.ripple{position:absolute;border:4px solid var(--orange);pointer-events:none}
+.cursor{position:absolute;width:64px;height:64px;z-index:5}
+.ds{position:absolute;left:var(--safe-x);right:var(--safe-x);border:2px solid var(--ink);background:#FAF9F3;padding:24px 26px 26px}
+.ds .ey{font-size:19px;color:var(--muted)}
+.ds h3{font:700 50px/1.04 SG,TH;letter-spacing:-.05em;margin-top:10px}
+.ds .mt{font-size:19px;color:var(--muted);margin-top:12px;line-height:1.6}
+#ds1{top:620px}
+#join{top:560px;font-size:21px;color:var(--muted)}
+#openq{position:static;display:inline-flex;margin-top:22px;font-size:24px;padding:15px 20px}
+#stack{position:absolute;inset:0}
+#sqlhead{top:440px;display:flex;justify-content:space-between;font-size:20px;color:var(--muted)}
+#sql{top:480px;height:330px;background:var(--ink);border-left:8px solid var(--lime);color:#EDF2E5;padding:22px 20px;font:500 20px/1.55 PM,TH;white-space:pre;overflow:hidden}
+#sql .k{color:var(--lime)}#sql .s{color:#E9B48F}
+#run{right:var(--safe-x);top:830px}
+#rtable{top:920px;border:2px solid var(--ink);background:#FAF9F3}
+#rtable .rh{display:flex;justify-content:space-between;border-bottom:1px solid var(--ink);padding:10px 16px;font-size:18px}
+#rtable table{width:100%;border-collapse:collapse;font:500 21px PM,TH}
+#rtable th{background:#E8ECE0;text-align:left;padding:7px 16px;font-weight:600;font-size:16px;color:var(--muted)}
+#rtable td{padding:6px 16px;border-top:1px solid #DBE0D5;white-space:nowrap}
+#rtable td.n,#rtable th.n{text-align:right}
+#rtable tr:nth-child(even) td{background:#F4F5EE}
+#rtable tr.hl td{background:#E9F4B8}
+#csvb{left:150px;top:1460px}#jsonb{left:310px;top:1460px}#connb{left:486px;top:1460px;background:var(--ink);color:var(--lime)}
+#conn{top:1570px;border:2px solid var(--ink);background:#EDF2E4;padding:20px 22px}
+#conn .lbl{font-size:19px;color:var(--muted);margin-bottom:10px}
+#conn .row{display:flex;justify-content:space-between;align-items:center;border:1px solid var(--line);background:#FBFAF5;padding:12px 14px;margin-top:10px;font:500 21px PM,TH}
+#conn .row b{font:600 16px PM,TH;letter-spacing:.06em;border:1px solid var(--ink);padding:6px 10px;background:var(--lime)}
+#conn .row span em{font-style:normal;color:var(--muted)}
+#conn .for{margin-top:18px;display:flex;align-items:center;gap:14px;font-size:21px}
+#conn .chip{border:2px solid var(--ink);background:var(--ink);color:var(--lime);padding:10px 16px}
+#conn .beta{font-size:15px;border:1.5px solid var(--ink);background:var(--lime);color:var(--ink);padding:4px 8px;transform:rotate(-4deg);margin-left:-6px}
+/* X end card */
+#X .big{top:620px;font:700 160px/.92 SG,TH;letter-spacing:-.075em;white-space:nowrap}
+#X .sub{top:860px;font:700 62px/1.1 SG,TH;letter-spacing:-.05em;color:#DCE3D3}
+#X .sub b{color:var(--lime)}
+#X .cta{position:absolute;left:var(--safe-x);top:1090px;display:inline-flex;gap:18px;align-items:center;background:var(--lime);color:var(--ink);border:2px solid var(--lime);padding:20px 26px;font-size:29px}
+#X .url{top:1205px;font-size:21px;color:#A9B4A2}
+#X .mark{top:1300px;display:flex;align-items:center;gap:18px;font:700 50px SG,TH;letter-spacing:-.05em}
+#X .mark i{font:700 52px PX;font-style:normal}
+#wipe{position:absolute;left:0;right:0;background:var(--lime);display:none;z-index:8}
+#grain{position:absolute;inset:-40px;pointer-events:none;opacity:.05;mix-blend-mode:multiply;z-index:9}
+.logo{position:absolute;top:var(--safe-top);right:var(--safe-x);width:76px;height:76px;object-fit:contain;z-index:10}
+/* Thai: no negative tracking, line-height >= 1.2 */
+.caption,.h2,.meta,.note,#A .head,#E .big,#N .head,#N .sub,.call .row span,#X .big,#X .sub,.ds h3{letter-spacing:0}
+.caption{line-height:1.25;font-size:62px}.h2{line-height:1.2;font-size:74px}
+#A .head{font-size:104px;line-height:1.2;top:560px}
+#E .big{font-size:108px;line-height:1.2;top:900px}
+#N .head{font-size:118px;line-height:1.1}#N .sub{line-height:1.3;font-size:52px}#N .rank div{line-height:1.4}
+.call .row span{font-size:34px;line-height:1.3}
+#X .big{font-size:110px;line-height:1.15}#X .sub{line-height:1.3;color:var(--lime);font-size:66px}
+#conn .chip{letter-spacing:0}
+#safe{position:absolute;left:150px;right:150px;top:300px;bottom:380px;outline:2px dashed magenta;z-index:20;display:none}
+#safe:after{content:'';position:absolute;left:700px;width:230px;top:880px;height:600px;outline:2px dashed magenta}
+</style></head><body>
+<!-- A: hook -->
+<div id="A" class="scene dark">
+ <div class="eyebrowD mono L">Querious / Open data / <b>Harry Potter</b></div>
+ <div class="head L" id="headA"></div>
+ <div class="rule" id="ruleA"></div><div class="foot mono L" id="footA">Harry Potter Wiki · 140 ตัวละคร</div>
+</div>
+<!-- B: grid → house columns → share bars -->
+<div id="B" class="scene light">
+ <div class="top L"><div class="brand"><i>Q</i>uerious<span class="cur">_</span></div><div class="tag mono">Insight</div></div>
+ <div class="meta mono L" id="metaB">Harry Potter Wiki / ตัวละคร</div>
+ <div class="h2 L" id="hB"></div>
+ <svg id="chartB" class="abs" width="1080" height="1920"></svg>
+ <div class="call" id="callB"></div>
+ <div class="note mono L R" id="noteB" style="top:1236px"></div>
+ <div class="caption L R" id="capB"></div>
+</div>
+<!-- E: Slytherin half-bloods -->
+<div id="E" class="scene dark">
+ <div class="eyebrowD mono L">Slytherin / <b>ลูกครึ่ง</b></div>
+ <div class="list L" id="listE"></div>
+ <div class="big L" id="bigE"></div>
+ <div class="note mono L R" id="noteE" style="top:1236px;color:#8b9685">Source / Harry Potter Wiki · blood_status = Half-blood · house = Slytherin</div>
+</div>
+<!-- W: walkthrough -->
+<div id="W" class="scene light">
+ <div class="top L"><div class="brand"><i>Q</i>uerious<span class="cur">_</span></div><div class="tag mono" id="stepW">Step 01 / Discover</div></div>
+ <div class="h2 L" id="catT" style="top:440px">Data catalog<span class="cur">_</span></div>
+ <div class="mono L" id="join">1 dataset · SQL · GROUP BY</div>
+ <div class="ds" id="ds1"><div class="ey mono">Dataset / Harry Potter Wiki (Fandom)</div><h3>Harry Potter characters</h3><div class="mt mono">140 characters · house · blood status<br>Snapshot 2021 · CC BY-SA 3.0</div>
+  <div class="btn mono" id="openq"><span>Open in Query ↗</span></div></div>
+ <div id="stack">
+  <div id="sqlhead" class="mono L"><span>SQL / DuckDB in your browser</span><span id="sqlstate">Editing…</span></div>
+  <div id="sql" class="L"></div>
+  <div class="btn mono" id="run"><span>Run query ▶</span></div>
+  <div id="rtable" class="L R"><div class="rh mono"><span>Results</span><span id="rcount"></span></div><table id="rt"></table></div>
+  <div class="obtn mono" id="csvb">↓ CSV</div><div class="obtn mono" id="jsonb">↓ JSON</div><div class="obtn mono" id="connb">Connect</div>
+  <div id="conn" class="L R"><div class="lbl mono">Connection URL / live CSV or JSON</div>
+   <div class="row"><span><em>…/v1/query/</em>7b2e5f10<em>.csv</em></span><b>Copy CSV URL</b></div>
+   <div class="row"><span><em>…/v1/query/</em>7b2e5f10<em>.json</em></span><b>Copy JSON URL</b></div>
+   <div class="for mono"><span>→</span><span class="chip" id="chipAI">Your AI</span><span class="beta" id="betaAI">Beta</span><span class="chip" id="chipT">Your tools</span></div></div>
+ </div>
+ <div class="ripple" id="ripW"></div>
+ <svg class="cursor" id="curW" viewBox="0 0 32 32"><path d="M4 2 L4 26 L10.5 20 L15 30 L19 28 L14.6 18.4 L23 18.4 Z" fill="#283127" stroke="#F4F1E9" stroke-width="1.6" stroke-linejoin="round"/></svg>
+</div>
+<!-- N: caveats -->
+<div id="N" class="scene dark">
+ <div class="eyebrowD mono L">ก่อนแชร์ / <b>ข้อควรรู้</b></div>
+ <div class="head L" id="headN"></div>
+ <div class="sub L" id="subN">ตัวละครที่นับ</div>
+ <div class="rank L" id="rankN">
+  <div><span>01</span><span>วิกิที่แฟนเขียน ไม่ใช่แหล่งข้อมูลทางการ</span></div>
+  <div><span>02</span><span>ตัวละครหลัก 140 ตัว ที่ผู้รวบรวมชุดข้อมูลเลือกมา</span></div>
+  <div><span>03</span><span>Ravenclaw และ Hufflepuff มีบ้านละ 7 คน</span></div>
+  <div><span>04</span><span>ข้อมูล ณ พฤษภาคม 2021</span></div>
+ </div>
+</div>
+<!-- X: end card -->
+<div id="X" class="scene dark">
+ <div class="eyebrowD mono L">Querious / Open data / <b>Harry Potter</b></div>
+ <div class="big L" id="bigX"></div>
+ <div class="sub L" id="subX"></div>
+ <div class="cta mono" id="ctaX">querious.studio ↗</div>
+ <div class="url mono L" id="urlX">สำรวจข้อมูลได้ฟรี ไม่ต้องสมัครสมาชิก</div>
+ <div class="mark L" id="markX"></div>
+</div>
+<div id="wipe"></div>
+<svg id="grain" width="1160" height="2000"><filter id="n"><feTurbulence type="fractalNoise" baseFrequency=".85" numOctaves="2" seed="3"/><feColorMatrix type="saturate" values="0"/></filter><rect width="100%" height="100%" filter="url(#n)"/></svg>
+<img id="logoL" class="logo" src="../../brand/querious-logo-lime.svg"><img id="logoD" class="logo" src="../../brand/querious-logo-dark.svg">
+<div id="safe"></div>
+<script>
+const DATA=window.__DATA__, $=id=>document.getElementById(id), NS='http://www.w3.org/2000/svg';
+if(location.hash==='#safe'||window.__SAFE__)$('safe').style.display='block';
+const clamp=(v,a=0,b=1)=>Math.min(b,Math.max(a,v)), p=(t,a,b)=>clamp((t-a)/(b-a));
+const eOut=x=>1-Math.pow(1-x,3), eInOut=x=>x<.5?4*x*x*x:1-Math.pow(-2*x+2,3)/2, eSnap=x=>x<.5?16*x**5:1-Math.pow(-2*x+2,5)/2, lerp=(a,b,x)=>a+(b-a)*x;
+const blink=t=>Math.floor(t/0.53)%2===0;
+const el=(n,a,par)=>{const e=document.createElementNS(NS,n);for(const k in a)e.setAttribute(k,a[k]);par.appendChild(e);return e};
+const txt=(par,a,s)=>{const e=el('text',Object.assign({'font-family':'PM,TH','font-weight':600},a),par);e.textContent=s;return e};
+const show=(id,on)=>{$(id).style.display=on?'block':'none'};
+const cursorTag=(t,n)=>`<span class="cur" style="opacity:${(blink(t)||n)?1:0}">_</span>`;
+const hex=h=>[1,3,5].map(i=>parseInt(h.slice(i,i+2),16));
+const mix=(a,b,k)=>{const A=hex(a),B=hex(b);return 'rgb('+A.map((v,i)=>Math.round(lerp(v,B[i],k))).join(',')+')'};
+function caption(elc,list,t,tEnd){let ci=-1;list.forEach((c,i)=>{if(t>=c[0]-0.05)ci=i});if(ci<0||t>tEnd||!list[ci][1]){elc.style.opacity=0;return}
+ const k=eOut(p(t,list[ci][0]-0.05,list[ci][0]+0.2));elc.innerHTML=list[ci][1];elc.style.opacity=k;elc.style.transform=`translateY(${(1-k)*24}px)`}
+const SEG=new Intl.Segmenter('th',{granularity:'grapheme'}), G_=s=>[...SEG.segment(s)].map(x=>x.segment), gslice=(s,a,b)=>G_(s).slice(a,b).join(''), glen=s=>G_(s).length;
+function typeSeg(segs,n){let out='',k=n;for(const [s,c] of segs){const part=gslice(s,0,Math.max(0,k));k-=glen(s);if(!part)break;out+=c?`<span class="${c}">${part}</span>`:part}return out}
+const segLen=segs=>segs.reduce((a,s)=>a+glen(s[0]),0);
+function typeHead(segs,t,a,b){const L=segLen(segs),n=Math.round(L*p(t,a,b));return [typeSeg(segs,n).replace(/\|/g,'<br>'),n<L]}
+// retyped headline: list of [time, text]; each new text types in over 0.5 s
+function retype(elh,list,t){let ci=-1;list.forEach((c,i)=>{if(t>=c[0])ci=i});if(ci<0){elh.innerHTML='';return}
+ const s=list[ci][1],L=glen(s),n=Math.round(L*p(t,list[ci][0],list[ci][0]+0.5));elh.innerHTML=gslice(s,0,n)+cursorTag(t,n<L)}
+
+// rounded rect (rnd 0..1, 1 = circle) or trapezoid → triangle (tri 0..1)
+function shapePath(x,y,w,h,rnd,tri){if(w<=0||h<=0)return '';
+ if(tri>0.001){const k=tri*w/2;return `M${x},${y+h}L${x+w},${y+h}L${x+w-k},${y}L${x+k},${y}Z`}
+ const r=rnd*Math.min(w,h)/2;if(r<0.3)return `M${x},${y}H${x+w}V${y+h}H${x}Z`;
+ return `M${x+r},${y}H${x+w-r}A${r},${r} 0 0 1 ${x+w},${y+r}V${y+h-r}A${r},${r} 0 0 1 ${x+w-r},${y+h}H${x+r}A${r},${r} 0 0 1 ${x},${y+h-r}V${y+r}A${r},${r} 0 0 1 ${x+r},${y}Z`}
+const icon=(k,c)=>`<svg width="22" height="22" viewBox="0 0 22 22" style="margin-right:12px;vertical-align:-2px"><path d="${shapePath(1,1,20,20,k==='H'?1:0,k==='M'?1:0)}" fill="${c||'#283127'}"/></svg>`;
+// ---------- B: data ----------
+const HOUSE={G:'Gryffindor',S:'Slytherin',R:'Ravenclaw',H:'Hufflepuff'};
+const HC={G:'#DD6B43',S:'#839B45',R:'#637B91',H:'#C6A04D',O:'#C7CBBF'};
+const SC={P:'#424E3D',H:'#ADC878',M:'#DD6B43'};
+const ORDER=['G','S','R','H'];
+const chars=DATA.chars.map(c=>Object.assign({},c,{weas:c.house==='G'&&c.status==='P'&&/Weasley/.test(c.name)}));
+const hk=c=>c.house&&HOUSE[c.house]?ORDER.indexOf(c.house):c.house==='O'?4:5;
+const gridOrder=[...chars].sort((a,b)=>hk(a)-hk(b)||a.id-b.id);
+// grid 14 x 10, pitch 52, cell 44
+const GX0=180,GY0=620,GP=52,GS=44;
+gridOrder.forEach((c,i)=>{c.gx=GX0+(i%14)*GP;c.gy=GY0+Math.floor(i/14)*GP;c.o=(i*37%140)/140});
+// house columns: 3 wide, pitch 46, cell 40, baseline 1090; bars 132 x 414
+const CW=132,CP=46,CS=40,BASE=1110,BARH=414,colX=i=>150+i*(CW+84);
+const CNT={};
+ORDER.forEach((h,hi)=>{const m=chars.filter(c=>c.house===h&&c.status).sort((a,b)=>'PHM'.indexOf(a.status)-'PHM'.indexOf(b.status)||(b.weas-a.weas)||a.id-b.id);
+ CNT[h]={n:m.length,P:m.filter(c=>c.status==='P').length,H:m.filter(c=>c.status==='H').length,M:m.filter(c=>c.status==='M').length,rows:Math.ceil(m.length/3)};
+ m.forEach((c,i)=>{c.col=hi;c.cx=colX(hi)+(i%3)*CP;c.cy=BASE-(Math.floor(i/3)+1)*CP+6;c.bh=BARH/m.length;c.by=BASE-(i+1)*c.bh;c.inCol=true})});
+const svB=$('chartB');
+const legH=el('g',{},svB);{let x=150;[['G','Gryffindor'],['S','Slytherin'],['R','Ravenclaw'],['H','Hufflepuff'],['O','Other']].forEach(([k,s])=>{el('rect',{x,y:1150,width:16,height:16,fill:HC[k]},legH);const tt=txt(legH,{x:x+24,y:1166,'font-size':18,fill:'#455044'},s.toUpperCase());x+=24+s.length*11.6+26})}
+const legS=[];{let x=150;[['P','เลือดบริสุทธิ์',190],['H','ลูกครึ่ง',140],['M','เกิดจากมักเกิ้ล',0]].forEach(([k,s,wd])=>{const g=el('g',{},svB);el('path',{d:shapePath(x,588,20,20,k==='H'?1:0,k==='M'?1:0),fill:'#283127'},g);txt(g,{x:x+30,y:606,'font-size':20,fill:'#455044'},s.toUpperCase());legS.push(g);x+=wd})}
+const rects=chars.map(c=>{c.r=el('path',{'stroke-width':2},svB);return c});
+// one symbol per segment on the 100% bars
+const segSym=[];ORDER.forEach((h,hi)=>{let acc=0;['P','H','M'].forEach(k=>{const n=CNT[h][k];if(!n)return;const hgt=BARH*n/CNT[h].n,cy=BASE-BARH*acc/CNT[h].n-hgt/2;acc+=n;
+ const sz=Math.min(34,hgt-14);segSym.push({h,k,e:el('path',{d:shapePath(colX(hi)+CW/2-sz/2,cy-sz/2,sz,sz,k==='H'?1:0,k==='M'?1:0),fill:k==='P'?'#F4F1E9':'#283127'},svB)})})});
+const hiS=el('rect',{x:colX(1)-14,y:BASE-CNT.S.rows*CP-8,width:CW+28,height:CNT.S.rows*CP+22,fill:'#D6ED63',opacity:0},svB);svB.insertBefore(hiS,svB.firstChild);
+// column labels
+const colL=ORDER.map((h,i)=>{const g=el('g',{},svB);const bg=el('rect',{x:colX(i)-6,width:CW+12,height:46,fill:'#D6ED63',opacity:0},g);
+ const top=txt(g,{x:colX(i)+CW/2,'text-anchor':'middle','font-size':34,fill:'#283127','font-family':'SG,TH','font-weight':700},'');
+ const name=txt(g,{x:colX(i)+CW/2,y:BASE+38,'text-anchor':'middle','font-size':20,fill:'#283127'},HOUSE[h].toUpperCase());
+ const sub=txt(g,{x:colX(i)+CW/2,'text-anchor':'middle','font-size':18,fill:'#677166'},'');return {g,bg,top,name,h,sub}});
+const W={A:[0,4.05],B:[3.95,36.95],E:[36.85,41.45],W:[41.35,53.85],N:[53.75,59.65],X:[59.55,70]};
+const CUTS=[4.0,36.9,41.4,53.8,59.6];
+const HB=[[4.3,'140 ตัวละคร'],[15.9,'เลือดบริสุทธิ์'],[19.9,'สัดส่วนเลือดบริสุทธิ์']];
+const CAPB=[[8.7,'สถานะเลือดชัดเจน'],[12.0,'มีบ้านในฮอกวอตส์'],[14.9,''],[15.95,'นับจำนวน: <span class="hl">กริฟฟินดอร์</span>'],[19.95,'สัดส่วน: <span class="hl">สลิธีริน</span>'],[25.05,'9 ใน 14: <span class="hl">วีสลีย์</span>'],[28.95,'เรเวนคลอ: <span class="hl">0 คน</span>'],[32.45,'ไม่มีมักเกิ้ลเลย'],[34.55,'แต่มี<span class="hl">ลูกครึ่ง 5 คน</span>']];
+const NOTEB=[[4.6,'Source / Harry Potter Wiki (Fandom) via Kaggle · CC BY-SA 3.0 · snapshot 2021 · เขียนโดยแฟน'],[13.4,'สถานะชัดเจน = Pure-blood, Half-blood หรือ Muggle-born · 56 จาก 140 ตัวละคร']];
+const sw=(k,s)=>icon(k)+s;
+const CALL=[
+ {t:25.0,end:28.7,left:560,w:370,html:`<div class="mono">Gryffindor / บริสุทธิ์ 14 คน</div><div class="row"><span>วีสลีย์</span><b class="o">9</b></div><div class="row"><span>คนอื่น</span><b>5</b></div>`},
+ {t:28.9,end:32.2,left:150,w:400,html:`<div class="mono">Ravenclaw / ชัดเจน 7 คน</div><div class="row"><span>${sw('P','บริสุทธิ์')}</span><b class="o">0</b></div><div class="row"><span>${sw('H','ลูกครึ่ง')}</span><b>6</b></div><div class="row"><span>${sw('M','มักเกิ้ล')}</span><b>1</b></div>`},
+ {t:32.4,end:36.7,left:560,w:370,html:`<div class="mono">Slytherin / ชัดเจน 16 คน</div><div class="row"><span>${sw('P','บริสุทธิ์')}</span><b>11</b></div><div class="row"><span>${sw('H','ลูกครึ่ง')}</span><b class="o">5</b></div><div class="row"><span>${sw('M','มักเกิ้ล')}</span><b class="o">0</b></div>`}];
+const callB=$('callB');let callIdx=-1;
+
+// ---------- E ----------
+const HALF=['Severus Snape','Dolores Umbridge','Millicent Bulstrode','Albus Severus Potter','Tom Marvolo Riddle'];
+$('listE').innerHTML=HALF.map(n=>`<div><span>${n}</span><b>Half-blood</b></div>`).join('');
+// ---------- W ----------
+const SQL=`SELECT house, blood_status,
+       count(character_id) AS n
+FROM harry_potter_wiki_characters
+WHERE blood_status IN
+      ('Half-blood', 'Pure-blood', 'Muggle-born')
+  AND house IS NOT NULL
+GROUP BY house, blood_status
+ORDER BY house, blood_status;`;
+const KW=/\b(SELECT|FROM|WHERE|IN|AND|IS NOT NULL|GROUP BY|ORDER BY|AS)\b/g;
+const hlSql=s=>s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/('[^']*'?)/g,'<span class="s">$1</span>').replace(KW,'<span class="k">$1</span>');
+$('rt').innerHTML='<tr><th>house</th><th>blood_status</th><th class="n">n</th></tr>'+DATA.result.map(r=>`<tr class="${(r[0]==='Slytherin'&&r[1]==='Pure-blood')||(r[0]==='Gryffindor'&&r[1]==='Pure-blood')?'hlr':''}"><td>${r[0]}</td><td>${r[1]}</td><td class="n">${r[2]}</td></tr>`).join('');
+$('rcount').textContent=DATA.result.length+' rows · 3 columns';
+function center(id){const r=$(id).getBoundingClientRect();return [r.left+r.width/2,r.top+r.height/2]}
+function cursorAt(cu,t,t0,t1,sx_,sy_,ex_,ey_){const m=eInOut(p(t,t0,t1));cu.style.left=(lerp(sx_,ex_,m)-Math.sin(m*Math.PI)*60)+'px';cu.style.top=(lerp(sy_,ey_,m)-Math.sin(m*Math.PI)*80)+'px'}
+function ripple(r,t,tc,x,y){const k=p(t,tc,tc+0.45),s=20+150*eOut(k);r.style.width=r.style.height=s+'px';r.style.left=(x+4-s/2)+'px';r.style.top=(y+4-s/2)+'px';r.style.opacity=k>0&&k<1?1-k:0}
+function press(b,t,tc){const pr=t>tc-0.1&&t<tc+0.1;b.style.boxShadow=pr?'none':'6px 6px 0 #D6ED63';return pr}
+
+const inW=(k,t)=>t>=W[k][0]&&t<W[k][1];
+window.DUR=74.3;
+const SPLIT=15.4,HOLD=5.3;
+window.render=function(T){
+ const t=T<SPLIT?T:T<SPLIT+HOLD?SPLIT:T-HOLD;
+ for(const k in W)show(k,inW(k,t));
+ // ---- A hook
+ if(inW('A',t)){const A=$('A');A.style.transform=`scale(${1+0.025*eInOut(p(t,0,4))})`;
+  A.querySelector('.eyebrowD').style.opacity=eOut(p(t,0.1,0.5));
+  const [h,typing]=typeHead([['บ้านไหน|',''],['เลือดบริสุทธิ์|','y'],['ที่สุด?','']],t,0.35,2.5);
+  $('headA').innerHTML=h+cursorTag(t,typing);
+  $('ruleA').style.width=780*eOut(p(t,0.2,1.4))+'px';$('footA').style.opacity=eOut(p(t,0.6,1.2));}
+ // ---- B grid → columns → bars
+ if(inW('B',t)){const B=$('B');B.style.transform=`scale(${1+0.02*eInOut(p(t,4,36.9))})`;
+  $('metaB').style.opacity=eOut(p(t,4.1,4.5));$('metaB').textContent=t<13.4?'Harry Potter Wiki / ตัวละคร':'บ้านฮอกวอตส์ / สถานะเลือดชัดเจน';
+  // headline: count down 140 → 65 → 56 during the funnel
+  if(t<15.9){const n=t<8.7?140:t<11.95?Math.round(lerp(140,65,eOut(p(t,8.7,9.6)))):Math.round(lerp(65,56,eOut(p(t,12.0,12.6))));
+   const base=HB[0][1].replace('140',n),s=t<4.3?'':base,L=glen(s),k=Math.round(L*p(t,4.3,4.8));$('hB').innerHTML=gslice(s,0,k)+cursorTag(t,k<L);}
+  else retype($('hB'),HB,t);
+  let ni=-1;NOTEB.forEach((c,i)=>{if(t>=c[0])ni=i});$('noteB').textContent=ni>=0?NOTEB[ni][1]:'';$('noteB').style.opacity=ni<0?0:eOut(p(t,NOTEB[ni][0],NOTEB[ni][0]+0.4));
+  legH.style.opacity=eOut(p(t,5.0,5.5))*(1-eOut(p(t,12.9,13.3)));
+  const fly=t=>0, mv0=13.2;
+  const bar=0;
+  const focShare=eOut(p(t,19.95,20.35))*(1-eOut(p(t,24.8,25.1)));
+  // focus per beat: which column is lit (others dim)
+  const focG=eOut(p(t,25.0,25.4))*(1-eOut(p(t,28.7,29.0))), focR=eOut(p(t,28.9,29.3))*(1-eOut(p(t,32.2,32.5))), focS=eOut(p(t,32.4,32.8));
+  const purePhase=eOut(p(t,15.9,16.3));
+  // shape steps on real time: squares (pure) 15.5, circles (half) 17.2, triangles (muggle-born) 18.9
+  const stepP=eOut(p(T,15.5,15.8))*(1-eOut(p(T,17.1,17.4))), stepH=eOut(p(T,17.2,17.5))*(1-eOut(p(T,18.8,19.1))), stepM=eOut(p(T,18.9,19.2))*(1-eOut(p(T,20.3,20.7)));
+  const rndH=eInOut(p(T,17.3,17.8)), triM=eInOut(p(T,19.0,19.5));
+  legS.forEach((g,i)=>{const a=eOut(p(T,[15.5,17.2,18.9][i],[15.8,17.5,19.2][i]));g.style.opacity=a});
+  rects.forEach(c=>{const pop=eSnap(p(t,4.4+c.o*1.1,4.7+c.o*1.1));
+   const out1=!c.status?eOut(p(t,8.7+c.o*0.5,9.2+c.o*0.5)):0, out2=(c.status&&!c.inCol)?eOut(p(t,12.0+c.o*0.4,12.4+c.o*0.4)):0;
+   const outlined=Math.max(out1,out2);
+   let x=c.gx+(1-pop)*GS/2,y=c.gy+(1-pop)*GS/2,w=GS*pop,h=GS*pop,fill=HC[c.house&&HC[c.house]?c.house:'O'],op=pop?1:0,fo=1-outlined,rnd=0,tri=0;
+   if(!c.inCol){op*=1-eOut(p(t,12.9,13.4));}
+   else{const m=eInOut(p(t,mv0+c.o*0.4,mv0+0.9+c.o*0.4));
+    x=lerp(c.gx,c.cx,m);y=lerp(c.gy,c.cy,m);w=h=lerp(GS,CS,m);fill=HC[c.house];
+    if(c.status==='H')rnd=rndH;if(c.status==='M')tri=triM;
+    const step=c.status==='P'?stepP:c.status==='H'?stepH:stepM, anyStep=Math.max(stepP,stepH,stepM);
+    const bump=1+0.12*step*Math.sin(Math.PI*clamp((T-[15.5,17.2,18.9]['PHM'.indexOf(c.status)])/0.45));
+    x-=w*(bump-1)/2;y-=h*(bump-1)/2;w*=bump;h*=bump;
+    // square → bar slice
+    x=lerp(x,colX(c.col),bar);w=lerp(w,CW,bar);y=lerp(y,c.by,bar);h=lerp(h,c.bh,bar);rnd*=1-bar;tri*=1-bar;
+    let dim=lerp(1,0.25,Math.max(0,anyStep-step));
+    if(c.status!=='P')dim=Math.min(dim,lerp(1,0.15,purePhase));
+    if(focShare)dim*=(c.house==='S'||c.house==='G')?1:lerp(1,0.12,focShare);
+    if(focShare&&c.house==='G')dim*=lerp(1,0.55,focShare);
+    if(focG)dim*=c.house==='G'?1:lerp(1,0.15,focG);
+    if(focR)dim=c.house==='R'?(c.status==='P'?1:lerp(dim,0.5,focR)):lerp(dim,0.12,focR);
+    if(focS)dim=c.house==='S'?(c.status==='P'?1:lerp(dim,0.5,focS)):lerp(dim,0.12,focS);
+    op*=dim;
+    if(c.weas&&focG>0)fill=mix('#424E3D','#D6ED63',focG);}
+   c.r.setAttribute('d',shapePath(x,y,w,h,rnd,tri));
+   c.r.setAttribute('fill',fill);c.r.setAttribute('fill-opacity',fo);c.r.setAttribute('opacity',op);
+   c.r.setAttribute('stroke',bar>0.02?'#F4F1E9':'#C7CBBF');c.r.setAttribute('stroke-opacity',bar>0.02?bar:outlined*0.9);c.r.setAttribute('stroke-width',bar>0.02?2:2)});
+  segSym.forEach(q=>{let a=0;
+   if(focG)a*=q.h==='G'?1:lerp(1,0.15,focG);if(focR)a*=q.h==='R'?1:lerp(1,0.15,focR);if(focS)a*=q.h==='S'?1:lerp(1,0.15,focS);
+   if(q.k!=='P'&&!focR&&!focS)a*=0.55;q.e.style.opacity=a});
+  // column labels
+  colL.forEach((L,i)=>{const C=CNT[L.h];const a=eOut(p(t,14.3+i*0.06,14.7+i*0.06));L.g.style.opacity=a;
+   const topSq=BASE-C.rows*CP+6, y=lerp(topSq,BASE-BARH,bar)-34;L.top.setAttribute('y',y);L.bg.setAttribute('y',y-36);
+   let s=String(C.n);if(t>=15.9&&t<19.9){const k=eOut(p(t,16.0,16.8));s=String(Math.round(C.P*k));}
+   else if(t>=19.9){s=Math.round(100*C.P/C.n)+'%';}
+   L.top.textContent=s;
+   L.sub.setAttribute('y',BASE+64);L.sub.textContent=t>=19.9?`${C.P} จาก ${C.n}`:'';L.sub.style.opacity=eOut(p(t,20.1,20.5));
+   const win=(L.h==='G'&&t>=16.4&&t<19.9)||(L.h==='S'&&t>=21.0&&t<25.0)||(L.h==='R'&&t>=29.2&&t<32.4);
+   L.bg.setAttribute('opacity',win?1:0);hiS.setAttribute('opacity',0.45*focShare);L.bg.setAttribute('fill',L.h==='R'?'#F2C7B4':'#D6ED63');
+   let dim=1;if(focG)dim=L.h==='G'?1:lerp(1,0.35,focG);if(focR)dim=L.h==='R'?1:lerp(1,0.35,focR);if(focS)dim=L.h==='S'?1:lerp(1,0.35,focS);L.g.style.opacity=a*dim});
+  // callouts
+  let ci=-1;CALL.forEach((c,i)=>{if(t>=c.t&&t<c.end+0.3)ci=i});
+  if(ci!==callIdx){callIdx=ci;if(ci>=0){callB.innerHTML=CALL[ci].html;callB.style.left=CALL[ci].left+'px';callB.style.width=CALL[ci].w+'px';callB.style.top='706px'}}
+  if(ci>=0){const c=CALL[ci],k=eSnap(p(t,c.t+0.15,c.t+0.5))*(1-eOut(p(t,c.end,c.end+0.25)));callB.style.opacity=k;callB.style.transform=`translateY(${(1-k)*24}px)`;
+   callB.querySelectorAll('.row').forEach((r,j)=>{const rk=eOut(p(t,c.t+0.5+j*0.2,c.t+0.8+j*0.2));r.style.opacity=rk})}
+  else callB.style.opacity=0;
+  caption($('capB'),CAPB,t,36.7);}
+ // ---- E half-bloods
+ if(inW('E',t)){const E=$('E');E.style.transform=`scale(${1+0.025*eInOut(p(t,36.9,41.4))})`;
+  E.querySelector('.eyebrowD').style.opacity=eOut(p(t,37.0,37.4));
+  $('listE').querySelectorAll('div').forEach((d,i)=>{const r=eOut(p(t,37.1+i*0.15,37.45+i*0.15));d.style.opacity=r;d.style.transform=`translateY(${(1-r)*16}px)`;
+   d.className=(i===4&&t>=38.2)?'hi':'';if(i<4)d.style.opacity=r*(t>=38.2?lerp(1,0.45,p(t,38.2,38.5)):1)});
+  const [h,typing]=typeHead([['คนที่คุณ|',''],['ก็รู้ว่าใคร','y']],t,38.7,39.6);$('bigE').innerHTML=t<38.7?'':h+cursorTag(t,typing);
+  $('noteE').style.opacity=eOut(p(t,38.0,38.4));}
+ // ---- W walkthrough
+ if(inW('W',t)){const G=$('W');G.style.transform=`scale(${1+0.02*eInOut(p(t,41.4,53.8))})`;
+  $('stepW').textContent=t<44.25?'Step 01 / Discover':t<47.2?'Step 02 / Query':'Step 03 / Take it further';
+  const catOut=eInOut(p(t,44.15,44.5));
+  $('catT').style.opacity=eOut(p(t,41.6,42.0))*(1-catOut);$('join').style.opacity=eOut(p(t,41.8,42.2))*(1-catOut);
+  const dc=eSnap(p(t,42.0,42.35));$('ds1').style.opacity=dc*(1-catOut);$('ds1').style.transform=`translateY(${(1-dc)*30-catOut*40}px)`;$('ds1').style.boxShadow=`${6*dc}px ${6*dc}px 0 #D6ED63`;
+  const ob=$('openq'),prO=t>43.9&&t<44.1;ob.style.transform=`translate(${prO?3:0}px,${prO?3:0}px)`;ob.style.background=prO?'#D6ED63':'';ob.style.color=prO?'#283127':'';
+  const up=eInOut(p(t,50.3,50.8));$('stack').style.transform=`translateY(${-470*up}px)`;
+  const sq=eOut(p(t,44.3,44.6))*(1-p(t,50.2,50.45));$('sql').style.opacity=sq;$('sqlhead').style.opacity=sq;
+  const nch=Math.round(SQL.length*p(t,44.5,46.3));$('sql').innerHTML=hlSql(SQL.slice(0,nch))+`<span class="cur" style="opacity:${(blink(t)||nch<SQL.length)?1:0}">▌</span>`;
+  $('sqlstate').textContent=t<47.1?'Editing…':'✓ Ran in browser';$('sqlstate').style.color=t<47.1?'#677166':'#245c3b';
+  const rb=$('run'),rk=eOut(p(t,46.1,46.4));rb.style.opacity=rk*(1-p(t,50.2,50.45));const prR=press(rb,t,47.0);rb.style.transform=`translateY(${(1-rk)*20}px) translate(${prR?3:0}px,${prR?3:0}px)`;
+  const rr_=eSnap(p(t,47.2,47.6));$('rtable').style.opacity=rr_;$('rtable').style.transform=`translateY(${(1-rr_)*30}px)`;
+  $('rt').querySelectorAll('tr').forEach((tr,i)=>{tr.style.opacity=eOut(p(t,47.4+i*0.06,47.65+i*0.06));if(tr.classList.contains('hlr'))tr.querySelectorAll('td').forEach(td=>td.style.background=t>48.2?'#E9F4B8':'')});
+  [['csvb',48.0],['jsonb',48.08],['connb',48.16]].forEach(([id,t0])=>{const k=eOut(p(t,t0,t0+0.3));const b=$(id);b.style.opacity=k;b.style.transform=`translateY(${(1-k)*16}px)`});
+  $('csvb').style.background=(t>49.4&&t<49.9)?'#D6ED63':'#FAF9F3';$('jsonb').style.background=(t>49.6&&t<50.1)?'#D6ED63':'#FAF9F3';
+  const cbn=$('connb'),prC=t>51.3&&t<51.5;cbn.style.transform=`translate(${prC?3:0}px,${prC?3:0}px)`;cbn.style.boxShadow=prC?'none':(t>48.2?'6px 6px 0 #D6ED63':'none');
+  const co=eSnap(p(t,51.6,51.95));$('conn').style.opacity=co;$('conn').style.transform=`scale(${0.94+0.06*co})`;
+  $('conn').querySelectorAll('.row').forEach((r,i)=>{r.style.opacity=eOut(p(t,51.8+i*0.15,52.1+i*0.15))});
+  $('conn').querySelector('.for').style.opacity=eOut(p(t,52.2,52.5));
+  [['chipAI',52.4],['betaAI',52.65],['chipT',52.8]].forEach(([id,t0])=>{const k=eSnap(p(t,t0,t0+0.3));$(id).style.opacity=k;$(id).style.boxShadow=id==='betaAI'?'none':`${4*k}px ${4*k}px 0 #D6ED63`});
+  const cu=$('curW');let op=1;
+  const [ox,oy]=center('openq'),[rx,ry]=[1080-150-110,865],[cx_,cy_]=[486+80,1488-470];
+  if(t<44.3){cursorAt(cu,t,43.0,43.85,820,1500,ox-8,oy-8);op=p(t,42.9,43.05);}
+  else if(t<47.2){cursorAt(cu,t,46.4,46.95,ox-8,oy-8,rx,ry);}
+  else{cursorAt(cu,t,50.6,51.25,rx,ry,cx_,cy_);op=1-p(t,52.0,52.3);}
+  cu.style.opacity=op;cu.style.transform=`scale(${prO||prR||prC?.88:1})`;
+  if(t<45)ripple($('ripW'),t,44.0,ox-8,oy-8);else if(t<48)ripple($('ripW'),t,47.0,rx,ry);else ripple($('ripW'),t,51.4,cx_,cy_);}
+ // ---- N caveats
+ if(inW('N',t)){const N=$('N');N.style.transform=`scale(${1+0.025*eInOut(p(t,53.8,59.6))})`;
+  N.querySelector('.eyebrowD').style.opacity=eOut(p(t,53.9,54.3));
+  const [h,typing]=typeHead([['56','y'],[' จาก 140','']],t,54.1,54.9);$('headN').innerHTML=h+cursorTag(t,typing);
+  $('subN').style.opacity=eOut(p(t,55.0,55.4));
+  $('rankN').querySelectorAll('div').forEach((d,i)=>{const r=eOut(p(t,55.6+i*0.35,56.0+i*0.35));d.style.opacity=r;d.style.transform=`translateY(${(1-r)*16}px)`});}
+ // ---- X end card (times relative to XS)
+ if(inW('X',t)){const XS=59.6-85.8,H=$('X');H.style.transform=`scale(${1+0.025*eInOut(p(t,59.6,69))})`;
+  const er=(str,a,b)=>Math.round(glen(str)*p(t,a+XS,b+XS));
+  const MK='Querious',em=er(MK+'_',91.8,92.4),mk=MK.slice(Math.min(em,MK.length));
+  $('markX').innerHTML=`<span>${mk.startsWith('Q')?'<i>Q</i>'+mk.slice(1):mk}${em<=MK.length?'<span class="cur">_</span>':''}</span>`;$('markX').style.opacity=eOut(p(t,87.8+XS,88.4+XS));
+  const UR='สำรวจข้อมูลได้ฟรี ไม่ต้องสมัครสมาชิก',eu=er(UR,92.0,92.6);$('urlX').textContent=gslice(UR,eu);$('urlX').style.opacity=eOut(p(t,87.4+XS,87.9+XS));
+  const CT='querious.studio ↗',ec=er(CT,92.1,92.7);$('ctaX').textContent=gslice(CT,ec);
+  const c=eSnap(p(t,87.1+XS,87.5+XS))*(ec<glen(CT)?1:0);$('ctaX').style.opacity=c;$('ctaX').style.boxShadow=`${6*c}px ${6*c}px 0 #F4F1E9`;
+  const S1='มาหาคำตอบกัน',es=er(S1,92.4,93.4);$('subX').innerHTML=gslice(S1,es);
+  const s=eOut(p(t,86.3+XS,86.8+XS));$('subX').style.opacity=s;$('subX').style.transform=`translateY(${(1-s)*20}px)`;
+  const EB='Querious / Open data / ',EB2='Harry Potter',ee=er(EB+EB2,92.9,93.7);
+  const eb=H.querySelector('.eyebrowD');eb.innerHTML=EB.slice(Math.min(ee,EB.length))+`<b>${EB2.slice(Math.max(0,ee-EB.length))}</b>`;eb.style.opacity=eOut(p(t,86.0+XS,86.4+XS));
+  const H2='ข้อมูลพร้อมแล้ว',LH=glen(H2);const n=Math.round(LH*p(t,86.0+XS,86.7+XS)),eh=er(H2,93.2,94.2);
+  $('bigX').innerHTML=gslice(gslice(H2,0,n),eh)+cursorTag(t,n<LH||(eh>0&&eh<LH));
+  H.style.opacity=1-p(t,94.4+XS,94.9+XS);}
+ const dark=t<4.0||(t>=36.9&&t<41.4)||t>=53.8;
+ $('logoL').style.display=dark?'block':'none';$('logoL').style.opacity=1-p(t,93.3-26.2,94.1-26.2);$('logoD').style.display=dark?'none':'block';
+ const wp=$('wipe');let on=false;
+ for(const m of CUTS){const a=m-0.35,b=m+0.35;if(t>a&&t<b){on=true;const w1=eSnap(p(t,a,m)),w2=eSnap(p(t,m,b));wp.style.top=(t<m?1920*(1-w1):0)+'px';wp.style.bottom=(1920*w2)+'px';}}
+ wp.style.display=on?'block':'none';
+ $('grain').style.transform=`translate(${(Math.floor(t*12)*13)%40-20}px,${(Math.floor(t*12)*29)%40-20}px)`;
+};
+</script></body></html>
