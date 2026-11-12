@@ -6,6 +6,8 @@ Things that went wrong or needed a second pass while making episodes, and the ru
 
 - **Test proper names with Paxa before the full run.** A 9-line voice test (Thai spellings vs English spellings of Stupefy / Expelliarmus, Unforgivables, group names) showed Paxa reads English spell names well when written in English inside the Thai line ("อย่าง Stupefy และ Expelliarmus"). Run such a test as its own throwaway episode on a separate branch: push with `[skip ci]`, then `gh workflow run voice-paxa.yml --ref <branch> -f episodes=<test-ep>` so nothing else is re-voiced.
 - **Thai names for spell types (user's choice):** Charm = คาถาทั่วไป, curse + hex + jinx = มนต์ดำ (they are all "dark charms" in canon), other = อื่นๆ. Hex/jinx have no well-known Thai words; don't use them in the voice.
+- **Give a reveal scene time to read (user review).** The Unforgivables scene cut 0.5 s after "No match." landed; it now holds 3 s (`render(T)` freezes at 56.2 s for 3 s, later voice/sfx/chunks +3 s, both languages).
+- **Write multi-word English names in English for Paxa (user review).** "แฮร์รี่ พอตเตอร์วิกิ" was read as "Harry … PotterWiki" (the space became a pause, the rest ran together); "Harry Potter Wiki" reads naturally.
 - **Too many names for one slot:** saying all three Unforgivables in Thai would overrun the 5.8 s slot, so the names stay on screen (English) and the voice says "แม้แต่คำสาปต้องห้ามทั้งสาม | ก็สีไม่ตรงกัน".
 - **Colour names:** Thai on the chart (ฟ้า, ขาว, เขียว …); the SQL result table keeps the English values the query returns.
 - **First Paxa pass fit every slot** (max 1.28×, v6). Loudness with Paxa −2 dB: −17.3 LUFS, −2.1 dBFS (EN −17.7).
