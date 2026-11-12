@@ -7,10 +7,14 @@ Things that went wrong or needed a second pass while making episodes, and the ru
 - **The denominator decides the headline.** "Slytherin isn't more pure-blood than Gryffindor" (39% vs 37%) only held with the whole house as denominator. Counting only clear statuses (Pure-blood, Half-blood or Muggle-born; the user's query) flips it: Slytherin 69% vs Gryffindor 54%. Including the "pure-blood or half-blood" rows gives ranges that overlap (39–82% vs 37–61%). Check a claim under every reasonable denominator before writing the hook.
 - **Say what the sample is.** The 140 characters are the compiler's pick of main characters, not the whole series, and Ravenclaw and Hufflepuff have 7 clear rows each. A dark "fine print" card (56 of 140, fan wiki, 7 each, snapshot 2021) sits after the walkthrough and before the end card.
 - **One morphing chart instead of several.** The 140-cell grid (coloured by house) fades the unclear rows, flies the 56 into house columns (recoloured by status), then each square stretches into a slice of a 100% bar. Count → share → focus on one house reads as one continuous story; callout boxes cover the dimmed columns for each focus beat.
+- **Status by shape, house by colour (user review).** The first cut recoloured the squares by blood status while they flew from the grid into the house columns, so the house colour was lost. Now the cells keep their house colour and blood status is a shape: squares = pure-blood, circles = half-blood, triangles = Muggle-born. The shapes change one category at a time on three short voice lines ("Squares are pure-bloods." / "Circles, half-bloods." / "Triangles, Muggle-borns.") so viewers can follow. On the 100% bars each segment carries one symbol. `shapePath()` morphs one path: rounded rect → circle, trapezoid → triangle.
+- **Dim harder (user review).** Non-focus cells at 40% still competed; 15% (12% for other houses in a focus beat) lets the focus stand out. In a focus beat, non-pure slices of the focused house stay at 50% so "solid = pure-blood" holds everywhere.
+- **Leave air above value labels (user review).** Column labels moved from 18 to 34 px above the top cell.
+- **Inserting a beat without retiming the scene:** `render(T)` holds the frame at 15.4 s for 5.3 s (`t = T − HOLD` after it) while the shape changes run on real time; `episode.json` shifts every later `at`, `sfx` and chunk by 5.3 s.
 - **Cursor targets from the DOM.** The walkthrough cursor reads the Open-in-Query button position with `getBoundingClientRect()` instead of hard-coded coordinates.
 - **Result table with 10 rows** needs 20–21 px mono and 6 px row padding to clear the CSV/JSON/Connect buttons (moved to y 1460, connection panel to 1570).
 - **Data from the Querious MCP.** `make-data.py` holds the rows returned by `data.sql` and asserts the counts (140 → 65 → 56 and the 10 result rows), so the episode builds without a querios checkout.
-- **Loudness:** −17.2 LUFS, true peak −1.6 dBFS with the default voice level.
+- **Loudness:** −17.3 LUFS, true peak −2.6 dBFS with the default voice level (74.3 s cut).
 
 ## Episode: internet-cpi (EN, 2026-11-10)
 
