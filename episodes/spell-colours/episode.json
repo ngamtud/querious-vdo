@@ -1,29 +1,149 @@
 {
   "title": "Green light means a curse? What 301 spells say",
-  "format": {"width": 1080, "height": 1920, "fps": 30},
-  "duration": 84.3,
-  "chunks": [[0, 4.2], [4.2, 23.0], [23.0, 35.2], [35.2, 50.8], [50.8, 56.6], [56.6, 68.6], [68.6, 75.0], [75.0, 84.3]],
+  "format": {
+    "width": 1080,
+    "height": 1920,
+    "fps": 30
+  },
+  "duration": 87.3,
+  "chunks": [
+    [
+      0,
+      4.2
+    ],
+    [
+      4.2,
+      23.0
+    ],
+    [
+      23.0,
+      35.2
+    ],
+    [
+      35.2,
+      50.8
+    ],
+    [
+      50.8,
+      59.6
+    ],
+    [
+      59.6,
+      71.6
+    ],
+    [
+      71.6,
+      78.0
+    ],
+    [
+      78.0,
+      87.3
+    ]
+  ],
   "scene": "scene.html",
   "data": "data.json",
-  "voice": {"engine": "kokoro", "speaker": "af_bella", "speed": 1.05},
+  "voice": {
+    "engine": "kokoro",
+    "speaker": "af_bella",
+    "speed": 1.05
+  },
   "voiceover": [
-    {"id": "v1", "at": 0.3, "text": "Green light means a deadly curse. Right?"},
-    {"id": "v2", "at": 4.5, "text": "The Harry Potter Wiki lists three hundred and one spells."},
-    {"id": "v3", "at": 8.5, "text": "More than half are charms. The rest are mostly jinxes, curses, transfigurations and hexes."},
-    {"id": "v4", "at": 14.6, "text": "But half of all spells have no colour on record, or no light at all."},
-    {"id": "v5", "at": 19.2, "text": "That leaves a hundred and forty-two spells with a colour."},
-    {"id": "v6", "at": 23.3, "text": "Among charms, blue comes first. Then white, red and green."},
-    {"id": "v7", "at": 27.8, "text": "Among curses, hexes and jinxes, blue comes first too."},
-    {"id": "v8", "at": 31.8, "text": "So colour alone can't tell you what a spell does."},
-    {"id": "v9", "at": 35.5, "text": "Green isn't the colour of evil. Nine of sixteen green spells are charms."},
-    {"id": "v10", "at": 40.6, "text": "Red mostly helps. Ten of fourteen are charms, like Stupefy and Expelliarmus."},
-    {"id": "v11", "at": 46.0, "text": "The darkest colour is purple. Six of nine are curses, hexes or jinxes."},
-    {"id": "v12", "at": 51.1, "text": "Even the three Unforgivable Curses don't match: green, red, and no light at all."},
-    {"id": "v13", "at": 56.9, "text": "We grouped every colour on Querious, with one SQL query."},
-    {"id": "v14", "at": 62.6, "text": "Count them your way, then download the result, or connect it to your own AI and tools."},
-    {"id": "v15", "at": 68.9, "text": "Just remember: the colours come from a fan wiki, many from the games, and the groups are ours."},
-    {"id": "v16", "at": 75.4, "text": "The data is open. The question is yours."}
+    {
+      "id": "v1",
+      "at": 0.3,
+      "text": "Green light means a deadly curse. Right?"
+    },
+    {
+      "id": "v2",
+      "at": 4.5,
+      "text": "The Harry Potter Wiki lists three hundred and one spells."
+    },
+    {
+      "id": "v3",
+      "at": 8.5,
+      "text": "More than half are charms. The rest are mostly jinxes, curses, transfigurations and hexes."
+    },
+    {
+      "id": "v4",
+      "at": 14.6,
+      "text": "But half of all spells have no colour on record, or no light at all."
+    },
+    {
+      "id": "v5",
+      "at": 19.2,
+      "text": "That leaves a hundred and forty-two spells with a colour."
+    },
+    {
+      "id": "v6",
+      "at": 23.3,
+      "text": "Among charms, blue comes first. Then white, red and green."
+    },
+    {
+      "id": "v7",
+      "at": 27.8,
+      "text": "Among curses, hexes and jinxes, blue comes first too."
+    },
+    {
+      "id": "v8",
+      "at": 31.8,
+      "text": "So colour alone can't tell you what a spell does."
+    },
+    {
+      "id": "v9",
+      "at": 35.5,
+      "text": "Green isn't the colour of evil. Nine of sixteen green spells are charms."
+    },
+    {
+      "id": "v10",
+      "at": 40.6,
+      "text": "Red mostly helps. Ten of fourteen are charms, like Stupefy and Expelliarmus."
+    },
+    {
+      "id": "v11",
+      "at": 46.0,
+      "text": "The darkest colour is purple. Six of nine are curses, hexes or jinxes."
+    },
+    {
+      "id": "v12",
+      "at": 51.1,
+      "text": "Even the three Unforgivable Curses don't match: green, red, and no light at all."
+    },
+    {
+      "id": "v13",
+      "at": 59.9,
+      "text": "We grouped every colour on Querious, with one SQL query."
+    },
+    {
+      "id": "v14",
+      "at": 65.6,
+      "text": "Count them your way, then download the result, or connect it to your own AI and tools."
+    },
+    {
+      "id": "v15",
+      "at": 71.9,
+      "text": "Just remember: the colours come from a fan wiki, many from the games, and the groups are ours."
+    },
+    {
+      "id": "v16",
+      "at": 78.4,
+      "text": "The data is open. The question is yours."
+    }
   ],
-  "music": {"generator": "ambient", "volume": 1.25, "duck": {"threshold": 0.03, "ratio": 4, "attack": 60, "release": 600}},
-  "sfx": {"click": [59.2, 62.4, 66.6]}
+  "music": {
+    "generator": "ambient",
+    "volume": 1.25,
+    "duck": {
+      "threshold": 0.03,
+      "ratio": 4,
+      "attack": 60,
+      "release": 600
+    }
+  },
+  "sfx": {
+    "click": [
+      62.2,
+      65.4,
+      69.6
+    ]
+  }
 }

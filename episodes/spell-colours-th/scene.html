@@ -310,8 +310,11 @@ function cursorAt(cu,t,t0,t1,sx_,sy_,ex_,ey_){const m=eInOut(p(t,t0,t1));cu.styl
 function ripple(r,t,tc,x,y){const k=p(t,tc,tc+0.45),s=20+150*eOut(k);r.style.width=r.style.height=s+'px';r.style.left=(x+4-s/2)+'px';r.style.top=(y+4-s/2)+'px';r.style.opacity=k>0&&k<1?1-k:0}
 function press(b,t,tc){const pr=t>tc-0.1&&t<tc+0.1;b.style.boxShadow=pr?'none':'6px 6px 0 #D6ED63';return pr}
 
-window.DUR=84.3;
-window.render=function(t){
+window.DUR=87.3;
+// hold the Unforgivables scene 3.0 s after its last line so it can be read
+const SPLIT=56.2,HOLD=3.0;
+window.render=function(T){
+ const t=T<SPLIT?T:T<SPLIT+HOLD?SPLIT:T-HOLD;
  for(const k in W)show(k,inW(k,t));
  // ---- A
  if(inW('A',t)){const A=$('A');A.style.transform=`scale(${1+0.025*eInOut(p(t,0,4.2))})`;
