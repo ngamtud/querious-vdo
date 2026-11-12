@@ -223,10 +223,12 @@ const rects=chars.map(c=>{c.r=el('path',{'stroke-width':2},svB);return c});
 // one symbol per segment on the 100% bars
 const segSym=[];ORDER.forEach((h,hi)=>{let acc=0;['P','H','M'].forEach(k=>{const n=CNT[h][k];if(!n)return;const hgt=BARH*n/CNT[h].n,cy=BASE-BARH*acc/CNT[h].n-hgt/2;acc+=n;
  const sz=Math.min(34,hgt-14);segSym.push({h,k,e:el('path',{d:shapePath(colX(hi)+CW/2-sz/2,cy-sz/2,sz,sz,k==='H'?1:0,k==='M'?1:0),fill:k==='P'?'#F4F1E9':'#283127'},svB)})})});
+const hiS=el('rect',{x:colX(1)-14,y:BASE-CNT.S.rows*CP-8,width:CW+28,height:CNT.S.rows*CP+22,fill:'#D6ED63',opacity:0},svB);svB.insertBefore(hiS,svB.firstChild);
 // column labels
 const colL=ORDER.map((h,i)=>{const g=el('g',{},svB);const bg=el('rect',{x:colX(i)-6,width:CW+12,height:46,fill:'#D6ED63',opacity:0},g);
  const top=txt(g,{x:colX(i)+CW/2,'text-anchor':'middle','font-size':34,fill:'#283127','font-family':'SG','font-weight':700},'');
- const name=txt(g,{x:colX(i)+CW/2,y:BASE+38,'text-anchor':'middle','font-size':20,fill:'#283127'},HOUSE[h].toUpperCase());return {g,bg,top,name,h}});
+ const name=txt(g,{x:colX(i)+CW/2,y:BASE+38,'text-anchor':'middle','font-size':20,fill:'#283127'},HOUSE[h].toUpperCase());
+ const sub=txt(g,{x:colX(i)+CW/2,'text-anchor':'middle','font-size':18,fill:'#677166'},'');return {g,bg,top,name,h,sub}});
 const W={A:[0,4.05],B:[3.95,36.95],E:[36.85,41.45],W:[41.35,53.85],N:[53.75,59.65],X:[59.55,70]};
 const CUTS=[4.0,36.9,41.4,53.8,59.6];
 const HB=[[4.3,'140 characters'],[15.9,'Pure-bloods'],[19.9,'Pure-blood share']];
@@ -282,7 +284,8 @@ window.render=function(T){
   let ni=-1;NOTEB.forEach((c,i)=>{if(t>=c[0])ni=i});$('noteB').textContent=ni>=0?NOTEB[ni][1]:'';$('noteB').style.opacity=ni<0?0:eOut(p(t,NOTEB[ni][0],NOTEB[ni][0]+0.4));
   legH.style.opacity=eOut(p(t,5.0,5.5))*(1-eOut(p(t,12.9,13.3)));
   const fly=t=>0, mv0=13.2;
-  const bar=eInOut(p(t,20.0,21.1));
+  const bar=0;
+  const focShare=eOut(p(t,19.95,20.35))*(1-eOut(p(t,24.8,25.1)));
   // focus per beat: which column is lit (others dim)
   const focG=eOut(p(t,25.0,25.4))*(1-eOut(p(t,28.7,29.0))), focR=eOut(p(t,28.9,29.3))*(1-eOut(p(t,32.2,32.5))), focS=eOut(p(t,32.4,32.8));
   const purePhase=eOut(p(t,15.9,16.3));
@@ -305,6 +308,8 @@ window.render=function(T){
     x=lerp(x,colX(c.col),bar);w=lerp(w,CW,bar);y=lerp(y,c.by,bar);h=lerp(h,c.bh,bar);rnd*=1-bar;tri*=1-bar;
     let dim=lerp(1,0.25,Math.max(0,anyStep-step));
     if(c.status!=='P')dim=Math.min(dim,lerp(1,0.15,purePhase));
+    if(focShare)dim*=(c.house==='S'||c.house==='G')?1:lerp(1,0.12,focShare);
+    if(focShare&&c.house==='G')dim*=lerp(1,0.55,focShare);
     if(focG)dim*=c.house==='G'?1:lerp(1,0.15,focG);
     if(focR)dim=c.house==='R'?(c.status==='P'?1:lerp(dim,0.5,focR)):lerp(dim,0.12,focR);
     if(focS)dim=c.house==='S'?(c.status==='P'?1:lerp(dim,0.5,focS)):lerp(dim,0.12,focS);
@@ -313,7 +318,7 @@ window.render=function(T){
    c.r.setAttribute('d',shapePath(x,y,w,h,rnd,tri));
    c.r.setAttribute('fill',fill);c.r.setAttribute('fill-opacity',fo);c.r.setAttribute('opacity',op);
    c.r.setAttribute('stroke',bar>0.02?'#F4F1E9':'#C7CBBF');c.r.setAttribute('stroke-opacity',bar>0.02?bar:outlined*0.9);c.r.setAttribute('stroke-width',bar>0.02?2:2)});
-  segSym.forEach(q=>{let a=eOut(p(t,21.0,21.4));
+  segSym.forEach(q=>{let a=0;
    if(focG)a*=q.h==='G'?1:lerp(1,0.15,focG);if(focR)a*=q.h==='R'?1:lerp(1,0.15,focR);if(focS)a*=q.h==='S'?1:lerp(1,0.15,focS);
    if(q.k!=='P'&&!focR&&!focS)a*=0.55;q.e.style.opacity=a});
   // column labels
@@ -322,8 +327,9 @@ window.render=function(T){
    let s=String(C.n);if(t>=15.9&&t<19.9){const k=eOut(p(t,16.0,16.8));s=String(Math.round(C.P*k));}
    else if(t>=19.9){s=Math.round(100*C.P/C.n)+'%';}
    L.top.textContent=s;
+   L.sub.setAttribute('y',BASE+64);L.sub.textContent=t>=19.9?`${C.P} OF ${C.n}`:'';L.sub.style.opacity=eOut(p(t,20.1,20.5));
    const win=(L.h==='G'&&t>=16.4&&t<19.9)||(L.h==='S'&&t>=21.0&&t<25.0)||(L.h==='R'&&t>=29.2&&t<32.4);
-   L.bg.setAttribute('opacity',win?1:0);L.bg.setAttribute('fill',L.h==='R'?'#F2C7B4':'#D6ED63');
+   L.bg.setAttribute('opacity',win?1:0);hiS.setAttribute('opacity',0.45*focShare);L.bg.setAttribute('fill',L.h==='R'?'#F2C7B4':'#D6ED63');
    let dim=1;if(focG)dim=L.h==='G'?1:lerp(1,0.35,focG);if(focR)dim=L.h==='R'?1:lerp(1,0.35,focR);if(focS)dim=L.h==='S'?1:lerp(1,0.35,focS);L.g.style.opacity=a*dim});
   // callouts
   let ci=-1;CALL.forEach((c,i)=>{if(t>=c.t&&t<c.end+0.3)ci=i});
