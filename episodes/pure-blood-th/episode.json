@@ -66,13 +66,13 @@
     {
       "id": "v2",
       "at": 4.3,
-      "text": "เราเลือกตัวละครหลัก | ร้อยสี่สิบตัว จากแฮร์รี่ พอตเตอร์วิกิ",
+      "text": "ตัวละครหลักร้อยสี่สิบตัว | จากแฮร์รี่ พอตเตอร์วิกิ",
       "text_en": "We took a hundred and forty main characters from the Harry Potter Wiki."
     },
     {
       "id": "v3",
       "at": 8.6,
-      "text": "มีแค่หกสิบห้าคน | ที่สถานะเลือดชัดเจน",
+      "text": "สถานะเลือดชัด | มีแค่หกสิบห้าคน",
       "text_en": "Only sixty-five have a clear blood status."
     },
     {
@@ -84,19 +84,19 @@
     {
       "id": "v4a",
       "at": 15.5,
-      "text": "สี่เหลี่ยม คือเลือดบริสุทธิ์",
+      "text": "สี่เหลี่ยม เลือดบริสุทธิ์",
       "text_en": "Squares are pure-bloods."
     },
     {
       "id": "v4b",
       "at": 17.2,
-      "text": "วงกลม คือลูกครึ่ง",
+      "text": "วงกลม ลูกครึ่ง",
       "text_en": "Circles, half-bloods."
     },
     {
       "id": "v4c",
       "at": 18.9,
-      "text": "สามเหลี่ยม คือเกิดจากมักเกิ้ล",
+      "text": "สามเหลี่ยม เกิดจากมักเกิ้ล",
       "text_en": "Triangles, Muggle-borns."
     },
     {
@@ -120,7 +120,7 @@
     {
       "id": "v8",
       "at": 34.2,
-      "text": "ส่วนเรเวนคลอ | ไม่มีเลือดบริสุทธิ์ที่ยืนยันได้เลย",
+      "text": "เรเวนคลอ | ไม่มีเลือดบริสุทธิ์เลย",
       "text_en": "Ravenclaw doesn't have a single confirmed pure-blood."
     },
     {
