@@ -2,6 +2,30 @@
 
 Things that went wrong or needed a second pass while making episodes, and the rule that came out of each. Newest first. `CLAUDE.md` links here; the short rules are also copied into `CLAUDE.md`.
 
+## Episode: pure-blood-th (2026-11-12)
+
+- **Very short slots still hit the stretch cap.** v4a/v4b have 1.7 s slots; even two Thai words ("สี่เหลี่ยม เลือดบริสุทธิ์", "วงกลม ลูกครึ่ง") needed 1.3×. When an English beat is a 3-word line, give it ≥ 2.0 s if a Thai version will follow.
+- **First Paxa pass:** v3, v4a, v4b, v8 hit 1.3×. Second pass trimmed them ("สถานะเลือดชัด | มีแค่หกสิบห้าคน", "เรเวนคลอ | ไม่มีเลือดบริสุทธิ์เลย"); only v4a/v4b stay at the cap.
+- **Regex-replacing copy blocks:** the callout block ends with a backtick before `}];`; the first pass's pattern missed it and the callouts stayed in English. Check every translated block on a preview frame.
+- **House names stay in English on the chart** (they match the SQL result); explanatory text, legend, callouts, captions and the fine print are Thai. "You-Know-Who" is คนที่คุณก็รู้ว่าใคร.
+- **Loudness:** Paxa −2 dB → −17.2 LUFS, true peak −1.8 dBFS (EN −17.3).
+
+## Episode: pure-blood (EN, 2026-11-12)
+
+- **The denominator decides the headline.** "Slytherin isn't more pure-blood than Gryffindor" (39% vs 37%) only held with the whole house as denominator. Counting only clear statuses (Pure-blood, Half-blood or Muggle-born; the user's query) flips it: Slytherin 69% vs Gryffindor 54%. Including the "pure-blood or half-blood" rows gives ranges that overlap (39–82% vs 37–61%). Check a claim under every reasonable denominator before writing the hook.
+- **Say what the sample is.** The 140 characters are the compiler's pick of main characters, not the whole series, and Ravenclaw and Hufflepuff have 7 clear rows each. A dark "fine print" card (56 of 140, fan wiki, 7 each, snapshot 2021) sits after the walkthrough and before the end card.
+- **One morphing chart instead of several.** The 140-cell grid (coloured by house) fades the unclear rows, flies the 56 into house columns (recoloured by status), then each square stretches into a slice of a 100% bar. Count → share → focus on one house reads as one continuous story; callout boxes cover the dimmed columns for each focus beat.
+- **Status by shape, house by colour (user review).** The first cut recoloured the squares by blood status while they flew from the grid into the house columns, so the house colour was lost. Now the cells keep their house colour and blood status is a shape: squares = pure-blood, circles = half-blood, triangles = Muggle-born. The shapes change one category at a time on three short voice lines ("Squares are pure-bloods." / "Circles, half-bloods." / "Triangles, Muggle-borns.") so viewers can follow. `shapePath()` morphs one path: rounded rect → circle, trapezoid → triangle.
+- **No 100% stacked bars for a share (user review).** Morphing the columns into 100% bars lost the symbols and the house colours and confused the viewer. The share beat now stays on the symbol columns: the label reads 69% / 54%, a small "11 OF 16" sits under the house name, Slytherin gets a lime block behind its column and Ravenclaw and Hufflepuff dim. Later beats (Weasley, Ravenclaw, Slytherin) highlight cells on the same columns. Rule: when the chart already has a visual code (colour + shape), state the ratio in text and highlight; don't switch chart type for a percentage.
+- **Use the book's own phrasing for a reveal (user review).** "Lord Voldemort." became "You-Know-Who." (Thai: คนที่คุณก็รู้ว่าใคร, as in the Thai translation): fans recognise it, and it lands the reveal without saying the name.
+- **Dim harder (user review).** Non-focus cells at 40% still competed; 15% (12% for other houses in a focus beat) lets the focus stand out. In a focus beat, non-pure slices of the focused house stay at 50% so "solid = pure-blood" holds everywhere.
+- **Leave air above value labels (user review).** Column labels moved from 18 to 34 px above the top cell.
+- **Inserting a beat without retiming the scene:** `render(T)` holds the frame at 15.4 s for 5.3 s (`t = T − HOLD` after it) while the shape changes run on real time; `episode.json` shifts every later `at`, `sfx` and chunk by 5.3 s.
+- **Cursor targets from the DOM.** The walkthrough cursor reads the Open-in-Query button position with `getBoundingClientRect()` instead of hard-coded coordinates.
+- **Result table with 10 rows** needs 20–21 px mono and 6 px row padding to clear the CSV/JSON/Connect buttons (moved to y 1460, connection panel to 1570).
+- **Data from the Querious MCP.** `make-data.py` holds the rows returned by `data.sql` and asserts the counts (140 → 65 → 56 and the 10 result rows), so the episode builds without a querios checkout.
+- **Loudness:** −17.3 LUFS, true peak −2.6 dBFS with the default voice level (74.3 s cut).
+
 ## Episode: ai-revenue-compute (EN, 2026-11-11)
 
 - **First episode on company data (Epoch AI).** Six `epoch_ai_*` datasets; most figures are media reports with a `confidence` rating, so every chart says "mostly media reports · not audited", and the walkthrough points at the `confidence` / `source_url_1` columns.
