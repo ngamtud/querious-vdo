@@ -343,7 +343,7 @@ window.render=function(T){
   E.querySelector('.eyebrowD').style.opacity=eOut(p(t,37.0,37.4));
   $('listE').querySelectorAll('div').forEach((d,i)=>{const r=eOut(p(t,37.1+i*0.15,37.45+i*0.15));d.style.opacity=r;d.style.transform=`translateY(${(1-r)*16}px)`;
    d.className=(i===4&&t>=38.2)?'hi':'';if(i<4)d.style.opacity=r*(t>=38.2?lerp(1,0.45,p(t,38.2,38.5)):1)});
-  const [h,typing]=typeHead([['Lord|',''],['Voldemort.','y']],t,38.7,39.6);$('bigE').innerHTML=t<38.7?'':h+cursorTag(t,typing);
+  const [h,typing]=typeHead([['You-Know-|',''],['Who.','y']],t,38.7,39.5);$('bigE').innerHTML=t<38.7?'':h+cursorTag(t,typing);
   $('noteE').style.opacity=eOut(p(t,38.0,38.4));}
  // ---- W walkthrough
  if(inW('W',t)){const G=$('W');G.style.transform=`scale(${1+0.02*eInOut(p(t,41.4,53.8))})`;
