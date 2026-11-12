@@ -2,6 +2,14 @@
 
 Things that went wrong or needed a second pass while making episodes, and the rule that came out of each. Newest first. `CLAUDE.md` links here; the short rules are also copied into `CLAUDE.md`.
 
+## Episode: spell-colours-th (2026-11-12)
+
+- **Test proper names with Paxa before the full run.** A 9-line voice test (Thai spellings vs English spellings of Stupefy / Expelliarmus, Unforgivables, group names) showed Paxa reads English spell names well when written in English inside the Thai line ("อย่าง Stupefy และ Expelliarmus"). Run such a test as its own throwaway episode on a separate branch: push with `[skip ci]`, then `gh workflow run voice-paxa.yml --ref <branch> -f episodes=<test-ep>` so nothing else is re-voiced.
+- **Thai names for spell types (user's choice):** Charm = คาถาทั่วไป, curse + hex + jinx = มนต์ดำ (they are all "dark charms" in canon), other = อื่นๆ. Hex/jinx have no well-known Thai words; don't use them in the voice.
+- **Too many names for one slot:** saying all three Unforgivables in Thai would overrun the 5.8 s slot, so the names stay on screen (English) and the voice says "แม้แต่คำสาปต้องห้ามทั้งสาม | ก็สีไม่ตรงกัน".
+- **Colour names:** Thai on the chart (ฟ้า, ขาว, เขียว …); the SQL result table keeps the English values the query returns.
+- **First Paxa pass fit every slot** (max 1.28×, v6). Loudness with Paxa −2 dB: −17.3 LUFS, −2.1 dBFS (EN −17.7).
+
 ## Episode: spell-colours (EN, 2026-11-12)
 
 - **Free-text colours need families first.** `light` has ~50 spellings; grouped into 11 families (blue incl. icy/turquoise, white incl. bluish-white, red incl. scarlet/crimson, "X or Y" = mixed, none/invisible/crystal = no light). The rule order is on screen in the SQL.
