@@ -2,6 +2,14 @@
 
 Things that went wrong or needed a second pass while making episodes, and the rule that came out of each. Newest first. `CLAUDE.md` links here; the short rules are also copied into `CLAUDE.md`.
 
+## Episode: pure-blood-th (2026-11-12)
+
+- **Very short slots still hit the stretch cap.** v4a/v4b have 1.7 s slots; even two Thai words ("สี่เหลี่ยม เลือดบริสุทธิ์", "วงกลม ลูกครึ่ง") needed 1.3×. When an English beat is a 3-word line, give it ≥ 2.0 s if a Thai version will follow.
+- **First Paxa pass:** v3, v4a, v4b, v8 hit 1.3×. Second pass trimmed them ("สถานะเลือดชัด | มีแค่หกสิบห้าคน", "เรเวนคลอ | ไม่มีเลือดบริสุทธิ์เลย"); only v4a/v4b stay at the cap.
+- **Regex-replacing copy blocks:** the callout block ends with a backtick before `}];`; the first pass's pattern missed it and the callouts stayed in English. Check every translated block on a preview frame.
+- **House names stay in English on the chart** (they match the SQL result); explanatory text, legend, callouts, captions and the fine print are Thai. "You-Know-Who" is คนที่คุณก็รู้ว่าใคร.
+- **Loudness:** Paxa −2 dB → −17.2 LUFS, true peak −1.8 dBFS (EN −17.3).
+
 ## Episode: pure-blood (EN, 2026-11-12)
 
 - **The denominator decides the headline.** "Slytherin isn't more pure-blood than Gryffindor" (39% vs 37%) only held with the whole house as denominator. Counting only clear statuses (Pure-blood, Half-blood or Muggle-born; the user's query) flips it: Slytherin 69% vs Gryffindor 54%. Including the "pure-blood or half-blood" rows gives ranges that overlap (39–82% vs 37–61%). Check a claim under every reasonable denominator before writing the hook.
