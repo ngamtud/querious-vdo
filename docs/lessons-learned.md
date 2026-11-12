@@ -2,6 +2,16 @@
 
 Things that went wrong or needed a second pass while making episodes, and the rule that came out of each. Newest first. `CLAUDE.md` links here; the short rules are also copied into `CLAUDE.md`.
 
+## Episode: pure-blood (EN, 2026-11-12)
+
+- **The denominator decides the headline.** "Slytherin isn't more pure-blood than Gryffindor" (39% vs 37%) only held with the whole house as denominator. Counting only clear statuses (Pure-blood, Half-blood or Muggle-born; the user's query) flips it: Slytherin 69% vs Gryffindor 54%. Including the "pure-blood or half-blood" rows gives ranges that overlap (39–82% vs 37–61%). Check a claim under every reasonable denominator before writing the hook.
+- **Say what the sample is.** The 140 characters are the compiler's pick of main characters, not the whole series, and Ravenclaw and Hufflepuff have 7 clear rows each. A dark "fine print" card (56 of 140, fan wiki, 7 each, snapshot 2021) sits after the walkthrough and before the end card.
+- **One morphing chart instead of several.** The 140-cell grid (coloured by house) fades the unclear rows, flies the 56 into house columns (recoloured by status), then each square stretches into a slice of a 100% bar. Count → share → focus on one house reads as one continuous story; callout boxes cover the dimmed columns for each focus beat.
+- **Cursor targets from the DOM.** The walkthrough cursor reads the Open-in-Query button position with `getBoundingClientRect()` instead of hard-coded coordinates.
+- **Result table with 10 rows** needs 20–21 px mono and 6 px row padding to clear the CSV/JSON/Connect buttons (moved to y 1460, connection panel to 1570).
+- **Data from the Querious MCP.** `make-data.py` holds the rows returned by `data.sql` and asserts the counts (140 → 65 → 56 and the 10 result rows), so the episode builds without a querios checkout.
+- **Loudness:** −17.2 LUFS, true peak −1.6 dBFS with the default voice level.
+
 ## Episode: internet-cpi (EN, 2026-11-10)
 
 - **Two-year scatter morph ≠ yearly data.** Dots slide from their 2012 to their 2024 position in one move; the meta line reads "2012 → 2024" during the move (not a year ticker), and the running "Online: 38% → 72%" counter uses the real yearly averages, not a linear interpolation.
