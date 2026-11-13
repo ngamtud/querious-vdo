@@ -2,6 +2,25 @@
 
 Things that went wrong or needed a second pass while making episodes, and the rule that came out of each. Newest first. `CLAUDE.md` links here; the short rules are also copied into `CLAUDE.md`.
 
+## Episode: spell-colours-th (2026-11-12)
+
+- **Test proper names with Paxa before the full run.** A 9-line voice test (Thai spellings vs English spellings of Stupefy / Expelliarmus, Unforgivables, group names) showed Paxa reads English spell names well when written in English inside the Thai line ("อย่าง Stupefy และ Expelliarmus"). Run such a test as its own throwaway episode on a separate branch: push with `[skip ci]`, then `gh workflow run voice-paxa.yml --ref <branch> -f episodes=<test-ep>` so nothing else is re-voiced.
+- **Thai names for spell types (user's choice):** Charm = คาถาทั่วไป, curse + hex + jinx = มนต์ดำ (they are all "dark charms" in canon), other = อื่นๆ. Hex/jinx have no well-known Thai words; don't use them in the voice.
+- **Give a reveal scene time to read (user review).** The Unforgivables scene cut 0.5 s after "No match." landed; it now holds 3 s (`render(T)` freezes at 56.2 s for 3 s, later voice/sfx/chunks +3 s, both languages).
+- **Write multi-word English names in English for Paxa (user review).** "แฮร์รี่ พอตเตอร์วิกิ" was read as "Harry … PotterWiki" (the space became a pause, the rest ran together); "Harry Potter Wiki" reads naturally.
+- **Too many names for one slot:** saying all three Unforgivables in Thai would overrun the 5.8 s slot, so the names stay on screen (English) and the voice says "แม้แต่คำสาปต้องห้ามทั้งสาม | ก็สีไม่ตรงกัน".
+- **Colour names:** Thai on the chart (ฟ้า, ขาว, เขียว …); the SQL result table keeps the English values the query returns.
+- **First Paxa pass fit every slot** (max 1.28×, v6). Loudness with Paxa −2 dB: −17.3 LUFS, −2.1 dBFS (EN −17.7).
+
+## Episode: spell-colours (EN, 2026-11-12)
+
+- **Free-text colours need families first.** `light` has ~50 spellings; grouped into 11 families (blue incl. icy/turquoise, white incl. bluish-white, red incl. scarlet/crimson, "X or Y" = mixed, none/invisible/crystal = no light). The rule order is on screen in the SQL.
+- **Same tiles in both treemaps.** Top-4 per group gave different, tied colour sets (green 9 = mixed 9; orange 4 = white 4). Both treemaps use the same five named colours (blue, white, green, red, purple) + other, so the eye can compare red (big for charms) and purple (big for dark spells) across panels. Treemap area is proportional across the two panels (80 vs 43 spells).
+- **Shape code carried over from pure-blood:** square = charm, triangle = curse/hex/jinx, circle = other. The grid first shows shapes in ink, then fades the 159 colourless spells, then fills the rest with their light colour.
+- **Long SQL:** a 37-line CASE query types into a taller panel (16 px) that scrolls as it types; after Run the panel is replaced by the 11-row result so no stack-up is needed.
+- **Hide the cursor while SQL types** (it sat on the code).
+- **Loudness:** default voice level peaked at −0.7 dBFS (−17.0 LUFS); voice −1 dB → −17.7 LUFS, −1.6 dBFS.
+
 ## Episode: pure-blood-th (2026-11-12)
 
 - **Very short slots still hit the stretch cap.** v4a/v4b have 1.7 s slots; even two Thai words ("สี่เหลี่ยม เลือดบริสุทธิ์", "วงกลม ลูกครึ่ง") needed 1.3×. When an English beat is a 3-word line, give it ≥ 2.0 s if a Thai version will follow.
