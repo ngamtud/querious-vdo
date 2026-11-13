@@ -1,0 +1,170 @@
+{
+  "title": "แสงสีเขียวคือคำสาป? ดูจาก 301 คาถา",
+  "format": {
+    "width": 1080,
+    "height": 1920,
+    "fps": 30
+  },
+  "duration": 87.3,
+  "chunks": [
+    [
+      0,
+      4.2
+    ],
+    [
+      4.2,
+      23.0
+    ],
+    [
+      23.0,
+      35.2
+    ],
+    [
+      35.2,
+      50.8
+    ],
+    [
+      50.8,
+      59.6
+    ],
+    [
+      59.6,
+      71.6
+    ],
+    [
+      71.6,
+      78.0
+    ],
+    [
+      78.0,
+      87.3
+    ]
+  ],
+  "scene": "scene.html",
+  "data": "data.json",
+  "voice": {
+    "engine": "paxa",
+    "model": "paxa-tts-flash-v2",
+    "speaker": "nomyen",
+    "language": "th",
+    "speed": 1.0,
+    "fit": true,
+    "max_speed": 1.3,
+    "gap": 0.25
+  },
+  "voiceover": [
+    {
+      "id": "v1",
+      "at": 0.3,
+      "text": "แสงสีเขียว | คือคำสาปจริงไหม",
+      "text_en": "Green light means a deadly curse. Right?"
+    },
+    {
+      "id": "v2",
+      "at": 4.5,
+      "text": "Harry Potter Wiki | มีคาถาสามร้อยเอ็ดบท",
+      "text_en": "The Harry Potter Wiki lists three hundred and one spells."
+    },
+    {
+      "id": "v3",
+      "at": 8.5,
+      "text": "เกินครึ่งเป็นคาถาทั่วไป | ที่เหลือเป็นมนต์ดำ | และคาถาอื่นๆ",
+      "text_en": "More than half are charms. The rest are mostly jinxes, curses, transfigurations and hexes."
+    },
+    {
+      "id": "v4",
+      "at": 14.6,
+      "text": "แต่ครึ่งหนึ่ง | ไม่มีแสง หรือไม่ได้บันทึกสีไว้",
+      "text_en": "But half of all spells have no colour on record, or no light at all."
+    },
+    {
+      "id": "v5",
+      "at": 19.2,
+      "text": "เหลือคาถาที่มีสี | ร้อยสี่สิบสองบท",
+      "text_en": "That leaves a hundred and forty-two spells with a colour."
+    },
+    {
+      "id": "v6",
+      "at": 23.3,
+      "text": "คาถาทั่วไป สีฟ้ามาก่อน | ตามด้วยขาว แดง เขียว",
+      "text_en": "Among charms, blue comes first. Then white, red and green."
+    },
+    {
+      "id": "v7",
+      "at": 27.8,
+      "text": "ฝั่งมนต์ดำ | สีฟ้าก็มาก่อนเหมือนกัน",
+      "text_en": "Among curses, hexes and jinxes, blue comes first too."
+    },
+    {
+      "id": "v8",
+      "at": 31.8,
+      "text": "ดูแค่สี | บอกไม่ได้ว่าคาถาทำอะไร",
+      "text_en": "So colour alone can't tell you what a spell does."
+    },
+    {
+      "id": "v9",
+      "at": 35.5,
+      "text": "สีเขียวไม่ได้แปลว่าชั่วร้าย | เก้าในสิบหกเป็นคาถาทั่วไป",
+      "text_en": "Green isn't the colour of evil. Nine of sixteen green spells are charms."
+    },
+    {
+      "id": "v10",
+      "at": 40.6,
+      "text": "สีแดงส่วนใหญ่เป็นคาถาทั่วไป | อย่าง Stupefy และ Expelliarmus",
+      "text_en": "Red mostly helps. Ten of fourteen are charms, like Stupefy and Expelliarmus."
+    },
+    {
+      "id": "v11",
+      "at": 46.0,
+      "text": "สีที่มืดที่สุดคือสีม่วง | หกในเก้าเป็นมนต์ดำ",
+      "text_en": "The darkest colour is purple. Six of nine are curses, hexes or jinxes."
+    },
+    {
+      "id": "v12",
+      "at": 51.1,
+      "text": "แม้แต่คำสาปต้องห้ามทั้งสาม | ก็สีไม่ตรงกัน",
+      "text_en": "Even the three Unforgivable Curses don't match: green, red, and no light at all."
+    },
+    {
+      "id": "v13",
+      "at": 59.9,
+      "text": "เราจัดกลุ่มสีทั้งหมดบนคิวเรียส | ด้วยคำสั่งเดียว",
+      "text_en": "We grouped every colour on Querious, with one SQL query."
+    },
+    {
+      "id": "v14",
+      "at": 65.6,
+      "text": "นับแบบที่คุณอยากรู้ | แล้วดาวน์โหลด | หรือเชื่อมต่อกับเอไอและเครื่องมือของคุณ",
+      "text_en": "Count them your way, then download the result, or connect it to your own AI and tools."
+    },
+    {
+      "id": "v15",
+      "at": 71.9,
+      "text": "แต่อย่าลืมว่า | สีมาจากวิกิที่แฟนเขียน หลายบทมาจากเกม | และการจัดกลุ่มเป็นของเราเอง",
+      "text_en": "Just remember: the colours come from a fan wiki, many from the games, and the groups are ours."
+    },
+    {
+      "id": "v16",
+      "at": 78.4,
+      "text": "ข้อมูลพร้อมแล้ว | มาหาคำตอบกัน",
+      "text_en": "The data is open. The question is yours."
+    }
+  ],
+  "music": {
+    "generator": "ambient",
+    "volume": 1.25,
+    "duck": {
+      "threshold": 0.03,
+      "ratio": 4,
+      "attack": 60,
+      "release": 600
+    }
+  },
+  "sfx": {
+    "click": [
+      62.2,
+      65.4,
+      69.6
+    ]
+  }
+}

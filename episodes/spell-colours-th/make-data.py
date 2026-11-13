@@ -1,0 +1,42 @@
+# Builds data.json for the spell-colours episode.
+# PACKED is the exact output of data.sql query 1, run on Querious (dataset harry_potter_wiki_spells, v20210514) on 2026-11-12:
+# one item per spell, "<family><colour>|<name>", joined with "~", ordered by name.
+# family: M = charm (incl. counter-spells, healing), J = jinx, C = curse / dark, H = hex, T = transfiguration, O = other spell
+# colour: b blue, w white, g green, r red, p purple, o orange/fire, k pink, y yellow/gold, s grey/silver, q other,
+#         x mixed/varies, 0 no light, n not recorded
+# usage: python3 episodes/spell-colours-th/make-data.py
+import json, os
+here = os.path.dirname(os.path.abspath(__file__))
+PACKED = "Mb|Age Line~O0|Albus Dumbledore's Forceful Spell~M0|Amplifying Charm~Mp|Anti-Cheating Spell~Jn|Anti-Disapparition Jinx~Jn|Anti-intruder jinx~Cp|Antonin Dolohov's curse~O0|Apparition~Mb|Aqua Eructo Charm~On|Arrow-shooting spell~M0|Ascendio~Mo|Avenseguim~Tb|Avifors Spell~Cn|Babbling Curse~Tn|Badgering~Mn|Bandaging Charm~Mx|Banishing Charm~Hn|Bat-Bogey Hex~Mw|Baubillious~Hn|Bedazzling Hex~Mn|Bewitched Snowballs~Mb|Bird-Conjuring Charm~Co|Blasting Curse~Mb|Blue sparks~Mb|Bluebell Flames~M0|Boggart-Banishing Spell~Mb|Brackium Emendo~Mn|Bravery Charm~O0|Bridge-conjuring spell~Jn|Broom jinx~Mn|Bubble-Head Charm~O0|Bubble-producing spell~Jk|Cantis~Jb|Cascading Jinx~Mn|Caterwauling Charm~Tn|Cauldron to Sieve~Tn|Cauldron to badger~M0|Cave inimicum~Mn|Cheering Charm~Mn|Circumrota~Mw|Cistem Aperio~Mr|Colour Change Charm~Mk|Confundus Charm~Cn|Conjunctivitis Curse~Cn|Cornflake skin spell~Jn|Cracker Jinx~On|Cribbing Spell~Tw|Crinus Muto~Cx|Cruciatus Curse~Cg|Curse of the Bogies~Mn|Cushioning Charm~Jn|Dancing Feet Spell~Cg|Dark Mark~Hp|Densaugeo~Mg|Deprimo~Mb|Descendo~Tn|Desk Into Pig~Hn|Deterioration Hex~Mw|Diminuendo~Mr|Disarming Charm~Mw|Disillusionment Charm~M0|Dissendium~M0|Doubling Charm~To|Draconifors Spell~Mn|Drought Charm~Jx|Ducklifors Jinx~Jn|Dumbledore's Army parchment jinx~Cn|Ear-shrivelling Curse~Tn|Ears to kumquats~Jb|Ebublio Jinx~Mb|Engorgement Charm~Hx|Engorgio Skullus~Cn|Entrail-Expelling Curse~M0|Episkey~Tn|Epoximise~M0|Eradication Spell~M0|Erecto~Tw|Evanesce~Mo|Everte Statum~M0|Exploding Charm~Mw|Exploding Charm 2~Cb|Expulso Curse~Mn|Extension Charm~Mn|Extinguishing Spell~Mn|False memory charm~Mn|Feather-light charm~T0|Ferret to human~Mw|Fianto Duri~Mn|Fidelius Charm~Co|Fiendfyre~Mb|Finestra spell~Jn|Finger-removing jinx~Mx|Fire-Making Spell~Mx|Firestorm~Cn|Flagrante Curse~Mr|Flagrate~Mw|Flame-Freezing Charm~O0|Flask-conjuring spell~Tn|Flintifors~Jb|Flipendo Tria~Mn|Flying Charm~O0|Four-Point Spell~Mb|Freezing Charm~Mb|Freezing Spell~Cw|Full Body-Bind Curse~Mr|Fumos Duo~Mn|Fur spell~Mr|General Counter-Spell~Mb|Glacius Duo~Mb|Glacius Tria~M0|Glisseo~Mn|Gouging Spell~Mg|Green Sparks~Mn|Gripping Charm~Cx|Hair Loss Curse~Mn|Hair-thickening Charm~M0|Hardening Charm~M0|Harmonia Nectere Passus~Hx|Head Shrink Spell~Mn|Healing Spell~Tx|Herbifors Spell~Mg|Herbivicus Charm~Hr|Hex that grows antlers on the head~Cx|Homing spell~Mn|Homonculous Charm~Mn|Homorphus Charm~Cn|Horcrux-making spell~Hn|Horn tongue hex~Mn|Horton-Keitch Braking Charm~M0|Hot-Air Charm~Mb|Hour-Reversal Charm~Mk|Hover Charm~M0|Human Presence Revealing Spell~Hn|Hurling Hex~Mn|Illegibilus~Jb|Impediment Jinx~C0|Imperius Curse~Mn|Imperturbable Charm~M0|Impervius Charm~Tn|Inanimatus Conjurus Spell~O0|Incarcerous Spell~Mg|Incendio Duo Spell~Mb|Incendio Tria~Mb|Inflating Charm~Mb|Informous Spell~Jx|Insect Jinx~Hn|Instant Scalping Hex~Mn|Intruder Charm~Jn|Jelly-Brain Jinx~Cn|Jelly-Fingers Curse~Jo|Jelly-Legs Curse~Cg|Killing Curse~Hn|Knee-reversal hex~Jb|Knockback Jinx~Jr|Knockback Jinx Duo~Mo|Lacarnum Inflamari~J0|Langlock~Tg|Lapifors Spell~Mr|Launch an object up into the air~Jn|Leek jinx~Cp|Leg-Locker Curse~Mq|Legilimency Spell~Jg|Levicorpus~M0|Levitation Charm~M0|Liberacorpus~M0|Locking Spell~M0|Locomotion Charm~Mw|Lumos Maxima~My|Lumos Solem Spell~Mk|Magicus Extremos~Jo|Melofors Jinx~Mg|Memory Charm~M0|Mending Charm~M0|Meteolojinx Recanto~Oo|Minerva McGonagall's fire-creating spell~Mn|Ministry of Magic Fog~Mb|Mobiliarbus~M0|Mobilicorpus~M0|Muffliato Charm~M0|Muggle-Repelling Charm~Tr|Multicorfors Spell~Hn|Mutatio Skullus~Ms|Nebulus~Mn|Obliteration Charm~O0|Obscuro~M0|Oculus Reparo~J0|Oppugno Jinx~Jb|Orbis Jinx~Ok|Orchideous~Cw|Oscausi~M0|Pack~M0|Papyrus Reparo~M0|Partis Temporus~Mn|Patented Daydream Charm~Ms|Patronus Charm~Hn|Pepper breath hex~Mr|Periculum~Mn|Permanent Sticking Charm~M0|Peskipiksi Pesternomi~Mx|Piertotum Locomotor~Jy|Pimple Jinx~Tb|Piscifors~Mn|Placement Charm~Mb|Portus~Mn|Protean Charm~Cn|Protego Diabolica~Mw|Protego Maxima~Mn|Protego horribilis~M0|Protego totalum~Mn|Purple Firecrackers~H0|Pus-squirting hex~M0|Quietening Charm~Mr|Red Sparks~Cb|Reductor Curse~M0|Refilling Charm~Tw|Reparifarge~Mp|Reparifors~Mw|Repello Inimicum~Mn|Revealing Charm~Mb|Revelio Charm~My|Reverse Spell~Mn|Reverte~Mr|Reviving Spell~Jp|Revulsion Jinx~Tn|Rose Growth~Mn|Rowboat spell~M0|Salvio hexia~Hn|Sardine hex~O0|Sauce-making spell~M0|Scouring Charm~Jn|Sea urchin jinx~Mn|Sealant Charm~Cw|Sectumsempra~Mx|Seize and Pull Charm~Mx|Severing Charm~Mx|Shield Charm~Ow|Shield penetration spell~O0|Shooting spell~Mp|Shrinking Charm~M0|Silencing Charm~Mg|Skurge Charm~Jn|Slippery Jinx~M0|Slowing Charm~Cg|Slug-vomiting Charm~Cb|Smashing spell~Ms|Smokescreen Spell~Ow|Snake Summons Spell~Ts|Snake-Vanishing Spell~Mx|Softening Charm~Mo|Sonorous Charm~M0|Specialis Revelio~Ob|Spider repelling spell~Cn|Sponge-Knees Curse~Tn|Squiggle Quill~On|Stealth Sensoring Spell~Hg|Steleus~Hn|Stickfast Hex~Hw|Stinging Jinx~Jn|Stretching Jinx~Mr|Stunning Spell~M0|Summoning Charm~Mn|Supersensory Charm~Mn|Surgito~Tw|Switching Spell~C0|Taboo~Hn|Tail-growing hex~Tb|Teacup to tortoise~To|Teapot to tortoise~Mn|Teeth-straightening spell~On|Teleportation spell~Jp|Tentaclifors~M0|Tergeo~Ms|Tickling Charm~Hp|Tickling Hex~Hn|Toenail-growing hex~Cb|Tongue-Tying Curse~My|Tracking spell~Cn|Transmogrifian Torture~Jn|Trip Jinx~Hn|Twitchy-Ears Hex~Mn|Unbreakable Charm~Or|Unbreakable Vow~Mx|Unlocking Charm~On|Unsupported flight~M0|Vacuum cleaner spell~T0|Vanishing Spell~Jn|Ventus Duo~Js|Ventus Jinx~T0|Vera Verto~Mg|Verdillious~Mg|Verdimillious Charm~Mg|Verdimillious Duo Spell~Jy|Vermiculus Jinx~M0|Vulnera Sanentur~J0|Waddiwasi~Mn|Wand-Extinguishing Charm~Mw|Wand-Lighting Charm~Mw|Wand-Lighting Charm Duo~M0|Washing up spell~Mb|Water-Making Spell~Mw|White sparks"
+spells = []
+for item in PACKED.split('~'):
+    code, name = item.split('|', 1)
+    spells.append({'name': name, 'fam': code[0], 'col': code[1]})
+cnt = lambda pred: sum(1 for s in spells if pred(s))
+dark = lambda s: s['fam'] in 'CHJ'
+# checks against the research doc
+assert len(spells) == 301
+assert {f: cnt(lambda s, f=f: s['fam'] == f) for f in 'MJCTHO'} == {'M': 166, 'J': 35, 'C': 31, 'T': 26, 'H': 22, 'O': 21}
+assert cnt(lambda s: s['col'] in 'n0') == 159
+colours = 'bwxgropsyk q'.replace(' ', '')
+def top(pred):
+    c = {k: cnt(lambda s, k=k: pred(s) and s['col'] == k) for k in colours}
+    return dict(sorted(((k, v) for k, v in c.items() if v), key=lambda kv: -kv[1]))
+charm, darkc = top(lambda s: s['fam'] == 'M'), top(dark)
+assert sum(charm.values()) == 80 and sum(darkc.values()) == 43
+# treemaps use the same five named colours in both groups (blue, white, green, red, purple); the rest is "other"
+TILES = 'bwgrp'
+tm = lambda c: [[k, c.get(k, 0)] for k in TILES] + [['other', sum(v for k, v in c.items() if k not in TILES)]]
+charm_tm, dark_tm = tm(charm), tm(darkc)
+assert charm_tm == [['b', 21], ['w', 13], ['g', 9], ['r', 10], ['p', 3], ['other', 24]]
+assert dark_tm == [['b', 10], ['w', 4], ['g', 6], ['r', 2], ['p', 6], ['other', 15]]
+rows = {}
+for k in 'grp':
+    rows[k] = [s for s in spells if s['col'] == k]
+assert [len(rows[k]) for k in 'grp'] == [16, 14, 9]
+assert cnt(lambda s: s['col'] == 'g' and s['fam'] == 'M') == 9 and cnt(lambda s: s['col'] == 'g' and dark(s)) == 6
+assert cnt(lambda s: s['col'] == 'r' and s['fam'] == 'M') == 10 and cnt(lambda s: s['col'] == 'p' and dark(s)) == 6
+# result table on screen = data.sql query 2
+result = [[k, cnt(lambda s, k=k: s['col'] == k and s['fam'] == 'M'), cnt(lambda s, k=k: s['col'] == k and dark(s)), cnt(lambda s, k=k: s['col'] == k)] for k in 'bwxgropsykq']
+json.dump({'spells': spells, 'charm': charm_tm, 'dark': dark_tm, 'result': result}, open(os.path.join(here, 'data.json'), 'w'), ensure_ascii=False)
+print('ok', charm, darkc, result)
