@@ -1,0 +1,170 @@
+{
+  "title": "ส่วนผสมยิ่งเยอะ น้ำยายิ่งยาก? ดูจาก 38 สูตร",
+  "format": {
+    "width": 1080,
+    "height": 1920,
+    "fps": 30
+  },
+  "duration": 96.7,
+  "chunks": [
+    [
+      0,
+      5.0
+    ],
+    [
+      5.0,
+      28.8
+    ],
+    [
+      28.8,
+      47.3
+    ],
+    [
+      47.3,
+      60.8
+    ],
+    [
+      60.8,
+      69.0
+    ],
+    [
+      69.0,
+      81.0
+    ],
+    [
+      81.0,
+      87.4
+    ],
+    [
+      87.4,
+      96.7
+    ]
+  ],
+  "scene": "scene.html",
+  "data": "data.json",
+  "voice": {
+    "engine": "paxa",
+    "model": "paxa-tts-flash-v2",
+    "speaker": "nomyen",
+    "language": "th",
+    "speed": 1.0,
+    "fit": true,
+    "max_speed": 1.3,
+    "gap": 0.25
+  },
+  "voiceover": [
+    {
+      "id": "v1",
+      "at": 0.3,
+      "text": "ยารักษาฝีของเด็กปีหนึ่ง | ใช้ส่วนผสมมากกว่า Polyjuice",
+      "text_en": "A first-year cure for boils needs more ingredients than Polyjuice."
+    },
+    {
+      "id": "v2",
+      "at": 5.3,
+      "text": "Harry Potter Wiki มีน้ำยาเจ็ดสิบสองขนาน | มีสูตรสามสิบแปดขนาน",
+      "text_en": "The Harry Potter Wiki lists seventy-two potions. Thirty-eight come with a recipe."
+    },
+    {
+      "id": "v3",
+      "at": 11.4,
+      "text": "รวมกันใช้ส่วนผสม | เก้าสิบหกอย่าง",
+      "text_en": "Together, they use ninety-six different ingredients."
+    },
+    {
+      "id": "v4",
+      "at": 15.1,
+      "text": "สามในสี่ | ใช้แค่ในน้ำยาขนานเดียว",
+      "text_en": "Three in four of them appear in just one potion."
+    },
+    {
+      "id": "v5",
+      "at": 19.0,
+      "text": "แม้แต่ตัวที่ใช้บ่อยที่สุด อย่าง valerian | ก็อยู่แค่สี่ขนาน",
+      "text_en": "Even the most common, like valerian and wormwood, turn up in only four."
+    },
+    {
+      "id": "v6",
+      "at": 24.1,
+      "text": "valerian คือสมุนไพรช่วยนอน | เหมือนในโลกจริง",
+      "text_en": "Valerian is the sleep herb, just like in real life."
+    },
+    {
+      "id": "v7",
+      "at": 29.1,
+      "text": "แล้วส่วนผสมยิ่งเยอะ | น้ำยายิ่งยากไหม",
+      "text_en": "So does a longer recipe make a harder potion?"
+    },
+    {
+      "id": "v8",
+      "at": 32.7,
+      "text": "ระดับ Beginner ใช้เฉลี่ยสี่อย่าง | ระดับ Advanced | ก็สี่อย่างเหมือนกัน",
+      "text_en": "Beginner potions use four ingredients on average. Advanced potions? Also four."
+    },
+    {
+      "id": "v9",
+      "at": 39.4,
+      "text": "ยารักษาฝีระดับ Beginner ใช้แปดอย่าง | แต่ Wolfsbane Potion ระดับ Advanced | ใช้แค่อย่างเดียว",
+      "text_en": "Cure for Boils, a beginner potion, needs eight. Wolfsbane Potion, an advanced one, needs just one."
+    },
+    {
+      "id": "v10",
+      "at": 47.6,
+      "text": "ความยากอยู่ที่ตัววัตถุดิบและกรรมวิธี | ไม่ใช่จำนวน",
+      "text_en": "The difficulty is in what goes in, and how you make it."
+    },
+    {
+      "id": "v11",
+      "at": 52.5,
+      "text": "Polyjuice ต้องใช้หนังงู Boomslang | Fluxweed ที่เก็บตอนพระจันทร์เต็มดวง | และแมลง Lacewing ที่เคี่ยวนานยี่สิบเอ็ดวัน",
+      "text_en": "Polyjuice needs Boomslang skin, fluxweed picked at full moon, and lacewing flies stewed for twenty-one days."
+    },
+    {
+      "id": "v12",
+      "at": 61.1,
+      "text": "และมีน้ำยาสองขนานที่สูตรเหมือนกันเป๊ะ | Befuddlement Draught กับ Confusing Concoction",
+      "text_en": "And two potions share the exact same recipe: the Befuddlement Draught and the Confusing Concoction."
+    },
+    {
+      "id": "v13",
+      "at": 69.3,
+      "text": "เรานับทุกสูตรบนคิวเรียส | ด้วยคำสั่งเดียว",
+      "text_en": "We counted every recipe on Querious, with one SQL query."
+    },
+    {
+      "id": "v14",
+      "at": 75.0,
+      "text": "จัดกลุ่มแบบที่คุณอยากดู | แล้วดาวน์โหลด | หรือเชื่อมต่อกับเอไอและเครื่องมือของคุณ",
+      "text_en": "Group them your way, then download the result, or connect it to your own AI and tools."
+    },
+    {
+      "id": "v15",
+      "at": 81.3,
+      "text": "แต่อย่าลืมว่า | มีสูตรแค่สามสิบแปดขนาน | และการรวมชื่อส่วนผสมเป็นของเราเอง",
+      "text_en": "Just remember: only thirty-eight potions have a recipe, and the ingredient groups are ours."
+    },
+    {
+      "id": "v16",
+      "at": 87.8,
+      "text": "ข้อมูลพร้อมแล้ว | มาหาคำตอบกัน",
+      "text_en": "The data is open. The question is yours."
+    }
+  ],
+  "music": {
+    "generator": "ambient",
+    "volume": 1.25,
+    "duck": {
+      "threshold": 0.03,
+      "ratio": 4,
+      "attack": 60,
+      "release": 600
+    }
+  },
+  "sfx": {
+    "click": [
+      71.6,
+      74.8,
+      79.0
+    ]
+  }
+}
