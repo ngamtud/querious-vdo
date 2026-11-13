@@ -2,6 +2,13 @@
 
 Things that went wrong or needed a second pass while making episodes, and the rule that came out of each. Newest first. `CLAUDE.md` links here; the short rules are also copied into `CLAUDE.md`.
 
+## Episode: potion-ingredients-th (2026-11-13)
+
+- **Sizing EN slots ×1.35 worked:** the first Paxa pass fit every line at ≤ 1.15× except the key message line (v10, 1.29×).
+- **Never rush the key line.** "ความยากอยู่ที่ตัววัตถุดิบและกรรมวิธี | ไม่ใช่จำนวน" got 1.2 s more by holding the answer headline before the Polyjuice card (`render(T)` freeze at 50.5 s, later voice/sfx/chunks +1.2 s, both languages). It now plays at 1.0×; the English gets a beat of silence on the same headline.
+- **Names in English inside Thai lines** (Polyjuice, Boomslang, Fluxweed, Lacewing, Wolfsbane Potion, Befuddlement Draught, valerian) read well; on screen the recipe stays as the wiki writes it, tags are Thai (หายาก, พระจันทร์เต็มดวง, 21 วัน).
+- **Loudness:** Paxa −2 dB → −17.1 LUFS, −1.5 dBFS (EN −17.4 LUFS, −1.5 dBFS).
+
 ## Episode: potion-ingredients (EN, 2026-11-13)
 
 - **Normalise free-text ingredient lists by hand, in code.** `make-data.py` holds each potion's canonical ingredient list (prep and quantity dropped, aconite = wolfsbane, the source's "Vervain, infusion" as one item, animal parts kept apart) and asserts every number in the script (96 ingredients, 73/13/6/4 reuse, beginner and advanced average 4.0).
