@@ -1,0 +1,149 @@
+{
+  "title": "More ingredients, harder potion? What 38 recipes say",
+  "format": {
+    "width": 1080,
+    "height": 1920,
+    "fps": 30
+  },
+  "duration": 95.5,
+  "chunks": [
+    [
+      0,
+      5.0
+    ],
+    [
+      5.0,
+      28.8
+    ],
+    [
+      28.8,
+      47.3
+    ],
+    [
+      47.3,
+      59.6
+    ],
+    [
+      59.6,
+      67.8
+    ],
+    [
+      67.8,
+      79.8
+    ],
+    [
+      79.8,
+      86.2
+    ],
+    [
+      86.2,
+      95.5
+    ]
+  ],
+  "scene": "scene.html",
+  "data": "data.json",
+  "voice": {
+    "engine": "kokoro",
+    "speaker": "af_bella",
+    "speed": 1.05
+  },
+  "voiceover": [
+    {
+      "id": "v1",
+      "at": 0.3,
+      "text": "A first-year cure for boils needs more ingredients than Polyjuice."
+    },
+    {
+      "id": "v2",
+      "at": 5.3,
+      "text": "The Harry Potter Wiki lists seventy-two potions. Thirty-eight come with a recipe."
+    },
+    {
+      "id": "v3",
+      "at": 11.4,
+      "text": "Together, they use ninety-six different ingredients."
+    },
+    {
+      "id": "v4",
+      "at": 15.1,
+      "text": "Three in four of them appear in just one potion."
+    },
+    {
+      "id": "v5",
+      "at": 19.0,
+      "text": "Even the most common, like valerian and wormwood, turn up in only four."
+    },
+    {
+      "id": "v6",
+      "at": 24.1,
+      "text": "Valerian is the sleep herb, just like in real life."
+    },
+    {
+      "id": "v7",
+      "at": 29.1,
+      "text": "So does a longer recipe make a harder potion?"
+    },
+    {
+      "id": "v8",
+      "at": 32.7,
+      "text": "Beginner potions use four ingredients on average. Advanced potions? Also four."
+    },
+    {
+      "id": "v9",
+      "at": 39.4,
+      "text": "Cure for Boils, a beginner potion, needs eight. Wolfsbane Potion, an advanced one, needs just one."
+    },
+    {
+      "id": "v10",
+      "at": 47.6,
+      "text": "The difficulty is in what goes in, and how you make it."
+    },
+    {
+      "id": "v11",
+      "at": 51.3,
+      "text": "Polyjuice needs Boomslang skin, fluxweed picked at full moon, and lacewing flies stewed for twenty-one days."
+    },
+    {
+      "id": "v12",
+      "at": 59.9,
+      "text": "And two potions share the exact same recipe: the Befuddlement Draught and the Confusing Concoction."
+    },
+    {
+      "id": "v13",
+      "at": 68.1,
+      "text": "We counted every recipe on Querious, with one SQL query."
+    },
+    {
+      "id": "v14",
+      "at": 73.8,
+      "text": "Group them your way, then download the result, or connect it to your own AI and tools."
+    },
+    {
+      "id": "v15",
+      "at": 80.1,
+      "text": "Just remember: only thirty-eight potions have a recipe, and the ingredient groups are ours."
+    },
+    {
+      "id": "v16",
+      "at": 86.6,
+      "text": "The data is open. The question is yours."
+    }
+  ],
+  "music": {
+    "generator": "ambient",
+    "volume": 1.25,
+    "duck": {
+      "threshold": 0.03,
+      "ratio": 4,
+      "attack": 60,
+      "release": 600
+    }
+  },
+  "sfx": {
+    "click": [
+      70.4,
+      73.6,
+      77.8
+    ]
+  }
+}

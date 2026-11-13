@@ -2,6 +2,15 @@
 
 Things that went wrong or needed a second pass while making episodes, and the rule that came out of each. Newest first. `CLAUDE.md` links here; the short rules are also copied into `CLAUDE.md`.
 
+## Episode: potion-ingredients (EN, 2026-11-13)
+
+- **Normalise free-text ingredient lists by hand, in code.** `make-data.py` holds each potion's canonical ingredient list (prep and quantity dropped, aconite = wolfsbane, the source's "Vervain, infusion" as one item, animal parts kept apart) and asserts every number in the script (96 ingredients, 73/13/6/4 reuse, beginner and advanced average 4.0).
+- **On-screen SQL should prove the headline, not re-do the cleaning.** Normalising names in SQL would need a long CASE; the walkthrough instead shows the difficulty query (avg/min/max of `len(string_split(...))`), which returns the key result (Advanced 4.0, Beginner 4.0) and matches the canonical counts for those two levels.
+- **Unit chart in two steps:** 72 potion circles (34 without a recipe fade) → crossfade to 96 ingredient squares → squares fly into four "used in N potions" stacks. Circles for potions, squares for ingredients keep the two units apart.
+- **Dot-plot labels go under the dot row**, not beside the dot, so they don't hit stacked neighbours.
+- **Slots sized for Thai from the start:** each English slot ≈ voice length × 1.35, so the Thai version shouldn't need trimming.
+- **Loudness:** default voice peaked at −1.2 dBFS; voice −0.5 dB → −17.4 LUFS, −1.7 dBFS.
+
 ## Episode: pure-blood-th (2026-11-12)
 
 - **Very short slots still hit the stretch cap.** v4a/v4b have 1.7 s slots; even two Thai words ("สี่เหลี่ยม เลือดบริสุทธิ์", "วงกลม ลูกครึ่ง") needed 1.3×. When an English beat is a 3-word line, give it ≥ 2.0 s if a Thai version will follow.
