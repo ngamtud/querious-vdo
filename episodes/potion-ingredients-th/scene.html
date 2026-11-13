@@ -1,0 +1,418 @@
+<!doctype html><html><head><meta charset="utf-8">
+<style>
+@font-face{font-family:SG;src:url(../../node_modules/@fontsource/space-grotesk/files/space-grotesk-latin-400-normal.woff2);font-weight:400}
+@font-face{font-family:SG;src:url(../../node_modules/@fontsource/space-grotesk/files/space-grotesk-latin-700-normal.woff2);font-weight:700}
+@font-face{font-family:PM;src:url(../../node_modules/@fontsource/ibm-plex-mono/files/ibm-plex-mono-latin-500-normal.woff2);font-weight:500}
+@font-face{font-family:PM;src:url(../../node_modules/@fontsource/ibm-plex-mono/files/ibm-plex-mono-latin-600-normal.woff2);font-weight:600}
+@font-face{font-family:TH;src:url(../../node_modules/@fontsource/ibm-plex-sans-thai/files/ibm-plex-sans-thai-thai-500-normal.woff2);font-weight:400 500}
+@font-face{font-family:TH;src:url(../../node_modules/@fontsource/ibm-plex-sans-thai/files/ibm-plex-sans-thai-thai-600-normal.woff2);font-weight:600}
+@font-face{font-family:TH;src:url(../../node_modules/@fontsource/ibm-plex-sans-thai/files/ibm-plex-sans-thai-thai-700-normal.woff2);font-weight:700}
+@font-face{font-family:PX;src:url(../../node_modules/@fontsource/pixelify-sans/files/pixelify-sans-latin-700-normal.woff2);font-weight:700}
+/* Facebook-safe 9:16: top 300, bottom 380, sides 150, right 230 clear in y 1180-1780 */
+:root{--safe-x:150px;--safe-top:300px;--safe-bottom:380px;--safe-band:230px;
+ --paper:#F4F1E9;--ink:#283127;--deep:#222923;--muted:#677166;--line:#C7CBBF;--lime:#D6ED63;--orange:#E5764B}
+*{box-sizing:border-box;margin:0}
+html,body{width:1080px;height:1920px;overflow:hidden;background:var(--deep)}
+.scene{position:absolute;inset:0;overflow:hidden;transform-origin:50% 45%;display:none}
+.mono{font-family:PM,TH;font-weight:600;letter-spacing:.08em;text-transform:uppercase}
+.cur{color:var(--orange)}
+.dark{background:var(--deep);color:#F4F1E9}.light{background:var(--paper);color:var(--ink)}
+.L{position:absolute;left:var(--safe-x);right:var(--safe-x)}
+.R{right:var(--safe-band)}
+.eyebrowD{top:330px;font-size:24px;color:#A9B4A2;right:260px}.eyebrowD b{color:var(--lime);font-weight:600}
+.top{top:var(--safe-top);display:flex;align-items:center;gap:22px;border-bottom:2px solid var(--ink);padding:0 100px 20px 0;height:96px}
+.brand{font:700 44px SG,TH;letter-spacing:-.05em;flex:1}.brand i{font:700 46px PX;font-style:normal}
+.tag{font-size:21px;border:1.5px solid var(--ink);padding:8px 12px;background:var(--lime);transform:rotate(-3deg)}
+.meta{top:430px;font-size:23px;color:var(--muted)}
+.h2{top:470px;font:700 84px/1 SG,TH;letter-spacing:-.07em;white-space:nowrap}
+svg.abs{position:absolute;left:0;top:0}
+.note{font-size:19px;line-height:1.5;color:var(--muted);letter-spacing:.05em}
+.caption{top:1400px;font:700 70px/1.03 SG,TH;letter-spacing:-.06em;white-space:nowrap}
+.caption .hl{background:var(--lime);padding:0 10px;box-decoration-break:clone;-webkit-box-decoration-break:clone}
+#A .head{top:560px;font:700 120px/1 SG,TH;letter-spacing:-.075em}
+#A .head .y{color:var(--lime)}
+#A .rule{position:absolute;left:var(--safe-x);top:1440px;height:2px;background:#4a5648}
+#A .foot{top:1470px;font-size:21px;color:#7f8a7c}
+#A .sub{top:860px;font-size:24px;color:#A9B4A2;line-height:2.1}
+.call{position:absolute;border:2px solid var(--ink);background:#FAF9F3;padding:18px 22px 12px;box-shadow:7px 7px 0 var(--lime);opacity:0}
+.call .mono{font-size:19px;color:var(--muted)}
+.call .ttl{font:700 40px/1.1 SG,TH;letter-spacing:-.04em;margin:8px 0 6px}
+.call .row{border-top:1px solid #DBE0D5;padding:10px 0 8px;font:500 22px PM,TH}
+/* D answer (dark) */
+#D .head{top:440px;font:700 100px/1 SG,TH;letter-spacing:-.07em}
+#D .head .y{color:var(--lime)}
+#D .card{top:700px;border:2px solid #4a5648;padding:18px 24px 6px}
+#D .card .ey{font-size:19px;color:#8b9685;margin-bottom:6px}
+#D .ing{display:flex;justify-content:space-between;align-items:center;border-top:1px solid #3a4538;padding:13px 0;font:500 25px PM,TH;color:#C9D1C1}
+#D .ing b{font:600 17px PM,TH;letter-spacing:.08em;padding:5px 9px;border:1.5px solid currentColor;opacity:0}
+#D .ing.hi{color:#F4F1E9}
+#D .ing .rare{color:var(--lime)}#D .ing .time{color:var(--orange)}
+/* E twins */
+.tw{position:absolute;top:640px;width:372px;border:2px solid var(--ink);background:#FAF9F3;padding:20px 22px 18px}
+.tw .ey{font-size:18px;color:var(--muted)}
+.tw h3{font:700 40px/1.05 SG,TH;letter-spacing:-.05em;margin-top:8px}
+.tw .fx{font-size:18px;color:var(--muted);margin-top:10px}
+#tw1{left:150px}#tw2{left:558px}
+.chip{position:absolute;left:330px;width:420px;text-align:center;border:2px solid var(--ink);background:var(--lime);padding:14px 0;font:600 26px PM,TH;letter-spacing:.06em;text-transform:uppercase}
+/* N */
+#N .head{top:470px;font:700 170px/.9 SG,TH;letter-spacing:-.08em;white-space:nowrap}
+#N .head .y{color:var(--lime)}
+#N .sub{top:650px;font:700 56px/1.1 SG,TH;letter-spacing:-.05em;color:#DCE3D3}
+#N .rank{top:790px}
+#N .rank div{display:flex;gap:18px;border-top:1px solid #4a5648;padding:20px 0;font:500 27px/1.3 PM,TH;color:#C9D1C1}
+#N .rank div span:first-child{color:var(--orange);font-weight:600}
+/* W walkthrough */
+.btn{position:absolute;display:flex;align-items:center;gap:18px;border:2px solid var(--ink);background:var(--ink);color:var(--lime);padding:18px 24px;font-size:25px}
+.obtn{position:absolute;border:2px solid var(--ink);background:#FAF9F3;color:var(--ink);padding:16px 20px;font-size:23px}
+.ripple{position:absolute;border:4px solid var(--orange);pointer-events:none}
+.cursor{position:absolute;width:64px;height:64px;z-index:5}
+.ds{position:absolute;left:var(--safe-x);right:var(--safe-x);border:2px solid var(--ink);background:#FAF9F3;padding:24px 26px 26px}
+.ds .ey{font-size:19px;color:var(--muted)}
+.ds h3{font:700 50px/1.04 SG,TH;letter-spacing:-.05em;margin-top:10px}
+.ds .mt{font-size:19px;color:var(--muted);margin-top:12px;line-height:1.6}
+#ds1{top:620px}
+#join{top:560px;font-size:21px;color:var(--muted)}
+#openq{position:static;display:inline-flex;margin-top:22px;font-size:24px;padding:15px 20px}
+#sqlhead{top:440px;display:flex;justify-content:space-between;font-size:20px;color:var(--muted)}
+#sql{top:480px;height:540px;background:var(--ink);border-left:8px solid var(--lime);color:#EDF2E5;padding:18px 18px;font:500 16px/1.45 PM,TH;white-space:pre;overflow:hidden}
+#sql .k{color:var(--lime)}#sql .s{color:#E9B48F}
+#run{right:var(--safe-x);top:1040px}
+#rtable{top:480px;border:2px solid var(--ink);background:#FAF9F3}
+#rtable .rh{display:flex;justify-content:space-between;border-bottom:1px solid var(--ink);padding:10px 16px;font-size:18px}
+#rtable table{width:100%;border-collapse:collapse;font:500 22px PM,TH}
+#rtable th{background:#E8ECE0;text-align:left;padding:7px 16px;font-weight:600;font-size:16px;color:var(--muted)}
+#rtable td{padding:6px 16px;border-top:1px solid #DBE0D5;white-space:nowrap}
+#rtable td.n,#rtable th.n{text-align:right}
+#rtable td i{display:inline-block;width:16px;height:16px;margin-right:12px;vertical-align:-1px;border:1px solid #283127}
+#rtable tr.hlr td{background:#E9F4B8}
+#csvb{left:150px;top:1066px}#jsonb{left:310px;top:1066px}#connb{left:486px;top:1066px;background:var(--ink);color:var(--lime)}
+#conn{top:1170px;border:2px solid var(--ink);background:#EDF2E4;padding:20px 22px}
+#conn .lbl{font-size:19px;color:var(--muted);margin-bottom:10px}
+#conn .row{display:flex;justify-content:space-between;align-items:center;border:1px solid var(--line);background:#FBFAF5;padding:12px 14px;margin-top:10px;font:500 21px PM,TH}
+#conn .row b{font:600 16px PM,TH;letter-spacing:.06em;border:1px solid var(--ink);padding:6px 10px;background:var(--lime)}
+#conn .row span em{font-style:normal;color:var(--muted)}
+#conn .for{margin-top:18px;display:flex;align-items:center;gap:14px;font-size:21px}
+#conn .chip{border:2px solid var(--ink);background:var(--ink);color:var(--lime);padding:10px 16px}
+#conn .beta{font-size:15px;border:1.5px solid var(--ink);background:var(--lime);color:var(--ink);padding:4px 8px;transform:rotate(-4deg);margin-left:-6px}
+/* X end card */
+#X .big{top:620px;font:700 160px/.92 SG,TH;letter-spacing:-.075em;white-space:nowrap}
+#X .sub{top:860px;font:700 62px/1.1 SG,TH;letter-spacing:-.05em;color:#DCE3D3}
+#X .sub b{color:var(--lime)}
+#X .cta{position:absolute;left:var(--safe-x);top:1090px;display:inline-flex;gap:18px;align-items:center;background:var(--lime);color:var(--ink);border:2px solid var(--lime);padding:20px 26px;font-size:29px}
+#X .url{top:1205px;font-size:21px;color:#A9B4A2}
+#X .mark{top:1300px;display:flex;align-items:center;gap:18px;font:700 50px SG,TH;letter-spacing:-.05em}
+#X .mark i{font:700 52px PX;font-style:normal}
+#wipe{position:absolute;left:0;right:0;background:var(--lime);display:none;z-index:8}
+#grain{position:absolute;inset:-40px;pointer-events:none;opacity:.05;mix-blend-mode:multiply;z-index:9}
+.logo{position:absolute;top:var(--safe-top);right:var(--safe-x);width:76px;height:76px;object-fit:contain;z-index:10}
+#safe{position:absolute;left:150px;right:150px;top:300px;bottom:380px;outline:2px dashed magenta;z-index:20;display:none}
+#conn .chip2{border:2px solid var(--ink);background:var(--ink);color:var(--lime);padding:10px 16px}
+/* walkthrough overrides: short SQL, 2-row result */
+#sql{height:390px;font-size:15px}
+#run{top:890px}
+#csvb{top:700px}#jsonb{top:700px}#connb{top:700px}
+#conn{top:800px}
+#safe{position:absolute;left:150px;right:150px;top:300px;bottom:380px;outline:2px dashed magenta;z-index:20;display:none}
+/* Thai: no negative tracking, line-height >= 1.2 */
+.caption,.h2,.meta,.note,#A .head,#D .head,#N .head,#N .sub,#X .big,#X .sub,.ds h3,.tw h3,.call .ttl{letter-spacing:0}
+.caption{line-height:1.25;font-size:62px}.h2{line-height:1.2;font-size:74px}
+#A .head{font-size:108px;line-height:1.2}#A .sub{top:880px}
+#D .head{font-size:80px;line-height:1.2}#D .card{top:770px}#D .ing{padding:11px 0}
+#N .head{font-size:140px;line-height:1.1}#N .sub{line-height:1.3;font-size:52px}#N .rank div{line-height:1.4}
+#X .big{font-size:110px;line-height:1.15}#X .sub{line-height:1.3;color:var(--lime);font-size:66px}
+.call .ttl{line-height:1.3}
+</style></head><body>
+<div id="A" class="scene dark">
+ <div class="eyebrowD mono L">Querious / Open data / <b>Potions</b></div>
+ <div class="head L" id="headA"></div>
+ <div class="sub mono L" id="subA">Cure for Boils · ระดับ Beginner<br>Polyjuice Potion · ระดับ Advanced</div>
+ <div class="rule" id="ruleA"></div><div class="foot mono L" id="footA">Harry Potter Wiki · จำนวนส่วนผสมต่อขนาน</div>
+</div>
+<div id="B" class="scene light">
+ <div class="top L"><div class="brand"><i>Q</i>uerious<span class="cur">_</span></div><div class="tag mono">Insight</div></div>
+ <div class="meta mono L" id="metaB">Harry Potter Wiki / น้ำยา</div>
+ <div class="h2 L" id="hB"></div>
+ <svg id="svB" class="abs" width="1080" height="1920"></svg>
+ <div class="call" id="callB"></div>
+ <div class="note mono L R" id="noteB" style="top:1236px"></div>
+ <div class="caption L R" id="capB"></div>
+</div>
+<div id="C" class="scene light">
+ <div class="top L"><div class="brand"><i>Q</i>uerious<span class="cur">_</span></div><div class="tag mono">Insight</div></div>
+ <div class="meta mono L">ส่วนผสมต่อขนาน / ตามระดับความยาก</div>
+ <div class="h2 L" id="hC"></div>
+ <svg id="svC" class="abs" width="1080" height="1920"></svg>
+ <div class="note mono L R" id="noteC" style="top:1236px">เฉพาะน้ำยาที่มีทั้งสูตรและระดับความยาก · Source / Harry Potter Wiki</div>
+ <div class="caption L R" id="capC"></div>
+</div>
+<div id="D" class="scene dark">
+ <div class="eyebrowD mono L">Polyjuice Potion / <b>Advanced</b></div>
+ <div class="head L" id="headD"></div>
+ <div class="card L" id="cardD"><div class="ey mono">ส่วนผสมที่รู้ / ตามที่วิกิเขียน</div><div id="ingD"></div></div>
+</div>
+<div id="E" class="scene light">
+ <div class="top L"><div class="brand"><i>Q</i>uerious<span class="cur">_</span></div><div class="tag mono">Insight</div></div>
+ <div class="meta mono L">น้ำยาฝาแฝด</div>
+ <div class="h2 L" id="hE"></div>
+ <svg id="svE" class="abs" width="1080" height="1920"></svg>
+ <div class="tw" id="tw1"><div class="ey mono">น้ำยา / ไม่ระบุระดับ</div><h3>Befuddlement Draught</h3><div class="fx mono">ผล · บ้าบิ่น</div></div>
+ <div class="tw" id="tw2"><div class="ey mono">น้ำยา / ง่ายถึงปานกลาง</div><h3>Confusing Concoction</h3><div class="fx mono">ผล · สับสน</div></div>
+ <div class="chip" id="ch0" style="top:950px">Sneezewort</div>
+ <div class="chip" id="ch1" style="top:1040px">Lovage</div>
+ <div class="chip" id="ch2" style="top:1130px">Scurvy grass</div>
+ <div class="caption L R" id="capE"></div>
+</div>
+<div id="W" class="scene light">
+ <div class="top L"><div class="brand"><i>Q</i>uerious<span class="cur">_</span></div><div class="tag mono" id="stepW">Step 01 / Discover</div></div>
+ <div class="h2 L" id="catT" style="top:440px">Data catalog<span class="cur">_</span></div>
+ <div class="mono L" id="join">1 dataset · SQL · string_split</div>
+ <div class="ds" id="ds1"><div class="ey mono">Dataset / Harry Potter Wiki (Fandom)</div><h3>Harry Potter potions</h3><div class="mt mono">72 potions · ingredients · effect · difficulty<br>Snapshot 2021 · CC BY-SA 3.0</div>
+  <div class="btn mono" id="openq"><span>Open in Query ↗</span></div></div>
+ <div id="sqlhead" class="mono L"><span>SQL / DuckDB in your browser</span><span id="sqlstate">Editing…</span></div>
+ <div id="sql" class="L"></div>
+ <div class="btn mono" id="run"><span>Run query ▶</span></div>
+ <div id="rtable" class="L R"><div class="rh mono"><span>Results</span><span id="rcount"></span></div><table id="rt"></table></div>
+ <div class="obtn mono" id="csvb">↓ CSV</div><div class="obtn mono" id="jsonb">↓ JSON</div><div class="obtn mono" id="connb">Connect</div>
+ <div id="conn" class="L R"><div class="lbl mono">Connection URL / live CSV or JSON</div>
+  <div class="row"><span><em>…/v1/query/</em>5e8a71c3<em>.csv</em></span><b>Copy CSV URL</b></div>
+  <div class="row"><span><em>…/v1/query/</em>5e8a71c3<em>.json</em></span><b>Copy JSON URL</b></div>
+  <div class="for mono"><span>→</span><span class="chip2 chipw" id="chipAI">Your AI</span><span class="beta" id="betaAI">Beta</span><span class="chip2 chipw" id="chipT">Your tools</span></div></div>
+ <div class="ripple" id="ripW"></div>
+ <svg class="cursor" id="curW" viewBox="0 0 32 32"><path d="M4 2 L4 26 L10.5 20 L15 30 L19 28 L14.6 18.4 L23 18.4 Z" fill="#283127" stroke="#F4F1E9" stroke-width="1.6" stroke-linejoin="round"/></svg>
+</div>
+<div id="N" class="scene dark">
+ <div class="eyebrowD mono L">ก่อนแชร์ / <b>ข้อควรรู้</b></div>
+ <div class="head L" id="headN"></div>
+ <div class="sub L" id="subN">ขนานที่มีสูตร</div>
+ <div class="rank L" id="rankN">
+  <div><span>01</span><span>วิกิที่แฟนเขียน ไม่ใช่แหล่งข้อมูลทางการ</span></div>
+  <div><span>02</span><span>รู้ระดับความยาก 25 ขนาน มีสูตร: Beginner 6, Advanced 11</span></div>
+  <div><span>03</span><span>รวมชื่อส่วนผสมเอง (aconite = wolfsbane)</span></div>
+  <div><span>04</span><span>ข้อมูล ณ พฤษภาคม 2021</span></div>
+ </div>
+</div>
+<div id="X" class="scene dark">
+ <div class="eyebrowD mono L">Querious / Open data / <b>Potions</b></div>
+ <div class="big L" id="bigX"></div>
+ <div class="sub L" id="subX"></div>
+ <div class="cta mono" id="ctaX">querious.studio ↗</div>
+ <div class="url mono L" id="urlX">สำรวจข้อมูลได้ฟรี ไม่ต้องสมัครสมาชิก</div>
+ <div class="mark L" id="markX"></div>
+</div>
+<div id="wipe"></div>
+<svg id="grain" width="1160" height="2000"><filter id="n"><feTurbulence type="fractalNoise" baseFrequency=".85" numOctaves="2" seed="3"/><feColorMatrix type="saturate" values="0"/></filter><rect width="100%" height="100%" filter="url(#n)"/></svg>
+<img id="logoL" class="logo" src="../../brand/querious-logo-lime.svg"><img id="logoD" class="logo" src="../../brand/querious-logo-dark.svg">
+<div id="safe"></div>
+<script>
+const DATA=window.__DATA__, $=id=>document.getElementById(id), NS='http://www.w3.org/2000/svg';
+const clamp=(v,a=0,b=1)=>Math.min(b,Math.max(a,v)), p=(t,a,b)=>clamp((t-a)/(b-a));
+const eOut=x=>1-Math.pow(1-x,3), eInOut=x=>x<.5?4*x*x*x:1-Math.pow(-2*x+2,3)/2, eSnap=x=>x<.5?16*x**5:1-Math.pow(-2*x+2,5)/2, lerp=(a,b,x)=>a+(b-a)*x;
+const blink=t=>Math.floor(t/0.53)%2===0;
+const el=(n,a,par)=>{const e=document.createElementNS(NS,n);for(const k in a)e.setAttribute(k,a[k]);par.appendChild(e);return e};
+const txt=(par,a,s)=>{const e=el('text',Object.assign({'font-family':'PM,TH','font-weight':600},a),par);e.textContent=s;return e};
+const show=(id,on)=>{$(id).style.display=on?'block':'none'};
+const cursorTag=(t,n)=>`<span class="cur" style="opacity:${(blink(t)||n)?1:0}">_</span>`;
+function caption(elc,list,t,tEnd){let ci=-1;list.forEach((c,i)=>{if(t>=c[0]-0.05)ci=i});if(ci<0||t>tEnd||!list[ci][1]){elc.style.opacity=0;return}
+ const k=eOut(p(t,list[ci][0]-0.05,list[ci][0]+0.2));elc.innerHTML=list[ci][1];elc.style.opacity=k;elc.style.transform=`translateY(${(1-k)*24}px)`}
+const SEG=new Intl.Segmenter('th',{granularity:'grapheme'}), G_=s=>[...SEG.segment(s)].map(x=>x.segment), gslice=(s,a,b)=>G_(s).slice(a,b).join(''), glen=s=>G_(s).length;
+function typeSeg(segs,n){let out='',k=n;for(const [s,c] of segs){const part=gslice(s,0,Math.max(0,k));k-=glen(s);if(!part)break;out+=c?`<span class="${c}">${part}</span>`:part}return out}
+const segLen=segs=>segs.reduce((a,s)=>a+glen(s[0]),0);
+function typeHead(segs,t,a,b){const L=segLen(segs),n=Math.round(L*p(t,a,b));return [typeSeg(segs,n).replace(/\|/g,'<br>'),n<L]}
+function retype(elh,list,t){let ci=-1;list.forEach((c,i)=>{if(t>=c[0])ci=i});if(ci<0){elh.innerHTML='';return}
+ const s=list[ci][1],L=glen(s),n=Math.round(L*p(t,list[ci][0],list[ci][0]+0.5));elh.innerHTML=gslice(s,0,n)+cursorTag(t,n<L)}
+function shapePath(x,y,w,h,rnd,tri){if(w<=0||h<=0)return '';
+ if(tri>0.001){const k=tri*w/2;return `M${x},${y+h}L${x+w},${y+h}L${x+w-k},${y}L${x+k},${y}Z`}
+ const r=rnd*Math.min(w,h)/2;if(r<0.3)return `M${x},${y}H${x+w}V${y+h}H${x}Z`;
+ return `M${x+r},${y}H${x+w-r}A${r},${r} 0 0 1 ${x+w},${y+r}V${y+h-r}A${r},${r} 0 0 1 ${x+w-r},${y+h}H${x+r}A${r},${r} 0 0 1 ${x},${y+h-r}V${y+r}A${r},${r} 0 0 1 ${x+r},${y}Z`}
+function center(id){const r=$(id).getBoundingClientRect();return [r.left+r.width/2,r.top+r.height/2]}
+function cursorAt(cu,t,t0,t1,sx_,sy_,ex_,ey_){const m=eInOut(p(t,t0,t1));cu.style.left=(lerp(sx_,ex_,m)-Math.sin(m*Math.PI)*60)+'px';cu.style.top=(lerp(sy_,ey_,m)-Math.sin(m*Math.PI)*80)+'px'}
+function ripple(r,t,tc,x,y){const k=p(t,tc,tc+0.45),s=20+150*eOut(k);r.style.width=r.style.height=s+'px';r.style.left=(x+4-s/2)+'px';r.style.top=(y+4-s/2)+'px';r.style.opacity=k>0&&k<1?1-k:0}
+function press(b,t,tc){const pr=t>tc-0.1&&t<tc+0.1;b.style.boxShadow=pr?'none':'6px 6px 0 #D6ED63';return pr}
+
+const W={A:[0,5.05],B:[4.95,28.85],C:[28.75,47.35],D:[47.25,59.65],E:[59.55,67.85],W:[67.75,79.85],N:[79.75,86.25],X:[86.15,100]};
+const CUTS=[5.0,28.8,47.3,59.6,67.8,79.8,86.2];
+const inW=(k,t)=>t>=W[k][0]&&t<W[k][1];
+const WO=11.2; // walkthrough timings below are the spell-colours ones + WO
+
+// ---------- B: potions → ingredients → reuse columns ----------
+const svB=$('svB');
+// 72 potions as circles (12 x 6); 34 have no recipe
+const POT=[];for(let i=0;i<72;i++){POT.push({i,x:184+(i%12)*60,y:640+Math.floor(i/12)*60,rec:false,o:(i*29%72)/72})}
+{const idx=[...POT.keys()].sort((a,b)=>((a*37)%72)-((b*37)%72)).slice(0,38);idx.forEach(i=>POT[i].rec=true)}
+POT.forEach(p=>{p.e=el('path',{},svB)});
+// 96 ingredients as squares (12 x 8), then 4 reuse columns (6 wide, pitch 30)
+const ING=DATA.ingredients.map((g,i)=>Object.assign({},g,{i,x:184+(i%12)*60,y:640+Math.floor(i/12)*60,o:(i*41%96)/96}));
+const COLX=[150,352,554,756],BASE=1110,CP=30,CS=24;
+{const byU={1:[],2:[],3:[],4:[]};ING.forEach(g=>byU[g.uses].push(g));
+ [1,2,3,4].forEach((u,ci)=>byU[u].forEach((g,k)=>{g.cx=COLX[ci]+(k%6)*CP;g.cy=BASE-(Math.floor(k/6)+1)*CP+(CP-CS);g.col=ci}))}
+ING.forEach(g=>{g.e=el('rect',{},svB)});
+const colLab=[1,2,3,4].map((u,ci)=>{const g=el('g',{},svB);const n=ING.filter(x=>x.uses===u).length,rows=Math.ceil(n/6);
+ const top=txt(g,{x:COLX[ci]+87,y:BASE-rows*CP-14,'text-anchor':'middle','font-size':40,fill:'#283127','font-family':'SG,TH','font-weight':700},String(n));
+ txt(g,{x:COLX[ci]+87,y:BASE+36,'text-anchor':'middle','font-size':19,fill:'#283127'},`ใน ${u} ขนาน`);return g});
+const HB=[[5.3,'72 ขนาน'],[8.5,'38 สูตร'],[11.4,'96 ส่วนผสม'],[15.1,'ใช้บ่อยแค่ไหน?']];
+const CAPB=[[8.5,'มีสูตร <span class="hl">38</span> ขนาน'],[11.5,''],[15.2,'สามในสี่: <span class="hl">ใช้ครั้งเดียว</span>'],[19.1,'ตัวท็อป: <span class="hl">แค่ 4 ขนาน</span>'],[24.2,'Valerian = <span class="hl">ช่วยนอน</span>']];
+const callB=$('callB');let callIdx=-1;
+const CALLB=[{t:19.3,end:24.0,html:`<div class="mono">ใน 4 ขนานเท่ากัน</div><div class="ttl">ใช้บ่อยที่สุด</div><div class="row">Valerian</div><div class="row">Wormwood</div><div class="row">Porcupine quills</div><div class="row">Standard ingredient</div>`},
+ {t:24.2,end:28.6,html:`<div class="mono">Valerian / ใน 4 ขนาน</div><div class="ttl">สมุนไพรช่วยนอน</div><div class="row">Sleeping Draught</div><div class="row">Draught of Living Death</div><div class="row">Forgetfulness Potion</div><div class="row">Babbling Beverage</div>`}];
+
+// ---------- C: dot plot ----------
+const svC=$('svC');const AX0=190,AXS=77.8,AXY=1150,RB=[{key:'beginner',lab:'Beginner · 6 ขนาน',base:830,col:'#C6A04D',t:33.0,mt:34.6},{key:'advanced',lab:'Advanced · 11 ขนาน',base:1100,col:'#424E3D',t:36.2,mt:37.6}];
+const xv=v=>AX0+v*AXS;
+const axis=el('g',{},svC);el('line',{x1:AX0-20,x2:xv(9)+10,y1:AXY,y2:AXY,stroke:'#8B9485','stroke-width':2},axis);
+for(let v=0;v<=9;v++){el('line',{x1:xv(v),x2:xv(v),y1:AXY,y2:AXY+10,stroke:'#8B9485','stroke-width':2},axis);txt(axis,{x:xv(v),y:AXY+36,'text-anchor':'middle','font-size':20,fill:'#455044'},String(v))}
+txt(axis,{x:150,y:AXY+72,'font-size':18,fill:'#677166'},'จำนวนส่วนผสมต่อขนาน');
+RB.forEach(R=>{R.g=el('g',{},svC);R.label=txt(R.g,{x:150,y:R.base-200,'font-size':22,fill:'#283127'},R.lab.toUpperCase());
+ const vals=Object.entries(DATA[R.key]).sort((a,b)=>a[1]-b[1]||a[0].localeCompare(b[0]));const st={};
+ R.dots=vals.map(([n,v],i)=>{const k=st[v]=(st[v]||0)+1;const cy=R.base-22-(k-1)*50;const e=el('circle',{cx:xv(v),cy,r:20,fill:R.col},R.g);
+  const ring=el('circle',{cx:xv(v),cy,r:28,fill:'none',stroke:'#E5764B','stroke-width':5,opacity:0},R.g);return {n,v,e,ring,cy,i}});
+ R.mean=el('g',{opacity:0},svC);el('line',{x1:xv(4),x2:xv(4),y1:R.base-170,y2:R.base+4,stroke:'#283127','stroke-width':3,'stroke-dasharray':'8 7'},R.mean);
+ const bg=el('rect',{x:xv(4)+12,y:R.base-192,width:150,height:36,fill:'#D6ED63'},R.mean);txt(R.mean,{x:xv(4)+22,y:R.base-166,'font-size':20,fill:'#283127'},'เฉลี่ย 4.0')});
+const HI=[{row:0,n:'Cure for Boils',t:39.6,lab:'CURE FOR BOILS · 8'},{row:1,n:'Wolfsbane Potion',t:43.6,lab:'WOLFSBANE · 1'}];
+HI.forEach(h=>{const R=RB[h.row],d=R.dots.find(x=>x.n===h.n);h.d=d;h.g=el('g',{opacity:0},svC);
+ const right=d.v>5;txt(h.g,{x:right?xv(d.v)+30:xv(d.v)-30,y:R.base+30,'text-anchor':right?'end':'start','font-size':20,fill:'#B4502C'},h.lab)});
+const HC=[[29.1,'ยิ่งเยอะ ยิ่งยาก?']];
+const CAPC=[[29.2,'ยิ่งเยอะ ยิ่งยาก?'],[32.8,'Beginner: <span class="hl">4.0</span>'],[36.3,'Advanced: <span class="hl">4.0</span>'],[39.5,'ยารักษาฝี: <span class="hl">8</span>'],[43.5,'Wolfsbane: <span class="hl">1</span>']];
+
+// ---------- D ----------
+const TAG={'Shredded Boomslang skin':['rare','หายาก',52.6],'Fluxweed (picked at full moon)':['time','พระจันทร์เต็มดวง',54.0],'Lacewing flies (stewed 21 days)':['time','21 วัน',55.6]};
+$('ingD').innerHTML=DATA.polyjuice.map(s=>`<div class="ing" data-n="${s}"><span>${s}</span>${TAG[s]?`<b class="${TAG[s][0]}">${TAG[s][1]}</b>`:''}</div>`).join('');
+// ---------- E ----------
+const svE=$('svE');const LINES=[0,1,2].map(i=>[el('path',{d:'',fill:'none',stroke:'#283127','stroke-width':2},svE),el('path',{d:'',fill:'none',stroke:'#283127','stroke-width':2},svE)]);
+const HE=[[59.9,'สูตรเดียวกัน']];
+const CAPE=[[63.0,'น้ำยา<span class="hl">ฝาแฝด</span>']];
+// ---------- W ----------
+const SQL=`SELECT difficulty_level,
+       count(*) AS potions,
+       avg(len(string_split(known_ingredients, ', '))) AS avg_ingredients,
+       min(len(string_split(known_ingredients, ', '))) AS fewest,
+       max(len(string_split(known_ingredients, ', '))) AS most
+FROM harry_potter_wiki_potions
+WHERE known_ingredients IS NOT NULL
+  AND difficulty_level IN ('Beginner', 'Advanced')
+GROUP BY difficulty_level
+ORDER BY difficulty_level;`;
+const KW=/\b(SELECT|FROM|WHERE|IN|AND|IS NOT NULL|GROUP BY|ORDER BY|AS)\b/g;
+const hlSql=s=>s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/('[^']*'?)/g,'<span class="s">$1</span>').replace(KW,'<span class="k">$1</span>');
+$('rt').innerHTML='<tr><th>difficulty_level</th><th class="n">potions</th><th class="n">avg_ingredients</th><th class="n">fewest</th><th class="n">most</th></tr>'+DATA.result.map(r=>`<tr class="hlr"><td>${r[0]}</td><td class="n">${r[1]}</td><td class="n">${r[2].toFixed(1)}</td><td class="n">${r[3]}</td><td class="n">${r[4]}</td></tr>`).join('');
+$('rcount').textContent=DATA.result.length+' rows · 5 columns';
+window.DUR=96.7;
+// hold the answer headline 1.2 s before the Polyjuice card so the key line isn't rushed
+const SPLIT=50.5,HOLD=1.2;
+window.render=function(T){
+ const t=T<SPLIT?T:T<SPLIT+HOLD?SPLIT:T-HOLD;
+ for(const k in W)show(k,inW(k,t));
+ // ---- A
+ if(inW('A',t)){const A=$('A');A.style.transform=`scale(${1+0.025*eInOut(p(t,0,5))})`;
+  A.querySelector('.eyebrowD').style.opacity=eOut(p(t,0.1,0.5));
+  const [h,typing]=typeHead([['ยารักษาฝี: ',''],['8','y'],['|Polyjuice: 7','']],t,0.35,2.6);$('headA').innerHTML=h+cursorTag(t,typing);
+  $('subA').style.opacity=eOut(p(t,2.4,2.9));$('ruleA').style.width=780*eOut(p(t,0.2,1.4))+'px';$('footA').style.opacity=eOut(p(t,0.6,1.2));}
+ // ---- B
+ if(inW('B',t)){const B=$('B');B.style.transform=`scale(${1+0.02*eInOut(p(t,5,28.8))})`;
+  $('metaB').style.opacity=eOut(p(t,5.1,5.5));$('metaB').textContent=t<11.4?'Harry Potter Wiki / น้ำยา':'Harry Potter Wiki / ส่วนผสม';
+  retype($('hB'),HB,t);
+  $('noteB').textContent=t<15.1?'Source / Harry Potter Wiki (Fandom) via Kaggle · CC BY-SA 3.0 · snapshot 2021':'ส่วนผสมเดียวกัน ไม่ว่าเตรียมแบบไหน นับครั้งเดียวต่อขนาน';$('noteB').style.opacity=eOut(p(t,5.6,6.0));
+  const potOut=eOut(p(t,11.3,11.8));
+  POT.forEach(q=>{const pop=eSnap(p(t,5.4+q.o*1.2,5.7+q.o*1.2));const fade=!q.rec?eOut(p(t,8.6+q.o*0.6,9.0+q.o*0.6)):0;const r=22*pop;
+   q.e.setAttribute('d',r>0.5?`M${q.x+26-r},${q.y+26}a${r},${r} 0 1 0 ${2*r},0a${r},${r} 0 1 0 ${-2*r},0`:'');
+   q.e.setAttribute('fill',q.rec?'#C6A04D':'#283127');q.e.setAttribute('fill-opacity',1-fade);q.e.setAttribute('stroke','#C7CBBF');q.e.setAttribute('stroke-width',2);q.e.setAttribute('stroke-opacity',fade);
+   q.e.style.opacity=1-potOut});
+  const mv=t=>0;
+  ING.forEach(g=>{const pop=eSnap(p(t,11.6+g.o*1.0,11.9+g.o*1.0));const m=eInOut(p(t,15.2+g.o*0.5,16.1+g.o*0.5));
+   const x=lerp(g.x,g.cx,m),y=lerp(g.y,g.cy,m),s=lerp(52,CS,m)*pop;
+   g.e.setAttribute('x',x+(lerp(52,CS,m)-s)/2);g.e.setAttribute('y',y+(lerp(52,CS,m)-s)/2);g.e.setAttribute('width',s);g.e.setAttribute('height',s);
+   const top=g.uses===4,isVal=g.name==='valerian';
+   let fill='#424E3D';const hiTop=eOut(p(t,19.2,19.5)),hiVal=eOut(p(t,24.2,24.5));
+   if(top&&hiTop>0.5)fill='#E5764B';
+   let op=1;if(t>=16.6&&t<19.2&&g.uses!==1)op=0.35;
+   if(t>=19.2&&t<24.2&&!top)op=lerp(1,0.25,hiTop);
+   if(t>=24.2&&!isVal)op=lerp(top?1:0.25,0.2,hiVal);
+   g.e.setAttribute('fill',fill);g.e.style.opacity=op});
+  colLab.forEach((g,i)=>{g.style.opacity=eOut(p(t,16.0+i*0.08,16.4+i*0.08))});
+  let ci=-1;CALLB.forEach((c,i)=>{if(t>=c.t&&t<c.end+0.3)ci=i});
+  if(ci!==callIdx){callIdx=ci;if(ci>=0){callB.innerHTML=CALLB[ci].html;callB.style.left='392px';callB.style.width='538px';callB.style.top='640px'}}
+  if(ci>=0){const c=CALLB[ci],k=eSnap(p(t,c.t+0.1,c.t+0.45))*(1-eOut(p(t,c.end,c.end+0.25)));callB.style.opacity=k;callB.style.transform=`translateY(${(1-k)*24}px)`;
+   callB.querySelectorAll('.row').forEach((r,j)=>{r.style.opacity=eOut(p(t,c.t+0.5+j*0.18,c.t+0.8+j*0.18))})}else callB.style.opacity=0;
+  caption($('capB'),CAPB,t,28.6);}
+ // ---- C
+ if(inW('C',t)){const C=$('C');C.style.transform=`scale(${1+0.02*eInOut(p(t,28.8,47.3))})`;
+  retype($('hC'),HC,t);$('noteC').style.opacity=eOut(p(t,29.6,30.0));axis.style.opacity=eOut(p(t,29.3,29.8));
+  RB.forEach(R=>{R.label.style.opacity=eOut(p(t,R.t-0.2,R.t+0.2));
+   R.dots.forEach(d=>{const k=eSnap(p(t,R.t+d.i*0.08,R.t+0.3+d.i*0.08));d.e.setAttribute('r',20*k);
+    let op=1;HI.forEach(h=>{if(t>=h.t)op=0.35});if(HI.some(h=>h.d===d&&t>=h.t))op=1;d.e.style.opacity=op;
+    const hh=HI.find(h=>h.d===d);d.ring.setAttribute('opacity',hh?eOut(p(t,hh.t,hh.t+0.3)):0)});
+   R.mean.style.opacity=eOut(p(t,R.mt,R.mt+0.4))});
+  HI.forEach(h=>{h.g.style.opacity=eOut(p(t,h.t+0.1,h.t+0.4))});
+  caption($('capC'),CAPC,t,47.1);}
+ // ---- D
+ if(inW('D',t)){const D=$('D');D.style.transform=`scale(${1+0.025*eInOut(p(t,47.3,59.6))})`;
+  D.querySelector('.eyebrowD').style.opacity=eOut(p(t,47.4,47.8));
+  const [h,typing]=typeHead([['ไม่ใช่จำนวน|',''],['แต่คือวัตถุดิบ|และกรรมวิธี','y']],t,47.7,49.6);$('headD').innerHTML=h+cursorTag(t,typing);
+  const cd=eSnap(p(t,50.6,51.0));$('cardD').style.opacity=cd;$('cardD').style.transform=`translateY(${(1-cd)*24}px)`;
+  $('ingD').querySelectorAll('.ing').forEach((r,i)=>{r.style.opacity=eOut(p(t,50.8+i*0.08,51.1+i*0.08));const tg=TAG[r.dataset.n];
+   if(tg){const k=eOut(p(t,tg[2],tg[2]+0.3));r.classList.toggle('hi',k>0.5);r.querySelector('b').style.opacity=k}
+   else r.style.opacity*=t>52.6?lerp(1,0.45,p(t,52.6,53.0)):1});}
+ // ---- E twins
+ if(inW('E',t)){const E=$('E');E.style.transform=`scale(${1+0.02*eInOut(p(t,59.6,67.8))})`;
+  retype($('hE'),HE,t);
+  [['tw1',62.6],['tw2',64.4]].forEach(([id,t0])=>{const k=eSnap(p(t,t0,t0+0.35));$(id).style.opacity=k;$(id).style.transform=`translateY(${(1-k)*24}px)`;$(id).style.boxShadow=`${6*k}px ${6*k}px 0 #D6ED63`});
+  [0,1,2].forEach(i=>{const k=eSnap(p(t,65.4+i*0.25,65.7+i*0.25));$('ch'+i).style.opacity=k;$('ch'+i).style.transform=`scale(${0.9+0.1*k})`;
+   const y=950+i*90+28,dr=eOut(p(t,65.2+i*0.25,65.8+i*0.25));
+   const a=`M336,${780} C336,${y} 330,${y} 330,${y}`;
+   LINES[i][0].setAttribute('d',`M300,872 L300,${y} L330,${y}`);LINES[i][1].setAttribute('d',`M780,872 L780,${y} L750,${y}`);
+   LINES[i].forEach(l=>{const L=l.getTotalLength?l.getTotalLength():600;l.setAttribute('stroke-dasharray',L);l.setAttribute('stroke-dashoffset',L*(1-dr))})});
+  caption($('capE'),CAPE,t,67.6);}
+ // ---- W walkthrough (spell-colours timings + WO)
+ if(inW('W',t)){const G=$('W'),u=t-WO;G.style.transform=`scale(${1+0.02*eInOut(p(u,56.6,68.6))})`;
+  $('stepW').textContent=u<59.35?'Step 01 / Discover':u<62.6?'Step 02 / Query':'Step 03 / Take it further';
+  const catOut=eInOut(p(u,59.35,59.7));
+  $('catT').style.opacity=eOut(p(u,56.8,57.2))*(1-catOut);$('join').style.opacity=eOut(p(u,57.0,57.4))*(1-catOut);
+  const dc=eSnap(p(u,57.2,57.55));$('ds1').style.opacity=dc*(1-catOut);$('ds1').style.transform=`translateY(${(1-dc)*30-catOut*40}px)`;$('ds1').style.boxShadow=`${6*dc}px ${6*dc}px 0 #D6ED63`;
+  const ob=$('openq'),prO=u>59.1&&u<59.3;ob.style.background=prO?'#D6ED63':'';ob.style.color=prO?'#283127':'';
+  const sqOut=p(u,62.5,62.8);const sq=eOut(p(u,59.5,59.8))*(1-sqOut);$('sql').style.opacity=sq;$('sqlhead').style.opacity=sq;
+  const nch=Math.round(SQL.length*p(u,59.7,61.6));$('sql').innerHTML=hlSql(SQL.slice(0,nch))+`<span class="cur" style="opacity:${(blink(u)||nch<SQL.length)?1:0}">▌</span>`;
+  const rb=$('run'),rk=eOut(p(u,61.6,61.9));rb.style.opacity=rk*(1-sqOut);const prR=press(rb,u,62.4);rb.style.transform=`translateY(${(1-rk)*20}px) translate(${prR?3:0}px,${prR?3:0}px)`;
+  const rr_=eSnap(p(u,62.7,63.1));$('rtable').style.opacity=rr_;$('rtable').style.transform=`translateY(${(1-rr_)*30}px)`;
+  $('rt').querySelectorAll('tr').forEach((tr,i)=>{tr.style.opacity=eOut(p(u,62.9+i*0.08,63.15+i*0.08))});
+  [['csvb',63.4],['jsonb',63.48],['connb',63.56]].forEach(([id,t0])=>{const k=eOut(p(u,t0,t0+0.3));const b=$(id);b.style.opacity=k;b.style.transform=`translateY(${(1-k)*16}px)`});
+  $('csvb').style.background=(u>64.8&&u<65.3)?'#D6ED63':'#FAF9F3';$('jsonb').style.background=(u>65.0&&u<65.5)?'#D6ED63':'#FAF9F3';
+  const cbn=$('connb'),prC=u>66.5&&u<66.7;cbn.style.transform=`translate(${prC?3:0}px,${prC?3:0}px)`;cbn.style.boxShadow=prC?'none':(u>63.6?'6px 6px 0 #D6ED63':'none');
+  const co=eSnap(p(u,66.8,67.15));$('conn').style.opacity=co;$('conn').style.transform=`scale(${0.94+0.06*co})`;
+  $('conn').querySelectorAll('.row').forEach((r,i)=>{r.style.opacity=eOut(p(u,67.0+i*0.15,67.3+i*0.15))});
+  $('conn').querySelector('.for').style.opacity=eOut(p(u,67.4,67.7));
+  [['chipAI',67.5],['betaAI',67.75],['chipT',67.9]].forEach(([id,t0])=>{const k=eSnap(p(u,t0,t0+0.3));$(id).style.opacity=k;$(id).style.boxShadow=id==='betaAI'?'none':`${4*k}px ${4*k}px 0 #D6ED63`});
+  const cu=$('curW');let op=1;
+  const [ox,oy]=center('openq'),[rx,ry]=[1080-150-110,925],[cx_,cy_]=[486+80,728];
+  if(u<59.5){cursorAt(cu,u,58.2,59.05,820,1500,ox-8,oy-8);op=p(u,58.1,58.25);}
+  else if(u<62.6){cursorAt(cu,u,61.8,62.35,ox-8,oy-8,rx,ry);op=p(u,61.7,61.85);}
+  else{cursorAt(cu,u,65.8,66.45,rx,ry,cx_,cy_);op=1-p(u,67.2,67.5);}
+  cu.style.opacity=op;cu.style.transform=`scale(${prO||prR||prC?.88:1})`;
+  if(u<60.5)ripple($('ripW'),u,59.2,ox-8,oy-8);else if(u<63.5)ripple($('ripW'),u,62.4,rx,ry);else ripple($('ripW'),u,66.6,cx_,cy_);}
+ // ---- N
+ if(inW('N',t)){const N=$('N');N.style.transform=`scale(${1+0.025*eInOut(p(t,79.8,86.2))})`;
+  N.querySelector('.eyebrowD').style.opacity=eOut(p(t,79.9,80.3));
+  const [h,typing]=typeHead([['38','y'],[' จาก 72','']],t,80.1,80.8);$('headN').innerHTML=h+cursorTag(t,typing);
+  $('subN').style.opacity=eOut(p(t,80.9,81.3));
+  $('rankN').querySelectorAll('div').forEach((d,i)=>{const r=eOut(p(t,81.5+i*0.35,81.9+i*0.35));d.style.opacity=r;d.style.transform=`translateY(${(1-r)*16}px)`});}
+ // ---- X end card (relative to XS)
+ if(inW('X',t)){const XS=86.2-85.8,H=$('X');H.style.transform=`scale(${1+0.025*eInOut(p(t,86.2,95.5))})`;
+  const er=(str,a,b)=>Math.round(glen(str)*p(t,a+XS,b+XS));
+  const MK='Querious',em=er(MK+'_',91.8,92.4),mk=MK.slice(Math.min(em,MK.length));
+  $('markX').innerHTML=`<span>${mk.startsWith('Q')?'<i>Q</i>'+mk.slice(1):mk}${em<=MK.length?'<span class="cur">_</span>':''}</span>`;$('markX').style.opacity=eOut(p(t,87.8+XS,88.4+XS));
+  const UR='สำรวจข้อมูลได้ฟรี ไม่ต้องสมัครสมาชิก',eu=er(UR,92.0,92.6);$('urlX').textContent=gslice(UR,eu);$('urlX').style.opacity=eOut(p(t,87.4+XS,87.9+XS));
+  const CT='querious.studio ↗',ec=er(CT,92.1,92.7);$('ctaX').textContent=gslice(CT,ec);
+  const c=eSnap(p(t,87.1+XS,87.5+XS))*(ec<glen(CT)?1:0);$('ctaX').style.opacity=c;$('ctaX').style.boxShadow=`${6*c}px ${6*c}px 0 #F4F1E9`;
+  const S1='มาหาคำตอบกัน',es=er(S1,92.4,93.4);$('subX').innerHTML=gslice(S1,es);
+  const s=eOut(p(t,86.3+XS,86.8+XS));$('subX').style.opacity=s;$('subX').style.transform=`translateY(${(1-s)*20}px)`;
+  const EB='Querious / Open data / ',EB2='Potions',ee=er(EB+EB2,92.9,93.7);
+  const eb=H.querySelector('.eyebrowD');eb.innerHTML=EB.slice(Math.min(ee,EB.length))+`<b>${EB2.slice(Math.max(0,ee-EB.length))}</b>`;eb.style.opacity=eOut(p(t,86.0+XS,86.4+XS));
+  const H2='ข้อมูลพร้อมแล้ว',LH=glen(H2);const n=Math.round(LH*p(t,86.0+XS,86.7+XS)),eh=er(H2,93.2,94.2);
+  $('bigX').innerHTML=gslice(gslice(H2,0,n),eh)+cursorTag(t,n<LH||(eh>0&&eh<LH));
+  H.style.opacity=1-p(t,94.4+XS,94.9+XS);}
+ const dark=t<5.0||(t>=47.3&&t<59.6)||t>=79.8;
+ $('logoL').style.display=dark?'block':'none';$('logoL').style.opacity=1-p(t,93.7,94.5);$('logoD').style.display=dark?'none':'block';
+ const wp=$('wipe');let on=false;
+ for(const m of CUTS){const a=m-0.35,b=m+0.35;if(t>a&&t<b){on=true;const w1=eSnap(p(t,a,m)),w2=eSnap(p(t,m,b));wp.style.top=(t<m?1920*(1-w1):0)+'px';wp.style.bottom=(1920*w2)+'px';}}
+ wp.style.display=on?'block':'none';
+ $('grain').style.transform=`translate(${(Math.floor(t*12)*13)%40-20}px,${(Math.floor(t*12)*29)%40-20}px)`;
+};
+</script></body></html>

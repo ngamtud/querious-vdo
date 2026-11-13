@@ -2,6 +2,21 @@
 
 Things that went wrong or needed a second pass while making episodes, and the rule that came out of each. Newest first. `CLAUDE.md` links here; the short rules are also copied into `CLAUDE.md`.
 
+## Episode: potion-ingredients-th (2026-11-13)
+
+- **Sizing EN slots ×1.35 worked:** the first Paxa pass fit every line at ≤ 1.15× except the key message line (v10, 1.29×).
+- **Never rush the key line.** "ความยากอยู่ที่ตัววัตถุดิบและกรรมวิธี | ไม่ใช่จำนวน" got 1.2 s more by holding the answer headline before the Polyjuice card (`render(T)` freeze at 50.5 s, later voice/sfx/chunks +1.2 s, both languages). It now plays at 1.0×; the English gets a beat of silence on the same headline.
+- **Names in English inside Thai lines** (Polyjuice, Boomslang, Fluxweed, Lacewing, Wolfsbane Potion, Befuddlement Draught, valerian) read well; on screen the recipe stays as the wiki writes it, tags are Thai (หายาก, พระจันทร์เต็มดวง, 21 วัน).
+- **Loudness:** Paxa −2 dB → −17.1 LUFS, −1.5 dBFS (EN −17.4 LUFS, −1.5 dBFS).
+
+## Episode: potion-ingredients (EN, 2026-11-13)
+
+- **Normalise free-text ingredient lists by hand, in code.** `make-data.py` holds each potion's canonical ingredient list (prep and quantity dropped, aconite = wolfsbane, the source's "Vervain, infusion" as one item, animal parts kept apart) and asserts every number in the script (96 ingredients, 73/13/6/4 reuse, beginner and advanced average 4.0).
+- **On-screen SQL should prove the headline, not re-do the cleaning.** Normalising names in SQL would need a long CASE; the walkthrough instead shows the difficulty query (avg/min/max of `len(string_split(...))`), which returns the key result (Advanced 4.0, Beginner 4.0) and matches the canonical counts for those two levels.
+- **Unit chart in two steps:** 72 potion circles (34 without a recipe fade) → crossfade to 96 ingredient squares → squares fly into four "used in N potions" stacks. Circles for potions, squares for ingredients keep the two units apart.
+- **Dot-plot labels go under the dot row**, not beside the dot, so they don't hit stacked neighbours.
+- **Slots sized for Thai from the start:** each English slot ≈ voice length × 1.35, so the Thai version shouldn't need trimming.
+- **Loudness:** default voice peaked at −1.2 dBFS; voice −0.5 dB → −17.4 LUFS, −1.7 dBFS.
 ## Episode: spell-colours-th (2026-11-12)
 
 - **Test proper names with Paxa before the full run.** A 9-line voice test (Thai spellings vs English spellings of Stupefy / Expelliarmus, Unforgivables, group names) showed Paxa reads English spell names well when written in English inside the Thai line ("อย่าง Stupefy และ Expelliarmus"). Run such a test as its own throwaway episode on a separate branch: push with `[skip ci]`, then `gh workflow run voice-paxa.yml --ref <branch> -f episodes=<test-ep>` so nothing else is re-voiced.
