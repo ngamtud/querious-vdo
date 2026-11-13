@@ -283,8 +283,11 @@ const KW=/\b(SELECT|FROM|WHERE|IN|AND|IS NOT NULL|GROUP BY|ORDER BY|AS)\b/g;
 const hlSql=s=>s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/('[^']*'?)/g,'<span class="s">$1</span>').replace(KW,'<span class="k">$1</span>');
 $('rt').innerHTML='<tr><th>difficulty_level</th><th class="n">potions</th><th class="n">avg_ingredients</th><th class="n">fewest</th><th class="n">most</th></tr>'+DATA.result.map(r=>`<tr class="hlr"><td>${r[0]}</td><td class="n">${r[1]}</td><td class="n">${r[2].toFixed(1)}</td><td class="n">${r[3]}</td><td class="n">${r[4]}</td></tr>`).join('');
 $('rcount').textContent=DATA.result.length+' rows · 5 columns';
-window.DUR=95.5;
-window.render=function(t){
+window.DUR=96.7;
+// hold the answer headline 1.2 s before the Polyjuice card so the key line isn't rushed
+const SPLIT=50.5,HOLD=1.2;
+window.render=function(T){
+ const t=T<SPLIT?T:T<SPLIT+HOLD?SPLIT:T-HOLD;
  for(const k in W)show(k,inW(k,t));
  // ---- A
  if(inW('A',t)){const A=$('A');A.style.transform=`scale(${1+0.025*eInOut(p(t,0,5))})`;

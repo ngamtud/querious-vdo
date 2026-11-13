@@ -5,7 +5,7 @@
     "height": 1920,
     "fps": 30
   },
-  "duration": 95.5,
+  "duration": 96.7,
   "chunks": [
     [
       0,
@@ -21,23 +21,23 @@
     ],
     [
       47.3,
-      59.6
+      60.8
     ],
     [
-      59.6,
-      67.8
+      60.8,
+      69.0
     ],
     [
-      67.8,
-      79.8
+      69.0,
+      81.0
     ],
     [
-      79.8,
-      86.2
+      81.0,
+      87.4
     ],
     [
-      86.2,
-      95.5
+      87.4,
+      96.7
     ]
   ],
   "scene": "scene.html",
@@ -100,32 +100,32 @@
     },
     {
       "id": "v11",
-      "at": 51.3,
+      "at": 52.5,
       "text": "Polyjuice needs Boomslang skin, fluxweed picked at full moon, and lacewing flies stewed for twenty-one days."
     },
     {
       "id": "v12",
-      "at": 59.9,
+      "at": 61.1,
       "text": "And two potions share the exact same recipe: the Befuddlement Draught and the Confusing Concoction."
     },
     {
       "id": "v13",
-      "at": 68.1,
+      "at": 69.3,
       "text": "We counted every recipe on Querious, with one SQL query."
     },
     {
       "id": "v14",
-      "at": 73.8,
+      "at": 75.0,
       "text": "Group them your way, then download the result, or connect it to your own AI and tools."
     },
     {
       "id": "v15",
-      "at": 80.1,
+      "at": 81.3,
       "text": "Just remember: only thirty-eight potions have a recipe, and the ingredient groups are ours."
     },
     {
       "id": "v16",
-      "at": 86.6,
+      "at": 87.8,
       "text": "The data is open. The question is yours."
     }
   ],
@@ -141,9 +141,9 @@
   },
   "sfx": {
     "click": [
-      70.4,
-      73.6,
-      77.8
+      71.6,
+      74.8,
+      79.0
     ]
   }
 }
