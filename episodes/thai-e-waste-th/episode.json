@@ -72,7 +72,7 @@
     {
       "id": "v1",
       "at": 0.3,
-      "text": "ไทยห้ามนำเข้าขยะอิเล็กทรอนิกส์ ตั้งแต่ปีสองพันยี่สิบ | แล้วทุกวันนี้ ยังเข้ามาผ่านศุลกากรอีกเท่าไหร่",
+      "text": "ไทยห้ามนำเข้าขยะอิเล็กทรอนิกส์ตั้งแต่ปีสองพันยี่สิบ | ทุกวันนี้ยังเข้ามาผ่านศุลกากรอีกเท่าไหร่",
       "text_en": "Thailand banned electronic waste imports in twenty twenty. So how much still comes in, through customs?"
     },
     {
@@ -96,7 +96,7 @@
     {
       "id": "v5",
       "at": 29.0,
-      "text": "กันยายนปีสองพันยี่สิบ ประกาศห้ามนำเข้ามีผล | ปีนั้นราวสองร้อยสี่สิบตัน จากแค่ห้าประเทศ",
+      "text": "กันยายนปีสองพันยี่สิบ ประกาศห้ามนำเข้ามีผล | ปีนั้นราวสองร้อยสี่สิบตัน จากห้าประเทศ",
       "text_en": "In September twenty twenty, the import ban took effect. That year: about two hundred forty tonnes, from just five countries."
     },
     {
@@ -162,7 +162,7 @@
     {
       "id": "v16",
       "at": 96.0,
-      "text": "เราหาคำตอบนี้บนคิวเรียส | จากข้อมูลศุลกากรของ UN Comtrade",
+      "text": "เราหาคำตอบนี้บนคิวเรียส | จากข้อมูล UN Comtrade",
       "text_en": "We found this on Querious, in customs data from U.N. Comtrade."
     },
     {
