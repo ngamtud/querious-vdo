@@ -2,6 +2,14 @@
 
 Things that went wrong or needed a second pass while making episodes, and the rule that came out of each. Newest first. `CLAUDE.md` links here; the short rules are also copied into `CLAUDE.md`.
 
+## Episode: thai-e-waste-th (2026-11-18)
+
+- **Policy facts checked before the Thai voice.** NCPO order 4/2559 (20 Jan 2016, section 44) exempted factory types 101, 105 and 106 (hazardous-waste disposal, sorting/landfill, recycling) and energy projects from comprehensive town plans; the House voted to repeal it on 23 Jul 2025. The 2020 ban (MOC notice B.E. 2563, 428 items, in force 15 Sep 2020) listed old HS codes; a 2025 notice (463 items, HS 2022 incl. 8549, in force 24 Jun 2025) replaced it. Neither later event is in `querious_timeline_events` yet.
+- **Slots sized at ~1.1× the EN voice were enough** with lines trimmed ~30%: first Paxa pass fit everything except v16 (1.30×); second pass max 1.22×.
+- **A wide 2025 value label clipped at the chart's clip edge** in the 15-year view ("1,239 ตัน" is longer than "1,239 t"); its x is clamped to the plot's right edge.
+- **Years on screen stay CE (2012…2026)** to match the chart axis; the ban card adds "(2563)" once, and the order keeps its own number 4/2559.
+- **Loudness:** Paxa −2 dB → −17.1 LUFS / −2.5 dBFS (EN −17.4).
+
 ## Episode: thai-e-waste (EN, 2026-11-18)
 
 - **First trade-data episode (UN Comtrade).** Weight is missing in many months from 2019 (China, USA, France carry value with no weight), and the World totals dataset does not match the sum of partner rows (2020: Korea alone 241 t vs a World total of 120 t). Rule: pick one base and use it for every number in the clip; here every tonne is a sum of partner rows, so the big picture and the country scenes add up.

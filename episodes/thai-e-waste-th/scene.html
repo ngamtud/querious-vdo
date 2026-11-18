@@ -368,7 +368,7 @@ window.render=function(t){
   const dim=1-0.5*eOut(p(t,51.0,51.5));
   barB.forEach((b,i)=>{const t0=BT[i],g=eOut(p(t,t0,t0+(i===13?1.0:0.6))),hh=(BY0-byB(b.d.v))*g,x=bxB(i),w=bwB();
    b.r.setAttribute('x',x);b.r.setAttribute('width',w);b.r.setAttribute('y',BY0-hh);b.r.setAttribute('height',hh);
-   b.l.setAttribute('x',Math.min(x+w/2,BX1+4-b.l.getComputedTextLength()/2));b.l.setAttribute('y',BY0-hh-12);if(b.s){b.s.setAttribute('x',x+w/2);b.s.setAttribute('y',BY0-hh-44)}
+   b.l.setAttribute('x',b.d.y===2025?Math.min(x+w/2,BX1+2-80):x+w/2);b.l.setAttribute('y',BY0-hh-12);if(b.s){b.s.setAttribute('x',x+w/2);b.s.setAttribute('y',BY0-hh-44)}
    let lo;const ap=eOut(p(t,t0+0.4,t0+0.7));
    if(!b.d.all)lo=ap*(b.d.v<30?(i===3?1:1)*(1-p(t,24.6,24.9)):(1-p(t,45.8,46.1)));
    else if(b.d.y===2025){lo=ap;b.l.textContent=g>0?fmt(b.d.v*g)+' ตัน':'';b.r.style.opacity=Math.max(dim,0.75)}
