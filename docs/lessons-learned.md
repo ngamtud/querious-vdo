@@ -2,6 +2,15 @@
 
 Things that went wrong or needed a second pass while making episodes, and the rule that came out of each. Newest first. `CLAUDE.md` links here; the short rules are also copied into `CLAUDE.md`.
 
+## Episode: thai-e-waste v3, quantity only (user review, 2026-11-18)
+
+- **Voice must name what the picture highlights.** The 2015 bar got a lime block but the VO skipped from "a few tonnes" to 2016; v3 now says "In 2015, it doubled". Rule: every highlighted bar or marker gets its own words in the line that plays over it.
+- **Use the user's narrative verbs.** "By 2019, it had become 407 tonnes" (Thai: พอปีสองพันสิบเก้า กลายเป็น…), then the ban as its own sentence.
+- **The user's premise vs the data, again.** The brief said Jan–May 2026 was lower than the same months of 2025; the data says 409 t vs 51 t (8×). It is only lower than the whole of 2025. The clip uses the data and says "eight times the same months of 2025".
+- **Scope cut:** value line, top-sender cards, 9-in-10 grid and partner counts were dropped; the clip is about tonnes only, and "Who sends the most?" became the question that leads into the Querious walkthrough (the result table is shown without highlighting a row). 118.8 s → 97.4 s.
+- **Monthly close-up for a mid-year event.** The yearly chart crossfades into monthly bars (Jan 2025 – May 2026, month numbers so both languages share the axis) with the 24 Jun 2025 ban-expansion marker and brackets for Jul–Dec 2025 and Jan–May 2025/2026. A red note line says HS6 data can't show which items fall under the ban.
+- **Bracket labels near the right edge or a tall bar:** keep them to the number ("409 t") and let the caption carry the period name.
+
 ## Episode: thai-e-waste-th (2026-11-18)
 
 - **Policy facts checked before the Thai voice.** NCPO order 4/2559 (20 Jan 2016, section 44) exempted factory types 101, 105 and 106 (hazardous-waste disposal, sorting/landfill, recycling) and energy projects from comprehensive town plans; the House voted to repeal it on 23 Jul 2025. The 2020 ban (MOC notice B.E. 2563, 428 items, in force 15 Sep 2020) listed old HS codes; a 2025 notice (463 items, HS 2022 incl. 8549, in force 24 Jun 2025) replaced it. Neither later event is in `querious_timeline_events` yet.

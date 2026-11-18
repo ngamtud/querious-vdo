@@ -49,3 +49,12 @@ FROM comtrade_thailand_e_waste_imports_by_partner
 WHERE year(period_start) = 2025
 GROUP BY partner_name
 ORDER BY tonnes DESC NULLS LAST;
+
+-- 7. monthly: all e-waste codes per month, Jan 2025 to May 2026 (periods: Jan-May 2025 50.7 t, Jul-Dec 2025 1,128.4 t, Jan-May 2026 408.8 t)
+SELECT strftime(period_start, '%Y-%m') AS m, round(sum(net_weight_kg)/1e3, 1) AS tonnes
+FROM comtrade_thailand_e_waste_imports_by_partner
+WHERE period_start >= DATE '2025-01-01'
+GROUP BY 1 ORDER BY 1;
+-- Ban expansion marker (not yet in querious_timeline_events): MOC notice B.E. 2568, 463 items on HS 2022 incl. 8549,
+-- in force 24 Jun 2025 (Enviliance report 14102; cabinet approval 6 Feb 2025 via ONEP).
+-- Queries 3-5 (top sender, USA by group, partner counts) were used by an earlier cut and are kept for reference.

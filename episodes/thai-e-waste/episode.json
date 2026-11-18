@@ -5,7 +5,7 @@
     "height": 1920,
     "fps": 30
   },
-  "duration": 118.8,
+  "duration": 97.4,
   "chunks": [
     [
       0,
@@ -17,43 +17,39 @@
     ],
     [
       14,
-      39
+      28
     ],
     [
-      39,
-      45.6
+      28,
+      42
     ],
     [
-      45.6,
-      57
+      42,
+      54
     ],
     [
-      57,
-      59.6
+      54,
+      62
     ],
     [
-      59.6,
-      75.2
+      62,
+      71.4
     ],
     [
-      75.2,
-      81.6
+      71.4,
+      74.2
     ],
     [
-      81.6,
-      90.2
+      74.2,
+      81
     ],
     [
-      90.2,
-      95.6
+      81,
+      88.2
     ],
     [
-      95.6,
-      109.6
-    ],
-    [
-      109.6,
-      118.8
+      88.2,
+      97.4
     ]
   ],
   "scene": "scene.html",
@@ -77,86 +73,66 @@
     {
       "id": "v3",
       "at": 14.4,
-      "text": "For years, there was almost nothing: a few tonnes of battery waste a year."
+      "text": "Until twenty fourteen, it was one to three tonnes of battery waste a year. In twenty fifteen, it doubled, to six and a half."
     },
     {
       "id": "v4",
-      "at": 19.0,
-      "text": "In twenty sixteen, a military government order exempted some factories, including waste plants, from town-planning rules. By twenty nineteen: four hundred tonnes a year."
+      "at": 21.6,
+      "text": "In January twenty sixteen, a military government order exempted some factories, including waste plants, from town-planning rules. By twenty nineteen, it had become four hundred and seven tonnes."
     },
     {
       "id": "v5",
-      "at": 29.0,
-      "text": "In September twenty twenty, the import ban took effect. That year: about two hundred forty tonnes, from just five countries."
+      "at": 33.2,
+      "text": "In September twenty twenty, Thailand's import ban took effect. That year: about two hundred forty tonnes."
     },
     {
       "id": "v6",
-      "at": 36.0,
+      "at": 39.6,
       "text": "The next year: three hundred thirty-five."
     },
     {
       "id": "v7",
-      "at": 39.4,
+      "at": 42.6,
       "text": "From twenty twenty-two, the customs codes got more detailed, so we can see every kind of e-waste."
     },
     {
       "id": "v8",
-      "at": 46.0,
+      "at": 49.0,
       "text": "And twenty twenty-five was the biggest year on record: over twelve hundred tonnes."
     },
     {
       "id": "v9",
-      "at": 51.0,
-      "text": "But the value fell, from seven million dollars to one and a half. More waste, less money."
+      "at": 54.4,
+      "text": "In June twenty twenty-five, the ban was expanded to these new codes. Yet over eleven hundred tonnes were declared in the second half of that year."
     },
     {
       "id": "v10",
-      "at": 57.4,
-      "text": "So who sends the most?"
+      "at": 63.0,
+      "text": "And in the first five months of twenty twenty-six: four hundred and nine tonnes. Eight times the same months of twenty twenty-five."
     },
     {
       "id": "v11",
-      "at": 60.0,
-      "text": "The top sender keeps changing. The U.S. in twenty eighteen. Then Japan. South Korea through the ban years. Then Japan again: seven hundred tonnes, almost all battery waste."
+      "at": 71.8,
+      "text": "So who sends the most?"
     },
     {
       "id": "v12",
-      "at": 70.8,
-      "text": "Then in twenty twenty-five, the U.S. came back, with eleven hundred tonnes."
+      "at": 74.6,
+      "text": "Find out on Querious, in customs data from U.N. Comtrade."
     },
     {
       "id": "v13",
-      "at": 75.6,
-      "text": "That's about nine in every ten tonnes, mostly general e-waste and scrap for precious metals."
-    },
-    {
-      "id": "v14",
-      "at": 82.0,
-      "text": "In the ban year, only five countries sent battery waste. By twenty twenty-five, it was thirteen. Count every kind of e-waste, and it's twenty-three."
-    },
-    {
-      "id": "v15",
-      "at": 90.6,
-      "text": "Over twelve hundred tonnes a year, declared at customs. Where does it all end up?"
-    },
-    {
-      "id": "v16",
-      "at": 96.0,
-      "text": "We found this on Querious, in customs data from U.N. Comtrade."
-    },
-    {
-      "id": "v17",
-      "at": 100.4,
+      "at": 79.0,
       "text": "Group by country, press Run, and see who sends the most."
     },
     {
-      "id": "v18",
-      "at": 105.2,
+      "id": "v14",
+      "at": 83.8,
       "text": "Or connect Querious to your own A.I. and tools, and just ask."
     },
     {
-      "id": "v19",
-      "at": 110.0,
+      "id": "v15",
+      "at": 88.6,
       "text": "The data is open. The question is yours."
     }
   ],
@@ -172,9 +148,9 @@
   },
   "sfx": {
     "click": [
-      99.9,
-      102.8,
-      105.6
+      78.5,
+      81.4,
+      84.2
     ]
   }
 }

@@ -127,7 +127,6 @@ svg text.halo{paint-order:stroke;stroke:#F4F1E9;stroke-width:8px;stroke-linejoin
 <div id="B" class="scene light">
  <div class="top L"><div class="brand"><i>Q</i>uerious<span class="cur">_</span></div><div class="tag mono">Insight</div></div>
  <div class="meta mono L" id="metaB">Battery waste / tonnes per year / imports</div>
- <div class="legend mono L" id="legC"><span><i style="background:#424E3D"></i>Tonnes</span><span><i style="border:2px dashed #283127;width:18px;height:18px"></i>Jan–May</span><span><i style="background:#637B91;height:6px"></i>Value US$</span></div>
  <svg id="chartB" class="abs" width="1080" height="1920"></svg>
  <div class="note mono L R" id="noteB" style="top:1196px"></div>
  <div class="caption L R" id="capB"></div>
@@ -136,38 +135,6 @@ svg text.halo{paint-order:stroke;stroke:#F4F1E9;stroke-width:8px;stroke-linejoin
 <div id="Q" class="scene dark stmt">
  <div class="eyebrowD mono L">By weight / <b>Partner countries</b></div>
  <div class="head L" id="headQ"></div>
-</div>
-<!-- T: top sender by year -->
-<div id="T" class="scene light">
- <div class="top L"><div class="brand"><i>Q</i>uerious<span class="cur">_</span></div><div class="tag mono">By weight</div></div>
- <div class="meta mono L">#1 sender by weight / tonnes</div>
- <div class="h2 L" id="hT"></div>
- <div id="tcards"></div>
- <div class="note mono L R" id="noteT" style="top:1196px">Source / UN Comtrade · recorded weight only</div>
- <div class="caption L R" id="capT"></div>
-</div>
-<!-- G: 9 in 10 -->
-<div id="G" class="scene light">
- <div class="top L"><div class="brand"><i>Q</i>uerious<span class="cur">_</span></div><div class="tag mono">2025</div></div>
- <div class="meta mono L">2025 / all e-waste / 1 square = 1%</div>
- <div class="h2 L" id="hG"></div>
- <svg id="chartG" class="abs" width="1080" height="1920"></svg>
- <div class="note mono L R" id="noteG" style="top:1196px">Source / UN Comtrade · 2025 · recorded weight</div>
-</div>
-<!-- M: partner countries -->
-<div id="M" class="scene light">
- <div class="top L"><div class="brand"><i>Q</i>uerious<span class="cur">_</span></div><div class="tag mono">Insight</div></div>
- <div class="meta mono L">Countries sending battery waste / per year</div>
- <div class="h2 L" id="hM"></div>
- <svg id="chartM" class="abs" width="1080" height="1920"></svg>
- <div class="note mono L R" id="noteM" style="top:1196px">Source / UN Comtrade · battery-waste codes</div>
- <div class="caption L R" id="capM"></div>
-</div>
-<!-- F: open question -->
-<div id="F" class="scene dark stmt">
- <div class="eyebrowD mono L">Open data / <b>Open question</b></div>
- <div class="head L" id="headF"></div>
- <div class="foot mono L" id="footF">2025 · 1,239 tonnes<br>Declared at customs</div>
 </div>
 <!-- W: walkthrough -->
 <div id="W" class="scene light">
@@ -228,16 +195,19 @@ const pop=(e,k,dy=20)=>{e.style.opacity=k;e.style.transform=`translateY(${(1-k)*
 const fmt=v=>Math.round(v).toLocaleString('en-US');
 const AX='#8B9485',GR='#E1E4DA',TX='#455044';
 
-// ---------- B: one chart, battery waste 2012-2021 → all e-waste 2022-2026 → close-up ----------
-const svB=$('chartB'),BX0=250,BX1=900,BY0=1110,BY1=620,BWD=BX1-BX0,VMAX=8;
-const YRS=DATA.battery.map(d=>({y:d[0],v:d[1],all:false})).concat(DATA.all.map(d=>({y:d[0],v:d[1],usd:d[2],all:true})));
+const U_T=' t',L_JM='JAN–MAY',L_JD='JUL–DEC 2025',L_EXP='JUN 2025 · BAN EXPANDED',M_BAT='Battery waste / tonnes per year / imports',M_ALL='E-waste / tonnes per year / imports',M_MON='E-waste / tonnes per month / 2025–2026';
+const QHEAD=[['Who sends|',''],['the most?','y']];
+// ---------- B: one chart, battery waste 2012-2021 → all e-waste 2022-2026 → monthly 2025-2026 ----------
+const svB=$('chartB'),BX0=250,BX1=900,BY0=1110,BY1=620,BWD=BX1-BX0;
+const YRS=DATA.battery.map(d=>({y:d[0],v:d[1],all:false})).concat(DATA.all.map(d=>({y:d[0],v:d[1],all:true})));
 let YM=10,XS=0,XN=10;
-const colW=()=>BWD/XN, bxL=i=>BX0+(i-XS)*colW(), bwB=()=>colW()*0.62, bxB=i=>bxL(i)+(colW()-bwB())/2, byB=v=>BY0-v/YM*(BY0-BY1), vyB=v=>BY0-v/VMAX*(BY0-BY1);
+const colW=()=>BWD/XN, bxL=i=>BX0+(i-XS)*colW(), bwB=()=>colW()*0.62, bxB=i=>bxL(i)+(colW()-bwB())/2, byB=v=>BY0-v/YM*(BY0-BY1);
 const cpB=el('clipPath',{id:'cpB'},svB);el('rect',{x:BX0-2,y:420,width:BWD+8,height:800},cpB);
-const gridB=el('g',{},svB);
+const yearG=el('g',{},svB);
+const gridB=el('g',{},yearG);
 const tickB=[[5,'a'],[10,'a'],[200,'b'],[400,'b'],[500,'c'],[1000,'c']].map(([v,s])=>({v,s,l:el('line',{x1:BX0,x2:BX1,stroke:GR,'stroke-width':2},gridB),t:txt(gridB,{x:BX0-14,'text-anchor':'end','font-size':22,fill:TX,'font-weight':500},fmt(v))}));
 txt(gridB,{x:BX0-14,y:BY0+8,'text-anchor':'end','font-size':22,fill:TX,'font-weight':500},'0');
-const plB=el('g',{'clip-path':'url(#cpB)'},svB);
+const plB=el('g',{'clip-path':'url(#cpB)'},yearG);
 const yrL=YRS.map(d=>txt(plB,{y:BY0+40,'text-anchor':'middle','font-size':20,fill:TX,'font-weight':500},String(d.y)));
 const axB=el('line',{x1:BX0,x2:BX0,y1:BY0,y2:BY0,stroke:'#283127','stroke-width':3},svB);
 function marker(par,y,label,col,anchor){const g=el('g',{},par);el('line',{x1:0,x2:0,y1:y+14,y2:BY0,stroke:col,'stroke-width':3,'stroke-dasharray':'8 7'},g);
@@ -246,53 +216,33 @@ const mkN=marker(plB,530,'JAN 2016 · NCPO ORDER 4/2559','#283127','start');
 const mkBan=marker(plB,578,'SEP 2020 · IMPORT BAN','#B4502C','end');
 const mkHS=marker(plB,530,'2022 → ALL CODES','#283127','start');
 const chips=el('g',{},plB);['BATTERIES','CIRCUIT BOARDS','PRECIOUS METALS','OTHER E-WASTE'].forEach((s,i)=>{const g=el('g',{transform:`translate(0,${640+i*56})`},chips);
- el('rect',{x:0,y:0,width:200,height:42,fill:'#FAF9F3',stroke:'#283127','stroke-width':2},g);txt(g,{x:12,y:28,'font-size':17,fill:'#283127'},s);g.dataset.i=i});
+ el('rect',{x:0,y:0,width:200,height:42,fill:'#FAF9F3',stroke:'#283127','stroke-width':2},g);txt(g,{x:12,y:28,'font-size':17,fill:'#283127'},s)});
 const hl15=el('rect',{y:0,height:0,fill:'#D6ED63'},plB);
-const BT=[15.0,15.15,15.3,16.6,20.1,25.5,25.8,26.1,30.4,36.3,46.4,46.55,46.7,47.2,46.85];
+const BT=[15.0,15.15,15.3,17.9,22.7,29.4,29.7,30.0,36.0,39.9,49.3,49.45,49.6,50.1,49.75];
 const barB=YRS.map((d,i)=>{const ghost=d.y===2026,hot=d.y===2025||d.y===2020;
  return {d,ghost,r:el('rect',ghost?{y:BY0,height:0,fill:'none',stroke:'#283127','stroke-width':3,'stroke-dasharray':'9 7'}:{y:BY0,height:0,fill:hot?'#DD6B43':'#424E3D'},plB),
-  l:txt(plB,{'text-anchor':'middle','font-size':d.y===2025?32:d.v>=30?22:20,fill:hot?'#B4502C':'#283127',class:'halo'},d.v>=30?fmt(d.v)+(d.y===2025?' t':''):d.v.toFixed(1)),
-  s:ghost?txt(plB,{'text-anchor':'middle','font-size':18,fill:'#677166'},'JAN–MAY'):null}});
-const vLine=el('polyline',{fill:'none',stroke:'#637B91','stroke-width':6,'stroke-linejoin':'round'},svB);
-const VI=[10,11,12,13];
-const vDots=VI.map(()=>el('rect',{width:18,height:18,fill:'#FAF9F3',stroke:'#637B91','stroke-width':4,opacity:0},svB));
-const vL0=txt(svB,{'font-size':28,fill:'#3F5266',class:'halo',opacity:0},'$7.2M');
-const vL3=txt(svB,{'font-size':28,fill:'#3F5266',class:'halo',opacity:0},'$1.5M');
-const CAPB=[[15.6,'Tonnes: <span class="hl">1.8–3.2</span>'],[16.9,'2015: <span class="hl">2×</span>'],[19.6,'Order <span class="hl">4/2559</span>'],[26.4,'2019: <span class="hl">407 t</span>'],[30.6,'Ban year: <span class="hl">242 t</span>'],[33.4,'<span class="hl">5</span> countries'],[36.6,'2021: <span class="hl">335 t</span>'],
- [41.0,'Now: <span class="hl">all e-waste</span>'],[48.0,'Record: <span class="hl">1,239 t</span>'],[52.4,'$7.2M → <span class="hl">$1.5M</span>'],[54.4,'<span class="hl">Less money.</span>']];
-
-// ---------- T: top sender cards ----------
-const NAMES={'USA':'USA','Japan':'Japan','Rep. of Korea':'Korea','Other Asia, nes':'Other Asia*'};
-const TT=[61.9,64.1,65.0,65.4,67.6,68.9,69.3,69.7];
-$('tcards').innerHTML=DATA.top.map((d,i)=>`<div class="tc" id="tc${i}" style="left:${150+(i%2)*402}px;top:${580+Math.floor(i/2)*135}px"><div class="yr">${d[0]}</div>`+
- (d[0]===2025?`<div class="q" id="tq">?</div><div class="nm" id="tn7" style="opacity:0">USA</div><div class="tn" id="tt7" style="opacity:0;color:#B4502C">${fmt(d[2])} t</div>`:`<div class="nm">${NAMES[d[1]]}</div><div class="tn">${fmt(d[2])} t</div>`)+`</div>`).join('');
-const TREV=72.6;
-const CAPT=[[73.4,'<span class="hl">USA</span> is back']];
-
-// ---------- G: 10 x 10 grid ----------
-const svG=$('chartG'),GS=44,GG=5,GX=298,GY=690,NU=Math.round(DATA.usa2025.usa/DATA.usa2025.total*100);
-const sq=[];for(let i=0;i<100;i++){const r=Math.floor(i/10),c=i%10;sq.push(el('rect',{x:GX+c*(GS+GG),y:GY+r*(GS+GG),width:GS,height:GS,fill:'#E1E4DA'},svG))}
-const legG=el('g',{},svG);
-el('rect',{x:150,y:598,width:22,height:22,fill:'#DD6B43'},legG);txt(legG,{x:184,y:617,'font-size':21,fill:TX},'USA · '+fmt(DATA.usa2025.usa)+' T');
-el('rect',{x:450,y:598,width:22,height:22,fill:'#839B45'},legG);txt(legG,{x:484,y:617,'font-size':21,fill:TX},'ALL OTHERS · '+fmt(DATA.usa2025.total-DATA.usa2025.usa)+' T');
-const brkG=txt(svG,{x:150,y:660,'font-size':19,fill:'#677166'},'USA: OTHER E-WASTE 552 T · PRECIOUS-METAL SCRAP 423 T');
-
-// ---------- M: partner countries ----------
-const svM=$('chartM'),MX0=250,MX1=900,MY0=1110,MY1=650,MMAX=25,PT=DATA.partners,MST=(MX1-MX0)/PT.length,MBW=30;
-const mx=i=>MX0+MST*i+(MST-MBW)/2, my=v=>MY0-v/MMAX*(MY0-MY1);
-const gridM=el('g',{},svM);
-[0,10,20].forEach(v=>{el('line',{x1:MX0,x2:MX1,y1:my(v),y2:my(v),stroke:GR,'stroke-width':2},gridM);txt(gridM,{x:MX0-14,y:my(v)+8,'text-anchor':'end','font-size':22,fill:TX,'font-weight':500},String(v))});
-PT.forEach((d,i)=>txt(gridM,{x:mx(i)+MBW/2,y:MY0+38,'text-anchor':'middle','font-size':18,fill:TX,'font-weight':500},'’'+String(d[0]).slice(2)));
-const axM=el('line',{x1:MX0,x2:MX0,y1:MY0,y2:MY0,stroke:'#283127','stroke-width':3},svM);
-const ghM=el('rect',{x:mx(PT.length-1)-6,width:MBW+12,y:my(PT[PT.length-1][2]),height:MY0-my(PT[PT.length-1][2]),fill:'none',stroke:'#283127','stroke-width':3,'stroke-dasharray':'9 7',opacity:0},svM);
-const ghL=txt(svM,{x:mx(PT.length-1)+MBW+6,y:my(PT[PT.length-1][2])-16,'text-anchor':'end','font-size':22,fill:'#283127',class:'halo',opacity:0},'23 · ALL E-WASTE CODES');
-const barM=PT.map((d,i)=>{const ban=d[0]===2020,last=d[0]===2025;
- return {d,r:el('rect',{x:mx(i),width:MBW,y:MY0,height:0,fill:ban?'#DD6B43':'#424E3D'},svM),
-  l:txt(svM,{x:mx(i)+MBW/2,y:my(d[1])-12,'text-anchor':'middle','font-size':ban||last?28:18,fill:ban?'#B4502C':'#283127',class:'halo',opacity:0},String(d[1]))}});
-const CAPM=[[83.4,'Ban year: <span class="hl">5</span>'],[85.6,'2025: <span class="hl">13</span>'],[87.8,'All codes: <span class="hl">23</span>']];
+  l:txt(plB,{'text-anchor':'middle','font-size':d.y===2025?32:d.v>=30?22:20,fill:hot?'#B4502C':'#283127',class:'halo'},d.v>=30?fmt(d.v)+(d.y===2025?U_T:''):d.v.toFixed(1)),
+  s:ghost?txt(plB,{'text-anchor':'middle','font-size':18,fill:'#677166'},L_JM):null}});
+// monthly view 2025-01 .. 2026-05
+const monG=el('g',{opacity:0},svB),MO=DATA.monthly,MMAX=450,MST=BWD/MO.length,MBW=24;
+const mx=i=>BX0+MST*i+(MST-MBW)/2, myM=v=>BY0-v/MMAX*(BY0-BY1);
+[0,200,400].forEach(v=>{el('line',{x1:BX0,x2:BX1,y1:myM(v),y2:myM(v),stroke:GR,'stroke-width':2},monG);txt(monG,{x:BX0-14,y:myM(v)+8,'text-anchor':'end','font-size':22,fill:TX,'font-weight':500},String(v))});
+MO.forEach((d,i)=>{const mm=+d[0].slice(5);txt(monG,{x:mx(i)+MBW/2,y:BY0+34,'text-anchor':'middle','font-size':17,fill:TX,'font-weight':500},String(mm));
+ if(mm===1)txt(monG,{x:mx(i)-2,y:BY0+66,'font-size':19,fill:'#283127'},d[0].slice(0,4))});
+const mkEx=el('g',{},monG);{const x=BX0+MST*(5+23/30);el('line',{x1:x,x2:x,y1:544,y2:BY0,stroke:'#B4502C','stroke-width':3,'stroke-dasharray':'8 7'},mkEx);
+ el('rect',{x:x-8,y:536,width:16,height:16,fill:'#B4502C'},mkEx);txt(mkEx,{x:x+16,y:551,'text-anchor':'start','font-size':21,fill:'#B4502C',class:'halo'},L_EXP)}
+const barM=MO.map((d,i)=>el('rect',{x:mx(i),width:MBW,y:BY0,height:0,fill:'#424E3D'},monG));
+function bracket(par,i0,i1,y,label,col,anc){const g=el('g',{opacity:0},par),a=mx(i0)-4,b=mx(i1)+MBW+4;
+ el('polyline',{points:`${a},${y+12} ${a},${y} ${b},${y} ${b},${y+12}`,fill:'none',stroke:col,'stroke-width':3},g);
+ txt(g,{x:anc==='end'?b:(a+b)/2,y:y-14,'text-anchor':anc||'middle','font-size':24,fill:col,class:'halo'},label);return g}
+const brH2=bracket(monG,6,11,612,L_JD+' · '+fmt(DATA.periods.jul_dec_2025)+U_T,'#B4502C');
+const br26=bracket(monG,12,16,myM(180)-30,fmt(DATA.periods.jan_may_2026)+U_T,'#B4502C');
+const br25=bracket(monG,0,4,myM(34)-30,Math.round(DATA.periods.jan_may_2025)+U_T,'#283127');
+const CAPB=[[15.6,'Tonnes: <span class="hl">1.8–3.2</span>'],[18.2,'2015: <span class="hl">2×</span>'],[22.2,'Order <span class="hl">4/2559</span>'],[30.4,'2019: <span class="hl">407 t</span>'],[36.6,'Ban year: <span class="hl">242 t</span>'],[40.2,'2021: <span class="hl">335 t</span>'],
+ [44.2,'Now: <span class="hl">all e-waste</span>'],[50.9,'Record: <span class="hl">1,239 t</span>'],[56.8,'Ban <span class="hl">expanded</span>'],[59.4,'Jul–Dec: <span class="hl">1,128 t</span>'],[64.0,'Jan–May: <span class="hl">409 t</span>'],[67.6,'<span class="hl">8×</span> Jan–May 2025']];
 
 // ---------- W: walkthrough (reference timings + OW) ----------
-const OW=32.4;
+const OW=11.0;
 const CARDS=['Thailand e-waste imports by partner','Thailand e-waste imports, world totals','HS codes for electronic and battery waste','Querious timeline events'];
 const CARDSRC=['UN Comtrade','UN Comtrade','WCO / UNSD','Querious'];
 $('cards').innerHTML=CARDS.map((c,i)=>`<div class="dc" id="dc${i}" style="left:${150+(i%2)*400}px;top:${600+Math.floor(i/2)*160}px"><div class="ey mono">Dataset / ${CARDSRC[i]}</div><h3>${c}</h3></div>`).join('');
@@ -304,19 +254,19 @@ GROUP BY partner_name
 ORDER BY tonnes DESC NULLS LAST;`;
 const KW=/\b(SELECT|FROM|WHERE|GROUP BY|ORDER BY|AS|DESC|NULLS LAST)\b/g;
 const hlSql=s=>s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(KW,'<span class="k">$1</span>');
-$('rt').innerHTML='<tr><th>partner_name</th><th class="n">tonnes</th></tr>'+DATA.result.map((r,i)=>`<tr${i===0?' class="hi"':''}><td>${r[0]}</td><td class="n">${r[1].toFixed(1)}</td></tr>`).join('');
+$('rt').innerHTML='<tr><th>partner_name</th><th class="n">tonnes</th></tr>'+DATA.result.map((r,i)=>`<tr><td>${r[0]}</td><td class="n">${r[1].toFixed(1)}</td></tr>`).join('');
 $('rcount').textContent=DATA.result_rows+' rows · 2 columns';
 const UP=330;
 
 // ---------- red note ----------
 const RED1='* Customs-declared imports · 2012–2021 = battery waste only · some months have no weight';
-const RED2='* Other Asia = “Other Asia, nes” in Comtrade (area not specified)';
+const RED2='* Ban expanded: MOC notice 2025, in force 24 Jun 2025 · HS6 data cannot show which items are banned';
 
-const W={A:[0,7.05],S:[6.95,14.05],B:[13.95,57.05],Q:[56.95,59.65],T:[59.55,75.25],G:[75.15,81.65],M:[81.55,90.25],F:[90.15,95.65],W:[95.55,109.65],X:[109.55,120]};
+const W={A:[0,7.05],S:[6.95,14.05],B:[13.95,71.45],Q:[71.35,74.25],W:[74.15,88.25],X:[88.15,100]};
 const inW=(k,t)=>t>=W[k][0]&&t<W[k][1];
-const CUTS=[7,14,57,59.6,75.2,81.6,90.2,95.6,109.6];
+const CUTS=[7,14,71.4,74.2,88.2];
 const push=(id,t,a,b,s=0.025)=>{$(id).style.transform=`scale(${1+s*eInOut(p(t,a,b))})`};
-window.DUR=118.8;
+window.DUR=97.4;
 window.render=function(t){
  for(const k in W)show(k,inW(k,t));
  // ---- A hook
@@ -332,81 +282,46 @@ window.render=function(t){
   typeH2('hS','Customs data',t,7.3,8.1);
   const k=eSnap(p(t,8.0,8.4));const c=$('srcCard');c.style.opacity=k;c.style.transform=`translateY(${(1-k)*30}px)`;c.style.boxShadow=`${8*k}px ${8*k}px 0 #D6ED63`;
   c.querySelector('.rw').style.opacity=eOut(p(t,10.4,10.8));}
- // ---- B one chart: battery → all e-waste → close-up
- if(inW('B',t)){push('B',t,14,57,0.02);
+ // ---- B one chart: battery → all e-waste → monthly
+ if(inW('B',t)){push('B',t,14,71.4,0.02);
   axB.setAttribute('x2',BX0+BWD*eOut(p(t,14.2,14.8)));gridB.style.opacity=eOut(p(t,14.3,14.9));$('noteB').style.opacity=eOut(p(t,14.6,15.1));
-  $('metaB').textContent=t<39.6?'Battery waste / tonnes per year / imports':'E-waste / tonnes per year / imports';
-  $('noteB').textContent=t<39.6?'Source / UN Comtrade · HS 854810 · sum of partner rows':t<50.4?'Source / UN Comtrade · ≤2021 HS 854810 · 2022+ HS 8549':'Source / UN Comtrade · all HS 8549 codes · current US$';
-  // domains
-  const ex=eInOut(p(t,39.6,40.6)),cz=eInOut(p(t,50.4,51.4));XN=lerp(lerp(10,15,ex),5,cz);XS=lerp(0,10,cz);
-  YM=t<40?lerp(10,450,eSnap(p(t,24.7,25.4))):lerp(450,1400,eSnap(p(t,46.0,46.6)));
-  tickB.forEach(k=>{const y=byB(k.v),vis=k.s==='a'?1-eSnap(p(t,24.7,25.4)):k.s==='b'?eSnap(p(t,24.7,25.4))*(1-eSnap(p(t,46.0,46.6))):eSnap(p(t,46.0,46.6)),inside=y>=BY1-40&&y<=BY0;
+  $('metaB').textContent=t<42.8?M_BAT:t<54.2?M_ALL:M_MON;
+  $('noteB').textContent=t<42.8?'Source / UN Comtrade · HS 854810 · sum of partner rows':t<54.2?'Source / UN Comtrade · ≤2021 HS 854810 · 2022+ HS 8549':'Source / UN Comtrade · all HS 8549 codes · monthly';
+  const ex=eInOut(p(t,42.8,43.8));XN=lerp(10,15,ex);XS=0;
+  YM=t<45?lerp(10,450,eSnap(p(t,28.6,29.3))):lerp(450,1400,eSnap(p(t,48.9,49.5)));
+  tickB.forEach(k=>{const y=byB(k.v),r1=eSnap(p(t,28.6,29.3)),r2=eSnap(p(t,48.9,49.5)),vis=k.s==='a'?1-r1:k.s==='b'?r1*(1-r2):r2,inside=y>=BY1-40&&y<=BY0;
    k.l.setAttribute('y1',y);k.l.setAttribute('y2',y);k.t.setAttribute('y',y+8);k.l.style.opacity=k.t.style.opacity=inside?vis:0});
   const short=XN>10.5;
-  yrL.forEach((e,i)=>{e.setAttribute('x',bxB(i)+bwB()/2);e.textContent=short?'’'+String(YRS[i].y).slice(2):String(YRS[i].y);e.setAttribute('font-size',XN<6?22:20);
-   e.style.opacity=i<10?1:eOut(p(t,39.9,40.5))});
-  mkN.setAttribute('transform',`translate(${bxL(4)},0)`);mkN.style.opacity=eSnap(p(t,19.3,19.7))*(1-p(t,39.2,39.6));
-  mkBan.setAttribute('transform',`translate(${bxL(8+8.5/12)},0)`);mkBan.style.opacity=eSnap(p(t,29.4,29.8))*(1-p(t,39.2,39.6));
-  mkHS.setAttribute('transform',`translate(${bxL(10)},0)`);mkHS.style.opacity=eSnap(p(t,40.4,40.8))*(1-p(t,50.2,50.5));
-  chips.setAttribute('transform',`translate(${bxL(10)+14},0)`);chips.querySelectorAll('g').forEach((g,i)=>{const k=eSnap(p(t,42.3+i*0.2,42.6+i*0.2))*(1-p(t,45.8,46.2));g.style.opacity=k});
-  // 2015 emphasis
-  const hk=eSnap(p(t,16.9,17.2))*(1-p(t,24.5,24.8)),top15=byB(YRS[3].v);
+  yrL.forEach((e,i)=>{e.setAttribute('x',bxB(i)+bwB()/2);e.textContent=short?'’'+String(YRS[i].y).slice(2):String(YRS[i].y);e.style.opacity=i<10?1:eOut(p(t,43.1,43.7))});
+  mkN.setAttribute('transform',`translate(${bxL(4)},0)`);mkN.style.opacity=eSnap(p(t,21.9,22.3))*(1-p(t,42.4,42.8));
+  mkBan.setAttribute('transform',`translate(${bxL(8+8.5/12)},0)`);mkBan.style.opacity=eSnap(p(t,33.6,34.0))*(1-p(t,42.4,42.8));
+  mkHS.setAttribute('transform',`translate(${bxL(10)},0)`);mkHS.style.opacity=eSnap(p(t,43.6,44.0));
+  chips.setAttribute('transform',`translate(${bxL(10)+14},0)`);chips.querySelectorAll('g').forEach((g,i)=>{g.style.opacity=eSnap(p(t,45.3+i*0.2,45.6+i*0.2))*(1-p(t,48.7,49.1))});
+  const hk=eSnap(p(t,18.2,18.5))*(1-p(t,28.4,28.7)),top15=byB(YRS[3].v);
   hl15.setAttribute('x',bxB(3)-10);hl15.setAttribute('width',bwB()+20);hl15.setAttribute('y',top15-48);hl15.setAttribute('height',BY0-top15+48);hl15.style.opacity=hk;
-  const dim=1-0.5*eOut(p(t,51.0,51.5));
   barB.forEach((b,i)=>{const t0=BT[i],g=eOut(p(t,t0,t0+(i===13?1.0:0.6))),hh=(BY0-byB(b.d.v))*g,x=bxB(i),w=bwB();
    b.r.setAttribute('x',x);b.r.setAttribute('width',w);b.r.setAttribute('y',BY0-hh);b.r.setAttribute('height',hh);
-   b.l.setAttribute('x',x+w/2);b.l.setAttribute('y',BY0-hh-12);if(b.s){b.s.setAttribute('x',x+w/2);b.s.setAttribute('y',BY0-hh-44)}
-   let lo;const ap=eOut(p(t,t0+0.4,t0+0.7));
-   if(!b.d.all)lo=ap*(b.d.v<30?(i===3?1:1)*(1-p(t,24.6,24.9)):(1-p(t,45.8,46.1)));
-   else if(b.d.y===2025){lo=ap;b.l.textContent=g>0?fmt(b.d.v*g)+' t':'';b.r.style.opacity=Math.max(dim,0.75)}
-   else{lo=eOut(p(t,51.0,51.4))*dim;b.r.style.opacity=dim}
+   b.l.setAttribute('x',b.d.y===2025?Math.min(x+w/2,BX1+2-80):x+w/2);b.l.setAttribute('y',BY0-hh-12);if(b.s){b.s.setAttribute('x',x+w/2);b.s.setAttribute('y',BY0-hh-44)}
+   const ap=eOut(p(t,t0+0.4,t0+0.7));let lo;
+   if(!b.d.all)lo=ap*(b.d.v<30?1-p(t,28.5,28.8):(1-p(t,48.7,49.0)));else lo=b.d.y===2025?ap:0;
+   if(b.d.y===2025)b.l.textContent=g>0?fmt(b.d.v*g)+U_T:'';
    b.l.setAttribute('opacity',lo);if(b.s)b.s.setAttribute('opacity',lo)});
-  // value line (close-up)
-  const u=eInOut(p(t,51.5,53.0))*(VI.length-1),VP=VI.map(i=>[bxB(i)+bwB()/2,vyB(YRS[i].usd)]),pts=[];
-  VP.forEach((q,k)=>{const on=k<=u+1e-6&&t>51.5;if(on)pts.push(q[0]+','+q[1]);vDots[k].setAttribute('x',q[0]-9);vDots[k].setAttribute('y',q[1]-9);vDots[k].setAttribute('opacity',on?1:0)});
-  if(u>0){const i0=Math.floor(u),f=u-i0;if(i0<VP.length-1)pts.push(lerp(VP[i0][0],VP[i0+1][0],f)+','+lerp(VP[i0][1],VP[i0+1][1],f))}
-  vLine.setAttribute('points',pts.join(' '));vLine.style.opacity=u>0?1:0;
-  vL0.setAttribute('x',VP[0][0]+22);vL0.setAttribute('y',VP[0][1]-14);vL0.setAttribute('opacity',eOut(p(t,51.6,51.9)));
-  vL3.setAttribute('x',VP[3][0]+22);vL3.setAttribute('y',VP[3][1]+40);vL3.setAttribute('opacity',eOut(p(t,52.9,53.2)));
-  $('legC').style.opacity=eOut(p(t,51.0,51.4));
-  caption($('capB'),CAPB,t,56.8);}
+  // switch to the monthly view
+  const yo=1-eOut(p(t,53.9,54.3)),mo=eOut(p(t,54.2,54.7));yearG.style.opacity=yo;monG.setAttribute('opacity',mo);
+  const hiH2=t>=59.0&&t<63.6,hi26=t>=63.6;
+  barM.forEach((r,i)=>{const t0=54.6+i*0.07,g=eOut(p(t,t0,t0+0.5)),hh=(BY0-myM(MO[i][1]))*g;r.setAttribute('y',BY0-hh);r.setAttribute('height',hh);
+   const inH2=i>=6&&i<=11,in26=i>=12;r.setAttribute('fill',(hiH2&&inH2)||(hi26&&in26)?'#DD6B43':'#424E3D')});
+  mkEx.style.opacity=eSnap(p(t,56.6,57.0));
+  brH2.setAttribute('opacity',eSnap(p(t,59.0,59.4))*(1-p(t,63.3,63.6)));
+  br26.setAttribute('opacity',eSnap(p(t,63.6,64.0)));br25.setAttribute('opacity',eSnap(p(t,67.3,67.7)));
+  caption($('capB'),CAPB,t,71.2);}
  // ---- Q who sends the most
- if(inW('Q',t)){push('Q',t,57,59.6);
-  $('Q').querySelector('.eyebrowD').style.opacity=eOut(p(t,57.1,57.5));
-  const [h,typing]=typeHead([['Who sends|',''],['the most?','y']],t,57.3,58.4);
+ if(inW('Q',t)){push('Q',t,71.4,74.2);
+  $('Q').querySelector('.eyebrowD').style.opacity=eOut(p(t,71.5,71.9));
+  const [h,typing]=typeHead(QHEAD,t,71.8,72.9);
   $('headQ').innerHTML=h+cursorTag(t,typing);}
- // ---- T top sender
- if(inW('T',t)){push('T',t,59.6,75.2,0.02);
-  typeH2('hT','Top sender',t,59.9,60.7);$('noteT').style.opacity=eOut(p(t,60.3,60.8));
-  let last=-1;TT.forEach((t0,i)=>{if(t>=t0)last=i});
-  TT.forEach((t0,i)=>{const e=$('tc'+i),k=eSnap(p(t,t0,t0+0.35));pop(e,k,24);
-   const rev=i===7&&t>=TREV,cur=(i===last&&!(i===7&&t<TREV))||rev;
-   e.style.background=cur?'#D6ED63':'#FAF9F3';e.style.boxShadow=`${5*k}px ${5*k}px 0 ${cur?'#283127':'#D6ED63'}`;
-   if(i===7){e.style.borderStyle=rev?'solid':'dashed';const rk=eSnap(p(t,TREV,TREV+0.3));$('tq').style.opacity=(1-rk)*(blink(t)?1:0.35);$('tn7').style.opacity=rk;$('tt7').style.opacity=rk;
-    e.style.transform=`translateY(${(1-k)*24}px) scale(${rev?1+0.08*(1-rk):1})`;}
-   else if(i!==last&&t>=TREV)e.style.opacity=k*0.55});
-  caption($('capT'),CAPT,t,75.0);}
- // ---- G 9 in 10
- if(inW('G',t)){push('G',t,75.2,81.6);
-  typeH2('hG','9 in 10',t,75.5,76.0);legG.style.opacity=eOut(p(t,75.8,76.2));brkG.style.opacity=eOut(p(t,78.6,79.0));$('noteG').style.opacity=eOut(p(t,75.8,76.3));
-  sq.forEach((s,i)=>{const usa=i<NU,t0=usa?76.0+i*0.018:77.9+(i-NU)*0.05,k=p(t,t0,t0+0.12);
-   s.setAttribute('fill',k>0?(usa?'#DD6B43':'#839B45'):'#E1E4DA');s.style.opacity=k>0?0.4+0.6*k:1})}
- // ---- M partner countries
- if(inW('M',t)){push('M',t,81.6,90.2,0.02);
-  typeH2('hM','5 → 13',t,82.1,82.7);
-  axM.setAttribute('x2',MX0+(MX1-MX0)*eOut(p(t,81.8,82.3)));gridM.style.opacity=eOut(p(t,81.9,82.4));$('noteM').style.opacity=eOut(p(t,82.2,82.7));
-  barM.forEach((b,i)=>{const t0=82.3+i*0.06,g=eOut(p(t,t0,t0+0.5)),hh=(MY0-my(b.d[1]))*g;b.r.setAttribute('y',MY0-hh);b.r.setAttribute('height',hh);
-   const key=b.d[0]===2020||b.d[0]===2025;b.l.setAttribute('opacity',eOut(p(t,t0+0.4,t0+0.7))*(key?1:0.7));
-   b.r.style.opacity=key?1:1-0.45*eOut(p(t,83.2,83.6))});
-  const gk=eSnap(p(t,87.6,88.0));ghM.setAttribute('opacity',gk);ghL.setAttribute('opacity',gk);
-  caption($('capM'),CAPM,t,90.0);}
- // ---- F open question
- if(inW('F',t)){push('F',t,90.2,95.6);
-  $('F').querySelector('.eyebrowD').style.opacity=eOut(p(t,90.3,90.7));
-  const [h,typing]=typeHead([['Where does|it all|',''],['end up?','y']],t,92.4,93.9);
-  $('headF').innerHTML=h+cursorTag(t,typing);$('footF').style.opacity=eOut(p(t,90.8,91.3));}
  // ---- W walkthrough
- if(inW('W',t)){const tw=t-OW;push('W',t,95.6,109.6,0.02);
+ if(inW('W',t)){const tw=t-OW;push('W',t,74.2,88.2,0.02);
   $('stepW').textContent=tw<67.75?'Step 01 / Discover':tw<70.6?'Step 02 / Query':'Step 03 / Take it further';
   const catOut=eInOut(p(tw,67.65,68.0));
   $('catT').style.opacity=eOut(p(tw,63.4,63.8))*(1-catOut);$('join').style.opacity=eOut(p(tw,63.6,64.0))*(1-catOut);
@@ -434,7 +349,7 @@ window.render=function(t){
   cu.style.opacity=op;cu.style.transform=`scale(${prO||prR||prC?.88:1})`;
   if(tw<69)ripple($('ripW'),tw,67.5,290,980);else if(tw<72)ripple($('ripW'),tw,70.4,830,780);else ripple($('ripW'),tw,73.2,560,989);}
  // ---- X end card (reference timings: tx = t - 23.8)
- if(inW('X',t)){const H=$('X'),tx=t-23.8;H.style.transform=`scale(${1+0.025*eInOut(p(tx,85.8,95))})`;
+ if(inW('X',t)){const H=$('X'),tx=t-2.4;H.style.transform=`scale(${1+0.025*eInOut(p(tx,85.8,95))})`;
   const er=(str,a,b)=>Math.round(str.length*p(tx,a,b));
   const MK='Querious',em=er(MK+'_',91.8,92.4),mk=MK.slice(Math.min(em,MK.length));
   $('markX').innerHTML=`<span>${mk.startsWith('Q')?'<i>Q</i>'+mk.slice(1):mk}${em<=MK.length?'<span class="cur">_</span>':''}</span>`;$('markX').style.opacity=eOut(p(tx,87.8,88.4));
@@ -450,10 +365,10 @@ window.render=function(t){
   $('bigX').innerHTML=H2.slice(0,n).slice(eh)+cursorTag(tx,n<H2.length||(eh>0&&eh<H2.length));
   H.style.opacity=1-p(tx,94.4,94.9);}
  // ---- red note: data scenes only
- const rn=$('redn'),dataSc=(t>=10.2&&t<57)||(t>=59.6&&t<90.2);rn.style.display=dataSc?'block':'none';
- if(dataSc){rn.innerHTML=RED1+(inW('T',t)?'<br>'+RED2:'');rn.style.opacity=t<14?eOut(p(t,10.2,10.6)):1;}
- const dark=t<7||(t>=57&&t<59.6)||(t>=90.2&&t<95.6)||t>=109.6;
- $('logoL').style.display=dark?'block':'none';$('logoL').style.opacity=1-p(t-23.8,93.3,94.1);$('logoD').style.display=dark?'none':'block';
+ const rn=$('redn'),dataSc=(t>=10.2&&t<71.4);rn.style.display=dataSc?'block':'none';
+ if(dataSc){rn.innerHTML=RED1+(t>=54.2?'<br>'+RED2:'');rn.style.opacity=t<14?eOut(p(t,10.2,10.6)):1;}
+ const dark=t<7||(t>=71.4&&t<74.2)||t>=88.2;
+ $('logoL').style.display=dark?'block':'none';$('logoL').style.opacity=1-p(t-2.4,93.3,94.1);$('logoD').style.display=dark?'none':'block';
  const wp=$('wipe');let on=false;
  for(const m of CUTS){const a=m-0.35,b=m+0.35;if(t>a&&t<b){on=true;const w1=eSnap(p(t,a,m)),w2=eSnap(p(t,m,b));wp.style.top=(t<m?1920*(1-w1):0)+'px';wp.style.bottom=(1920*w2)+'px';}}
  wp.style.display=on?'block':'none';
