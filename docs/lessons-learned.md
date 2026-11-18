@@ -2,6 +2,16 @@
 
 Things that went wrong or needed a second pass while making episodes, and the rule that came out of each. Newest first. `CLAUDE.md` links here; the short rules are also copied into `CLAUDE.md`.
 
+## Episode: thai-e-waste (EN, 2026-11-18)
+
+- **First trade-data episode (UN Comtrade).** Weight is missing in many months from 2019 (China, USA, France carry value with no weight), and the World totals dataset does not match the sum of partner rows (2020: Korea alone 241 t vs a World total of 120 t). Rule: pick one base and use it for every number in the clip; here every tonne is a sum of partner rows, so the big picture and the country scenes add up.
+- **Check that a count compares like with like.** "Partner countries 5 → 29" mixed scopes: 2020 is battery waste only, 2024 counts all 11 HS 2022 codes. On the battery codes only (comparable across HS editions) it is 5 → 13 (2025), and all codes give 23. The scene shows the battery series with a dashed 2025 bar for all codes, and the VO says both.
+- **Ranking by weight misses rows with no weight.** China has $2.67M of imports with no recorded weight, so the "#1 sender by weight" scene never says China sends little, and the source line says "recorded weight only".
+- **Short caveat up front, not at the end (user's choice).** The caveat is one red mono note (`#903F29`, `#redn`) pinned under every data scene from the source card on; an extra line explains "Other Asia, nes" in the top-sender scene.
+- **Events are markers, not causes.** The NCPO order and the import ban are dashed markers on the bar chart; the VO only states dates and numbers.
+- **Length:** 118.8 s with complete content (user accepts longer clips). The walkthrough reuses the ai-revenue-compute timings with a fixed offset (`OW`), and the end card the same way (`tx = t − 23.8`).
+- **Loudness:** default voice gave −16.6 LUFS / −1.2 dBFS; voice −1 dB → −17.4 LUFS / −2.0 dBFS.
+
 ## Episode: potion-ingredients-th (2026-11-13)
 
 - **Sizing EN slots ×1.35 worked:** the first Paxa pass fit every line at ≤ 1.15× except the key message line (v10, 1.29×).

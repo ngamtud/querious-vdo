@@ -1,0 +1,180 @@
+{
+  "title": "How much e-waste still comes into Thailand?",
+  "format": {
+    "width": 1080,
+    "height": 1920,
+    "fps": 30
+  },
+  "duration": 118.8,
+  "chunks": [
+    [
+      0,
+      7
+    ],
+    [
+      7,
+      14
+    ],
+    [
+      14,
+      39
+    ],
+    [
+      39,
+      45.6
+    ],
+    [
+      45.6,
+      57
+    ],
+    [
+      57,
+      59.6
+    ],
+    [
+      59.6,
+      75.2
+    ],
+    [
+      75.2,
+      81.6
+    ],
+    [
+      81.6,
+      90.2
+    ],
+    [
+      90.2,
+      95.6
+    ],
+    [
+      95.6,
+      109.6
+    ],
+    [
+      109.6,
+      118.8
+    ]
+  ],
+  "scene": "scene.html",
+  "data": "data.json",
+  "voice": {
+    "engine": "kokoro",
+    "speaker": "af_bella",
+    "speed": 1.05
+  },
+  "voiceover": [
+    {
+      "id": "v1",
+      "at": 0.3,
+      "text": "Thailand banned electronic waste imports in twenty twenty. So how much still comes in, through customs?"
+    },
+    {
+      "id": "v2",
+      "at": 7.3,
+      "text": "We looked at U.N. Comtrade: the U.N. trade database, built from each country's customs records."
+    },
+    {
+      "id": "v3",
+      "at": 14.4,
+      "text": "For years, there was almost nothing: a few tonnes of battery waste a year."
+    },
+    {
+      "id": "v4",
+      "at": 19.0,
+      "text": "In twenty sixteen, a military government order exempted some factories, including waste plants, from town-planning rules. By twenty nineteen: four hundred tonnes a year."
+    },
+    {
+      "id": "v5",
+      "at": 29.0,
+      "text": "In September twenty twenty, the import ban took effect. That year: about two hundred forty tonnes, from just five countries."
+    },
+    {
+      "id": "v6",
+      "at": 36.0,
+      "text": "The next year: three hundred thirty-five."
+    },
+    {
+      "id": "v7",
+      "at": 39.4,
+      "text": "From twenty twenty-two, the customs codes got more detailed, so we can see every kind of e-waste."
+    },
+    {
+      "id": "v8",
+      "at": 46.0,
+      "text": "And twenty twenty-five was the biggest year on record: over twelve hundred tonnes."
+    },
+    {
+      "id": "v9",
+      "at": 51.0,
+      "text": "But the value fell, from seven million dollars to one and a half. More waste, less money."
+    },
+    {
+      "id": "v10",
+      "at": 57.4,
+      "text": "So who sends the most?"
+    },
+    {
+      "id": "v11",
+      "at": 60.0,
+      "text": "The top sender keeps changing. The U.S. in twenty eighteen. Then Japan. South Korea through the ban years. Then Japan again: seven hundred tonnes, almost all battery waste."
+    },
+    {
+      "id": "v12",
+      "at": 70.8,
+      "text": "Then in twenty twenty-five, the U.S. came back, with eleven hundred tonnes."
+    },
+    {
+      "id": "v13",
+      "at": 75.6,
+      "text": "That's about nine in every ten tonnes, mostly general e-waste and scrap for precious metals."
+    },
+    {
+      "id": "v14",
+      "at": 82.0,
+      "text": "In the ban year, only five countries sent battery waste. By twenty twenty-five, it was thirteen. Count every kind of e-waste, and it's twenty-three."
+    },
+    {
+      "id": "v15",
+      "at": 90.6,
+      "text": "Over twelve hundred tonnes a year, declared at customs. Where does it all end up?"
+    },
+    {
+      "id": "v16",
+      "at": 96.0,
+      "text": "We found this on Querious, in customs data from U.N. Comtrade."
+    },
+    {
+      "id": "v17",
+      "at": 100.4,
+      "text": "Group by country, press Run, and see who sends the most."
+    },
+    {
+      "id": "v18",
+      "at": 105.2,
+      "text": "Or connect Querious to your own A.I. and tools, and just ask."
+    },
+    {
+      "id": "v19",
+      "at": 110.0,
+      "text": "The data is open. The question is yours."
+    }
+  ],
+  "music": {
+    "generator": "ambient",
+    "volume": 1.25,
+    "duck": {
+      "threshold": 0.03,
+      "ratio": 4,
+      "attack": 60,
+      "release": 600
+    }
+  },
+  "sfx": {
+    "click": [
+      99.9,
+      102.8,
+      105.6
+    ]
+  }
+}
