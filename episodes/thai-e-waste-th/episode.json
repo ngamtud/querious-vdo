@@ -5,7 +5,7 @@
     "height": 1920,
     "fps": 30
   },
-  "duration": 118.8,
+  "duration": 97.4,
   "chunks": [
     [
       0,
@@ -17,43 +17,39 @@
     ],
     [
       14,
-      39
+      28
     ],
     [
-      39,
-      45.6
+      28,
+      42
     ],
     [
-      45.6,
-      57
+      42,
+      54
     ],
     [
-      57,
-      59.6
+      54,
+      62
     ],
     [
-      59.6,
-      75.2
+      62,
+      71.4
     ],
     [
-      75.2,
-      81.6
+      71.4,
+      74.2
     ],
     [
-      81.6,
-      90.2
+      74.2,
+      81
     ],
     [
-      90.2,
-      95.6
+      81,
+      88.2
     ],
     [
-      95.6,
-      109.6
-    ],
-    [
-      109.6,
-      118.8
+      88.2,
+      97.4
     ]
   ],
   "scene": "scene.html",
@@ -84,102 +80,78 @@
     {
       "id": "v3",
       "at": 14.4,
-      "text": "หลายปีแทบไม่มีเลย | ขยะแบตเตอรี่แค่ไม่กี่ตันต่อปี",
-      "text_en": "For years, there was almost nothing: a few tonnes of battery waste a year."
+      "text": "ถึงปีสองพันสิบสี่ ขยะแบตเตอรี่ปีละหนึ่งถึงสามตัน | ปีสองพันสิบห้า เพิ่มเท่าตัว เป็นหกตันครึ่ง",
+      "text_en": "Until twenty fourteen, it was one to three tonnes of battery waste a year. In twenty fifteen, it doubled, to six and a half."
     },
     {
       "id": "v4",
-      "at": 19.0,
-      "text": "ปีสองพันสิบหก คำสั่งหัวหน้า คสช. ยกเว้นผังเมืองให้โรงงานบางประเภท รวมถึงโรงงานจัดการขยะ | พอปีสองพันสิบเก้า สี่ร้อยตันต่อปี",
-      "text_en": "In twenty sixteen, a military government order exempted some factories, including waste plants, from town-planning rules. By twenty nineteen: four hundred tonnes a year."
+      "at": 21.6,
+      "text": "มกราคมปีสองพันสิบหก คำสั่งหัวหน้า คสช. ยกเว้นผังเมืองให้โรงงานบางประเภท รวมถึงโรงงานจัดการขยะ | พอปีสองพันสิบเก้า กลายเป็นสี่ร้อยเจ็ดตัน",
+      "text_en": "In January twenty sixteen, a military government order exempted some factories, including waste plants, from town-planning rules. By twenty nineteen, it had become four hundred and seven tonnes."
     },
     {
       "id": "v5",
-      "at": 29.0,
-      "text": "กันยายนปีสองพันยี่สิบ ประกาศห้ามนำเข้ามีผล | ปีนั้นราวสองร้อยสี่สิบตัน จากห้าประเทศ",
-      "text_en": "In September twenty twenty, the import ban took effect. That year: about two hundred forty tonnes, from just five countries."
+      "at": 33.2,
+      "text": "กันยายนปีสองพันยี่สิบ ประกาศห้ามนำเข้ามีผล | ปีนั้นราวสองร้อยสี่สิบตัน",
+      "text_en": "In September twenty twenty, Thailand's import ban took effect. That year: about two hundred forty tonnes."
     },
     {
       "id": "v6",
-      "at": 36.0,
+      "at": 39.6,
       "text": "ปีถัดมา สามร้อยสามสิบห้า",
       "text_en": "The next year: three hundred thirty-five."
     },
     {
       "id": "v7",
-      "at": 39.4,
+      "at": 42.6,
       "text": "ตั้งแต่ปีสองพันยี่สิบสอง รหัสศุลกากรละเอียดขึ้น | เราจึงเห็นขยะครบทุกประเภท",
       "text_en": "From twenty twenty-two, the customs codes got more detailed, so we can see every kind of e-waste."
     },
     {
       "id": "v8",
-      "at": 46.0,
+      "at": 49.0,
       "text": "ปีสองพันยี่สิบห้า มากที่สุดเท่าที่มีบันทึก | กว่าพันสองร้อยตัน",
       "text_en": "And twenty twenty-five was the biggest year on record: over twelve hundred tonnes."
     },
     {
       "id": "v9",
-      "at": 51.0,
-      "text": "แต่มูลค่าลดลง จากเจ็ดล้านดอลลาร์ เหลือล้านครึ่ง | ขยะมากขึ้น มูลค่าน้อยลง",
-      "text_en": "But the value fell, from seven million dollars to one and a half. More waste, less money."
+      "at": 54.4,
+      "text": "มิถุนายนปีสองพันยี่สิบห้า ประกาศห้ามนำเข้าขยายไปถึงรหัสใหม่ | แต่ครึ่งปีหลัง ยังสำแดงเข้ามากว่าพันหนึ่งร้อยตัน",
+      "text_en": "In June twenty twenty-five, the ban was expanded to these new codes. Yet over eleven hundred tonnes were declared in the second half of that year."
     },
     {
       "id": "v10",
-      "at": 57.4,
+      "at": 63.0,
+      "text": "ห้าเดือนแรกของปีสองพันยี่สิบหก สี่ร้อยเก้าตัน | แปดเท่าของช่วงเดียวกันปีก่อน",
+      "text_en": "And in the first five months of twenty twenty-six: four hundred and nine tonnes. Eight times the same months of twenty twenty-five."
+    },
+    {
+      "id": "v11",
+      "at": 71.8,
       "text": "แล้วใครส่งมามากที่สุด",
       "text_en": "So who sends the most?"
     },
     {
-      "id": "v11",
-      "at": 60.0,
-      "text": "ผู้ส่งอันดับหนึ่งเปลี่ยนไปเรื่อย ๆ | สหรัฐ ญี่ปุ่น แล้วเกาหลีใต้ช่วงห้ามนำเข้า | ปีสองพันยี่สิบสอง ญี่ปุ่นกลับมา เจ็ดร้อยตัน เกือบทั้งหมดเป็นแบตเตอรี่",
-      "text_en": "The top sender keeps changing. The U.S. in twenty eighteen. Then Japan. South Korea through the ban years. Then Japan again: seven hundred tonnes, almost all battery waste."
-    },
-    {
       "id": "v12",
-      "at": 70.8,
-      "text": "แล้วปีสองพันยี่สิบห้า สหรัฐกลับมา | หนึ่งพันหนึ่งร้อยตัน",
-      "text_en": "Then in twenty twenty-five, the U.S. came back, with eleven hundred tonnes."
+      "at": 74.6,
+      "text": "หาคำตอบได้บนคิวเรียส | จากข้อมูล UN Comtrade",
+      "text_en": "Find out on Querious, in customs data from U.N. Comtrade."
     },
     {
       "id": "v13",
-      "at": 75.6,
-      "text": "เกือบเก้าในสิบตัน | ส่วนใหญ่เป็นซากไฟฟ้าทั่วไป และซากกู้คืนโลหะมีค่า",
-      "text_en": "That's about nine in every ten tonnes, mostly general e-waste and scrap for precious metals."
-    },
-    {
-      "id": "v14",
-      "at": 82.0,
-      "text": "ปีที่ห้ามนำเข้า มีแค่ห้าประเทศส่งขยะแบตเตอรี่ | ปีสองพันยี่สิบห้า เป็นสิบสาม | นับทุกประเภท ยี่สิบสาม",
-      "text_en": "In the ban year, only five countries sent battery waste. By twenty twenty-five, it was thirteen. Count every kind of e-waste, and it's twenty-three."
-    },
-    {
-      "id": "v15",
-      "at": 90.6,
-      "text": "กว่าพันสองร้อยตันต่อปี ที่สำแดงผ่านศุลกากร | สุดท้ายไปอยู่ที่ไหน",
-      "text_en": "Over twelve hundred tonnes a year, declared at customs. Where does it all end up?"
-    },
-    {
-      "id": "v16",
-      "at": 96.0,
-      "text": "เราหาคำตอบนี้บนคิวเรียส | จากข้อมูล UN Comtrade",
-      "text_en": "We found this on Querious, in customs data from U.N. Comtrade."
-    },
-    {
-      "id": "v17",
-      "at": 100.4,
+      "at": 79.0,
       "text": "จัดกลุ่มตามประเทศ กดรัน | ดูว่าใครส่งมามากที่สุด",
       "text_en": "Group by country, press Run, and see who sends the most."
     },
     {
-      "id": "v18",
-      "at": 105.2,
+      "id": "v14",
+      "at": 83.8,
       "text": "หรือเชื่อมคิวเรียสกับเอไอและเครื่องมือของคุณ | แล้วถามได้เลย",
       "text_en": "Or connect Querious to your own A.I. and tools, and just ask."
     },
     {
-      "id": "v19",
-      "at": 110.0,
+      "id": "v15",
+      "at": 88.6,
       "text": "ข้อมูลพร้อมแล้ว | มาหาคำตอบกัน",
       "text_en": "The data is open. The question is yours."
     }
@@ -196,9 +168,9 @@
   },
   "sfx": {
     "click": [
-      99.9,
-      102.8,
-      105.6
+      78.5,
+      81.4,
+      84.2
     ]
   }
 }
