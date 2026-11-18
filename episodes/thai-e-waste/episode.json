@@ -1,0 +1,156 @@
+{
+  "title": "How much e-waste still comes into Thailand?",
+  "format": {
+    "width": 1080,
+    "height": 1920,
+    "fps": 30
+  },
+  "duration": 97.4,
+  "chunks": [
+    [
+      0,
+      7
+    ],
+    [
+      7,
+      14
+    ],
+    [
+      14,
+      28
+    ],
+    [
+      28,
+      42
+    ],
+    [
+      42,
+      54
+    ],
+    [
+      54,
+      62
+    ],
+    [
+      62,
+      71.4
+    ],
+    [
+      71.4,
+      74.2
+    ],
+    [
+      74.2,
+      81
+    ],
+    [
+      81,
+      88.2
+    ],
+    [
+      88.2,
+      97.4
+    ]
+  ],
+  "scene": "scene.html",
+  "data": "data.json",
+  "voice": {
+    "engine": "kokoro",
+    "speaker": "af_bella",
+    "speed": 1.05
+  },
+  "voiceover": [
+    {
+      "id": "v1",
+      "at": 0.3,
+      "text": "Thailand banned electronic waste imports in twenty twenty. So how much still comes in, through customs?"
+    },
+    {
+      "id": "v2",
+      "at": 7.3,
+      "text": "We looked at U.N. Comtrade: the U.N. trade database, built from each country's customs records."
+    },
+    {
+      "id": "v3",
+      "at": 14.4,
+      "text": "Until twenty fourteen, it was one to three tonnes of battery waste a year. In twenty fifteen, it doubled, to six and a half."
+    },
+    {
+      "id": "v4",
+      "at": 21.6,
+      "text": "In January twenty sixteen, a military government order exempted some factories, including waste plants, from town-planning rules. By twenty nineteen, it had become four hundred and seven tonnes."
+    },
+    {
+      "id": "v5",
+      "at": 33.2,
+      "text": "In September twenty twenty, Thailand's import ban took effect. That year: about two hundred forty tonnes."
+    },
+    {
+      "id": "v6",
+      "at": 39.6,
+      "text": "The next year: three hundred thirty-five."
+    },
+    {
+      "id": "v7",
+      "at": 42.6,
+      "text": "From twenty twenty-two, the customs codes got more detailed, so we can see every kind of e-waste."
+    },
+    {
+      "id": "v8",
+      "at": 49.0,
+      "text": "And twenty twenty-five was the biggest year on record: over twelve hundred tonnes."
+    },
+    {
+      "id": "v9",
+      "at": 54.4,
+      "text": "In June twenty twenty-five, the ban was expanded to these new codes. Yet over eleven hundred tonnes were declared in the second half of that year."
+    },
+    {
+      "id": "v10",
+      "at": 63.0,
+      "text": "And in the first five months of twenty twenty-six: four hundred and nine tonnes. Eight times the same months of twenty twenty-five."
+    },
+    {
+      "id": "v11",
+      "at": 71.8,
+      "text": "So who sends the most?"
+    },
+    {
+      "id": "v12",
+      "at": 74.6,
+      "text": "Find out on Querious, in customs data from U.N. Comtrade."
+    },
+    {
+      "id": "v13",
+      "at": 79.0,
+      "text": "Group by country, press Run, and see who sends the most."
+    },
+    {
+      "id": "v14",
+      "at": 83.8,
+      "text": "Or connect Querious to your own A.I. and tools, and just ask."
+    },
+    {
+      "id": "v15",
+      "at": 88.6,
+      "text": "The data is open. The question is yours."
+    }
+  ],
+  "music": {
+    "generator": "ambient",
+    "volume": 1.25,
+    "duck": {
+      "threshold": 0.03,
+      "ratio": 4,
+      "attack": 60,
+      "release": 600
+    }
+  },
+  "sfx": {
+    "click": [
+      78.5,
+      81.4,
+      84.2
+    ]
+  }
+}

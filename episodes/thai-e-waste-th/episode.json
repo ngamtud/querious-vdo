@@ -1,0 +1,176 @@
+{
+  "title": "ขยะอิเล็กทรอนิกส์ยังเข้าไทยอีกเท่าไหร่",
+  "format": {
+    "width": 1080,
+    "height": 1920,
+    "fps": 30
+  },
+  "duration": 97.4,
+  "chunks": [
+    [
+      0,
+      7
+    ],
+    [
+      7,
+      14
+    ],
+    [
+      14,
+      28
+    ],
+    [
+      28,
+      42
+    ],
+    [
+      42,
+      54
+    ],
+    [
+      54,
+      62
+    ],
+    [
+      62,
+      71.4
+    ],
+    [
+      71.4,
+      74.2
+    ],
+    [
+      74.2,
+      81
+    ],
+    [
+      81,
+      88.2
+    ],
+    [
+      88.2,
+      97.4
+    ]
+  ],
+  "scene": "scene.html",
+  "data": "data.json",
+  "voice": {
+    "engine": "paxa",
+    "model": "paxa-tts-flash-v2",
+    "speaker": "nomyen",
+    "language": "th",
+    "speed": 1.0,
+    "fit": true,
+    "max_speed": 1.3,
+    "gap": 0.25
+  },
+  "voiceover": [
+    {
+      "id": "v1",
+      "at": 0.3,
+      "text": "ไทยห้ามนำเข้าขยะอิเล็กทรอนิกส์ตั้งแต่ปีสองพันยี่สิบ | ทุกวันนี้ยังเข้ามาผ่านศุลกากรอีกเท่าไหร่",
+      "text_en": "Thailand banned electronic waste imports in twenty twenty. So how much still comes in, through customs?"
+    },
+    {
+      "id": "v2",
+      "at": 7.3,
+      "text": "เราดูข้อมูลจาก UN Comtrade | ฐานข้อมูลการค้า จากตัวเลขศุลกากรของแต่ละประเทศ",
+      "text_en": "We looked at U.N. Comtrade: the U.N. trade database, built from each country's customs records."
+    },
+    {
+      "id": "v3",
+      "at": 14.4,
+      "text": "ถึงปีสองพันสิบสี่ ขยะแบตเตอรี่ปีละหนึ่งถึงสามตัน | ปีสองพันสิบห้า เพิ่มเท่าตัว",
+      "text_en": "Until twenty fourteen, it was one to three tonnes of battery waste a year. In twenty fifteen, it doubled, to six and a half."
+    },
+    {
+      "id": "v4",
+      "at": 21.6,
+      "text": "มกราคมปีสองพันสิบหก คำสั่งหัวหน้าคอสอชอ ยกเว้นผังเมืองให้โรงงานบางประเภท รวมถึงโรงงานจัดการขยะ | พอปีสองพันสิบเก้า กลายเป็นสี่ร้อยเจ็ดตัน",
+      "text_en": "In January twenty sixteen, a military government order exempted some factories, including waste plants, from town-planning rules. By twenty nineteen, it had become four hundred and seven tonnes."
+    },
+    {
+      "id": "v5",
+      "at": 33.2,
+      "text": "กันยายนปีสองพันยี่สิบ ประกาศห้ามนำเข้ามีผล | ปีนั้นราวสองร้อยสี่สิบตัน",
+      "text_en": "In September twenty twenty, Thailand's import ban took effect. That year: about two hundred forty tonnes."
+    },
+    {
+      "id": "v6",
+      "at": 39.6,
+      "text": "ปีถัดมา สามร้อยสามสิบห้า",
+      "text_en": "The next year: three hundred thirty-five."
+    },
+    {
+      "id": "v7",
+      "at": 42.6,
+      "text": "ตั้งแต่ปีสองพันยี่สิบสอง รหัสศุลกากรละเอียดขึ้น | เราจึงเห็นขยะครบทุกประเภท",
+      "text_en": "From twenty twenty-two, the customs codes got more detailed, so we can see every kind of e-waste."
+    },
+    {
+      "id": "v8",
+      "at": 49.0,
+      "text": "ปีสองพันยี่สิบห้า มากที่สุดเท่าที่มีบันทึก | กว่าพันสองร้อยตัน",
+      "text_en": "And twenty twenty-five was the biggest year on record: over twelve hundred tonnes."
+    },
+    {
+      "id": "v9",
+      "at": 54.4,
+      "text": "มิถุนายนปีสองพันยี่สิบห้า ประกาศห้ามนำเข้าขยายไปถึงรหัสใหม่ | แต่ครึ่งปีหลัง ยังสำแดงเข้ามากว่าพันหนึ่งร้อยตัน",
+      "text_en": "In June twenty twenty-five, the ban was expanded to these new codes. Yet over eleven hundred tonnes were declared in the second half of that year."
+    },
+    {
+      "id": "v10",
+      "at": 63.0,
+      "text": "ห้าเดือนแรกของปีสองพันยี่สิบหก สี่ร้อยเก้าตัน | แปดเท่าของช่วงเดียวกันปีก่อน",
+      "text_en": "And in the first five months of twenty twenty-six: four hundred and nine tonnes. Eight times the same months of twenty twenty-five."
+    },
+    {
+      "id": "v11",
+      "at": 71.8,
+      "text": "แล้วใครส่งมามากที่สุด",
+      "text_en": "So who sends the most?"
+    },
+    {
+      "id": "v12",
+      "at": 74.6,
+      "text": "หาคำตอบได้บนคิวเรียส | จากข้อมูล UN Comtrade",
+      "text_en": "Find out on Querious, in customs data from U.N. Comtrade."
+    },
+    {
+      "id": "v13",
+      "at": 79.0,
+      "text": "จัดกลุ่มตามประเทศ กดรัน | ดูว่าใครส่งมามากที่สุด",
+      "text_en": "Group by country, press Run, and see who sends the most."
+    },
+    {
+      "id": "v14",
+      "at": 83.8,
+      "text": "หรือเชื่อมคิวเรียสกับเอไอและเครื่องมือของคุณ | แล้วถามได้เลย",
+      "text_en": "Or connect Querious to your own A.I. and tools, and just ask."
+    },
+    {
+      "id": "v15",
+      "at": 88.6,
+      "text": "ข้อมูลพร้อมแล้ว | มาหาคำตอบกัน",
+      "text_en": "The data is open. The question is yours."
+    }
+  ],
+  "music": {
+    "generator": "ambient",
+    "volume": 1.25,
+    "duck": {
+      "threshold": 0.03,
+      "ratio": 4,
+      "attack": 60,
+      "release": 600
+    }
+  },
+  "sfx": {
+    "click": [
+      78.5,
+      81.4,
+      84.2
+    ]
+  }
+}

@@ -2,6 +2,37 @@
 
 Things that went wrong or needed a second pass while making episodes, and the rule that came out of each. Newest first. `CLAUDE.md` links here; the short rules are also copied into `CLAUDE.md`.
 
+## Episode: thai-e-waste v3, quantity only (user review, 2026-11-18)
+
+- **Voice must name what the picture highlights.** The 2015 bar got a lime block but the VO skipped from "a few tonnes" to 2016; v3 now says "In 2015, it doubled". Rule: every highlighted bar or marker gets its own words in the line that plays over it.
+- **Use the user's narrative verbs.** "By 2019, it had become 407 tonnes" (Thai: พอปีสองพันสิบเก้า กลายเป็น…), then the ban as its own sentence.
+- **The user's premise vs the data, again.** The brief said Jan–May 2026 was lower than the same months of 2025; the data says 409 t vs 51 t (8×). It is only lower than the whole of 2025. The clip uses the data and says "eight times the same months of 2025".
+- **Scope cut:** value line, top-sender cards, 9-in-10 grid and partner counts were dropped; the clip is about tonnes only, and "Who sends the most?" became the question that leads into the Querious walkthrough (the result table is shown without highlighting a row). 118.8 s → 97.4 s.
+- **Monthly close-up for a mid-year event.** The yearly chart crossfades into monthly bars (Jan 2025 – May 2026, month numbers so both languages share the axis) with the 24 Jun 2025 ban-expansion marker and brackets for Jul–Dec 2025 and Jan–May 2025/2026. A red note line says HS6 data can't show which items fall under the ban.
+- **Thai abbreviations in Paxa (user review):** write them as they are spoken. "คสช." was misread; the voice line now says "คำสั่งหัวหน้าคอสอชอ" (fits at 1.16×). On screen it stays "คสช. 4/2559".
+- **Bracket labels near the right edge or a tall bar:** keep them to the number ("409 t") and let the caption carry the period name.
+
+## Episode: thai-e-waste-th (2026-11-18)
+
+- **Policy facts checked before the Thai voice.** NCPO order 4/2559 (20 Jan 2016, section 44) exempted factory types 101, 105 and 106 (hazardous-waste disposal, sorting/landfill, recycling) and energy projects from comprehensive town plans; the House voted to repeal it on 23 Jul 2025. The 2020 ban (MOC notice B.E. 2563, 428 items, in force 15 Sep 2020) listed old HS codes; a 2025 notice (463 items, HS 2022 incl. 8549, in force 24 Jun 2025) replaced it. Neither later event is in `querious_timeline_events` yet.
+- **Slots sized at ~1.1× the EN voice were enough** with lines trimmed ~30%: first Paxa pass fit everything except v16 (1.30×); second pass max 1.22×.
+- **A wide 2025 value label clipped at the chart's clip edge** in the 15-year view ("1,239 ตัน" is longer than "1,239 t"); its x is clamped to the plot's right edge.
+- **Years on screen stay CE (2012…2026)** to match the chart axis; the ban card adds "(2563)" once, and the order keeps its own number 4/2559.
+- **Loudness:** Paxa −2 dB → −17.1 LUFS / −2.5 dBFS (EN −17.4).
+
+## Episode: thai-e-waste (EN, 2026-11-18)
+
+- **First trade-data episode (UN Comtrade).** Weight is missing in many months from 2019 (China, USA, France carry value with no weight), and the World totals dataset does not match the sum of partner rows (2020: Korea alone 241 t vs a World total of 120 t). Rule: pick one base and use it for every number in the clip; here every tonne is a sum of partner rows, so the big picture and the country scenes add up.
+- **Check that a count compares like with like.** "Partner countries 5 → 29" mixed scopes: 2020 is battery waste only, 2024 counts all 11 HS 2022 codes. On the battery codes only (comparable across HS editions) it is 5 → 13 (2025), and all codes give 23. The scene shows the battery series with a dashed 2025 bar for all codes, and the VO says both.
+- **Ranking by weight misses rows with no weight.** China has $2.67M of imports with no recorded weight, so the "#1 sender by weight" scene never says China sends little, and the source line says "recorded weight only".
+- **Short caveat up front, not at the end (user's choice).** The caveat is one red mono note (`#903F29`, `#redn`) pinned under every data scene from the source card on; an extra line explains "Other Asia, nes" in the top-sender scene.
+- **One continuous chart, then close up (user review).** The first cut cut from the battery chart (2012–2021) to a separate all-e-waste chart. Now one chart: the x-axis widens from 10 to 15 years at the HS 2022 change (dashed divider `2022 → ALL CODES`, code-group chips), the y-axis rescales to 1,400 t, then the domain zooms to 2022–2026 for the value line. Bars, labels, markers and the line are positioned from `XS`/`XN`/`YM` every frame, inside a clipPath.
+- **Reveal year by year when one year is the point (user review).** 2012–2014 grow first, 2015 (6.6 t, 2×) gets a lime block, and 2016 only appears after the NCPO marker.
+- **Centre a unit grid** under a left-aligned headline (user review).
+- **Events are markers, not causes.** The NCPO order and the import ban are dashed markers on the bar chart; the VO only states dates and numbers.
+- **Length:** 118.8 s with complete content (user accepts longer clips). The walkthrough reuses the ai-revenue-compute timings with a fixed offset (`OW`), and the end card the same way (`tx = t − 23.8`).
+- **Loudness:** default voice gave −16.6 LUFS / −1.2 dBFS; voice −1 dB → −17.4 LUFS / −2.0 dBFS.
+
 ## Episode: potion-ingredients-th (2026-11-13)
 
 - **Sizing EN slots ×1.35 worked:** the first Paxa pass fit every line at ≤ 1.15× except the key message line (v10, 1.29×).
