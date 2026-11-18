@@ -9,6 +9,7 @@ Things that went wrong or needed a second pass while making episodes, and the ru
 - **The user's premise vs the data, again.** The brief said Jan–May 2026 was lower than the same months of 2025; the data says 409 t vs 51 t (8×). It is only lower than the whole of 2025. The clip uses the data and says "eight times the same months of 2025".
 - **Scope cut:** value line, top-sender cards, 9-in-10 grid and partner counts were dropped; the clip is about tonnes only, and "Who sends the most?" became the question that leads into the Querious walkthrough (the result table is shown without highlighting a row). 118.8 s → 97.4 s.
 - **Monthly close-up for a mid-year event.** The yearly chart crossfades into monthly bars (Jan 2025 – May 2026, month numbers so both languages share the axis) with the 24 Jun 2025 ban-expansion marker and brackets for Jul–Dec 2025 and Jan–May 2025/2026. A red note line says HS6 data can't show which items fall under the ban.
+- **Thai abbreviations in Paxa (user review):** write them as they are spoken. "คสช." was misread; the voice line now says "คำสั่งหัวหน้าคอสอชอ" (fits at 1.16×). On screen it stays "คสช. 4/2559".
 - **Bracket labels near the right edge or a tall bar:** keep them to the number ("409 t") and let the caption carry the period name.
 
 ## Episode: thai-e-waste-th (2026-11-18)
