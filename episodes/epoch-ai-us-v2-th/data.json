@@ -1,0 +1,480 @@
+{
+  "source": "Epoch AI",
+  "snapshot": "2026-11-19",
+  "license": "CC BY 4.0",
+  "inputs_sha256": {
+    "epoch_ai_data_centers": "6bb4fc90e0ab3d1f56b144b82b831cbc156e667a4e8b827f0df67cf70edfeb17",
+    "epoch_ai_data_center_timelines": "8614231f32103ef36b750b3f03d9c108aeeb34c80b5b2cb83cf6a50f5cc414b4"
+  },
+  "verified_github_main": "09f866bf336c60abc8a6e1da6e28f8d2499e3f96",
+  "reference_video_main": "258e97f28055f087deeba221cff5b4c5ed85896e",
+  "points": [
+    {
+      "data_center": "AWS Berwick",
+      "owner": "Amazon #confident",
+      "users": "Anthropic #speculative",
+      "mw": 108.0,
+      "compute": 81354.21930267812
+    },
+    {
+      "data_center": "AWS New Albany",
+      "owner": "Amazon #confident",
+      "users": null,
+      "mw": 213.0,
+      "compute": 201111.67256189996
+    },
+    {
+      "data_center": "Amazon Madison Mega Site",
+      "owner": "Amazon #confident",
+      "users": "Anthropic #speculative",
+      "mw": 284.0,
+      "compute": 214348.14354550533
+    },
+    {
+      "data_center": "Amazon Ridgeland",
+      "owner": "Amazon #confident",
+      "users": "Anthropic #speculative",
+      "mw": 228.0,
+      "compute": 171298.6356745831
+    },
+    {
+      "data_center": "Anthropic Lake Mariner",
+      "owner": "AI XPV Platform #confident",
+      "users": "Anthropic #likely",
+      "mw": 210.0,
+      "compute": 292829.71197574533
+    },
+    {
+      "data_center": "Anthropic-Amazon New Carlisle",
+      "owner": "Amazon #confident",
+      "users": "Anthropic #confident",
+      "mw": 1037.0,
+      "compute": 818428.4992420415
+    },
+    {
+      "data_center": "Colossus 1",
+      "owner": "SpaceXAI #confident",
+      "users": "Anthropic #confident",
+      "mw": 340.0,
+      "compute": 275795.85649317835
+    },
+    {
+      "data_center": "Colossus 2",
+      "owner": "SpaceXAI #confident",
+      "users": "Anthropic #confident, Cursor #confident, SpaceXAI #confident",
+      "mw": 946.0,
+      "compute": 1111672.5618999496
+    },
+    {
+      "data_center": "Core42 Lake Mariner",
+      "owner": "Core42 #confident",
+      "users": "G42 #likely",
+      "mw": 58.0,
+      "compute": 71753.4108135422
+    },
+    {
+      "data_center": "CoreWeave Chester VA",
+      "owner": "CoreWeave #confident",
+      "users": "OpenAI #speculative",
+      "mw": 82.0,
+      "compute": 88428.49924204143
+    },
+    {
+      "data_center": "CoreWeave Dalton 1 & 2",
+      "owner": "CoreWeave #confident",
+      "users": "OpenAI #speculative",
+      "mw": 28.0,
+      "compute": 32238.504295098533
+    },
+    {
+      "data_center": "CoreWeave Denton TX",
+      "owner": "CoreWeave #confident",
+      "users": "OpenAI #likely",
+      "mw": 262.0,
+      "compute": 252652.85497726125
+    },
+    {
+      "data_center": "CoreWeave Ellendale ND",
+      "owner": "CoreWeave #confident",
+      "users": "OpenAI #speculative",
+      "mw": 68.0,
+      "compute": 93481.55634158666
+    },
+    {
+      "data_center": "CoreWeave Marble NC",
+      "owner": "CoreWeave #confident",
+      "users": "OpenAI #speculative",
+      "mw": 65.0,
+      "compute": 78827.6907529055
+    },
+    {
+      "data_center": "Coreweave Helios",
+      "owner": "CoreWeave #confident",
+      "users": "OpenAI #speculative",
+      "mw": 132.0,
+      "compute": 159551.768236855
+    },
+    {
+      "data_center": "Google Arcola",
+      "owner": "Google #confident",
+      "users": null,
+      "mw": 77.0,
+      "compute": 108135.42193026781
+    },
+    {
+      "data_center": "Google Bristow",
+      "owner": "Google",
+      "users": "Google DeepMind",
+      "mw": 238.0,
+      "compute": 209860.53562405254
+    },
+    {
+      "data_center": "Google Columbus",
+      "owner": "Google #confident",
+      "users": "Google DeepMind #speculative",
+      "mw": 303.0,
+      "compute": 331985.85144012125
+    },
+    {
+      "data_center": "Google Council Bluffs (East)",
+      "owner": "Google #confident",
+      "users": "Google DeepMind #speculative",
+      "mw": 237.0,
+      "compute": 255684.68923698837
+    },
+    {
+      "data_center": "Google Kansas City East",
+      "owner": "Google #confident",
+      "users": null,
+      "mw": 105.0,
+      "compute": 202627.5896917635
+    },
+    {
+      "data_center": "Google Lancaster",
+      "owner": "Google #confident",
+      "users": null,
+      "mw": 137.0,
+      "compute": 130368.8731682668
+    },
+    {
+      "data_center": "Google Lincoln",
+      "owner": "Google #confident",
+      "users": null,
+      "mw": 141.0,
+      "compute": 197574.53259221828
+    },
+    {
+      "data_center": "Google Mesa",
+      "owner": "Google #confident",
+      "users": null,
+      "mw": 183.0,
+      "compute": 289540.17180394137
+    },
+    {
+      "data_center": "Google Midlothian",
+      "owner": "Google #confident",
+      "users": null,
+      "mw": 103.0,
+      "compute": 143580.85118746842
+    },
+    {
+      "data_center": "Google New Albany",
+      "owner": "Google #confident",
+      "users": "Google DeepMind #speculative",
+      "mw": 333.0,
+      "compute": 323900.9600808489
+    },
+    {
+      "data_center": "Google Omaha",
+      "owner": "Google #confident",
+      "users": "Google DeepMind #speculative",
+      "mw": 237.0,
+      "compute": 198585.14401212733
+    },
+    {
+      "data_center": "Google Papillion",
+      "owner": "Google #confident",
+      "users": "Google DeepMind #speculative",
+      "mw": 237.0,
+      "compute": 100555.83628094998
+    },
+    {
+      "data_center": "Google Pryor (North)",
+      "owner": "Google #confident",
+      "users": "Google DeepMind #speculative",
+      "mw": 368.0,
+      "compute": 636685.1945426983
+    },
+    {
+      "data_center": "Google Red Oak",
+      "owner": "Google #confident",
+      "users": null,
+      "mw": 77.0,
+      "compute": 108135.42193026781
+    },
+    {
+      "data_center": "Google Storey County",
+      "owner": "Google #confident",
+      "users": "Google DeepMind #speculative",
+      "mw": 161.0,
+      "compute": 133906.01313794847
+    },
+    {
+      "data_center": "Google The Dalles",
+      "owner": "Google #confident",
+      "users": null,
+      "mw": 154.0,
+      "compute": 175341.0813542193
+    },
+    {
+      "data_center": "Meta Aiken",
+      "owner": "Meta #confident",
+      "users": "Meta #confident",
+      "mw": 129.0,
+      "compute": 147043.96159676605
+    },
+    {
+      "data_center": "Meta Cheyenne",
+      "owner": "Meta #confident",
+      "users": "Meta #confident",
+      "mw": 152.0,
+      "compute": 172814.5528044467
+    },
+    {
+      "data_center": "Meta Eagle Mountain",
+      "owner": "Meta #confident",
+      "users": "Meta #confident",
+      "mw": 133.0,
+      "compute": 151354.21930267813
+    },
+    {
+      "data_center": "Meta Gallatin",
+      "owner": "Meta #confident",
+      "users": "Meta #confident",
+      "mw": 87.0,
+      "compute": 99545.22486104093
+    },
+    {
+      "data_center": "Meta Huntsville",
+      "owner": "Meta #confident",
+      "users": "Meta #confident",
+      "mw": 146.0,
+      "compute": 166760.9903991915
+    },
+    {
+      "data_center": "Meta Jeffersonville",
+      "owner": "Meta #confident",
+      "users": "Meta #confident",
+      "mw": 178.0,
+      "compute": 203132.89540171804
+    },
+    {
+      "data_center": "Meta Kuna",
+      "owner": "Meta #confident",
+      "users": "Meta #confident",
+      "mw": 152.0,
+      "compute": 173247.67205659422
+    },
+    {
+      "data_center": "Meta Los Lunas",
+      "owner": "Meta #confident",
+      "users": "Meta #confident",
+      "mw": 118.0,
+      "compute": 133906.01313794847
+    },
+    {
+      "data_center": "Meta Montgomery",
+      "owner": "Meta #confident",
+      "users": "Meta #confident",
+      "mw": 153.0,
+      "compute": 174517.43304699342
+    },
+    {
+      "data_center": "Meta Prometheus",
+      "owner": "Meta #confident",
+      "users": "Meta #confident",
+      "mw": 471.0,
+      "compute": 536343.0015159171
+    },
+    {
+      "data_center": "Meta Rosemount",
+      "owner": "Meta #confident",
+      "users": "Meta #confident",
+      "mw": 178.0,
+      "compute": 215675.11520970188
+    },
+    {
+      "data_center": "Meta Sarpy",
+      "owner": "Meta #confident",
+      "users": "Meta #confident",
+      "mw": 80.0,
+      "compute": 91965.63921172309
+    },
+    {
+      "data_center": "Meta Temple",
+      "owner": "Meta #confident",
+      "users": "Meta #confident",
+      "mw": 178.0,
+      "compute": 202472.98777125112
+    },
+    {
+      "data_center": "Meta-QTS Hillsboro 2",
+      "owner": "Meta #likely",
+      "users": "Meta #likely",
+      "mw": 180.0,
+      "compute": 123839.0
+    },
+    {
+      "data_center": "Microsoft Fairwater Atlanta",
+      "owner": "Microsoft #confident",
+      "users": "OpenAI #likely, Microsoft #likely",
+      "mw": 636.0,
+      "compute": 768768.7220818596
+    },
+    {
+      "data_center": "Microsoft Fairwater Wisconsin",
+      "owner": "Microsoft #confident",
+      "users": "OpenAI #likely, Microsoft #likely",
+      "mw": 369.0,
+      "compute": 445679.63617988885
+    },
+    {
+      "data_center": "Microsoft Goodyear",
+      "owner": "Microsoft #confident",
+      "users": "OpenAI #likely, Microsoft #confident",
+      "mw": 202.0,
+      "compute": 205154.11824153614
+    },
+    {
+      "data_center": "Microsoft Project Osmium",
+      "owner": "Microsoft #confident",
+      "users": "OpenAI #speculative",
+      "mw": 190.0,
+      "compute": 155634.15866599293
+    },
+    {
+      "data_center": "Microsoft SAT14",
+      "owner": "Microsoft #confident",
+      "users": null,
+      "mw": 47.0,
+      "compute": 45174.33046993431
+    },
+    {
+      "data_center": "Microsoft SAT40",
+      "owner": "Microsoft #confident",
+      "users": null,
+      "mw": 75.0,
+      "compute": 64679.13087417888
+    },
+    {
+      "data_center": "Microsoft-Nebius New Jersey",
+      "owner": "Nebius #confident",
+      "users": "Microsoft #likely",
+      "mw": 50.0,
+      "compute": 56846.89236988378
+    },
+    {
+      "data_center": "OpenAI Stargate Abilene",
+      "owner": "Oracle #confident",
+      "users": "OpenAI #confident",
+      "mw": 824.0,
+      "compute": 1018696.3112683173
+    },
+    {
+      "data_center": "QTS Richmond 1",
+      "owner": null,
+      "users": null,
+      "mw": 238.0,
+      "compute": 242546.7407781708
+    },
+    {
+      "data_center": "QTS Richmond 2",
+      "owner": null,
+      "users": null,
+      "mw": 180.0,
+      "compute": 182920.66700353715
+    },
+    {
+      "data_center": "QTS Richmond 3",
+      "owner": null,
+      "users": null,
+      "mw": 144.0,
+      "compute": 174835.77564426477
+    },
+    {
+      "data_center": "STACK Infrastructure NVA02",
+      "owner": null,
+      "users": null,
+      "mw": 85.0,
+      "compute": 61141.99090449722
+    },
+    {
+      "data_center": "Stream Phoenix",
+      "owner": null,
+      "users": null,
+      "mw": 64.0,
+      "compute": 46134.4113188479
+    },
+    {
+      "data_center": "Vantage TX1",
+      "owner": null,
+      "users": null,
+      "mw": 32.0,
+      "compute": 38706.417382516425
+    },
+    {
+      "data_center": "xAI QTS Atlanta",
+      "owner": "SpaceXAI #confident",
+      "users": "SpaceXAI #confident",
+      "mw": 17.32971,
+      "compute": 11470.43961596766
+    }
+  ],
+  "featured": {
+    "Colossus 2": {
+      "data_center": "Colossus 2",
+      "owner": "SpaceXAI #confident",
+      "users": "Anthropic #confident, Cursor #confident, SpaceXAI #confident",
+      "mw": 946.0,
+      "compute": 1111672.5618999496
+    },
+    "Anthropic-Amazon New Carlisle": {
+      "data_center": "Anthropic-Amazon New Carlisle",
+      "owner": "Amazon #confident",
+      "users": "Anthropic #confident",
+      "mw": 1037.0,
+      "compute": 818428.4992420415
+    }
+  },
+  "compute_advantage_pct": 35.830138238036135,
+  "it_capacity_difference_pct": -8.775313404050145,
+  "household_benchmark": {
+    "annual_kwh": 10500,
+    "source": "https://www.eia.gov/energyexplained/use-of-energy/electricity-use-in-homes.php",
+    "source_page_updated": "2023-12-18",
+    "it_mw": 946.0,
+    "hours": 1,
+    "home_years": 90.0952380952381
+  },
+  "query": "SELECT s.data_center,\n  MAX(t.it_power_mw) - s.current_it_power_mw AS extra_mw\nFROM epoch_ai_data_centers s\nJOIN epoch_ai_data_center_timelines t USING (data_center)\nWHERE s.country = 'United States'\n  AND CAST(t.date AS DATE) > DATE '2026-11-19'\nGROUP BY s.data_center, s.current_it_power_mw\nORDER BY extra_mw DESC\nLIMIT 3;",
+  "result": [
+    {
+      "data_center": "Microsoft Fairwater Wisconsin",
+      "extra_mw": 1894.0
+    },
+    {
+      "data_center": "OpenAI Stargate New Mexico",
+      "extra_mw": 1750.0
+    },
+    {
+      "data_center": "Meta Hyperion",
+      "extra_mw": 1632.0
+    }
+  ],
+  "omitted_zero_current_capacity_sites": 17,
+  "remarks": [
+    "Hypothetical full-IT-capacity energy equivalent, not metered electricity use.",
+    "H100-equivalents compare 8-bit OP/s capacity, not physical H100 count.",
+    "Selected US sites; not a national census. Future milestones are estimates at different dates."
+  ]
+}

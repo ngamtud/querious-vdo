@@ -1,0 +1,274 @@
+<!doctype html><html><head><meta charset="utf-8"><style>
+@font-face{font-family:SG;src:url(../../node_modules/@fontsource/space-grotesk/files/space-grotesk-latin-400-normal.woff2);font-weight:400}
+@font-face{font-family:SG;src:url(../../node_modules/@fontsource/space-grotesk/files/space-grotesk-latin-700-normal.woff2);font-weight:700}
+@font-face{font-family:PM;src:url(../../node_modules/@fontsource/ibm-plex-mono/files/ibm-plex-mono-latin-500-normal.woff2);font-weight:500}
+@font-face{font-family:PM;src:url(../../node_modules/@fontsource/ibm-plex-mono/files/ibm-plex-mono-latin-600-normal.woff2);font-weight:600}
+@font-face{font-family:TH;src:url(../../node_modules/@fontsource/ibm-plex-sans-thai/files/ibm-plex-sans-thai-thai-500-normal.woff2);font-weight:400 500}
+@font-face{font-family:TH;src:url(../../node_modules/@fontsource/ibm-plex-sans-thai/files/ibm-plex-sans-thai-thai-600-normal.woff2);font-weight:600}
+@font-face{font-family:TH;src:url(../../node_modules/@fontsource/ibm-plex-sans-thai/files/ibm-plex-sans-thai-thai-700-normal.woff2);font-weight:700}
+@font-face{font-family:PX;src:url(../../node_modules/@fontsource/pixelify-sans/files/pixelify-sans-latin-700-normal.woff2);font-weight:700}
+/* Facebook-safe 9:16: top 300, bottom 380, sides 150, right 230 clear between y 1180-1780 */
+:root{--safe-x:150px;--safe-top:300px;--safe-bottom:380px;
+ --paper:#F4F1E9;--ink:#283127;--deep:#222923;--muted:#677166;--line:#C7CBBF;--lime:#D6ED63;--orange:#E5764B;
+ --c-ink:#424E3D;--c-orange:#DD6B43;--axis:#8B9485;--grid:#E1E4DA;--axtext:#455044}
+*{box-sizing:border-box;margin:0}
+html,body{width:1080px;height:1920px;overflow:hidden;background:var(--deep);font-family:SG,TH}
+.scene{position:absolute;inset:0;overflow:hidden}
+.cam{position:absolute;inset:0;transform-origin:50% 45%}
+.dark{background:var(--deep);color:#F4F1E9}.light{background:var(--paper);color:var(--ink)}
+.grid{position:absolute;inset:0;opacity:.035;background-image:linear-gradient(currentColor 1px,transparent 1px),linear-gradient(90deg,currentColor 1px,transparent 1px);background-size:72px 72px}
+.mono{font-family:PM,TH;font-weight:600;letter-spacing:.08em;text-transform:uppercase}
+.cur{color:var(--orange)}
+.L{position:absolute;left:var(--safe-x);right:var(--safe-x)}
+.N{position:absolute;left:var(--safe-x);width:700px}
+.logo{position:absolute;top:var(--safe-top);right:var(--safe-x);width:76px;height:76px;object-fit:contain;z-index:10}
+.top{top:var(--safe-top);display:flex;align-items:center;gap:22px;border-bottom:2px solid var(--ink);padding:0 100px 20px 0;height:96px}
+.brand{font:700 44px SG,TH;letter-spacing:-.05em;flex:1}.brand i{font:700 46px PX;font-style:normal}
+.tag{font-size:21px;border:1.5px solid var(--ink);padding:8px 12px;background:var(--lime);transform:rotate(-3deg)}
+.eyebrowD{top:330px;font-size:24px;color:#A9B4A2;right:260px}.eyebrowD b{color:var(--lime);font-weight:600}
+.meta{top:430px;font-size:23px;color:var(--muted)}
+.h2{top:470px;font:700 92px/1 SG,TH;letter-spacing:-.07em;white-space:nowrap}
+.note{font-size:19px;line-height:1.5;color:var(--muted);letter-spacing:.05em}
+.dark .note{color:#7f8a7c}
+.caption{top:1392px;font:700 70px/1.03 SG,TH;letter-spacing:-.06em;white-space:nowrap}
+.caption .hl{background:var(--lime);padding:0 10px}
+.drule{position:absolute;left:var(--safe-x);right:var(--safe-x);top:1420px;height:2px;background:#4a5648}
+/* hook */
+.hook-h{top:470px;font:700 124px/.95 SG,TH;letter-spacing:-.075em;white-space:nowrap}
+.hook-s{top:610px;font:700 64px/1 SG,TH;letter-spacing:-.05em;color:#DCE3D3;white-space:nowrap}
+#eq{top:740px;display:grid;grid-template-columns:230px 160px 230px;justify-content:center;align-items:center;text-align:center;color:var(--lime)}
+#eq .ap{font:500 86px/1 PM,TH}
+.big90{top:930px;font:700 260px/.9 SG,TH;letter-spacing:-.08em;color:var(--lime)}
+.homes{top:1190px;font:700 76px/1 SG,TH;letter-spacing:-.06em}
+/* power bars */
+.row .hd{display:flex;justify-content:space-between;align-items:baseline}
+.row h3{font:700 50px/1 SG,TH;letter-spacing:-.05em}
+.row .v{font:600 34px PM,TH}
+.row .sub{font-size:20px;color:var(--muted);margin-top:12px}
+.row .track{position:relative;height:58px;margin-top:18px;background:var(--grid)}
+.row .fill{position:absolute;left:0;top:0;bottom:0}
+/* question */
+.q-h{top:500px;font:700 112px/.98 SG,TH;letter-spacing:-.075em}
+.q-h .y{color:var(--lime)}
+/* walkthrough */
+.btn{position:absolute;display:flex;align-items:center;gap:18px;border:2px solid var(--ink);background:var(--ink);color:var(--lime);padding:18px 24px;font-size:25px;white-space:nowrap}
+.obtn{border:2px solid var(--ink);background:#FAF9F3;color:var(--ink);padding:16px 20px;font-size:23px;white-space:nowrap}
+.press{transform:translate(3px,3px);background:var(--lime)!important;color:var(--ink)!important}
+#search{top:600px;border:2px solid var(--ink);background:#FAF9F3;padding:20px 22px;font:500 30px PM,TH;display:flex;gap:16px;align-items:center}
+#dscard{top:730px;border:2px solid var(--ink);background:#FAF9F3;padding:28px 28px 32px;box-shadow:7px 7px 0 var(--lime)}
+#dscard .ey{font-size:20px;color:var(--muted)}
+#dscard h3{font:700 54px/1.02 SG,TH;letter-spacing:-.06em;margin-top:14px}
+#dscard h4{font:700 42px/1.05 SG,TH;letter-spacing:-.05em}
+#dscard p{font:400 27px/1.4 SG,TH;color:#455044;margin-top:10px}
+#dscard .split{border-top:1px solid var(--line);margin-top:26px;padding-top:24px}
+#open{position:static;display:inline-flex;margin-top:28px;font-size:24px;padding:15px 20px}
+#sqlhead{top:440px;display:flex;justify-content:space-between;font-size:20px;color:var(--muted)}
+#sql{top:480px;height:340px;background:var(--ink);border-left:8px solid var(--lime);color:#EDF2E5;padding:24px 22px;font:500 20.5px/1.55 PM,TH;white-space:pre;overflow:hidden}
+#sql .k{color:var(--lime)}
+#run{right:var(--safe-x);top:836px}
+#rtable{top:930px;border:2px solid var(--ink);background:#FAF9F3}
+#rtable .rh{display:flex;justify-content:space-between;border-bottom:1px solid var(--ink);padding:10px 16px;font-size:19px}
+#rtable table{width:100%;border-collapse:collapse;font:500 23px PM,TH}
+#rtable th{background:#E8ECE0;text-align:left;padding:8px 14px;font-weight:600;font-size:17px;color:var(--muted)}
+#rtable td{padding:10px 14px;border-top:1px solid #DBE0D5;white-space:nowrap}
+#rtable .n{text-align:right}
+#exports{top:1186px;display:flex;gap:16px}
+#exports .obtn{position:relative}
+#connect{position:relative;background:var(--ink);color:var(--lime)}
+#conn{top:1274px;border:2px solid var(--ink);background:#EDF2E4;padding:20px 22px}
+#conn .lbl{font-size:19px;color:var(--muted)}
+#conn .row2{display:flex;justify-content:space-between;align-items:center;border:1px solid var(--line);background:#FBFAF5;padding:12px 14px;margin-top:12px;font:500 22px PM,TH}
+#conn .row2 b{font:600 17px PM,TH;letter-spacing:.06em;border:1px solid var(--ink);padding:6px 10px;background:var(--lime)}
+#conn .for{display:flex;gap:14px;align-items:center;margin-top:16px;font:500 26px PM,TH}
+#conn .chip{border:2px solid var(--ink);background:var(--ink);color:var(--lime);padding:9px 16px;font-size:21px}
+/* end card */
+.end-big{top:620px;font:700 160px/.92 SG,TH;letter-spacing:-.075em;white-space:nowrap}
+.end-sub{top:860px;font:700 62px/1.1 SG,TH;letter-spacing:-.05em;color:#DCE3D3}
+.end-sub b{color:var(--lime)}
+.cta{position:absolute;left:var(--safe-x);top:1090px;display:inline-flex;gap:18px;align-items:center;background:var(--lime);color:var(--ink);border:2px solid var(--lime);padding:20px 26px;font-size:29px}
+.end-url{top:1205px;font-size:21px;color:#A9B4A2}
+.cursor{position:absolute;z-index:12;width:56px;height:63px;pointer-events:none}
+.ripple{position:absolute;border:4px solid var(--orange);z-index:11;pointer-events:none}
+#wipe{position:absolute;left:0;right:0;top:0;height:1920px;background:var(--lime);z-index:30;pointer-events:none;display:none}
+#safe{position:absolute;left:150px;right:150px;top:300px;bottom:380px;outline:2px dashed magenta;z-index:40;display:none;pointer-events:none}
+#safe:after{content:'';position:absolute;right:0;top:880px;width:80px;height:600px;outline:2px dashed magenta}
+svg text{font-family:PM,TH;font-weight:500}
+/* Thai overrides: no negative tracking, taller lines */
+.mono{letter-spacing:.03em}
+.h2{font-size:84px;letter-spacing:-.01em;line-height:1.2;top:478px}
+.caption{top:1366px;font-size:64px;letter-spacing:-.01em;line-height:1.25}
+.caption .hl{padding:0 8px}
+.hook-s{font-size:60px;letter-spacing:-.01em;line-height:1.2;top:604px}
+.homes{font-size:68px;letter-spacing:-.01em;line-height:1.2}
+.row h3,#dscard h3,#dscard h4{letter-spacing:-.01em;line-height:1.2}
+#dscard p{line-height:1.45}
+.q-h{font-size:100px;letter-spacing:-.01em;line-height:1.2;top:470px}
+.end-big{font-size:104px;letter-spacing:-.02em;line-height:1.2}
+.end-sub{font-size:66px;letter-spacing:-.01em;line-height:1.25;top:800px}
+.cta{top:1000px}.end-url{top:1115px}
+</style></head><body><div id="stage"></div><div id="wipe"></div><div id="safe"></div><script>
+const D=window.__DATA__, $=s=>document.querySelector(s);
+const C=x=>Math.max(0,Math.min(1,x)), E=x=>1-Math.pow(1-C(x),3), S=x=>{x=C(x);return x*x*(3-2*x)}, L=(a,b,p)=>a+(b-a)*p;
+const esc=s=>String(s).replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;');
+const SEG=new Intl.Segmenter('th',{granularity:'grapheme'}),G_=s=>[...SEG.segment(s)].map(x=>x.segment);
+const type=(s,t,a,d)=>{const g=G_(s);return esc(g.slice(0,Math.round(g.length*C((t-a)/d))).join(''))};
+const erase=(s,t,a,b)=>{const g=G_(s);return esc(g.slice(Math.round(g.length*C((t-a)/(b-a)))).join(''))};
+const blink=t=>Math.floor(t/.53)%2?0:1;
+const cur=(t,on=1)=>`<span class="cur" style="opacity:${on*blink(t)}">_</span>`;
+const fade=(t,a,d=.35,dy=18)=>{const k=E((t-a)/d);return `opacity:${k};transform:translateY(${dy*(1-k)}px)`};
+const fmt=n=>Math.round(n).toLocaleString('en-US');
+if(location.hash==='#safe')document.getElementById('safe').style.display='block';
+
+// timeline (seconds) — keep in sync with episode.json
+const T={hook:0,power:7.2,scatter:14.0,question:27.0,walk:31.6,query:34.55,end:45.2,dur:55};
+const TH_END={head:45.5,sub:46.9,erase:52.6};
+const CUTS=[T.power,T.scatter,T.question,T.walk,T.end];
+
+const icoDC=`<svg width="150" height="120" viewBox="0 0 140 112" fill="none" stroke="currentColor" stroke-width="3"><path d="M8 105V30h124v75M0 105h140M20 30V8h100v22"/><path d="M25 45h20v18H25zM60 45h20v18H60zM95 45h20v18H95zM25 77h20v18H25zM60 77h20v18H60zM95 77h20v18H95z"/></svg>`;
+const icoHome=`<svg width="150" height="120" viewBox="0 0 126 112" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 49L63 5l58 44M20 40v66h86V40M50 106V70h26v36M30 55h12v12H30zM84 55h12v12H84z"/></svg>`;
+
+function scene(dark,t,t0,t1,head,body){
+  const z=1+.02*S((t-t0)/(t1-t0));
+  return `<section class="scene ${dark?'dark':'light'}"><div class="grid"></div><img class="logo" src="../../brand/querious-logo-${dark?'lime':'dark'}.svg">${head}<div class="cam" style="transform:scale(${z})">${body}</div></section>`;
+}
+const topbar=tag=>`<div class="top L"><div class="brand"><i>Q</i>uerious<span class="cur">_</span></div><div class="tag mono">${tag}</div></div>`;
+const eyebrow=html=>`<div class="L mono eyebrowD">${html}</div>`;
+function caption(t,list){ // list of [start, html]; last started wins, cross-fade
+  let i=-1;list.forEach((c,j)=>{if(t>=c[0])i=j});if(i<0)return '';
+  return `<div class="N caption" style="${fade(t,list[i][0],.3,14)}">${list[i][1]}</div>`;
+}
+
+const A=D.featured['Colossus 2'], B=D.featured['Anthropic-Amazon New Carlisle'];
+
+/* ---------- A · hook ---------- */
+function hook(t){
+  const n=Math.round(D.household_benchmark.home_years*E((t-4.35)/.7));
+  return scene(true,t,T.hook,T.power,eyebrow('Querious / <b>ดาต้าเซ็นเตอร์ AI</b>'),
+  `<div class="L mono meta" style="color:#A9B4A2;${fade(t,.2)}">SpaceX AI / เมมฟิส</div>
+   <div class="L hook-h">${type('Colossus 2',t,.3,.6)}${t<2.65?cur(t):''}</div>
+   <div class="L hook-s">${type('เปิดเต็มกำลัง 1 ชั่วโมง',t,2.7,.75)}${t>=2.65?cur(t):''}</div>
+   <div class="L" id="eq"><div style="${fade(t,2.9,.4)}">${icoDC}</div><div class="ap" style="${fade(t,4.2,.3)}">≈</div><div style="${fade(t,4.35,.4)}">${icoHome}</div></div>
+   <div class="L big90" style="opacity:${C((t-4.3)/.15)}">${n}</div>
+   <div class="L homes" style="${fade(t,5.25,.4)}">ครัวเรือน ใช้ไฟได้ทั้งปี</div>
+   <div class="drule"></div>
+   <div class="N mono note" style="top:1440px">สมมติเปิดเต็มกำลังไอที · ไม่ใช่การใช้ไฟจริง<br>946 MW × 1 ชม. ÷ 10,500 kWh ต่อบ้านสหรัฐฯ ต่อปี<br>ที่มา / Epoch AI + US EIA</div>`);
+}
+
+/* ---------- B · power capacity bars ---------- */
+function power(t){
+  const W=780,max=1100,gw=1000/max*W;
+  const row=(top,p,name,sub,col,a)=>{const k=E((t-a)/1.0);return `<div class="L row" style="top:${top}px;${fade(t,a-.1,.35)}"><div class="hd"><h3>${name}</h3><div class="v" style="color:${col}">${fmt(p.mw*k)}<span style="font-size:22px;color:var(--muted)"> MW</span></div></div><div class="mono sub">${sub}</div><div class="track"><div class="fill" style="width:${p.mw/max*W*k}px;background:${col}"></div></div></div>`};
+  return scene(false,t,T.power,T.scatter,topbar('กำลังไฟไอที'),
+  `<div class="L mono meta">กำลังไฟไอทีรายไซต์ / MW / 2026-11-19</div>
+   <div class="L h2">เกือบหนึ่งกิกะวัตต์${cur(t)}</div>
+   <div style="position:absolute;left:${150+gw}px;top:650px;height:440px;border-left:2px dashed var(--axis);opacity:${E((t-7.7)/.4)}"></div>
+   <div class="mono" style="position:absolute;left:${150+gw-90}px;top:1100px;width:180px;text-align:center;font-size:20px;color:var(--axtext);opacity:${E((t-7.7)/.4)}">1 GW</div>
+   ${row(680,A,'SpaceX AI','Colossus 2 / เมมฟิส','var(--c-orange)',7.5)}
+   ${row(900,B,'Amazon → Anthropic','New Carlisle / อินดีแอนา','var(--c-ink)',10.0)}
+   <div class="N mono note" style="top:1250px">Epoch AI · ค่าประมาณรายไซต์ · CC BY 4.0<br>กำลังไฟไอที ไม่รวมระบบทำความเย็น<br>Amazon เป็นเจ้าของ · Anthropic เป็นผู้ใช้</div>
+   ${caption(t,[[7.7,'<span class="hl">946</span> MW เฉพาะไอที'],[10.2,'Amazon <span class="hl">1,037</span> MW']])}`);
+}
+
+/* ---------- C · scatter ---------- */
+function scatter(t){
+  const x0=96,x1=712,yT=118,yB=590,xs=v=>x0+v/1100*(x1-x0),ys=v=>yB-v/1.2e6*(yB-yT);
+  const gY=E((t-18.7)/.6),gX=E((t-21.9)/.6),pop=E((t-16.2)/.45);
+  let v='';
+  for(const n of [0,4e5,8e5,1.2e6])v+=`<line x1="${x0}" y1="${ys(n)}" x2="${x1}" y2="${ys(n)}" stroke="var(--grid)" stroke-width="2"/><text x="${x0-14}" y="${ys(n)+7}" text-anchor="end" font-size="20" fill="var(--axtext)" opacity="${n?1-gY:1}">${n?(n/1e6).toFixed(1)+'M':'0'}</text>`;
+  for(const n of [0,250,500,750,1000])v+=`<line x1="${xs(n)}" y1="${yB}" x2="${xs(n)}" y2="${yB+10}" stroke="var(--axis)" stroke-width="2"/><text x="${xs(n)}" y="${yB+38}" text-anchor="middle" font-size="20" fill="var(--axtext)" opacity="${n>=750?1-gX:1}">${fmt(n)}</text>`;
+  v+=`<path d="M${x0} ${yT-10}V${yB}H${x1}" fill="none" stroke="var(--axis)" stroke-width="2"/>`;
+  v+=`<text x="0" y="${yT-30}" font-size="19" fill="var(--axtext)" letter-spacing="1">↑ ประมวลผล / เทียบเท่า H100</text><text x="${x1}" y="${yB+78}" text-anchor="end" font-size="19" fill="var(--axtext)" letter-spacing="1">กำลังไฟไอที / MW →</text>`;
+  D.points.forEach((p,i)=>{if(p.data_center===A.data_center||p.data_center===B.data_center)return;const k=E((t-14.5-i*.018)/.5);
+    v+=`<circle cx="${xs(p.mw)}" cy="${ys(p.compute)}" r="${7*k}" fill="#637B91" opacity="${.45*k*(1-.35*gY)}"/>`});
+  // guides
+  for(const [p,col] of [[A,'var(--c-orange)'],[B,'var(--c-ink)']]){
+    v+=`<path d="M${x0} ${ys(p.compute)}H${xs(p.mw)}" stroke="${col}" stroke-width="2.5" stroke-dasharray="8 7" opacity="${gY}"/>`;
+    v+=`<path d="M${xs(p.mw)} ${yB}V${ys(p.compute)}" stroke="${col}" stroke-width="2.5" stroke-dasharray="8 7" opacity="${gX}"/>`;
+  }
+  v+=`<text x="${x0-14}" y="${ys(A.compute)+7}" text-anchor="end" font-size="21" fill="var(--c-orange)" font-weight="600" opacity="${gY}">${(A.compute/1e6).toFixed(2)}M</text><text x="${x0-14}" y="${ys(B.compute)+7}" text-anchor="end" font-size="21" fill="var(--c-ink)" opacity="${gY}">${(B.compute/1e6).toFixed(2)}M</text>`;
+  v+=`<text x="${xs(A.mw)-8}" y="${yB+38}" text-anchor="end" font-size="21" fill="var(--c-orange)" opacity="${gX}">${fmt(A.mw)}</text><text x="${xs(B.mw)+8}" y="${yB+38}" text-anchor="start" font-size="21" fill="var(--c-ink)" opacity="${gX}">${fmt(B.mw)}</text>`;
+  for(const [p,col] of [[B,'var(--c-ink)'],[A,'var(--c-orange)']])v+=`<circle cx="${xs(p.mw)}" cy="${ys(p.compute)}" r="${14*pop}" fill="${col}" stroke="#F4F1E9" stroke-width="3"/>`;
+  // legend
+  const lg=E((t-16.4)/.4);
+  v+=`<g opacity="${lg}"><circle cx="12" cy="18" r="11" fill="var(--c-orange)"/><text x="34" y="27" font-size="28" fill="var(--c-orange)" style="font-family:SG;font-weight:700">SpaceX AI</text><text x="190" y="26" font-size="19" fill="var(--axtext)">COLOSSUS 2</text>
+     <circle cx="402" cy="18" r="11" fill="var(--c-ink)"/><text x="424" y="27" font-size="28" fill="var(--c-ink)" style="font-family:SG;font-weight:700">Amazon</text><text x="540" y="26" font-size="19" fill="var(--axtext)">NEW CARLISLE</text></g>`;
+  const pct=Math.round(D.compute_advantage_pct), pw=Math.round(-D.it_capacity_difference_pct);
+  return scene(false,t,T.scatter,T.question,topbar('ประมวลผล'),
+  `<div class="L mono meta">60 ไซต์ในสหรัฐฯ / กำลังไฟ vs ประมวลผล</div>
+   <div class="L h2">ไฟเข้า งานออก${cur(t)}</div>
+   <svg style="position:absolute;left:150px;top:580px" width="780" height="680" viewBox="0 0 780 680">${v}</svg>
+   <div class="N mono note" style="top:1272px">Epoch AI · 60 ไซต์ในสหรัฐฯ ที่มีกำลังไฟ &gt; 0<br>เทียบเท่า H100 (8-bit OP/s) ไม่ใช่จำนวนชิป<br>ขีดความสามารถทางทฤษฎี ไม่ใช่ประสิทธิภาพที่วัดจริง</div>
+   ${caption(t,[[16.9,'อันดับ<span class="hl">สลับกัน</span>'],[18.7,`ประมวลผล <span class="hl">+${pct}%</span>`],[21.9,`ประมวลผล <span class="hl">+${pct}%</span><br>กำลังไฟ <span class="hl">−${pw}%</span>`]])}`);
+}
+
+/* ---------- D · question ---------- */
+function question(t){
+  const lines=['ต่อจากนี้','ที่ไหนจะขยาย','<span class="y">กำลังไฟ</span>','<span class="y">มากที่สุด?</span>'];
+  return scene(true,t,T.question,T.walk,eyebrow('Querious / <b>ต่อจากนี้</b>'),
+  `<div class="L q-h">${lines.map((l,i)=>`<div style="${fade(t,27.2+i*.16,.35,24)}">${l}${i===lines.length-1?cur(t):''}</div>`).join('')}</div>
+   <div class="L mono" style="top:1060px;font-size:23px;color:#A9B4A2;${fade(t,28.4)}">กำลังไฟตอนนี้ → แผนในอนาคต</div>
+   <div class="drule"></div>
+   <div class="N mono note" style="top:1440px">Epoch AI · ไทม์ไลน์ดาต้าเซ็นเตอร์ AI<br>แผนในอนาคตเป็นค่าประมาณ</div>`);
+}
+
+/* ---------- E · walkthrough ---------- */
+function sqlHi(s){return esc(s).replace(/\b(SELECT|MAX|FROM|JOIN|USING|WHERE|AND|CAST|DATE|AS|GROUP BY|ORDER BY|DESC|LIMIT)\b/g,'<span class="k">$1</span>')}
+function walk(t){
+  if(t<T.query){
+    return scene(false,t,T.walk,T.query,topbar('ขั้น 01 / ค้นหา'),
+    `<div class="L mono meta">แคตตาล็อก / Epoch AI</div>
+     <div class="L h2">แคตตาล็อกข้อมูล${cur(t)}</div>
+     <div class="L" id="search"><span style="color:var(--orange)">✳</span><span>${type('epoch ai',t,31.85,.6)}</span></div>
+     <div class="L" id="dscard" style="${fade(t,32.5,.35)}"><div class="mono ey">Epoch AI · 2 ชุดข้อมูล · CC BY 4.0</div><h3>AI data centers</h3><p>ไซต์ เจ้าของ พลังประมวลผล และกำลังไฟ</p>
+       <div class="split"><h4>AI data center timelines</h4><p>แผนขยายแต่ละช่วง (ค่าประมาณ)</p></div>
+       <div id="open" class="btn mono">Open in query ↗</div></div>`);
+  }
+  const q=D.query, n=Math.round(q.length*C((t-34.75)/3.3)), typing=t<38.15;
+  const stepTag=t<39.7?'ขั้น 02 / ดึงข้อมูล':'ขั้น 03 / ไปต่อ';
+  const rows=D.result.map((r,i)=>`<tr style="${i===0?`background:rgba(214,237,99,${.9*E((t-40.0)/.3)})`:''}"><td>${esc(r.data_center)}</td><td class="n">${fmt(r.extra_mw)}</td></tr>`).join('');
+  const c=E((t-42.3)/.3);
+  return scene(false,t,T.walk,T.end,topbar(stepTag),
+  `<div class="L mono" id="sqlhead"><span>SQL · DuckDB ในเบราว์เซอร์</span><span style="opacity:${E((t-39.6)/.3)}">✓ รันในเบราว์เซอร์</span></div>
+   <div class="L" id="sql">${sqlHi(q.slice(0,n))}<span class="cur">${typing&&blink(t)?'▌':''}</span></div>
+   <div id="run" class="btn mono" style="opacity:${E((t-38.15)/.25)}">Run query ▶</div>
+   <div class="L" id="rtable" style="${fade(t,39.6,.3)}"><div class="rh mono"><span>ผลลัพธ์</span><span>3 แถว · 2 คอลัมน์</span></div><table><tr><th>data_center</th><th class="n">extra_mw</th></tr>${rows}</table></div>
+   <div class="L" id="exports" style="${fade(t,40.3,.3,10)}"><div id="csv" class="obtn mono">↓ CSV</div><div id="json" class="obtn mono">↓ JSON</div><div id="connect" class="obtn mono">Connect</div></div>
+   <div class="N" id="conn" style="opacity:${c};transform:translateY(${14*(1-c)}px)"><div class="lbl mono">Connection URL · CSV / JSON แบบสด</div>
+     <div class="row2"><span>…/v1/query/…/result.csv</span><b>COPY CSV URL</b></div>
+     <div class="for" style="${fade(t,42.9,.3,8)}"><span>→</span><span class="chip mono">เอไอของคุณ</span><span class="chip mono">เครื่องมือของคุณ</span></div></div>
+   <div class="N mono note" style="top:1496px;font-size:17px">พีกในอนาคต − กำลังไฟปัจจุบัน · วันที่ต่างกันแต่ละไซต์</div>`);
+}
+
+/* ---------- F · end card ---------- */
+function endcard(t){
+  const e0=TH_END.erase;
+  return scene(true,t,T.end,T.dur,`<div class="L mono eyebrowD" style="opacity:${1-C((t-(e0+1.6))/.4)}">Querious / <b>ข้อมูลเปิด</b></div>`,
+  `<div class="L end-big">${t<e0+.9?type('ข้อมูลพร้อมแล้ว',t,TH_END.head,.8):erase('ข้อมูลพร้อมแล้ว',t,e0+.9,e0+1.7)}<span class="cur" style="opacity:${blink(t)*(1-C((t-54.45)/.45))}">_</span></div>
+   <div class="L end-sub"><b style="opacity:${E((t-TH_END.sub)/.3)}">${erase('มาหาคำตอบกัน',t,e0+.45,e0+1.0)}</b></div>
+   <div class="cta mono" style="${t<e0+.2?fade(t,TH_END.sub+.5,.35,12):''};${t>=e0+.6?'opacity:0':''}">${erase('querious.studio ↗',t,e0+.15,e0+.6)}</div>
+   <div class="L mono end-url" style="opacity:${E((t-(TH_END.sub+.8))/.3)}">${erase('สำรวจข้อมูลได้ฟรี ไม่ต้องสมัครสมาชิก',t,e0,e0+.35)}</div>`);
+}
+
+function mouse(t,id,t0,t1,click,start,out){
+  const el=$(id);if(!el||t<t0)return;const vis=E((t-t0)/.15)*(1-C((t-out)/.2));if(vis<=0)return;
+  const r=el.getBoundingClientRect(),dest={x:r.x+r.width*.55,y:r.y+r.height*.6};
+  const p=S((t-t0)/(t1-t0)),q=1-p,ctrl={x:L(start.x,dest.x,.35)+60,y:L(start.y,dest.y,.2)-80};
+  const pt={x:q*q*start.x+2*q*p*ctrl.x+p*p*dest.x,y:q*q*start.y+2*q*p*ctrl.y+p*p*dest.y};
+  const pr=t>=click&&t<click+.14;el.classList.toggle('press',pr);
+  $('#stage').insertAdjacentHTML('beforeend',`<svg class="cursor" data-target="${id}" style="left:${pt.x-4.5}px;top:${pt.y-3}px;opacity:${vis};transform:scale(${pr?.9:1});transform-origin:4.5px 3px" viewBox="0 0 32 36"><path d="M3 2v26l8-7 5 12 5-3-6-11h12Z" fill="#283127" stroke="#F4F1E9" stroke-width="1.5"/></svg>`);
+  if(t>=click&&t<click+.45){const k=C((t-click)/.45);$('#stage').insertAdjacentHTML('beforeend',`<div class="ripple" style="left:${dest.x-15-30*k}px;top:${dest.y-15-30*k}px;width:${30+60*k}px;height:${30+60*k}px;opacity:${1-k}"></div>`)}
+}
+
+window.render=function(t){
+  let html;
+  if(t<T.power)html=hook(t);else if(t<T.scatter)html=power(t);else if(t<T.question)html=scatter(t);
+  else if(t<T.walk)html=question(t);else if(t<T.end)html=walk(t);else html=endcard(t);
+  $('#stage').innerHTML=html;
+  if(t>=T.walk&&t<T.query)mouse(t,'#open',33.35,34.0,34.2,{x:790,y:1420},34.5);
+  if(t>=T.query&&t<T.end){mouse(t,'#run',38.45,39.1,39.35,{x:600,y:1150},39.75);mouse(t,'#connect',40.95,41.75,42.0,{x:760,y:1100},42.5)}
+  if(t>=T.end){$('.logo').style.opacity=1-C((t-(TH_END.erase+1.65))/.45);$('.grid').style.opacity=.035*(1-C((t-54.2)/.4))}
+  const cut=CUTS.find(x=>Math.abs(t-x)<.22);$('#wipe').style.display=cut===undefined?'none':'block';
+  if(cut!==undefined)$('#wipe').style.transform=`translateY(${L(-1920,1920,S((t-cut+.22)/.44))}px)`;
+};
+window.render(0);
+</script></body></html>
