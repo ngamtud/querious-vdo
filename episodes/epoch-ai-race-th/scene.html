@@ -84,7 +84,7 @@ if(location.hash==='#safe')document.getElementById('safe').style.display='block'
 
 // ---- timeline (seconds) — keep in sync with episode.json
 const T={race:3.6,question:50.4,end:54.0,dur:64};
-const TH_END={head:54.3,sub:55.8,erase:61.3};
+const TH_END={head:54.3,sub:56.05,erase:61.3};
 const CUTS=[T.race,T.question,T.end];
 const DAY0=Date.UTC(2024,0,1), dayOf=s=>Math.round((Date.parse(s+'T00:00:00Z')-DAY0)/864e5);
 const TODAY=dayOf(D.today), LAST=D.series.Meta.length-1;
