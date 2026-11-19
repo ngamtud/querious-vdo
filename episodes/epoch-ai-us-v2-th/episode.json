@@ -56,13 +56,13 @@
     {
       "id": "v1",
       "at": 0.25,
-      "text": "Colossus Two ของสเปซเอ็กซ์เอไอ | เปิดเต็มกำลังชั่วโมงเดียว | ใช้ไฟเท่าบ้านในอเมริกาเก้าสิบหลังทั้งปี",
+      "text": "Colossus Two | เปิดเต็มกำลังชั่วโมงเดียว | ใช้ไฟเท่าบ้านในอเมริกาเก้าสิบหลังทั้งปี",
       "text_en": "Space X A.I.’s Colossus Two. One hour at full power could run ninety American homes for a year."
     },
     {
       "id": "v2",
       "at": 7.4,
-      "text": "เกือบหนึ่งกิกะวัตต์ เฉพาะอุปกรณ์ไอที | แต่ไซต์ของแอมะซอนที่แอนโทรปิกใช้ มีกำลังไฟมากกว่าอีก",
+      "text": "เกือบหนึ่งกิกะวัตต์ แค่ฝั่งไอที | ไซต์แอมะซอนที่แอนโทรปิกใช้ ยังมากกว่า",
       "text_en": "Nearly a gigawatt, just for the I.T. equipment. And an Amazon site serving Anthropic has even more capacity."
     },
     {
