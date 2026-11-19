@@ -1,0 +1,169 @@
+<!doctype html><html><head><meta charset="utf-8"><style>
+@font-face{font-family:SG;src:url(../../node_modules/@fontsource/space-grotesk/files/space-grotesk-latin-400-normal.woff2);font-weight:400}
+@font-face{font-family:SG;src:url(../../node_modules/@fontsource/space-grotesk/files/space-grotesk-latin-700-normal.woff2);font-weight:700}
+@font-face{font-family:PM;src:url(../../node_modules/@fontsource/ibm-plex-mono/files/ibm-plex-mono-latin-500-normal.woff2);font-weight:500}
+@font-face{font-family:PM;src:url(../../node_modules/@fontsource/ibm-plex-mono/files/ibm-plex-mono-latin-600-normal.woff2);font-weight:600}
+@font-face{font-family:PX;src:url(../../node_modules/@fontsource/pixelify-sans/files/pixelify-sans-latin-700-normal.woff2);font-weight:700}
+/* Facebook-safe 9:16: top 300, bottom 380, sides 150, right 230 clear between y 1180-1780 */
+:root{--safe-x:150px;--safe-top:300px;--safe-bottom:380px;
+ --paper:#F4F1E9;--ink:#283127;--deep:#222923;--muted:#677166;--line:#C7CBBF;--lime:#D6ED63;--orange:#E5764B;
+ --axis:#8B9485;--grid:#E1E4DA;--axtext:#455044}
+*{box-sizing:border-box;margin:0}
+html,body{width:1080px;height:1920px;overflow:hidden;background:var(--deep);font-family:SG}
+.scene{position:absolute;inset:0;overflow:hidden}
+.cam{position:absolute;inset:0;transform-origin:50% 45%}
+.dark{background:var(--deep);color:#F4F1E9}.light{background:var(--paper);color:var(--ink)}
+.grid{position:absolute;inset:0;opacity:.035;background-image:linear-gradient(currentColor 1px,transparent 1px),linear-gradient(90deg,currentColor 1px,transparent 1px);background-size:72px 72px}
+.mono{font-family:PM;font-weight:600;letter-spacing:.08em;text-transform:uppercase}
+.cur{color:var(--orange)}
+.L{position:absolute;left:var(--safe-x);right:var(--safe-x)}
+.N{position:absolute;left:var(--safe-x);width:700px}
+.logo{position:absolute;top:var(--safe-top);right:var(--safe-x);width:76px;height:76px;object-fit:contain;z-index:10}
+.top{top:var(--safe-top);display:flex;align-items:center;gap:22px;border-bottom:2px solid var(--ink);padding:0 100px 20px 0;height:96px}
+.brand{font:700 44px SG;letter-spacing:-.05em;flex:1}.brand i{font:700 46px PX;font-style:normal}
+.tag{font-size:21px;border:1.5px solid var(--ink);padding:8px 12px;background:var(--lime);transform:rotate(-3deg)}
+.eyebrowD{top:330px;font-size:24px;color:#A9B4A2;right:260px}.eyebrowD b{color:var(--lime);font-weight:600}
+.meta{top:430px;font-size:23px;color:var(--muted)}
+.note{font-size:19px;line-height:1.5;color:var(--muted);letter-spacing:.05em}
+.caption{top:1392px;font:700 70px/1.03 SG;letter-spacing:-.06em;white-space:nowrap}
+.caption .hl{background:var(--lime);padding:0 10px}
+.drule{position:absolute;left:var(--safe-x);right:var(--safe-x);top:1420px;height:2px;background:#4a5648}
+/* race */
+#date{top:466px;display:flex;align-items:center;gap:22px;height:100px}
+#date .d{font:700 92px/1 SG;letter-spacing:-.06em;font-variant-numeric:tabular-nums;white-space:nowrap}
+#date .chip{font-size:20px;padding:8px 12px;border:2px solid var(--ink)}
+.row{position:absolute;left:142px;width:796px;height:80px;padding-left:8px;background:var(--paper)}
+.row>*{margin-left:8px}
+.badge{position:absolute;left:0;top:12px;width:56px;height:56px;display:flex;align-items:center;justify-content:center;color:#F4F1E9;font:700 26px SG;letter-spacing:-.04em}
+.badge .lg{width:34px;height:34px;background:#F4F1E9;-webkit-mask-repeat:no-repeat;mask-repeat:no-repeat;-webkit-mask-position:center;mask-position:center;-webkit-mask-size:contain;mask-size:contain}
+.row .nm{position:absolute;left:72px;top:2px;font:700 26px/1 SG;letter-spacing:-.03em;white-space:nowrap}
+.row .bar{position:absolute;left:72px;top:34px;height:38px}
+.row .hatch{position:absolute;top:0;bottom:0;background:repeating-linear-gradient(135deg,rgba(255,255,255,.55) 0 5px,transparent 5px 11px)}
+.row .val{position:absolute;top:40px;font:600 23px PM;white-space:nowrap;color:var(--axtext)}
+.rank{position:absolute;left:-0px;font:600 18px PM;color:var(--muted)}
+#callout{border:2px solid var(--ink);background:#FAF9F3;padding:24px 28px;box-shadow:7px 7px 0 var(--lime)}
+#callout .mono{font-size:20px;color:var(--muted)}
+#callout .big{font:700 96px/1 SG;letter-spacing:-.06em;color:#DD6B43;margin-top:10px}
+#callout p{font:700 40px/1.12 SG;letter-spacing:-.04em;margin-top:8px}
+/* dark text scenes */
+.q-h{top:560px;font:700 112px/.98 SG;letter-spacing:-.075em}
+.q-h .y{color:var(--lime)}
+.end-big{top:620px;font:700 160px/.92 SG;letter-spacing:-.075em;white-space:nowrap}
+.end-sub{top:860px;font:700 62px/1.1 SG;letter-spacing:-.05em;color:#DCE3D3}
+.end-sub b{color:var(--lime)}
+.cta{position:absolute;left:var(--safe-x);top:1090px;display:inline-flex;gap:18px;align-items:center;background:var(--lime);color:var(--ink);border:2px solid var(--lime);padding:20px 26px;font-size:29px}
+.end-url{top:1205px;font-size:21px;color:#A9B4A2}
+#wipe{position:absolute;left:0;right:0;top:0;height:1920px;background:var(--lime);z-index:30;pointer-events:none;display:none}
+#safe{position:absolute;left:150px;right:150px;top:300px;bottom:380px;outline:2px dashed magenta;z-index:40;display:none;pointer-events:none}
+#safe:after{content:'';position:absolute;right:0;top:880px;width:80px;height:600px;outline:2px dashed magenta}
+</style></head><body><div id="stage"></div><div id="wipe"></div><div id="safe"></div><script>
+const D=window.__DATA__, $=s=>document.querySelector(s);
+const C=x=>Math.max(0,Math.min(1,x)), E=x=>1-Math.pow(1-C(x),3), S=x=>{x=C(x);return x*x*(3-2*x)}, L=(a,b,p)=>a+(b-a)*p;
+const esc=s=>String(s).replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;');
+const type=(s,t,a,d)=>esc(s.slice(0,Math.round(s.length*C((t-a)/d))));
+const erase=(s,t,a,b)=>esc(s.slice(Math.round(s.length*C((t-a)/(b-a)))));
+const blink=t=>Math.floor(t/.53)%2?0:1;
+const cur=(t,on=1)=>`<span class="cur" style="opacity:${on*blink(t)}">_</span>`;
+const fade=(t,a,d=.35,dy=18)=>{const k=E((t-a)/d);return `opacity:${k};transform:translateY(${dy*(1-k)}px)`};
+const fmt=n=>Math.round(n).toLocaleString('en-US');
+if(location.hash==='#safe')document.getElementById('safe').style.display='block';
+
+// ---- timeline (seconds) — keep in sync with episode.json
+const T={race:3.6,question:50.4,end:54.0,dur:64};
+const CUTS=[T.race,T.question,T.end];
+const DAY0=Date.UTC(2024,0,1), dayOf=s=>Math.round((Date.parse(s+'T00:00:00Z')-DAY0)/864e5);
+const TODAY=dayOf(D.today), LAST=D.series.Meta.length-1;
+// pause once Meta is clearly ahead (past the 1.5% swap margin) so the bars have already swapped
+const PASS=(()=>{const M=D.series.Meta,G=D.series.Google;for(let i=dayOf('2027-01-01');i<M.length;i++){const lead=Math.max(M[i],G[i]);if(M[i]>G[i]+.015*lead)return i+6}return dayOf('2027-03-01')})();
+// [scene time, day index]; equal days on consecutive keys = pause. Segments ease in/out.
+const KEYS=[[0,0],[T.race,0],[22.2,TODAY],[28.2,TODAY],[31.0,PASS],[34.8,PASS],[42.0,LAST],[99,LAST]];
+// smoother: ease only the first/last 0.6 s of each moving segment
+function dayAtS(t){for(let i=0;i<KEYS.length-1;i++){const [a,da]=KEYS[i],[b,db]=KEYS[i+1];if(t<b){if(da===db)return da;
+  const dur=b-a,r=Math.min(.6,dur/3),v=1/(dur-r);let s=t-a,p;
+  if(s<r)p=.5*v*s*s/r;else if(s>dur-r){const u=dur-s;p=1-.5*v*u*u/r}else p=.5*v*r+v*(s-r);
+  return L(da,db,C(p))}}return LAST}
+
+const CO={Meta:{c:'#637B91',m:'M',lg:'meta'},Oracle:{c:'#DD6B43',m:'O',lg:'oracle',sz:40},Google:{c:'#424E3D',m:'G',lg:'google'},Microsoft:{c:'#839B45',m:'Ms',lg:'microsoft',sz:30},Amazon:{c:'#C6A04D',m:'A',lg:'amazon'},
+ SpaceXAI:{c:'#283F35',m:'X',n:'SpaceX AI',lg:'spacex',sz:46},CoreWeave:{c:'#8E978A',m:'CW'},Softbank:{c:'#8E978A',m:'SB',n:'SoftBank'},G42:{c:'#8E978A',m:'42'},
+ ByteDance:{c:'#8E978A',m:'B',lg:'bytedance'},Huawei:{c:'#8E978A',m:'H',lg:'huawei'},'AI XPV Platform':{c:'#8E978A',m:'XP'}};
+// logos recoloured to one tone: Simple Icons 16.38.0 (CC0) + Wikimedia Commons public domain (Oracle, Microsoft, Amazon); source files in logos/
+const LOGO={"meta": {"vb": "0 0 24 24", "svg": "<path d=\"M6.915 4.03c-1.968 0-3.683 1.28-4.871 3.113C.704 9.208 0 11.883 0 14.449c0 .706.07 1.369.21 1.973a6.624 6.624 0 0 0 .265.86 5.297 5.297 0 0 0 .371.761c.696 1.159 1.818 1.927 3.593 1.927 1.497 0 2.633-.671 3.965-2.444.76-1.012 1.144-1.626 2.663-4.32l.756-1.339.186-.325c.061.1.121.196.183.3l2.152 3.595c.724 1.21 1.665 2.556 2.47 3.314 1.046.987 1.992 1.22 3.06 1.22 1.075 0 1.876-.355 2.455-.843a3.743 3.743 0 0 0 .81-.973c.542-.939.861-2.127.861-3.745 0-2.72-.681-5.357-2.084-7.45-1.282-1.912-2.957-2.93-4.716-2.93-1.047 0-2.088.467-3.053 1.308-.652.57-1.257 1.29-1.82 2.05-.69-.875-1.335-1.547-1.958-2.056-1.182-.966-2.315-1.303-3.454-1.303zm10.16 2.053c1.147 0 2.188.758 2.992 1.999 1.132 1.748 1.647 4.195 1.647 6.4 0 1.548-.368 2.9-1.839 2.9-.58 0-1.027-.23-1.664-1.004-.496-.601-1.343-1.878-2.832-4.358l-.617-1.028a44.908 44.908 0 0 0-1.255-1.98c.07-.109.141-.224.211-.327 1.12-1.667 2.118-2.602 3.358-2.602zm-10.201.553c1.265 0 2.058.791 2.675 1.446.307.327.737.871 1.234 1.579l-1.02 1.566c-.757 1.163-1.882 3.017-2.837 4.338-1.191 1.649-1.81 1.817-2.486 1.817-.524 0-1.038-.237-1.383-.794-.263-.426-.464-1.13-.464-2.046 0-2.221.63-4.535 1.66-6.088.454-.687.964-1.226 1.533-1.533a2.264 2.264 0 0 1 1.088-.285z\" fill=\"#F4F1E9\"/>"}, "google": {"vb": "0 0 24 24", "svg": "<path d=\"M12.48 10.92v3.28h7.84c-.24 1.84-.853 3.187-1.787 4.133-1.147 1.147-2.933 2.4-6.053 2.4-4.827 0-8.6-3.893-8.6-8.72s3.773-8.72 8.6-8.72c2.6 0 4.507 1.027 5.907 2.347l2.307-2.307C18.747 1.44 16.133 0 12.48 0 5.867 0 .307 5.387.307 12s5.56 12 12.173 12c3.573 0 6.267-1.173 8.373-3.36 2.16-2.16 2.84-5.213 2.84-7.667 0-.76-.053-1.467-.173-2.053H12.48z\" fill=\"#F4F1E9\"/>"}, "spacex": {"vb": "0 0 24 24", "svg": "<path d=\"M24 7.417C8.882 8.287 1.89 14.75.321 16.28L0 16.583h2.797C10.356 9.005 21.222 7.663 24 7.417zm-17.046 6.35c-.472.321-.945.68-1.398 1.02l2.457 1.796h2.778zM2.948 10.8H.189l3.25 2.381c.473-.321 1.02-.661 1.512-.945Z\" fill=\"#F4F1E9\"/>"}, "bytedance": {"vb": "0 0 24 24", "svg": "<path d=\"M19.8772 1.4685L24 2.5326v18.9426l-4.1228 1.0563V1.4685zm-13.3481 9.428l4.115 1.0641v8.9786l-4.115 1.0642v-11.107zM0 2.572l4.115 1.0642v16.7354L0 21.428V2.572zm17.4553 5.6205v11.107l-4.1228-1.0642V9.2568l4.1228-1.0642z\" fill=\"#F4F1E9\"/>"}, "huawei": {"vb": "0 0 24 24", "svg": "<path d=\"M3.67 6.14S1.82 7.91 1.72 9.78v.35c.08 1.51 1.22 2.4 1.22 2.4 1.83 1.79 6.26 4.04 7.3 4.55 0 0 .06.03.1-.01l.02-.04v-.04C7.52 10.8 3.67 6.14 3.67 6.14zM9.65 18.6c-.02-.08-.1-.08-.1-.08l-7.38.26c.8 1.43 2.15 2.53 3.56 2.2.96-.25 3.16-1.78 3.88-2.3.06-.05.04-.09.04-.09zm.08-.78C6.49 15.63.21 12.28.21 12.28c-.15.46-.2.9-.21 1.3v.07c0 1.07.4 1.82.4 1.82.8 1.69 2.34 2.2 2.34 2.2.7.3 1.4.31 1.4.31.12.02 4.4 0 5.54 0 .05 0 .08-.05.08-.05v-.06c0-.03-.03-.05-.03-.05zM9.06 3.19a3.42 3.42 0 00-2.57 3.15v.41c.03.6.16 1.05.16 1.05.66 2.9 3.86 7.65 4.55 8.65.05.05.1.03.1.03a.1.1 0 00.06-.1c1.06-10.6-1.11-13.42-1.11-13.42-.32.02-1.19.23-1.19.23zm8.299 2.27s-.49-1.8-2.44-2.28c0 0-.57-.14-1.17-.22 0 0-2.18 2.81-1.12 13.43.01.07.06.08.06.08.07.03.1-.03.1-.03.72-1.03 3.9-5.76 4.55-8.64 0 0 .36-1.4.02-2.34zm-2.92 13.07s-.07 0-.09.05c0 0-.01.07.03.1.7.51 2.85 2 3.88 2.3 0 0 .16.05.43.06h.14c.69-.02 1.9-.37 3-2.26l-7.4-.25zm7.83-8.41c.14-2.06-1.94-3.97-1.94-3.98 0 0-3.85 4.66-6.67 10.8 0 0-.03.08.02.13l.04.01h.06c1.06-.53 5.46-2.77 7.28-4.54 0 0 1.15-.93 1.21-2.42zm1.52 2.14s-6.28 3.37-9.52 5.55c0 0-.05.04-.03.11 0 0 .03.06.07.06 1.16 0 5.56 0 5.67-.02 0 0 .57-.02 1.27-.29 0 0 1.56-.5 2.37-2.27 0 0 .73-1.45.17-3.14z\" fill=\"#F4F1E9\"/>"}, "oracle": {"vb": "0 0 32 20", "svg": "<path d=\"m10,2a8,8 0 1,0 0,16h12a8,8 0 1,0 0-16z\" fill=\"none\" stroke=\"#F4F1E9\" stroke-width=\"4\"/>"}, "microsoft": {"vb": "0 0 23 23", "svg": "<path d=\"M1 1h10v10H1z\" fill=\"#F4F1E9\"/><path d=\"M12 1h10v10H12z\" fill=\"#F4F1E9\"/><path d=\"M1 12h10v10H1z\" fill=\"#F4F1E9\"/><path d=\"M12 12h10v10H12z\" fill=\"#F4F1E9\"/>"}, "amazon": {"vb": "2.167 .438 251.038 259.969", "svg": "<path d=\"m221.503 210.324c-105.235 50.083-170.545 8.18-212.352-17.271-2.587-1.604-6.984.375-3.169 4.757 13.928 16.888 59.573 57.593 119.153 57.593 59.621 0 95.09-32.532 99.527-38.207 4.407-5.627 1.294-8.731-3.16-6.872zm29.555-16.322c-2.826-3.68-17.184-4.366-26.22-3.256-9.05 1.078-22.634 6.609-21.453 9.93.606 1.244 1.843.686 8.06.127 6.234-.622 23.698-2.826 27.337 1.931 3.656 4.79-5.57 27.608-7.255 31.288-1.628 3.68.622 4.629 3.68 2.178 3.016-2.45 8.476-8.795 12.14-17.774 3.639-9.028 5.858-21.622 3.71-24.424z\" fill=\"#F4F1E9\" fill-rule=\"nonzero\"/><path d=\"m150.744 108.13c0 13.141.332 24.1-6.31 35.77-5.361 9.489-13.853 15.324-23.341 15.324-12.952 0-20.495-9.868-20.495-24.432 0-28.75 25.76-33.968 50.146-33.968zm34.015 82.216c-2.23 1.992-5.456 2.135-7.97.806-11.196-9.298-13.189-13.615-19.356-22.487-18.502 18.882-31.596 24.527-55.601 24.527-28.37 0-50.478-17.506-50.478-52.565 0-27.373 14.85-46.018 35.96-55.126 18.313-8.066 43.884-9.489 63.43-11.718v-4.365c0-8.018.616-17.506-4.08-24.432-4.128-6.215-12.003-8.777-18.93-8.777-12.856 0-24.337 6.594-27.136 20.257-.57 3.037-2.799 6.026-5.835 6.168l-32.735-3.51c-2.751-.618-5.787-2.847-5.028-7.07 7.543-39.66 43.36-51.616 75.43-51.616 16.415 0 37.858 4.365 50.81 16.795 16.415 15.323 14.849 35.77 14.849 58.02v52.565c0 15.798 6.547 22.724 12.714 31.264 2.182 3.036 2.657 6.69-.095 8.966-6.879 5.74-19.119 16.415-25.855 22.393l-.095-.095\" fill=\"#F4F1E9\" fill-rule=\"nonzero\"/><path d=\"m221.503 210.324c-105.235 50.083-170.545 8.18-212.352-17.271-2.587-1.604-6.984.375-3.169 4.757 13.928 16.888 59.573 57.593 119.153 57.593 59.621 0 95.09-32.532 99.527-38.207 4.407-5.627 1.294-8.731-3.16-6.872zm29.555-16.322c-2.826-3.68-17.184-4.366-26.22-3.256-9.05 1.078-22.634 6.609-21.453 9.93.606 1.244 1.843.686 8.06.127 6.234-.622 23.698-2.826 27.337 1.931 3.656 4.79-5.57 27.608-7.255 31.288-1.628 3.68.622 4.629 3.68 2.178 3.016-2.45 8.476-8.795 12.14-17.774 3.639-9.028 5.858-21.622 3.71-24.424z\" fill=\"#F4F1E9\" fill-rule=\"nonzero\"/><path d=\"m150.744 108.13c0 13.141.332 24.1-6.31 35.77-5.361 9.489-13.853 15.324-23.341 15.324-12.952 0-20.495-9.868-20.495-24.432 0-28.75 25.76-33.968 50.146-33.968zm34.015 82.216c-2.23 1.992-5.456 2.135-7.97.806-11.196-9.298-13.189-13.615-19.356-22.487-18.502 18.882-31.596 24.527-55.601 24.527-28.37 0-50.478-17.506-50.478-52.565 0-27.373 14.85-46.018 35.96-55.126 18.313-8.066 43.884-9.489 63.43-11.718v-4.365c0-8.018.616-17.506-4.08-24.432-4.128-6.215-12.003-8.777-18.93-8.777-12.856 0-24.337 6.594-27.136 20.257-.57 3.037-2.799 6.026-5.835 6.168l-32.735-3.51c-2.751-.618-5.787-2.847-5.028-7.07 7.543-39.66 43.36-51.616 75.43-51.616 16.415 0 37.858 4.365 50.81 16.795 16.415 15.323 14.849 35.77 14.849 58.02v52.565c0 15.798 6.547 22.724 12.714 31.264 2.182 3.036 2.657 6.69-.095 8.966-6.879 5.74-19.119 16.415-25.855 22.393l-.095-.095\" fill=\"#F4F1E9\" fill-rule=\"nonzero\"/>"}};
+const NAMES=Object.keys(D.series).filter(k=>CO[k]);
+const val=(n,d)=>{const s=D.series[n],i=Math.floor(d),f=d-i;return i>=s.length-1?s[s.length-1]:s[i]*(1-f)+s[i+1]*f};
+const rankAt=d=>NAMES.slice().sort((a,b)=>val(b,d)-val(a,d));
+const MON=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+const dstr=d=>{const x=new Date(DAY0+Math.round(d)*864e5);return `${String(x.getUTCDate()).padStart(2,'0')} ${MON[x.getUTCMonth()]} ${x.getUTCFullYear()}`};
+
+function scene(dark,t,t0,t1,head,body){const z=1+.015*S((t-t0)/(t1-t0));
+  return `<section class="scene ${dark?'dark':'light'}"><div class="grid"></div><img class="logo" src="../../brand/querious-logo-${dark?'lime':'dark'}.svg">${head}<div class="cam" style="transform:scale(${z})">${body}</div></section>`}
+const topbar=tag=>`<div class="top L"><div class="brand"><i>Q</i>uerious<span class="cur">_</span></div><div class="tag mono">${tag}</div></div>`;
+const eyebrow=html=>`<div class="L mono eyebrowD">${html}</div>`;
+function caption(t,list){let i=-1;list.forEach((c,j)=>{if(t>=c[0])i=j});if(i<0||list[i][1]==='')return '';
+  return `<div class="N caption" style="${fade(t,list[i][0],.3,14)}">${list[i][1]}</div>`}
+
+/* ---------- hook ---------- */
+function hook(t){
+  return scene(true,t,0,T.race,eyebrow('Querious / <b>AI power race</b>'),
+  `<div class="L mono" style="top:470px;font-size:23px;color:#A9B4A2;${fade(t,.2)}">AI data center power · by owner</div>
+   <div class="L q-h" style="top:540px">${['Who will','own the most','<span class="y">AI power?</span>'].map((l,i)=>`<div style="${fade(t,.3+i*.22,.35,24)}">${l}${i===2?cur(t):''}</div>`).join('')}</div>
+   <div class="L mono" style="top:1000px;font-size:26px;color:#DCE3D3;${fade(t,1.4)}">2024 → 2028</div>
+   <div class="drule"></div><div class="N mono note" style="top:1440px">Epoch AI · ~100 tracked AI data centers<br>Not whole-company totals</div>`)}
+
+/* ---------- race ---------- */
+const ROWS=8,ROW_Y=592,ROW_H=80,MAXW=520;
+// deterministic rank simulation from race start: swap only past a 1.5%-of-leader margin, ease positions (tau 0.14 s)
+const SIM=[];const FPS=30;
+function layout(t){const f=Math.max(0,Math.round((t-T.race)*FPS));
+  if(!SIM.length){const d=dayAtS(T.race),o=rankAt(d),p={};o.forEach((n,i)=>p[n]=Math.min(i,ROWS));SIM.push({o,p})}
+  while(SIM.length<=f){const prev=SIM[SIM.length-1],tt=T.race+SIM.length/FPS,d=dayAtS(tt),o=prev.o.slice(),lead=Math.max(...o.map(n=>val(n,d)));
+    for(let i=0;i<o.length-1;i++)if(val(o[i+1],d)>val(o[i],d)+(d>=LAST?0:.015)*lead){[o[i],o[i+1]]=[o[i+1],o[i]];i=Math.max(-1,i-2)}
+    const k=1-Math.exp(-1/FPS/.11),p={};o.forEach((n,i)=>{const tgt=Math.min(i,ROWS);p[n]=prev.p[n]+(tgt-prev.p[n])*k});SIM.push({o,p})}
+  return SIM[f].p}
+function SIM_TGT(t){const f=Math.max(0,Math.round((t-T.race)*FPS));const o=SIM[Math.min(f,SIM.length-1)].o,r={};o.forEach((n,i)=>r[n]=Math.min(i,ROWS));return r}
+function race(t){
+  const d=dayAtS(t), proj=d>TODAY+.5;
+  const lead=Math.max(...NAMES.map(n=>val(n,d))), scale=MAXW/Math.max(lead,300);
+  const pos=layout(t);
+  const fin=t>=42.0, call=E((t-45.9)/.4);
+  let rows='';
+  const tgt=SIM_TGT(t);NAMES.slice().sort((a,b)=>(pos[a]-tgt[a])-(pos[b]-tgt[b])).forEach(n=>{
+    const p=pos[n];if(p>ROWS-.02)return;const v=val(n,d),w=Math.max(2,v*scale),vt=Math.min(v,val(n,TODAY))*scale,co=CO[n];
+    const edge=C(ROWS-p), dim=fin&&call>0&&n!=='Oracle'?1-.6*call:1;
+    rows+=`<div class="row" style="top:${ROW_Y+p*ROW_H}px;opacity:${edge*dim}"><div class="badge" style="background:${co.c}">${co.lg?`<svg width="${co.sz||34}" height="${co.sz||34}" viewBox="${LOGO[co.lg].vb}">${LOGO[co.lg].svg}</svg>`:co.m}</div><div class="nm">${co.n||n}</div>
+      <div class="bar" style="width:${w}px;background:${co.c}">${proj&&w>vt+1?`<div class="hatch" style="left:${vt}px;right:0"></div>`:''}</div>
+      <div class="val" style="left:${72+w+12}px">${fmt(v)} <span style="font-size:17px;color:var(--muted)">MW</span></div></div>`});
+  // today line (after today): solid = built by today, hatched = planned
+  const chip=proj?`<div class="chip mono" style="background:#FAF9F3">Projected</div>`:(t>=22.0&&t<28.4?`<div class="chip mono" style="background:var(--lime)">Today</div>`:'');
+  const cards=fin?`<div class="N" id="callout" style="top:${ROW_Y+3*ROW_H+10}px;${fade(t,45.9,.4,16)}"><div class="mono">Oracle · end of 2028 · ${fmt(D.stargate.oracle_mw_2028)} MW</div><div class="big">99%</div><p>is Stargate: five sites<br>built for OpenAI.</p></div>`:'';
+  return scene(false,t,T.race,T.question,topbar('AI power race'),
+  `<div class="L mono meta">IT power by owner / MW / Epoch AI sites</div>
+   <div class="L" id="date"><div class="d">${dstr(d)}</div>${chip}</div>
+   ${rows}${cards}
+   <div class="N mono note" style="top:1262px">Epoch AI · ~100 tracked sites, not company totals<br>Linear between milestones · hatched = planned<br>Sites without an owner left out</div>
+   ${caption(t,[[4.3,'Google, <span class="hl">far ahead.</span>'],[8.9,'SpaceX AI: <span class="hl">top 3.</span>'],[12.6,'Amazon jumps to <span class="hl">#2.</span>'],[16.0,'<span class="hl">Meta</span> surges.'],[22.4,'Today: <span class="hl">Google</span> leads.'],[28.2,''],[31.1,'<span class="hl">Meta</span> passes Google.'],[35.6,'Watch <span class="hl">Oracle.</span>'],[42.2,'Oracle <span class="hl">≈</span> Google.'],[45.9,'<span class="hl">99%</span> Stargate.']])}`)}
+
+/* ---------- question ---------- */
+function question(t){
+  const lines=['Who will','really use','<span class="y">all that</span>','<span class="y">power?</span>'];
+  return scene(true,t,T.question,T.end,eyebrow('Querious / <b>Owner ≠ user</b>'),
+  `<div class="L q-h" style="top:520px">${lines.map((l,i)=>`<div style="${fade(t,50.6+i*.15,.35,24)}">${l}${i===3?cur(t):''}</div>`).join('')}</div>
+   <div class="L mono" style="top:1040px;font-size:23px;color:#A9B4A2;${fade(t,51.6)}">Owners build · AI labs use</div>
+   <div class="drule"></div><div class="N mono note" style="top:1440px">Epoch AI · users column<br>Confidence: confident / likely / speculative</div>`)}
+
+/* ---------- end card ---------- */
+function endcard(t){const e0=61.3;
+  return scene(true,t,T.end,T.dur,`<div class="L mono eyebrowD" style="opacity:${1-C((t-62.9)/.4)}">Querious / <b>Open data</b></div>`,
+  `<div class="L end-big">${t<e0+1.2?type('Your turn',t,54.3,.7):erase('Your turn',t,e0+1.2,e0+1.9)}<span class="cur" style="opacity:${blink(t)*(1-C((t-63.45)/.45))}">_</span></div>
+   <div class="L end-sub"><span style="opacity:${E((t-55.5)/.3)}">${erase('The data is open.',t,e0+.8,e0+1.3)}</span><br><b style="opacity:${E((t-56.6)/.3)}">${erase('The question is yours.',t,e0+.45,e0+1.0)}</b></div>
+   <div class="cta mono" style="${t<e0+.2?fade(t,57.3,.35,12):''};${t>=e0+.6?'opacity:0':''}">${erase('querious.studio ↗',t,e0+.15,e0+.6)}</div>
+   <div class="L mono end-url" style="opacity:${E((t-57.6)/.3)}">${erase('No account needed to explore',t,e0,e0+.35)}</div>`)}
+
+window.render=function(t){
+  let html;if(t<T.race)html=hook(t);else if(t<T.question)html=race(t);else if(t<T.end)html=question(t);else html=endcard(t);
+  $('#stage').innerHTML=html;
+  if(t>=T.end){$('.logo').style.opacity=1-C((t-62.95)/.45);$('.grid').style.opacity=.035*(1-C((t-63.2)/.4))}
+  const cut=CUTS.find(x=>Math.abs(t-x)<.22);$('#wipe').style.display=cut===undefined?'none':'block';
+  if(cut!==undefined)$('#wipe').style.transform=`translateY(${L(-1920,1920,S((t-cut+.22)/.44))}px)`;
+};
+window.render(0);
+</script></body></html>
