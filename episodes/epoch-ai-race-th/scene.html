@@ -3,65 +3,79 @@
 @font-face{font-family:SG;src:url(../../node_modules/@fontsource/space-grotesk/files/space-grotesk-latin-700-normal.woff2);font-weight:700}
 @font-face{font-family:PM;src:url(../../node_modules/@fontsource/ibm-plex-mono/files/ibm-plex-mono-latin-500-normal.woff2);font-weight:500}
 @font-face{font-family:PM;src:url(../../node_modules/@fontsource/ibm-plex-mono/files/ibm-plex-mono-latin-600-normal.woff2);font-weight:600}
+@font-face{font-family:TH;src:url(../../node_modules/@fontsource/ibm-plex-sans-thai/files/ibm-plex-sans-thai-thai-500-normal.woff2);font-weight:400 500}
+@font-face{font-family:TH;src:url(../../node_modules/@fontsource/ibm-plex-sans-thai/files/ibm-plex-sans-thai-thai-600-normal.woff2);font-weight:600}
+@font-face{font-family:TH;src:url(../../node_modules/@fontsource/ibm-plex-sans-thai/files/ibm-plex-sans-thai-thai-700-normal.woff2);font-weight:700}
 @font-face{font-family:PX;src:url(../../node_modules/@fontsource/pixelify-sans/files/pixelify-sans-latin-700-normal.woff2);font-weight:700}
 /* Facebook-safe 9:16: top 300, bottom 380, sides 150, right 230 clear between y 1180-1780 */
 :root{--safe-x:150px;--safe-top:300px;--safe-bottom:380px;
  --paper:#F4F1E9;--ink:#283127;--deep:#222923;--muted:#677166;--line:#C7CBBF;--lime:#D6ED63;--orange:#E5764B;
  --axis:#8B9485;--grid:#E1E4DA;--axtext:#455044}
 *{box-sizing:border-box;margin:0}
-html,body{width:1080px;height:1920px;overflow:hidden;background:var(--deep);font-family:SG}
+html,body{width:1080px;height:1920px;overflow:hidden;background:var(--deep);font-family:SG,TH}
 .scene{position:absolute;inset:0;overflow:hidden}
 .cam{position:absolute;inset:0;transform-origin:50% 45%}
 .dark{background:var(--deep);color:#F4F1E9}.light{background:var(--paper);color:var(--ink)}
 .grid{position:absolute;inset:0;opacity:.035;background-image:linear-gradient(currentColor 1px,transparent 1px),linear-gradient(90deg,currentColor 1px,transparent 1px);background-size:72px 72px}
-.mono{font-family:PM;font-weight:600;letter-spacing:.08em;text-transform:uppercase}
+.mono{font-family:PM,TH;font-weight:600;letter-spacing:.08em;text-transform:uppercase}
 .cur{color:var(--orange)}
 .L{position:absolute;left:var(--safe-x);right:var(--safe-x)}
 .N{position:absolute;left:var(--safe-x);width:700px}
 .logo{position:absolute;top:var(--safe-top);right:var(--safe-x);width:76px;height:76px;object-fit:contain;z-index:10}
 .top{top:var(--safe-top);display:flex;align-items:center;gap:22px;border-bottom:2px solid var(--ink);padding:0 100px 20px 0;height:96px}
-.brand{font:700 44px SG;letter-spacing:-.05em;flex:1}.brand i{font:700 46px PX;font-style:normal}
+.brand{font:700 44px SG,TH;letter-spacing:-.05em;flex:1}.brand i{font:700 46px PX;font-style:normal}
 .tag{font-size:21px;border:1.5px solid var(--ink);padding:8px 12px;background:var(--lime);transform:rotate(-3deg)}
 .eyebrowD{top:330px;font-size:24px;color:#A9B4A2;right:260px}.eyebrowD b{color:var(--lime);font-weight:600}
 .meta{top:430px;font-size:23px;color:var(--muted)}
 .note{font-size:19px;line-height:1.5;color:var(--muted);letter-spacing:.05em}
-.caption{top:1392px;font:700 70px/1.03 SG;letter-spacing:-.06em;white-space:nowrap}
+.caption{top:1392px;font:700 70px/1.03 SG,TH;letter-spacing:-.06em;white-space:nowrap}
 .caption .hl{background:var(--lime);padding:0 10px}
 .drule{position:absolute;left:var(--safe-x);right:var(--safe-x);top:1420px;height:2px;background:#4a5648}
 /* race */
 #date{top:466px;display:flex;align-items:center;gap:22px;height:100px}
-#date .d{font:700 92px/1 SG;letter-spacing:-.06em;font-variant-numeric:tabular-nums;white-space:nowrap}
+#date .d{font:700 92px/1 SG,TH;letter-spacing:-.06em;font-variant-numeric:tabular-nums;white-space:nowrap}
 #date .chip{font-size:20px;padding:8px 12px;border:2px solid var(--ink)}
 .row{position:absolute;left:142px;width:796px;height:80px;padding-left:8px;background:var(--paper)}
 .row>*{margin-left:8px}
-.badge{position:absolute;left:0;top:12px;width:56px;height:56px;display:flex;align-items:center;justify-content:center;color:#F4F1E9;font:700 26px SG;letter-spacing:-.04em}
+.badge{position:absolute;left:0;top:12px;width:56px;height:56px;display:flex;align-items:center;justify-content:center;color:#F4F1E9;font:700 26px SG,TH;letter-spacing:-.04em}
 .badge .lg{width:34px;height:34px;background:#F4F1E9;-webkit-mask-repeat:no-repeat;mask-repeat:no-repeat;-webkit-mask-position:center;mask-position:center;-webkit-mask-size:contain;mask-size:contain}
-.row .nm{position:absolute;left:72px;top:2px;font:700 26px/1 SG;letter-spacing:-.03em;white-space:nowrap}
+.row .nm{position:absolute;left:72px;top:2px;font:700 26px/1 SG,TH;letter-spacing:-.03em;white-space:nowrap}
 .row .bar{position:absolute;left:72px;top:34px;height:38px}
 .row .hatch{position:absolute;top:0;bottom:0;background:repeating-linear-gradient(135deg,rgba(255,255,255,.55) 0 5px,transparent 5px 11px)}
-.row .val{position:absolute;top:40px;font:600 23px PM;white-space:nowrap;color:var(--axtext)}
-.rank{position:absolute;left:-0px;font:600 18px PM;color:var(--muted)}
+.row .val{position:absolute;top:40px;font:600 23px PM,TH;white-space:nowrap;color:var(--axtext)}
+.rank{position:absolute;left:-0px;font:600 18px PM,TH;color:var(--muted)}
 #callout{border:2px solid var(--ink);background:#FAF9F3;padding:24px 28px;box-shadow:7px 7px 0 var(--lime)}
 #callout .mono{font-size:20px;color:var(--muted)}
-#callout .big{font:700 96px/1 SG;letter-spacing:-.06em;color:#DD6B43;margin-top:10px}
-#callout p{font:700 40px/1.12 SG;letter-spacing:-.04em;margin-top:8px}
+#callout .big{font:700 96px/1 SG,TH;letter-spacing:-.06em;color:#DD6B43;margin-top:10px}
+#callout p{font:700 40px/1.12 SG,TH;letter-spacing:-.04em;margin-top:8px}
 /* dark text scenes */
-.q-h{top:560px;font:700 112px/.98 SG;letter-spacing:-.075em}
+.q-h{top:560px;font:700 112px/.98 SG,TH;letter-spacing:-.075em}
 .q-h .y{color:var(--lime)}
-.end-big{top:620px;font:700 160px/.92 SG;letter-spacing:-.075em;white-space:nowrap}
-.end-sub{top:860px;font:700 62px/1.1 SG;letter-spacing:-.05em;color:#DCE3D3}
+.end-big{top:620px;font:700 160px/.92 SG,TH;letter-spacing:-.075em;white-space:nowrap}
+.end-sub{top:860px;font:700 62px/1.1 SG,TH;letter-spacing:-.05em;color:#DCE3D3}
 .end-sub b{color:var(--lime)}
 .cta{position:absolute;left:var(--safe-x);top:1090px;display:inline-flex;gap:18px;align-items:center;background:var(--lime);color:var(--ink);border:2px solid var(--lime);padding:20px 26px;font-size:29px}
 .end-url{top:1205px;font-size:21px;color:#A9B4A2}
 #wipe{position:absolute;left:0;right:0;top:0;height:1920px;background:var(--lime);z-index:30;pointer-events:none;display:none}
 #safe{position:absolute;left:150px;right:150px;top:300px;bottom:380px;outline:2px dashed magenta;z-index:40;display:none;pointer-events:none}
 #safe:after{content:'';position:absolute;right:0;top:880px;width:80px;height:600px;outline:2px dashed magenta}
+/* Thai overrides */
+.mono{letter-spacing:.03em}
+.caption{top:1370px;font-size:66px;letter-spacing:-.01em;line-height:1.25}
+.caption .hl{padding:0 8px}
+#date .d{font-size:84px;letter-spacing:-.03em;line-height:1.2}
+.q-h{font-size:104px;letter-spacing:-.01em;line-height:1.2}
+#callout p{letter-spacing:-.01em;line-height:1.25}
+.end-big{font-size:104px;letter-spacing:-.02em;line-height:1.2}
+.end-sub{font-size:66px;letter-spacing:-.01em;line-height:1.25;top:800px}
+.cta{top:1000px}.end-url{top:1115px}
 </style></head><body><div id="stage"></div><div id="wipe"></div><div id="safe"></div><script>
 const D=window.__DATA__, $=s=>document.querySelector(s);
 const C=x=>Math.max(0,Math.min(1,x)), E=x=>1-Math.pow(1-C(x),3), S=x=>{x=C(x);return x*x*(3-2*x)}, L=(a,b,p)=>a+(b-a)*p;
 const esc=s=>String(s).replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;');
-const type=(s,t,a,d)=>esc(s.slice(0,Math.round(s.length*C((t-a)/d))));
-const erase=(s,t,a,b)=>esc(s.slice(Math.round(s.length*C((t-a)/(b-a)))));
+const SEG=new Intl.Segmenter('th',{granularity:'grapheme'}),G_=s=>[...SEG.segment(s)].map(x=>x.segment);
+const type=(s,t,a,d)=>{const g=G_(s);return esc(g.slice(0,Math.round(g.length*C((t-a)/d))).join(''))};
+const erase=(s,t,a,b)=>{const g=G_(s);return esc(g.slice(Math.round(g.length*C((t-a)/(b-a)))).join(''))};
 const blink=t=>Math.floor(t/.53)%2?0:1;
 const cur=(t,on=1)=>`<span class="cur" style="opacity:${on*blink(t)}">_</span>`;
 const fade=(t,a,d=.35,dy=18)=>{const k=E((t-a)/d);return `opacity:${k};transform:translateY(${dy*(1-k)}px)`};
@@ -70,6 +84,7 @@ if(location.hash==='#safe')document.getElementById('safe').style.display='block'
 
 // ---- timeline (seconds) — keep in sync with episode.json
 const T={race:3.6,question:50.4,end:54.0,dur:64};
+const TH_END={head:54.3,sub:55.8,erase:61.3};
 const CUTS=[T.race,T.question,T.end];
 const DAY0=Date.UTC(2024,0,1), dayOf=s=>Math.round((Date.parse(s+'T00:00:00Z')-DAY0)/864e5);
 const TODAY=dayOf(D.today), LAST=D.series.Meta.length-1;
@@ -91,8 +106,8 @@ const LOGO={"meta": {"vb": "0 0 24 24", "svg": "<path d=\"M6.915 4.03c-1.968 0-3
 const NAMES=Object.keys(D.series).filter(k=>CO[k]);
 const val=(n,d)=>{const s=D.series[n],i=Math.floor(d),f=d-i;return i>=s.length-1?s[s.length-1]:s[i]*(1-f)+s[i+1]*f};
 const rankAt=d=>NAMES.slice().sort((a,b)=>val(b,d)-val(a,d));
-const MON=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
-const dstr=d=>{const x=new Date(DAY0+Math.round(d)*864e5);return `${String(x.getUTCDate()).padStart(2,'0')} ${MON[x.getUTCMonth()]} ${x.getUTCFullYear()}`};
+const MON=['ม.ค.','ก.พ.','มี.ค.','เม.ย.','พ.ค.','มิ.ย.','ก.ค.','ส.ค.','ก.ย.','ต.ค.','พ.ย.','ธ.ค.'];
+const dstr=d=>{const x=new Date(DAY0+Math.round(d)*864e5);return `${x.getUTCDate()} ${MON[x.getUTCMonth()]} ${x.getUTCFullYear()}`};
 
 function scene(dark,t,t0,t1,head,body){const z=1+.015*S((t-t0)/(t1-t0));
   return `<section class="scene ${dark?'dark':'light'}"><div class="grid"></div><img class="logo" src="../../brand/querious-logo-${dark?'lime':'dark'}.svg">${head}<div class="cam" style="transform:scale(${z})">${body}</div></section>`}
@@ -103,11 +118,11 @@ function caption(t,list){let i=-1;list.forEach((c,j)=>{if(t>=c[0])i=j});if(i<0||
 
 /* ---------- hook ---------- */
 function hook(t){
-  return scene(true,t,0,T.race,eyebrow('Querious / <b>AI power race</b>'),
-  `<div class="L mono" style="top:470px;font-size:23px;color:#A9B4A2;${fade(t,.2)}">AI data center power · by owner</div>
-   <div class="L q-h" style="top:540px">${['Who will','own the most','<span class="y">AI power?</span>'].map((l,i)=>`<div style="${fade(t,.3+i*.22,.35,24)}">${l}${i===2?cur(t):''}</div>`).join('')}</div>
+  return scene(true,t,0,T.race,eyebrow('Querious / <b>ศึกพลังไฟ AI</b>'),
+  `<div class="L mono" style="top:470px;font-size:23px;color:#A9B4A2;${fade(t,.2)}">พลังไฟดาต้าเซ็นเตอร์ AI · แยกตามเจ้าของ</div>
+   <div class="L q-h" style="top:540px">${['ใครจะครอง','พลังไฟ AI','<span class="y">มากที่สุด?</span>'].map((l,i)=>`<div style="${fade(t,.3+i*.22,.35,24)}">${l}${i===2?cur(t):''}</div>`).join('')}</div>
    <div class="L mono" style="top:1000px;font-size:26px;color:#DCE3D3;${fade(t,1.4)}">2024 → 2028</div>
-   <div class="drule"></div><div class="N mono note" style="top:1440px">Epoch AI · ~100 tracked AI data centers<br>Not whole-company totals</div>`)}
+   <div class="drule"></div><div class="N mono note" style="top:1440px">Epoch AI · ดาต้าเซ็นเตอร์ AI ราว 100 แห่งที่ติดตาม<br>ไม่ใช่ยอดรวมทั้งบริษัท</div>`)}
 
 /* ---------- race ---------- */
 const ROWS=8,ROW_Y=592,ROW_H=80,MAXW=520;
@@ -133,35 +148,35 @@ function race(t){
       <div class="bar" style="width:${w}px;background:${co.c}">${proj&&w>vt+1?`<div class="hatch" style="left:${vt}px;right:0"></div>`:''}</div>
       <div class="val" style="left:${72+w+12}px">${fmt(v)} <span style="font-size:17px;color:var(--muted)">MW</span></div></div>`});
   // today line (after today): solid = built by today, hatched = planned
-  const chip=proj?`<div class="chip mono" style="background:#FAF9F3">Projected</div>`:(t>=22.0&&t<28.4?`<div class="chip mono" style="background:var(--lime)">Today</div>`:'');
-  const cards=fin?`<div class="N" id="callout" style="top:${ROW_Y+3*ROW_H+10}px;${fade(t,45.9,.4,16)}"><div class="mono">Oracle · end of 2028 · ${fmt(D.stargate.oracle_mw_2028)} MW</div><div class="big">99%</div><p>is Stargate: five sites<br>built for OpenAI.</p></div>`:'';
-  return scene(false,t,T.race,T.question,topbar('AI power race'),
-  `<div class="L mono meta">IT power by owner / MW / Epoch AI sites</div>
+  const chip=proj?`<div class="chip mono" style="background:#FAF9F3">คาดการณ์</div>`:(t>=22.0&&t<28.4?`<div class="chip mono" style="background:var(--lime)">วันนี้</div>`:'');
+  const cards=fin?`<div class="N" id="callout" style="top:${ROW_Y+3*ROW_H+10}px;${fade(t,45.9,.4,16)}"><div class="mono">Oracle · สิ้นปี 2028 · ${fmt(D.stargate.oracle_mw_2028)} MW</div><div class="big">99%</div><p>คือ Stargate ห้าไซต์<br>ที่สร้างให้ OpenAI</p></div>`:'';
+  return scene(false,t,T.race,T.question,topbar('ศึกพลังไฟ AI'),
+  `<div class="L mono meta">กำลังไฟไอทีตามเจ้าของ / MW / ไซต์ใน Epoch AI</div>
    <div class="L" id="date"><div class="d">${dstr(d)}</div>${chip}</div>
    ${rows}${cards}
-   <div class="N mono note" style="top:1262px">Epoch AI · ~100 tracked sites, not company totals<br>Linear between milestones · hatched = planned<br>Sites without an owner left out</div>
-   ${caption(t,[[4.3,'Google, <span class="hl">far ahead.</span>'],[8.9,'SpaceX AI: <span class="hl">top 3.</span>'],[12.6,'Amazon jumps to <span class="hl">#2.</span>'],[16.0,'<span class="hl">Meta</span> surges.'],[22.4,'Today: <span class="hl">Google</span> leads.'],[28.2,''],[31.1,'<span class="hl">Meta</span> passes Google.'],[35.6,'Watch <span class="hl">Oracle.</span>'],[42.2,'Oracle <span class="hl">≈</span> Google.'],[45.9,'<span class="hl">99%</span> Stargate.']])}`)}
+   <div class="N mono note" style="top:1262px">Epoch AI · ~100 ไซต์ที่ติดตาม ไม่ใช่ยอดรวมบริษัท<br>เฉลี่ยรายวันระหว่าง milestone · ลายเฉียง = ตามแผน<br>ไม่รวมไซต์ที่ไม่ระบุเจ้าของ</div>
+   ${caption(t,[[4.3,'Google <span class="hl">นำห่าง</span>'],[8.9,'SpaceX AI <span class="hl">ขึ้นที่ 3</span>'],[12.6,'Amazon <span class="hl">ขึ้นที่ 2</span>'],[16.0,'<span class="hl">Meta</span> พุ่งขึ้น'],[22.4,'วันนี้ <span class="hl">Google</span> นำ'],[28.2,''],[31.1,'<span class="hl">Meta</span> แซง Google'],[35.6,'จับตา <span class="hl">Oracle</span>'],[42.2,'Oracle <span class="hl">≈</span> Google'],[45.9,'<span class="hl">99%</span> คือ Stargate']])}`)}
 
 /* ---------- question ---------- */
 function question(t){
-  const lines=['Who will','really use','<span class="y">all that</span>','<span class="y">power?</span>'];
-  return scene(true,t,T.question,T.end,eyebrow('Querious / <b>Owner ≠ user</b>'),
+  const lines=['แล้วใคร','จะได้ใช้','<span class="y">พลังไฟ</span>','<span class="y">ทั้งหมดนี้?</span>'];
+  return scene(true,t,T.question,T.end,eyebrow('Querious / <b>เจ้าของ ≠ ผู้ใช้</b>'),
   `<div class="L q-h" style="top:520px">${lines.map((l,i)=>`<div style="${fade(t,50.6+i*.15,.35,24)}">${l}${i===3?cur(t):''}</div>`).join('')}</div>
-   <div class="L mono" style="top:1040px;font-size:23px;color:#A9B4A2;${fade(t,51.6)}">Owners build · AI labs use</div>
-   <div class="drule"></div><div class="N mono note" style="top:1440px">Epoch AI · users column<br>Confidence: confident / likely / speculative</div>`)}
+   <div class="L mono" style="top:1040px;font-size:23px;color:#A9B4A2;${fade(t,51.6)}">เจ้าของสร้าง · แล็บ AI ใช้</div>
+   <div class="drule"></div><div class="N mono note" style="top:1440px">Epoch AI · คอลัมน์ users<br>ความมั่นใจ: confident / likely / speculative</div>`)}
 
 /* ---------- end card ---------- */
-function endcard(t){const e0=61.3;
-  return scene(true,t,T.end,T.dur,`<div class="L mono eyebrowD" style="opacity:${1-C((t-62.9)/.4)}">Querious / <b>Open data</b></div>`,
-  `<div class="L end-big">${t<e0+1.2?type('Your turn',t,54.3,.7):erase('Your turn',t,e0+1.2,e0+1.9)}<span class="cur" style="opacity:${blink(t)*(1-C((t-63.45)/.45))}">_</span></div>
-   <div class="L end-sub"><span style="opacity:${E((t-55.5)/.3)}">${erase('The data is open.',t,e0+.8,e0+1.3)}</span><br><b style="opacity:${E((t-56.6)/.3)}">${erase('The question is yours.',t,e0+.45,e0+1.0)}</b></div>
-   <div class="cta mono" style="${t<e0+.2?fade(t,57.3,.35,12):''};${t>=e0+.6?'opacity:0':''}">${erase('querious.studio ↗',t,e0+.15,e0+.6)}</div>
-   <div class="L mono end-url" style="opacity:${E((t-57.6)/.3)}">${erase('No account needed to explore',t,e0,e0+.35)}</div>`)}
+function endcard(t){const e0=TH_END.erase;
+  return scene(true,t,T.end,T.dur,`<div class="L mono eyebrowD" style="opacity:${1-C((t-(e0+1.6))/.4)}">Querious / <b>ข้อมูลเปิด</b></div>`,
+  `<div class="L end-big">${t<e0+.9?type('ข้อมูลพร้อมแล้ว',t,TH_END.head,.8):erase('ข้อมูลพร้อมแล้ว',t,e0+.9,e0+1.7)}<span class="cur" style="opacity:${blink(t)*(1-C((t-63.45)/.45))}">_</span></div>
+   <div class="L end-sub"><b style="opacity:${E((t-TH_END.sub)/.3)}">${erase('มาหาคำตอบกัน',t,e0+.45,e0+1.0)}</b></div>
+   <div class="cta mono" style="${t<e0+.2?fade(t,TH_END.sub+.5,.35,12):''};${t>=e0+.6?'opacity:0':''}">${erase('querious.studio ↗',t,e0+.15,e0+.6)}</div>
+   <div class="L mono end-url" style="opacity:${E((t-(TH_END.sub+.8))/.3)}">${erase('สำรวจข้อมูลได้ฟรี ไม่ต้องสมัครสมาชิก',t,e0,e0+.35)}</div>`)}
 
 window.render=function(t){
   let html;if(t<T.race)html=hook(t);else if(t<T.question)html=race(t);else if(t<T.end)html=question(t);else html=endcard(t);
   $('#stage').innerHTML=html;
-  if(t>=T.end){$('.logo').style.opacity=1-C((t-62.95)/.45);$('.grid').style.opacity=.035*(1-C((t-63.2)/.4))}
+  if(t>=T.end){$('.logo').style.opacity=1-C((t-(TH_END.erase+1.65))/.45);$('.grid').style.opacity=.035*(1-C((t-63.2)/.4))}
   const cut=CUTS.find(x=>Math.abs(t-x)<.22);$('#wipe').style.display=cut===undefined?'none':'block';
   if(cut!==undefined)$('#wipe').style.transform=`translateY(${L(-1920,1920,S((t-cut+.22)/.44))}px)`;
 };
