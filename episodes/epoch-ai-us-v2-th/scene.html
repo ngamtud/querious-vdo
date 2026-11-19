@@ -121,7 +121,7 @@ if(location.hash==='#safe')document.getElementById('safe').style.display='block'
 
 // timeline (seconds) — keep in sync with episode.json
 const T={hook:0,power:7.2,scatter:14.0,question:27.0,walk:31.6,query:34.55,end:45.2,dur:55};
-const TH_END={head:45.5,sub:46.9,erase:52.6};
+const TH_END={head:45.5,sub:47.2,erase:52.3};
 const CUTS=[T.power,T.scatter,T.question,T.walk,T.end];
 
 const icoDC=`<svg width="150" height="120" viewBox="0 0 140 112" fill="none" stroke="currentColor" stroke-width="3"><path d="M8 105V30h124v75M0 105h140M20 30V8h100v22"/><path d="M25 45h20v18H25zM60 45h20v18H60zM95 45h20v18H95zM25 77h20v18H25zM60 77h20v18H60zM95 77h20v18H95z"/></svg>`;
@@ -142,14 +142,14 @@ const A=D.featured['Colossus 2'], B=D.featured['Anthropic-Amazon New Carlisle'];
 
 /* ---------- A · hook ---------- */
 function hook(t){
-  const n=Math.round(D.household_benchmark.home_years*E((t-4.35)/.7));
+  const n=Math.round(D.household_benchmark.home_years*E((t-5.75)/.6));
   return scene(true,t,T.hook,T.power,eyebrow('Querious / <b>ดาต้าเซ็นเตอร์ AI</b>'),
   `<div class="L mono meta" style="color:#A9B4A2;${fade(t,.2)}">SpaceX AI / เมมฟิส</div>
-   <div class="L hook-h">${type('Colossus 2',t,.3,.6)}${t<2.65?cur(t):''}</div>
-   <div class="L hook-s">${type('เปิดเต็มกำลัง 1 ชั่วโมง',t,2.7,.75)}${t>=2.65?cur(t):''}</div>
-   <div class="L" id="eq"><div style="${fade(t,2.9,.4)}">${icoDC}</div><div class="ap" style="${fade(t,4.2,.3)}">≈</div><div style="${fade(t,4.35,.4)}">${icoHome}</div></div>
-   <div class="L big90" style="opacity:${C((t-4.3)/.15)}">${n}</div>
-   <div class="L homes" style="${fade(t,5.25,.4)}">ครัวเรือน ใช้ไฟได้ทั้งปี</div>
+   <div class="L hook-h">${type('Colossus 2',t,.3,.6)}${t<1.75?cur(t):''}</div>
+   <div class="L hook-s">${type('เปิดเต็มกำลัง 1 ชั่วโมง',t,1.8,.8)}${t>=1.75?cur(t):''}</div>
+   <div class="L" id="eq"><div style="${fade(t,3.8,.4)}">${icoDC}</div><div class="ap" style="${fade(t,5.45,.3)}">≈</div><div style="${fade(t,5.6,.4)}">${icoHome}</div></div>
+   <div class="L big90" style="opacity:${C((t-5.7)/.15)}">${n}</div>
+   <div class="L homes" style="${fade(t,6.15,.35)}">ครัวเรือน ใช้ไฟได้ทั้งปี</div>
    <div class="drule"></div>
    <div class="N mono note" style="top:1440px">สมมติเปิดเต็มกำลังไอที · ไม่ใช่การใช้ไฟจริง<br>946 MW × 1 ชม. ÷ 10,500 kWh ต่อบ้านสหรัฐฯ ต่อปี<br>ที่มา / Epoch AI + US EIA</div>`);
 }
@@ -164,15 +164,15 @@ function power(t){
    <div style="position:absolute;left:${150+gw}px;top:650px;height:440px;border-left:2px dashed var(--axis);opacity:${E((t-7.7)/.4)}"></div>
    <div class="mono" style="position:absolute;left:${150+gw-90}px;top:1100px;width:180px;text-align:center;font-size:20px;color:var(--axtext);opacity:${E((t-7.7)/.4)}">1 GW</div>
    ${row(680,A,'SpaceX AI','Colossus 2 / เมมฟิส','var(--c-orange)',7.5)}
-   ${row(900,B,'Amazon → Anthropic','New Carlisle / อินดีแอนา','var(--c-ink)',10.0)}
+   ${row(900,B,'Amazon → Anthropic','New Carlisle / อินดีแอนา','var(--c-ink)',10.4)}
    <div class="N mono note" style="top:1250px">Epoch AI · ค่าประมาณรายไซต์ · CC BY 4.0<br>กำลังไฟไอที ไม่รวมระบบทำความเย็น<br>Amazon เป็นเจ้าของ · Anthropic เป็นผู้ใช้</div>
-   ${caption(t,[[7.7,'<span class="hl">946</span> MW เฉพาะไอที'],[10.2,'Amazon <span class="hl">1,037</span> MW']])}`);
+   ${caption(t,[[7.7,'<span class="hl">946</span> MW เฉพาะไอที'],[10.6,'Amazon <span class="hl">1,037</span> MW']])}`);
 }
 
 /* ---------- C · scatter ---------- */
 function scatter(t){
   const x0=96,x1=712,yT=118,yB=590,xs=v=>x0+v/1100*(x1-x0),ys=v=>yB-v/1.2e6*(yB-yT);
-  const gY=E((t-18.7)/.6),gX=E((t-21.9)/.6),pop=E((t-16.2)/.45);
+  const gY=E((t-21.9)/.6),gX=E((t-24.0)/.6),pop=E((t-16.2)/.45);
   let v='';
   for(const n of [0,4e5,8e5,1.2e6])v+=`<line x1="${x0}" y1="${ys(n)}" x2="${x1}" y2="${ys(n)}" stroke="var(--grid)" stroke-width="2"/><text x="${x0-14}" y="${ys(n)+7}" text-anchor="end" font-size="20" fill="var(--axtext)" opacity="${n?1-gY:1}">${n?(n/1e6).toFixed(1)+'M':'0'}</text>`;
   for(const n of [0,250,500,750,1000])v+=`<line x1="${xs(n)}" y1="${yB}" x2="${xs(n)}" y2="${yB+10}" stroke="var(--axis)" stroke-width="2"/><text x="${xs(n)}" y="${yB+38}" text-anchor="middle" font-size="20" fill="var(--axtext)" opacity="${n>=750?1-gX:1}">${fmt(n)}</text>`;
@@ -198,7 +198,7 @@ function scatter(t){
    <div class="L h2">ไฟเข้า งานออก${cur(t)}</div>
    <svg style="position:absolute;left:150px;top:580px" width="780" height="680" viewBox="0 0 780 680">${v}</svg>
    <div class="N mono note" style="top:1272px">Epoch AI · 60 ไซต์ในสหรัฐฯ ที่มีกำลังไฟ &gt; 0<br>เทียบเท่า H100 (8-bit OP/s) ไม่ใช่จำนวนชิป<br>ขีดความสามารถทางทฤษฎี ไม่ใช่ประสิทธิภาพที่วัดจริง</div>
-   ${caption(t,[[16.9,'อันดับ<span class="hl">สลับกัน</span>'],[18.7,`ประมวลผล <span class="hl">+${pct}%</span>`],[21.9,`ประมวลผล <span class="hl">+${pct}%</span><br>กำลังไฟ <span class="hl">−${pw}%</span>`]])}`);
+   ${caption(t,[[16.9,'อันดับ<span class="hl">สลับกัน</span>'],[21.9,`ประมวลผล <span class="hl">+${pct}%</span>`],[24.0,`ประมวลผล <span class="hl">+${pct}%</span><br>กำลังไฟ <span class="hl">−${pw}%</span>`]])}`);
 }
 
 /* ---------- D · question ---------- */
