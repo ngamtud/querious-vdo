@@ -84,7 +84,7 @@ if(location.hash==='#safe')document.getElementById('safe').style.display='block'
 
 // ---- timeline (seconds) — keep in sync with episode.json
 const T={race:3.6,question:50.4,end:54.0,dur:64};
-const TH_END={head:54.3,sub:56.05,erase:61.3};
+const TH_END={head:54.8,sub:56.55,erase:61.3};
 const CUTS=[T.race,T.question,T.end];
 const DAY0=Date.UTC(2024,0,1), dayOf=s=>Math.round((Date.parse(s+'T00:00:00Z')-DAY0)/864e5);
 const TODAY=dayOf(D.today), LAST=D.series.Meta.length-1;
@@ -161,8 +161,8 @@ function race(t){
 function question(t){
   const lines=['แต่โดยรวมแล้ว','AI แบรนด์ไหน','<span class="y">ใช้ไฟ</span>','<span class="y">มากที่สุด?</span>'];
   return scene(true,t,T.question,T.end,eyebrow('Querious / <b>เจ้าของ ≠ ผู้ใช้</b>'),
-  `<div class="L q-h" style="top:520px">${lines.map((l,i)=>`<div style="${fade(t,50.6+i*.15,.35,24)}">${l}${i===3?cur(t):''}</div>`).join('')}</div>
-   <div class="L mono" style="top:1040px;font-size:23px;color:#A9B4A2;${fade(t,51.6)}">เจ้าของสร้าง · แล็บ AI ใช้</div>
+  `<div class="L q-h" style="top:520px">${lines.map((l,i)=>`<div style="${fade(t,i?52.1+(i-1)*.15:50.55,.35,24)}">${l}${i===3?cur(t):''}</div>`).join('')}</div>
+   <div class="L mono" style="top:1040px;font-size:23px;color:#A9B4A2;${fade(t,53.0)}">เจ้าของสร้าง · แล็บ AI ใช้</div>
    <div class="drule"></div><div class="N mono note" style="top:1440px">Epoch AI · คอลัมน์ users<br>ความมั่นใจ: confident / likely / speculative</div>`)}
 
 /* ---------- end card ---------- */
