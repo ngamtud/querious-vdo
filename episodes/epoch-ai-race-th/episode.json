@@ -56,74 +56,74 @@
     {
       "id": "v1",
       "at": 0.3,
-      "text": "ใครจะครองพลังไฟเอไอมากที่สุด",
-      "text_en": "Which company will own the most A.I. data center power?"
+      "text": "AI เจ้าไหน ใช้ไฟฟ้ามากที่สุด",
+      "text_en": "Which A.I. company uses the most electricity?"
     },
     {
       "id": "v2",
       "at": 3.8,
-      "text": "สองพันยี่สิบสี่ | กูเกิลนำห่าง",
+      "text": "สองพันยี่สิบสี่ | Google นำห่าง",
       "text_en": "Twenty twenty-four. Google is far ahead, Microsoft second."
     },
     {
       "id": "v3",
       "at": 7.6,
-      "text": "ต้นปียี่สิบห้า สเปซเอ็กซ์เอไอขึ้นที่สาม",
+      "text": "ต้นปียี่สิบห้า SpaceX AI ขึ้นที่สาม",
       "text_en": "By early twenty twenty-five, SpaceX A.I. climbs to third."
     },
     {
       "id": "v4",
       "at": 12.2,
-      "text": "กลางปี แอมะซอนกระโดดขึ้นที่สอง",
+      "text": "กลางปี Amazon กระโดดขึ้นที่สอง",
       "text_en": "Mid-year, Amazon jumps to second."
     },
     {
       "id": "v5",
       "at": 15.9,
-      "text": "แล้วเมตาก็พุ่งขึ้น | ขึ้นที่สองในปีสองพันยี่สิบหก",
+      "text": "แล้ว Meta ก็พุ่งขึ้น | ขึ้นที่สองในปีสองพันยี่สิบหก",
       "text_en": "Then Meta surges, and takes second in twenty twenty-six."
     },
     {
       "id": "v6",
       "at": 22.4,
-      "text": "วันนี้ กูเกิลยังนำ ราวสามจุดเจ็ดกิกะวัตต์ | เมตาไล่ตามมา",
+      "text": "วันนี้ Google ยังนำ ราวสามจุดเจ็ดกิกะวัตต์ | Meta ไล่ตามมา",
       "text_en": "Today, Google still leads, with about three point seven gigawatts. Meta is closing in."
     },
     {
       "id": "v7",
       "at": 28.0,
-      "text": "จากนี้ คือโครงการตามแผน",
-      "text_en": "Now, the planned projects."
+      "text": "แต่ในอนาคตข้างหน้า",
+      "text_en": "But looking ahead..."
     },
     {
       "id": "v8",
       "at": 31.1,
-      "text": "ต้นปีสองพันยี่สิบเจ็ด | เมตาคาดว่าจะแซงกูเกิล",
+      "text": "ต้นปีสองพันยี่สิบเจ็ด | Meta คาดว่าจะแซง Google",
       "text_en": "Early twenty twenty-seven: Meta is projected to pass Google."
     },
     {
       "id": "v9",
       "at": 35.6,
-      "text": "แล้วดูออราเคิลให้ดี",
+      "text": "แล้วดู Oracle ให้ดี",
       "text_en": "And watch Oracle."
     },
     {
       "id": "v10",
       "at": 42.2,
-      "text": "สิ้นปียี่สิบแปด ออราเคิลพอๆ กับกูเกิล",
+      "text": "สิ้นปียี่สิบแปด Oracle พอๆ กับ Google",
       "text_en": "By the end of twenty twenty-eight, Oracle is level with Google."
     },
     {
       "id": "v11",
       "at": 45.9,
-      "text": "เกือบทั้งหมดคือสตาร์เกต | ห้าไซต์ที่สร้างให้โอเพ่นเอไอ",
+      "text": "เกือบทั้งหมดคือ Stargate | ห้าไซต์ที่สร้างให้ OpenAI",
       "text_en": "Nearly all of it is Stargate: five sites built for OpenAI."
     },
     {
       "id": "v12",
       "at": 50.6,
-      "text": "แล้วใครจะได้ใช้พลังไฟทั้งหมดนี้",
-      "text_en": "So who will really use all that power?"
+      "text": "แต่โดยรวมแล้ว | AI แบรนด์ไหนใช้ไฟมากที่สุด",
+      "text_en": "But overall, which A.I. brand uses the most power?"
     },
     {
       "id": "v13",

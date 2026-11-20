@@ -118,9 +118,9 @@ function caption(t,list){let i=-1;list.forEach((c,j)=>{if(t>=c[0])i=j});if(i<0||
 
 /* ---------- hook ---------- */
 function hook(t){
-  return scene(true,t,0,T.race,eyebrow('Querious / <b>ศึกพลังไฟ AI</b>'),
-  `<div class="L mono" style="top:470px;font-size:23px;color:#A9B4A2;${fade(t,.2)}">พลังไฟดาต้าเซ็นเตอร์ AI · แยกตามเจ้าของ</div>
-   <div class="L q-h" style="top:540px">${['ใครจะครอง','พลังไฟ AI','<span class="y">มากที่สุด?</span>'].map((l,i)=>`<div style="${fade(t,.3+i*.22,.35,24)}">${l}${i===2?cur(t):''}</div>`).join('')}</div>
+  return scene(true,t,0,T.race,eyebrow('Querious / <b>ศึกไฟฟ้า AI</b>'),
+  `<div class="L mono" style="top:470px;font-size:23px;color:#A9B4A2;${fade(t,.2)}">กำลังไฟดาต้าเซ็นเตอร์ AI (MW) · แยกตามเจ้าของ</div>
+   <div class="L q-h" style="top:540px">${['AI เจ้าไหน','ใช้ไฟฟ้า','<span class="y">มากที่สุด?</span>'].map((l,i)=>`<div style="${fade(t,.3+i*.22,.35,24)}">${l}${i===2?cur(t):''}</div>`).join('')}</div>
    <div class="L mono" style="top:1000px;font-size:26px;color:#DCE3D3;${fade(t,1.4)}">2024 → 2028</div>
    <div class="drule"></div><div class="N mono note" style="top:1440px">Epoch AI · ดาต้าเซ็นเตอร์ AI ราว 100 แห่งที่ติดตาม<br>ไม่ใช่ยอดรวมทั้งบริษัท</div>`)}
 
@@ -150,7 +150,7 @@ function race(t){
   // today line (after today): solid = built by today, hatched = planned
   const chip=proj?`<div class="chip mono" style="background:#FAF9F3">คาดการณ์</div>`:(t>=22.0&&t<28.4?`<div class="chip mono" style="background:var(--lime)">วันนี้</div>`:'');
   const cards=fin?`<div class="N" id="callout" style="top:${ROW_Y+3*ROW_H+10}px;${fade(t,45.9,.4,16)}"><div class="mono">Oracle · สิ้นปี 2028 · ${fmt(D.stargate.oracle_mw_2028)} MW</div><div class="big">99%</div><p>คือ Stargate ห้าไซต์<br>ที่สร้างให้ OpenAI</p></div>`:'';
-  return scene(false,t,T.race,T.question,topbar('ศึกพลังไฟ AI'),
+  return scene(false,t,T.race,T.question,topbar('ศึกไฟฟ้า AI'),
   `<div class="L mono meta">กำลังไฟไอทีตามเจ้าของ / MW / ไซต์ใน Epoch AI</div>
    <div class="L" id="date"><div class="d">${dstr(d)}</div>${chip}</div>
    ${rows}${cards}
@@ -159,7 +159,7 @@ function race(t){
 
 /* ---------- question ---------- */
 function question(t){
-  const lines=['แล้วใคร','จะได้ใช้','<span class="y">พลังไฟ</span>','<span class="y">ทั้งหมดนี้?</span>'];
+  const lines=['แต่โดยรวมแล้ว','AI แบรนด์ไหน','<span class="y">ใช้ไฟ</span>','<span class="y">มากที่สุด?</span>'];
   return scene(true,t,T.question,T.end,eyebrow('Querious / <b>เจ้าของ ≠ ผู้ใช้</b>'),
   `<div class="L q-h" style="top:520px">${lines.map((l,i)=>`<div style="${fade(t,50.6+i*.15,.35,24)}">${l}${i===3?cur(t):''}</div>`).join('')}</div>
    <div class="L mono" style="top:1040px;font-size:23px;color:#A9B4A2;${fade(t,51.6)}">เจ้าของสร้าง · แล็บ AI ใช้</div>
